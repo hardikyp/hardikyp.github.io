@@ -1,0 +1,13 @@
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 20px;
+    font-size: 15px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font-stretch: expanded;
+  }

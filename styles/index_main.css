@@ -20,6 +20,7 @@
 
 .author-pic{
   width: 80%;
+  border-radius: 50%;
   flex: 0.5;
 }
 

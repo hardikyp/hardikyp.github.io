@@ -1,0 +1,31 @@
+.main-body{
+    padding: 200px;
+}
+
+.message-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message-header{
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    height: 75px;
+}
+
+.message-icon>img{
+    width: 75px;
+}
+
+.message-text>p{
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.message-subtext{
+    font-size: 25px;
+}

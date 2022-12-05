@@ -1,14 +1,19 @@
-.header{
+header{
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  padding: 15px;
+  top: 0;
+  left: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 20px;
-  padding-left: 20px;
-  height: 60px;
-  background-color: cadetblue;
+  background-color: #88c0d0;
 }
 
 .navigation-map{
+  flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -32,7 +37,7 @@
 
 .navigation-map>a:hover{
   color: whitesmoke;
-  background-color: rgb(56, 93, 94); ; 
+  background-color: #537680; 
 }
 
 .nav-map-logo{
@@ -40,18 +45,22 @@
   margin-right: 10px;
 }
 
+#header-nav {
+  display: none;
+}
+
 .page-author{
   transition: color 1s;
 }
 
 .page-author>a{
-  padding: 5px;
-  font-size: 35px;
+  font-size: 30px;
   text-decoration: none;
   font-family: 'Montez', cursive;
   color: black;
   letter-spacing: 2px;
   transition: color .5s;
+  text-align: right;
 }
 
 .page-author>a:hover{

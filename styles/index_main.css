@@ -1,43 +1,51 @@
-.main-body{
-  flex: 1;
-  padding-top: 30px;
-  padding-bottom: 10px;
-  padding-left: 50px;
-  padding-right: 50px;
+main{
+  flex: 85%;
+  padding: 100px 100px 10px 100px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .left-section{
+  flex: 20%;
+  height: 100%;
+  padding: 0px 40px 0px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  flex: 0.3;
-  height: 100%;
+  row-gap: 10px;  
 }
 
 .author-pic{
-  width: 80%;
+  width: 100%;
   border-radius: 50%;
-  flex: 0.5;
+  flex: 50%;
 }
 
 .author-name{
-  margin-top: 10px;
-  font-size: 35px;
-  margin-bottom: 10px;
+  flex: 15%;
+}
+
+.author-name>h1{
+  font-size: 30px;
+  font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
-  flex: 0.15;
+  margin: 5px 0px 5px 0px;
 }
 
 .author-uni{
+  flex: 15%;
+}
+
+.author-uni>a>h2{
   font-size: 25px;
-  margin-bottom: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 5px 0px 5px 0px;
   transition: color 1s;
-  flex: 0.15;
+  flex: 15%;
 }
 
 .author-uni>a{
@@ -54,7 +62,7 @@
 .author-socials{
   width: 80%;
   height: 50px;
-  flex: 0.2;
+  flex: 20%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -63,7 +71,7 @@
 
 .social-logo{
   flex: 0.25;
-  height: 50px;
+  height: 30px;
   transition: transform .25s;
 }
 
@@ -72,43 +80,64 @@
 }
 
 .right-section{
-  flex: 0.7;
+  flex: 80%;
   padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.biography{
+.biography>h1{
   font-size: 35px;
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin: 0 0 20px 0;
 }
-
 .biography>p{
-  font-size: 24px;
+  font-size: 16pt;
   padding-left: 17px;
   font-weight: 400;
   border-left: 4px solid #a1a1a1;
 }
 
-.navigation>a{
+#main-body-nav ul{
+  padding: 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+#main-body-nav ul li{
+  list-style: none;
+}
+
+#main-body-nav ul li a{
+  flex: 100%;
+  padding: 0 0 0 20px;
+  height: 50px;
+  display: flex;
   align-items: center;
   justify-content: start;
-  padding-left: 10px;
   font-size: 25px;
   color: #8a8a8a;
   text-decoration: none;
-  transition: color .5s, background-color .5s;
+  transition: color .25s, background-color .25s, transform .25s;
   border-radius: 5px;
 }
 
-.navigation>a:hover{
+#main-body-nav ul li a:hover{
   text-decoration: none;
   color: whitesmoke;
   background-color: cadetblue;
+  transform: scale(1.01);
 }
 
 .navigation-logo{
   height: 30px;
-  margin: 15px;
 }
 
+#main-body-nav ul li a>p{
+  flex: 1;
+  padding: 0 0 0 15px;
+  margin: 0px;
+}

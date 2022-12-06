@@ -17,7 +17,6 @@ header{
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
 }
 
 .navigation-map>a{
@@ -29,13 +28,14 @@ header{
   text-decoration: none;
   text-transform: uppercase;
   color: black;
-  transition: color .5s, background-color .5s;
+  transition: color .25s, background-color .25s;
   border-radius: 5px;
   letter-spacing: 2px;
   font-size: 20px;
 }
 
 .navigation-map>a:hover{
+  text-decoration: none;
   color: whitesmoke;
   background-color: #537680; 
 }
@@ -50,7 +50,7 @@ header{
 }
 
 .page-author{
-  transition: color 1s;
+  transition: color .5s;
 }
 
 .page-author>a{

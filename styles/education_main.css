@@ -37,10 +37,17 @@ main{
 }
 
 .degree-section{
+  padding: 10px;
   margin-bottom: 25px;
   margin-bottom: 25px;
   display: flex;
   flex-direction: row;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.degree-section:hover{
+  transform: scale(1.02);
+  box-shadow: 0 5px 20px black;
 }
 
 .uni-logo{

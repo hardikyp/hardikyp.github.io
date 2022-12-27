@@ -4,8 +4,8 @@ html{
 }
 
 body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
   background-color: #2e3440;
   color: whitesmoke;
   font-family: Quicksand;

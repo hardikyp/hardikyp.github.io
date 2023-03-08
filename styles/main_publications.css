@@ -1,12 +1,8 @@
-.main-body{
+main{flex: 85%;
+  padding: 100px 150px 10px 150px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  row-gap: 50px;
-  padding-right: 100px;
-  padding-left: 100px;
-  padding-top: 20px;
-  padding-top: 20px;
+  row-gap: 20px;
   min-height: 100%;
   min-height: 100%;
 }
@@ -15,7 +11,7 @@
   height: 100px;
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
+  justify-content: center;
 }
 
 .title-logo{

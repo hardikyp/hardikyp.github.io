@@ -1,0 +1,62 @@
+main{
+  flex: 85%;
+  padding: 100px 150px 10px 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 30px;
+  width: 600px;
+  min-height: 100%;
+}
+
+.page-title{
+  flex: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 0;
+}
+
+.page-title>h1{
+  margin: 0;
+  font-size: 35px;
+  font-weight: 'GlacialIndifferenceBold';
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.author-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  row-gap: 20px;
+}
+
+.author-detail{
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.author-detail>h2{
+  margin: 0 0 0 0;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.author-detail>p{
+  margin: 0 0 0 0;
+  font-size: 18px;
+}
+
+.author-address{
+  font-size: 18px;
+}
+
+.author-contact{
+  font-size: 18px;
+}

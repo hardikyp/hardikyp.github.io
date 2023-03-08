@@ -1,0 +1,86 @@
+header{
+    box-sizing: border-box;
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    padding: 0 25px 0 25px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a222b;
+  }
+  
+  .page-author{
+    transition: color .5s;
+  }
+  
+  .page-author>a{
+    font-size: 30px;
+    text-decoration: none;
+    font-family: 'Montez', cursive;
+    color: lightgray;
+    letter-spacing: 2px;
+    transition: color .5s;
+  }
+  
+  .page-author>a:hover{
+    color: whitesmoke;
+  }
+  
+  #header-nav{
+    background: #1a222b;
+    padding: 0 0 0 0;
+  
+  }
+  
+  #header-nav ul{
+    list-style: none;
+    text-align: center;
+  }
+  
+  #header-nav ul li{
+    display: inline-block;
+    margin: 0 5px 0 5px;
+  }
+  
+  #header-nav ul li a{
+    display: block;
+    position: relative;
+    padding: 10px 10px 10px 10px;
+    text-decoration: none;
+    color: lightgray;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+  #header-nav ul li a,
+  #header-nav ul li a:after,
+  #header-nav ul li a:before{
+    transition: all .5s;
+  }
+  
+  #header-nav ul li a:hover{
+    color: whitesmoke;
+  }
+  
+  #header-nav ul li a:after{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: lightgray;
+    height: 1px;
+  }
+  
+  #header-nav ul li a:hover:after{
+    width: 100%;
+  }

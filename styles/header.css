@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "CafeDeParis";
+  src: url(../fonts/Cafedeparisscript.ttf) format('truetype');
+}
+
 header{
     box-sizing: border-box;
     width: 100%;
@@ -18,9 +23,9 @@ header{
   }
   
   .page-author>a{
-    font-size: 30px;
+    font-size: 40px;
     text-decoration: none;
-    font-family: 'Montez', cursive;
+    font-family: "CafeDeParis", Roboto;
     color: lightgray;
     letter-spacing: 2px;
     transition: color .5s;

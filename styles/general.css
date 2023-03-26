@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Mori";
-  src: url(../hardikyp.github.io/styles/fonts/PPMori-Regular.otf);
+  src: url(../hardikyp.github.io/styles/fonts/PPMori-Regular.otf) format("opentype");
 }
 
 html{

@@ -5,6 +5,7 @@ main{
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  font-family: Mori, Roboto;
 }
 
 .left-section{

@@ -12,7 +12,7 @@ body {
   padding: 0 0 0 0;
   background-color: #1a222b;
   color: whitesmoke;
-  font-family: "Mori", Roboto;
+  font-family: Mori, Roboto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

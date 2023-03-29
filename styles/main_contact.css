@@ -74,3 +74,12 @@ main{
   text-decoration: none;
   color: white;
 }
+
+.contact-button{
+  background-color: black;
+  color: whitesmoke;
+  padding: 10px 40px 10px 40px;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 30px;
+}

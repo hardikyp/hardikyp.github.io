@@ -4,4 +4,10 @@ function initMap() {
       center: { lat: 42.29336742303774, lng: -83.71556321232052 },
       zoom: 16,
     });
+
+    new google.maps.Marker({
+      position:{ lat: 42.29336742303774, lng: -83.71556321232052 },
+      map,
+      title: "Hello world!",
+    });
   }  

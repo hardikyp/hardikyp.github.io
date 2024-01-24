@@ -71,7 +71,7 @@ header{
   }
   
   #header-nav ul li a:hover{
-    color: whitesmoke;
+    color: #f5f5f5;
   }
   
   #header-nav ul li a:after{
@@ -83,7 +83,7 @@ header{
     width: 0%;
     content: '.';
     color: transparent;
-    background: lightgray;
+    background: #d3d3d3;
     height: 1px;
   }
   

@@ -2,10 +2,14 @@ Publications JSON Guide
 =======================
 
 Location
-- File: publications/publications.json
+- Preferred split files (recommended):
+  - publications/journals.json
+  - publications/conferences.json
+  - publications/talks.json
+- Back‑compat (optional): publications/publications.json (single file). If the three split files are missing, the page falls back to this file.
 - Consumed by: assets/js/publications.js on publications/index.html
 
-Top-level shape
+Top-level shape (all files)
 {
   "publications": [ Publication, ... ]
 }
@@ -28,11 +32,11 @@ Publication fields
   - doi, pdf, preprint, slides, video, code, event, site
 
 Links → button priority and styles
-- Buttons are rendered in this order: doi, pdf, preprint, slides, video, code, event, site.
+- Render order: doi, pdf, preprint, slides, video, code, event, site.
 - Styles by position within an item:
   - First: primary
   - Second: secondary
-  - All remaining (including last): tertiary
+  - Remaining: tertiary
 
 Example
 {
@@ -55,4 +59,4 @@ Editing tips
 - Keep valid JSON (double quotes, commas, etc.).
 - You can omit optional fields; UI hides them automatically.
 - Add as many entries as you like; the page updates on reload.
-
+- In split files, you may omit "type"; it will be inferred from the file (journal/conference/talk).

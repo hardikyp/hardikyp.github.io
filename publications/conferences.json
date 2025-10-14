@@ -1,0 +1,18 @@
+{
+  "publications": [
+    {
+      "id": "2025-emi-student paper",
+      "year": 2025,
+      "type": "conference",
+      "title": "Force-stable reconfigurable truss structures using quadrilateral linkage principles",
+      "authors": ["Hardik Y. Patil", "Evgueni T. Filipov"],
+      "venue": "ASCE EMI Conference 2025 Structural stability student paper competition",
+      "date": "2025-05-29",
+      "abstract": "Trusses are valued for their simple design principles and efficient load-bearing capability. However, slow member-by-member assembly and static topology restrict rapid deployment and reconfiguration of trusses for functional use. While mechanical linkages offer rapid deployability and reconfigurability, their scalability for large-scale civil structures is often constrained by the characteristics of their unit cells. These limitations raise the question: Can the design versatility of trusses be combined with the kinematic advantages of mechanical linkages to create structurally efficient, force-stable, scalable, deployable, and reconfigurable systems? To that end, we present a method inspired by flat-foldable quadrilateral linkages to transform static trusses into compactly stowable, reconfigurable systems. An additional node is introduced on the tensile members of triangular units with the help of Grashof linkage principles. This node converts triangles into flat-foldable quadrilateral linkages, enabling system-level reconfigurability while preserving the structure’s load capacity, stiffness and stability. We show that the Fink, Scissor, and Warren trusses can be transformed into reconfigurable systems, achieving up to 93% and 60% reduction in convex hull area and maximum length, respectively, upon actuation of all degrees of freedom. Proof-of-concept prototypes, including a reconfigurable cantilever and a three-meter Warren truss bridge, validate feasibility while demonstrating load capacities and stiffness comparable to their static counterparts. We believe the proposed method will advance the design, analysis and fabrication of sophisticated bar-linked reconfigurable structures with potential applications in deployable infrastructure for aerospace systems, robotic components, metamaterials, and more.",
+      "keywords": ["Reconfigurable trusses", "Four-bar linkages", "Shape-morphing trusses", "Force-stable trusses"],
+      "links": {
+        "pdf": "assets\\docs\\EMI2025_Stability_Extended_Abstract_HYP_ETF.pdf"}
+    }
+  ]
+}
+

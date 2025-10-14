@@ -1,0 +1,65 @@
+{
+  "publications": [
+    {
+      "id": "2025-emi-conference",
+      "year": 2025,
+      "type": "talk",
+      "title": "Force-stable reconfigurable truss structures using quadrilateral linkage principles",
+      "authors": ["Hardik Y. Patil", "Evgueni T. Filipov"]
+      ,"venue": " ASCE Engineering Mechanics Institute Conference, Anaheim, CA, May 27 – May 30, 2025",
+      "date": "2025-05-29",
+      "abstract": "Trusses are valued for their simple design principles and efficient load-bearing capability. However, slow member-by-member assembly and static topology restrict rapid deployment and reconfiguration of trusses for functional use. While mechanical linkages offer rapid deployability and reconfigurability, their scalability for large-scale civil structures is often constrained by the characteristics of their unit cells. These limitations raise the question: Can the design versatility of trusses be combined with the kinematic advantages of mechanical linkages to create structurally efficient, force-stable, scalable, deployable, and reconfigurable systems? To that end, we present a method inspired by flat-foldable quadrilateral linkages to transform static trusses into compactly stowable, reconfigurable systems. An additional node is introduced on the tensile members of triangular units with the help of Grashof linkage principles. This node converts triangles into flat-foldable quadrilateral linkages, enabling system-level reconfigurability while preserving the structure’s load capacity, stiffness and stability. We show that the Fink, Scissor, and Warren trusses can be transformed into reconfigurable systems, achieving up to 93% and 60% reduction in convex hull area and maximum length, respectively, upon actuation of all degrees of freedom. Proof-of-concept prototypes, including a reconfigurable cantilever and a three-meter Warren truss bridge, validate feasibility while demonstrating load capacities and stiffness comparable to their static counterparts. We believe the proposed method will advance the design, analysis and fabrication of sophisticated bar-linked reconfigurable structures with potential applications in deployable infrastructure for aerospace systems, robotic components, metamaterials, and more.",
+      "keywords": ["Reconfigurable trusses", "Four-bar linkages", "Shape-morphing trusses", "Force-stable trusses"],
+      "links": {
+                  "event": null, 
+                  "slides": null
+               }
+    },
+    {
+      "id": "2022-imece",
+      "year": 2022,
+      "type": "talk",
+      "title": "Adaptable hull hydrodynamics using shape morphing curved-crease origami",
+      "authors": ["Hardik Y. Patil", "Evgueni T. Filipov"]
+      ,"venue": "ASME International Mechanical Engineering Congress & Exposition, Columbus, OH, October 30 – November 3, 2022",
+      "date": "2022-11-01",
+      "abstract": "In shipbuilding, the topology of the hull surface plays an essential role in determining a hull’s hydrodynamic response. However, traditional methods of hull assembly generate static designs, where a hull can only perform well under a specific range of speeds or wavelengths. In this work, we introduce a novel technique of fabricating planing hulls following the principles of curved-crease origami, where active folding allows for shape morphing and adaptable hydrodynamic characteristics. These curved-crease origami structures offer additional advantages over conventional shipbuilding techniques like reduced joint complexity, improved structural stiffness, and rapid fabrication from a flat state. We use the Bar and Hinge model for the kinematic analysis of curved-crease origami patterns and a simplified mathematical model based on Low Aspect-ratio Strip Theory to study the hydrodynamic characteristics of morphing hull geometry in calm and wavy water conditions. Results show that active control of hull hydrodynamics is achieved as the extent of actuation determines the hull deadrise angle. Higher actuation means a lower deadrise and a flatter hull profile which is beneficial in reducing frictional drag. In contrast, lower actuation means a higher deadrise which is especially beneficial for cutting through waves and reducing heaving and pitching motion. Furthermore, we show that a passive control over hull hydrodynamics can be achieved by varying the length and curvature of the initial crease pattern. It is observed that the hulls show a resonant response for all hydrodynamic characteristics under specific wavelengths. Increasing the length and curvature of the hull typically results in lowering of the heave and pitch displacements and accelerations. This active and passive control allows us to steer clear of resonant behavior and ensure seakeeping fitness by reducing the possibility of motion sickness for passengers. In conclusion, this work extends the merits of curved crease origami to more practical applications like naval engineering. It opens avenues for novel structural design methods in fields requiring adaptable structural responses against varying fluid flow.",
+      "keywords": ["Curved-crease origami hulls", "Tunable hydrodynamic performance", "Shape morphing surfaces"],
+      "links": {
+                  "event": null, 
+                  "slides": null
+               }
+    },
+    {
+      "id": "2022-imece",
+      "year": 2022,
+      "type": "talk",
+      "title": "Curved crease origami for functional shape-morphing structures",
+      "authors": ["Steven R. Woodruff", "Hardik Y. Patil", "Evgueni T. Filipov"]
+      ,"venue": "ASME International Mechanical Engineering Congress & Exposition, Columbus, OH, October 30 – November 3, 2022",
+      "date": "2022-11-02",
+      "abstract": "Curved creasing of thin sheets differs from most other origami because the surface of the sheet bends globally as it is folded from a 2D to a 3D state. This global bending results in smooth surface structures with anisotropic stiffness and complex mechanistic behaviors. In this talk, we explore the mechanics of curved crease structures and highlight how these origami can be used for systems with shape-morning and functional capabilities. We begin by discussing the theoretical principles governing curved crease folding and present a reduced-order ‘bar and hinge’ simulation tool suitable for capturing the folding and post-folding mechanical behavior of these structures. Next, we explore a unique behavior seen in curved creased sheets where localized changes in the folding (i.e., a pinch) results in global bending and twisting deformations. We show that these pinch-induced deformations are higher for patterns where the curvature of the crease is larger. Additionally, patterns with less creases and an even number creases will twist more than patterns with many or an odd numbers of creases. The number of creases have little effect on the pinch-induced bending of the origami. Based on the twisting and bending shape-morphing, we propose practical applications including a gripper mechanism, an adaptive façade system, and a beam with tunable bending stiffness. Finally, we present a practical scenario where curved crease origami are used to create a reconfigurable boat hull with adaptable hydrodynamic characteristics. The hull consists of four connected sheets where folding of the system changes the surface curvature and the overall hull topology. We explore the hydrodynamic characteristics of the adaptable hull in both calm and wavy water conditions. Results show that unfolding the origami hull results in a lower deadrise angle (flatter hull bottom) that has lower frictional drag and is well suited for calmer waters. On the other hand, reconfiguring the hull to have a higher deadrise angle allows for smoother sailing in wavy conditions. Moreover, the hull shape can be adapted based on the water surface wavelength to avoid resonant behaviors where high pitch and heave motions can make the hull particularly unstable.",
+      "keywords": null,
+      "links": {
+                  "event": null, 
+                  "slides": null
+               }
+    },
+    {
+      "id": "2022-emi-conference",
+      "year": 2022,
+      "type": "talk",
+      "title": "Hydrodynamic characteristics of shape morphing curved-crease origami surfaces",
+      "authors": ["Hardik Y. Patil", "Evgueni T. Filipov"]
+      ,"venue": " ASCE Engineering Mechanics Institute Conference, Baltimore, MD, May 31 – June 3, 2022",
+      "date": "2022-06-01",
+      "abstract": "Fabrication and assembly of smooth curved surfaces is a complex process. It makes applications like the manufacturing of ship hulls a time-intensive process. In contrast, the principles of origami allow rapid and efficient fabrication of surfaces from flat sheets. Sheets, when folded along curved creases, reduce joint complexity, improve overall structural stiffness, allow easy assembly, and only require a small initial footprint. To exploit these properties, we used the bar and hinge model to design and analyze curved-crease origami patterns which form planing hulls upon folding. This study shows that the hull geometry is sensitive to the crease pattern, and surfaces can morph moderately by changing the extent of folding. Further, we used a simplified mathematical model that predicts a planing boat's motion to study the hydrodynamic characteristics of curved origami surfaces, including drag force, natural frequency, heave, surge and pitch amplitudes, velocities, and acceleration. The results show that surface hydrodynamic characteristics depend significantly on the crease pattern, and the performance can be optimized with parametric changes to the initial crease pattern. This study highlights the potential for origami to create smooth curved surfaces by vastly reducing the fabrication time and paves the way for shape morphing origami structures in fields like aerospace, civil, marine, and mechanical engineering.",
+      "keywords": ["Curved-crease origami hulls", "Tunable hydrodynamic performance", "Shape morphing surfaces"],
+      "links": {
+                  "event": null, 
+                  "slides": null
+               }
+    }
+  ]
+}
+

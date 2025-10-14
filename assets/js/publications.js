@@ -65,14 +65,46 @@
       btn.addEventListener('click', () => {
         const item = btn.closest('.pub-item');
         const body = item.querySelector('.pub-body');
-        const open = item.classList.toggle('open');
-        btn.setAttribute('aria-expanded', String(open));
-        if (open) body.removeAttribute('hidden'); else body.setAttribute('hidden','');
+        const isOpening = !item.classList.contains('open');
+        item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(isOpening));
+        if (isOpening) {
+          body.removeAttribute('hidden');
+          body.style.maxHeight = '0px';
+          body.style.opacity = '0';
+          requestAnimationFrame(() => {
+            body.style.maxHeight = body.scrollHeight + 'px';
+            body.style.opacity = '1';
+          });
+          const onEnd = (e) => {
+            if (e.propertyName === 'max-height') {
+              body.style.maxHeight = 'none';
+              body.removeEventListener('transitionend', onEnd);
+            }
+          };
+          body.addEventListener('transitionend', onEnd);
+        } else {
+          // collapse
+          body.style.maxHeight = (body.scrollHeight || 0) + 'px';
+          body.style.opacity = '1';
+          requestAnimationFrame(() => {
+            body.style.maxHeight = '0px';
+            body.style.opacity = '0';
+          });
+          setTimeout(() => { body.setAttribute('hidden',''); }, 280);
+        }
       });
     });
 
     // Filters
     const chips = document.querySelectorAll('.pub-filters .chip');
+    const updateYearVisibility = () => {
+      app.querySelectorAll('section').forEach(sec => {
+        const items = sec.querySelectorAll('.pub-item');
+        const hasVisible = Array.from(items).some(it => it.style.display !== 'none');
+        sec.style.display = hasVisible ? '' : 'none';
+      });
+    };
     chips.forEach(ch => ch.addEventListener('click', () => {
       chips.forEach(c => c.setAttribute('aria-pressed','false'));
       ch.setAttribute('aria-pressed','true');
@@ -81,13 +113,39 @@
         const show = f === 'all' || it.dataset.cat === f;
         it.style.display = show ? '' : 'none';
       });
+      updateYearVisibility();
     }));
+    // Initial ensure years without items are hidden (in case of empty categories)
+    updateYearVisibility();
   };
 
-  fetch('/publications/publications.json')
-    .then(r => r.json())
-    .then(j => render(j.publications))
-    .catch(() => {
-      app.innerHTML = '<p class="muted">Failed to load publications.</p>';
-    });
+  const load = async () => {
+    const sources = [
+      { url: '/publications/journals.json', fallbackType: 'journal' },
+      { url: '/publications/conferences.json', fallbackType: 'conference' },
+      { url: '/publications/talks.json', fallbackType: 'talk' }
+    ];
+    try {
+      const results = await Promise.all(sources.map(async s => {
+        const res = await fetch(s.url);
+        if (!res.ok) return { publications: [] };
+        const j = await res.json();
+        j.publications.forEach(p => { if (!p.type) p.type = s.fallbackType; });
+        return j;
+      }));
+      const all = results.flatMap(j => j.publications || []);
+      if (!all.length) throw new Error('empty');
+      render(all);
+    } catch (e) {
+      // Back-compat: try single file if present
+      try {
+        const r = await fetch('/publications/publications.json');
+        const j = await r.json();
+        render(j.publications || []);
+      } catch {
+        app.innerHTML = '<p class="muted">Failed to load publications.</p>';
+      }
+    }
+  };
+  load();
 })();

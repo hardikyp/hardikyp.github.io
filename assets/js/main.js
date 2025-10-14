@@ -65,6 +65,12 @@
     expanded ? closeMenu() : openMenu();
   });
   overlay?.addEventListener('click', closeMenu);
+  // Play name pronunciation if available
+  const playBtn = document.getElementById('playNamePronunciation');
+  const nameAudio = document.getElementById('namePronunciation');
+  playBtn?.addEventListener('click', () => {
+    try { nameAudio?.play(); } catch (e) {}
+  });
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
   });

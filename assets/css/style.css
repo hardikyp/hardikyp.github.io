@@ -77,8 +77,10 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
 /* Hamburger */
 .hamburger { display: none; width: 42px; height: 42px; border-radius: 8px; border: none; background: transparent; align-items: center; justify-content: center; gap: 5px; cursor: pointer; transition: background 160ms ease; flex-direction: column; position: relative; z-index: 1600; }
 .hamburger:hover { background: transparent; }
-/* Icon-based hamburger/close */
-.hamburger .icon-close { display: none; }
+/* Icon-based hamburger/close using CSS mask to match accent color */
+.hamburger .icon { width: 24px; height: 24px; display: block; background-color: var(--primary); }
+.hamburger .icon-menu { -webkit-mask: url('/assets/icons/menu.svg') no-repeat center / contain; mask: url('/assets/icons/menu.svg') no-repeat center / contain; }
+.hamburger .icon-close { -webkit-mask: url('/assets/icons/close.svg') no-repeat center / contain; mask: url('/assets/icons/close.svg') no-repeat center / contain; display: none; }
 .hamburger.is-active .icon-menu { display: none; }
 .hamburger.is-active .icon-close { display: block; }
 
@@ -100,10 +102,25 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
 .hero p { color: var(--muted); margin: 0 0 16px; }
 .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
 
+/* About */
+.about { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; align-items: center; padding: 24px 16px 64px; max-width: 1200px; margin: 0 auto; }
+.about-img img { width: 100%; max-width: 540px; border-radius: 12px; border: 1px solid var(--border); }
+.about-content h2 { margin: 0 0 8px; }
+.about-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+
+/* Home contact */
+.home-contact { padding: 24px 16px 64px; max-width: 900px; margin: 0 auto; }
+.home-contact .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.home-contact .contact-form label { display: grid; gap: 6px; }
+.home-contact .contact-form label.full { grid-column: 1 / -1; }
+.home-contact .contact-form input, .home-contact .contact-form textarea { padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 1rem; }
+.home-contact .actions { display: flex; gap: 10px; align-items: center; margin-top: 6px; }
+
 /* Highlights */
 .highlights { padding: 24px 16px 64px; max-width: 1200px; margin: 0 auto; }
 .highlights h2 { font-size: 1.5rem; margin-bottom: 12px; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.cards.single { grid-template-columns: 1fr; }
 .card { border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: #fff; }
 .card h3 { margin: 0 0 8px; font-size: 1.1rem; }
 .card p { margin: 0 0 10px; color: var(--muted); }
@@ -134,6 +151,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
   .nav-cta { display: none; }
   .site-header .nav-inner { grid-template-columns: 1fr auto; padding: 0 50px; }
   .cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .cards.single { grid-template-columns: 1fr; }
   .site-footer .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 

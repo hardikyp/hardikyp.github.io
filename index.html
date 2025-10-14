@@ -61,8 +61,8 @@
 
         <!-- Mobile hamburger -->
         <button class="hamburger" id="navToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
-          <img class="icon-menu" src="/assets/icons/menu.svg" alt="" width="24" height="24" aria-hidden="true" />
-          <img class="icon-close" src="/assets/icons/close.svg" alt="" width="24" height="24" aria-hidden="true" />
+          <span class="icon icon-menu" aria-hidden="true"></span>
+          <span class="icon icon-close" aria-hidden="true"></span>
         </button>
       </div>
 
@@ -98,23 +98,62 @@
 
       <section class="highlights">
         <h2>Highlights</h2>
-        <div class="cards">
+        <div class="cards single">
           <article class="card">
-            <h3>Recent Publication</h3>
-            <p>Title placeholder — short abstract or summary goes here.</p>
-            <a href="/publications/" class="card-link">View Publications</a>
+            <h3>Latest Update #1</h3>
+            <p>Recent milestone from my Updates page. Short summary goes here.</p>
+            <a href="/updates/" class="btn tertiary">Read more</a>
           </article>
           <article class="card">
-            <h3>Research Project</h3>
-            <p>Brief overview — key problem, approach, and impact.</p>
-            <a href="/research/" class="card-link">See Research</a>
+            <h3>Latest Update #2</h3>
+            <p>Another quick highlight pulled from recent announcements.</p>
+            <a href="/updates/" class="btn tertiary">Read more</a>
           </article>
           <article class="card">
-            <h3>Milestone</h3>
-            <p>Personal or professional milestone — announced on the blog.</p>
-            <a href="/blog/" class="card-link">Read Blog</a>
+            <h3>Latest Update #3</h3>
+            <p>A third highlight to keep the home page current.</p>
+            <a href="/updates/" class="btn tertiary">Read more</a>
           </article>
         </div>
+      </section>
+
+      <section class="about">
+        <div class="about-img">
+          <img src="/assets/img/monogram_hp.png" alt="Portrait of Hardik Patil (placeholder)" />
+        </div>
+        <div class="about-content">
+          <h2>About Me</h2>
+          <p>Hello, I’m Hardik. I’m a researcher focusing on problems at the intersection of engineering and computing. I enjoy building tools, writing about my work, and sharing milestones from my journey.</p>
+          <div class="about-actions">
+            <button id="playNamePronunciation" class="btn tertiary" type="button">Hear pronunciation</button>
+            <a class="btn secondary" href="/assets/docs/Hardik_Patil_CV.pdf" download>Download CV</a>
+          </div>
+          <audio id="namePronunciation" preload="none">
+            <source src="/assets/audio/name-pronunciation.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </section>
+
+      <section class="home-contact">
+        <h2>Contact</h2>
+        <form id="homeContactForm" action="https://formspree.io/f/your-id" method="POST" class="contact-form">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required />
+          </label>
+          <label class="full">
+            <span>Message</span>
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+          <div class="actions">
+            <button class="btn primary" type="submit">Send</button>
+            <a class="btn secondary" href="mailto:you@example.com">Email instead</a>
+          </div>
+        </form>
       </section>
     </main>
 

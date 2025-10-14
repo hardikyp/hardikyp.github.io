@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Name — Personal Website</title>
+    <meta name="description" content="Personal website featuring research, publications, updates, photography, and more." />
+    <link rel="canonical" href="/" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Your Name — Personal Website" />
+    <meta property="og:description" content="Research, publications, updates, photography, and more." />
+    <meta property="og:url" content="/" />
+    <meta property="og:image" content="/assets/img/favicon.svg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Your Name — Personal Website" />
+    <meta name="twitter:description" content="Research, publications, updates, photography, and more." />
+    <meta name="twitter:image" content="/assets/img/favicon.svg" />
+
+    <!-- Security best-effort (meta-based; prefer server headers in production) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests" />
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/assets/css/style.css" as="style" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class="nav-inner">
+        <!-- Left: Logo -->
+        <a class="logo" href="/">
+          <img src="/assets/img/logo.svg" alt="Site logo" width="36" height="36" />
+          <span class="logo-text">Your Name</span>
+        </a>
+
+        <!-- Center: Nav links (desktop/tablet) -->
+        <nav class="primary-nav" aria-label="Primary">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/updates/">Updates</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/photography/">Photography</a></li>
+            <li><a href="/hobbies/">Hobbies</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right: CTAs -->
+        <div class="nav-cta">
+          <a class="btn outline" href="/assets/docs/YourName-CV.pdf" download>Download CV</a>
+          <a class="btn solid" href="/contact/">Contact</a>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <button class="hamburger" id="navToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <!-- Slide-in mobile menu -->
+      <div id="mobileMenu" class="mobile-menu" hidden>
+        <nav aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/updates/">Updates</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/photography/">Photography</a></li>
+            <li><a href="/hobbies/">Hobbies</a></li>
+            <li class="divider"></li>
+            <li><a class="btn outline full" href="/assets/docs/YourName-CV.pdf" download>Download CV</a></li>
+            <li><a class="btn solid full" href="/contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="menu-overlay" id="menuOverlay" hidden></div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero">
+        <h1>Hello, I’m Your Name</h1>
+        <p>Researcher, writer, photographer — sharing my work and journeys.</p>
+        <div class="hero-cta">
+          <a class="btn solid" href="/research/">Explore Research</a>
+          <a class="btn outline" href="/blog/">Read Updates</a>
+        </div>
+      </section>
+
+      <section class="highlights">
+        <h2>Highlights</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Recent Publication</h3>
+            <p>Title placeholder — short abstract or summary goes here.</p>
+            <a href="/publications/" class="card-link">View Publications</a>
+          </article>
+          <article class="card">
+            <h3>Research Project</h3>
+            <p>Brief overview — key problem, approach, and impact.</p>
+            <a href="/research/" class="card-link">See Research</a>
+          </article>
+          <article class="card">
+            <h3>Milestone</h3>
+            <p>Personal or professional milestone — announced on the blog.</p>
+            <a href="/blog/" class="card-link">Read Blog</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+    </footer>
+
+    <script src="/assets/js/main.js" defer></script>
+  </body>
+  </html>

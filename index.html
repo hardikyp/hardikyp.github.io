@@ -55,8 +55,8 @@
 
         <!-- Right: CTAs -->
         <div class="nav-cta">
-          <a class="btn secondary" href="/assets/docs/Hardik_Patil_CV.pdf" download>Download CV</a>
-          <a class="btn primary" href="/contact/">Contact</a>
+          <a class="btn secondary" href="/assets/docs/Hardik_Patil_CV.pdf" download>Get CV</a>
+          <a class="btn primary" href="/#contact">Contact</a>
         </div>
 
         <!-- Mobile hamburger -->
@@ -78,8 +78,8 @@
             <li><a href="/photography/">Photography</a></li>
             <li><a href="/hobbies/">Hobbies</a></li>
             <li class="divider"></li>
-            <li><a class="btn secondary full" href="/assets/docs/Hardik_Patil_CV.pdf" download>Download CV</a></li>
-            <li><a class="btn primary full" href="/contact/">Contact</a></li>
+            <li><a class="btn secondary full" href="/assets/docs/Hardik_Patil_CV.pdf" download>Get CV</a></li>
+            <li><a class="btn primary full" href="/#contact">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -91,7 +91,7 @@
         <h1>Hello, I’m Your Name</h1>
         <p>Researcher, writer, photographer — sharing my work and journeys.</p>
         <div class="hero-cta">
-          <a class="btn primary" href="/assets/docs/Hardik_Patil_CV.pdf" download>Download CV</a>
+          <a class="btn primary" href="/assets/docs/Hardik_Patil_CV.pdf" download>Get CV</a>
           <a class="btn tertiary" href="/research/">Explore my work</a>
         </div>
       </section>
@@ -119,25 +119,26 @@
 
       <section class="about">
         <div class="about-img">
-          <img src="/assets/img/portrait-placeholder.svg" alt="Portrait of Hardik Patil (placeholder)" />
+          <img src="/assets/img/portrait.jpg" alt="Portrait of Hardik Patil" />
         </div>
         <div class="about-content">
           <h2>About Me</h2>
           <hr class="section-rule" />
-          <p>Hardik grew up in Nasik, Maharashtra, where his passion for understanding how structures come to life sparked early. That curiosity led him to earn a Bachelor of Technology with Honors from IIT Bombay. Next, he packed his bags for Ann Arbor, Michigan, where he’s now pursuing his PhD in civil engineering and scientific computing at the University of Michigan.</p>
-          <p>His research focuses on making structures deployable and more adaptable, developing tools to simulate the kinematics and mechanics of reconfigurable, origami‑inspired, thin‑shelled, and bar‑linked structures. He’s a published author and has presented at top conferences.</p>
-          <p>Outside the lab, you’ll find him photographing landscapes and city scenes, brewing espresso, tinkering with code, and staying active.</p>
+          <p>Hardik grew up in Nasik, Maharashtra, where his passion for understanding how structures come to life sparked early, thanks to conversations with his civil engineer father. This curiosity led him to earn a Bachelor of Technology with Honors in civil engineering from the Indian Institute of Technology Bombay. Next, he packed his bags for Ann Arbor, Michigan, where he’s now pursuing his PhD in civil engineering and scientific computing at the University of Michigan after obtaining his Master’s there.</p>
+          <p>Hardik’s research is all about making structures deployable and more adaptable. He focuses on developing tools to simulate the kinematics and mechanics of reconfigurable, origami-inspired, thin-shelled, and bar-linked structures. He’s a published author in the Journal of Fluids and Structures and presented at top conferences like ASCE’s EMI and ASME’s IMECE. Teaching as a Graduate Student Instructor for a course on adaptable and deployable structures has added another layer of depth to his academic experience.</p>
+          <p>When he’s not deep into research, you’ll likely find Hardik behind a camera, capturing street scenes, landscapes, or the night sky. He’s an espresso aficionado, a proud plant parent, and a programming enthusiast who loves tinkering and automating tasks. Staying active is his thing—whether it's running, hiking, workouts, playing badminton, or a round of pickleball. He’s also known to experiment in the kitchen, groove to all kinds of music, and occasionally jam out on his keyboard.</p>
+          <p>Hardik’s goal? To take on an Engineer/Scientist role in the industry, tackling complex structural engineering projects and sharing his learnings with the world. Oh, and he’s currently on the lookout for exciting internship opportunities!</p> 
           <div class="about-actions">
             <button id="playNamePronunciation" class="pronounce-card" type="button">
               <span class="play" aria-hidden="true">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
               </span>
               <span class="label">
-                <strong>/ˈhɑːrdɪk ˈpɑːtɪl/</strong>
-                <small>Hardik Patil</small>
+                <span class="ipa">/ˈhɑːrdɪk ˈpɑːtɪl/</span>
+                <span class="name">Hardik Patil</span>
               </span>
             </button>
-            <a class="btn secondary lg" href="/assets/docs/Hardik_Patil_CV.pdf" download>Download CV</a>
+            <a class="btn secondary lg" href="/assets/docs/Hardik_Patil_CV.pdf" download>Get CV</a>
           </div>
           <audio id="namePronunciation" preload="none">
             <source src="/assets/audio/name-pronunciation.mp3" type="audio/mpeg" />
@@ -145,24 +146,31 @@
         </div>
       </section>
 
-      <section class="home-contact">
-        <h2>Contact</h2>
+      <section class="home-contact" id="contact">
+        <h2>Get In Touch</h2>
         <form id="homeContactForm" action="https://formspree.io/f/your-id" method="POST" class="contact-form">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" required />
+          <label class="full">
+            <span>Full Name <span class="muted">(required)</span></span>
           </label>
           <label>
-            <span>Email</span>
+            <span>First Name</span>
+            <input type="text" name="first_name" required />
+          </label>
+          <label>
+            <span>Last Name</span>
+            <input type="text" name="last_name" />
+          </label>
+          <label class="full">
+            <span>Email ID <span class="muted">(required)</span></span>
             <input type="email" name="email" required />
           </label>
           <label class="full">
-            <span>Message</span>
+            <span>Message <span class="muted">(required)</span></span>
             <textarea name="message" rows="6" required></textarea>
           </label>
           <div class="actions">
-            <button class="btn primary" type="submit">Send</button>
-            <a class="btn secondary" href="mailto:you@example.com">Email instead</a>
+            <button class="btn primary" type="submit">Send Message</button>
+            <a class="btn secondary" href="mailto:you@example.com?subject=Website%20Contact">Send Email</a>
           </div>
         </form>
       </section>

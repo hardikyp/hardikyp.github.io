@@ -48,7 +48,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .logo-text { white-space: nowrap; }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; letter-spacing: 0.12px; font-weight: 700; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; letter-spacing: 0.22px; font-weight: 700; }
 
 .primary-nav { justify-self: center; }
 .primary-nav ul { display: flex; gap: 16px; }
@@ -108,15 +108,19 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
 .about-content h2 { margin: 0 0 12px; font-size: 2.2rem; }
 .about-content .section-rule { height: 1px; background: var(--border); border: 0; margin: 12px 0 16px; }
 .about-content p { color: var(--muted); margin: 0 0 12px; }
-.about-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+.about-actions { display: grid; grid-template-columns: 1fr 280px; gap: 14px; align-items: stretch; margin-top: 14px; }
+.about-actions .pronounce-card { width: 100%; }
+.about-actions .btn { width: 100%; justify-content: center; }
 .btn.lg { padding: 14px 20px; border-radius: 12px; }
 
 /* Pronunciation card */
-.pronounce-card { display: inline-flex; align-items: center; gap: 12px; border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; background: #fff; }
-.pronounce-card .play { width: 36px; height: 36px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #fff; }
-.pronounce-card .play svg { width: 16px; height: 16px; fill: #fff; }
-.pronounce-card .label { display: grid; line-height: 1.2; }
-.pronounce-card .label small { color: var(--muted); }
+.pronounce-card { display: inline-grid; grid-template-columns: 56px 1fr; align-items: center; border: 0px solid var(--border); border-radius: 16px; background: #f6f7f9; overflow: hidden; }
+.pronounce-card .play { width: 56px; height: 100%; display: flex; align-items: center; justify-content: center; background: transparent; position: relative; border-right: 1px solid var(--border); }
+.pronounce-card .play::before { content: ""; position: absolute; width: 36px; height: 36px; border-radius: 999px; background: var(--primary); left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.pronounce-card .play svg { position: relative; width: 16px; height: 16px; fill: #fff; }
+.pronounce-card .label { display: grid; padding: 10px 14px; text-align: left; }
+.pronounce-card .label .ipa { font-weight: 400; color: var(--text); font-size: 1.1rem; letter-spacing: 1px;}
+.pronounce-card .label .name { font-weight: 200; color: var(--muted); font-size: 0.9rem; letter-spacing: 1px; }
 
 
 /* Home contact */
@@ -124,8 +128,11 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
 .home-contact .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .home-contact .contact-form label { display: grid; gap: 6px; }
 .home-contact .contact-form label.full { grid-column: 1 / -1; }
-.home-contact .contact-form input, .home-contact .contact-form textarea { padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 1rem; }
-.home-contact .actions { display: flex; gap: 10px; align-items: center; margin-top: 6px; }
+.home-contact h2 { text-align: center; font-size: clamp(1.8rem, 2.2vw + 1rem, 3rem); margin-bottom: 12px; }
+.home-contact .contact-form input, .home-contact .contact-form textarea { padding: 12px; border: 1px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 1rem; }
+.home-contact .contact-form input:focus, .home-contact .contact-form textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(38,55,77,0.15); }
+.home-contact .actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 6px; grid-column: 1 / -1; }
+.home-contact .actions .btn { width: 100%; justify-content: center; min-height: 48px; }
 
 /* Highlights */
 .highlights { padding: 24px 16px 64px; max-width: 1200px; margin: 0 auto; }
@@ -172,6 +179,13 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
   .site-footer .copyright { padding: 12px 20px 20px; }
   .site-header .nav-inner { padding: 0 20px; }
   .about { grid-template-columns: 1fr; }
+  .about-actions { grid-template-columns: 1fr; }
+  .home-contact .contact-form { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 768px) {
+  /* Desktop: actions side-by-side with equal widths */
+  .home-contact .actions { grid-template-columns: 1fr 1fr; }
 }
 
 @media (min-width: 641px) {

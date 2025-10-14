@@ -6,7 +6,7 @@ Structure
 - `research/`, `publications/`, `updates/`, `blog/`, `photography/`, `hobbies/`, `contact/`: Core pages.
 - `assets/css/style.css`: Global styles and responsive layout.
 - `assets/js/main.js`: Navbar toggle, scroll effects, minor UX.
-- `assets/img/`: Logo and favicon.
+- `assets/img/`: Logo monogram (`monogram_hp.png`) and favicon.
 - `robots.txt`, `sitemap.xml`, `manifest.webmanifest`: SEO and PWA basics.
 
 Development
@@ -15,6 +15,7 @@ Development
 
 Contact Form
 - Uses Formspree as a drop-in endpoint. Replace `action` in `contact/index.html` with your Formspree endpoint or integrate your own backend/serverless.
+- Place your CV at `assets/docs/Hardik_Patil_CV.pdf` to enable the Download CV links.
 
 Security & SEO
 - Meta CSP and basic security headers included as `<meta http-equiv>` where possible. Prefer setting real HTTP headers at your host for production.
@@ -22,4 +23,3 @@ Security & SEO
 
 License
 - Private by default. Add a license if you plan to open source.
-

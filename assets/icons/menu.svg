@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="menu" width="96" height="96" x="0" y="0" version="1.1" viewBox="0 0 96 96">
-  <switch>
-    <foreignObject width="1" height="1" x="0" y="0" requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/"></foreignObject>
-    <g>
-      <path d="M12 28h72a4 4 0 0 0 0-8H12a4 4 0 0 0 0 8zm72 16H12a4 4 0 0 0 0 8h72a4 4 0 0 0 0-8zm0 24H12a4 4 0 0 0 0 8h72a4 4 0 0 0 0-8z"></path>
-    </g>
-  </switch>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="menu" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 96 96">
+  <!-- Generator: Adobe Illustrator 29.7.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 8)  -->
+  <path d="M4.8,24h86.4c2.65,0,4.8-2.15,4.8-4.8s-2.15-4.8-4.8-4.8H4.8c-2.65,0-4.8,2.15-4.8,4.8s2.15,4.8,4.8,4.8ZM91.2,43.2H4.8c-2.65,0-4.8,2.15-4.8,4.8s2.15,4.8,4.8,4.8h86.4c2.65,0,4.8-2.15,4.8-4.8s-2.15-4.8-4.8-4.8ZM91.2,72H4.8c-2.65,0-4.8,2.15-4.8,4.8s2.15,4.8,4.8,4.8h86.4c2.65,0,4.8-2.15,4.8-4.8s-2.15-4.8-4.8-4.8Z"/>
 </svg>

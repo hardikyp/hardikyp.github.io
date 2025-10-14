@@ -1,3 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1792" height="1792" id="facebook">
-  <path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759H734V905H479V609h255V391q0-186 104-288.5T1115 0q147 0 228 12z"></path>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="facebook" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1666.67 1666.67">
+  <!-- Generator: Adobe Illustrator 29.7.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 8)  -->
+  <path d="M1343,12v264h-157c-57.33,0-96,12-116,36s-30,60-30,108v189h293l-39,296h-254v759h-306v-759h-255v-296h255v-218c0-124,34.67-220.17,104-288.5C907.33,34.17,999.67,0,1115,0c98,0,174,4,228,12Z"/>
 </svg>

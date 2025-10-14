@@ -103,10 +103,21 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
 .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* About */
-.about { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; align-items: center; padding: 24px 16px 64px; max-width: 1200px; margin: 0 auto; }
-.about-img img { width: 100%; max-width: 540px; border-radius: 12px; border: 1px solid var(--border); }
-.about-content h2 { margin: 0 0 8px; }
-.about-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+.about { display: grid; grid-template-columns: 1.1fr 1.3fr; gap: 40px; align-items: start; padding: 24px 16px 64px; max-width: 1200px; margin: 0 auto; }
+.about-img img { width: 100%; max-width: 640px; border-radius: 16px; border: 1px solid var(--border); object-fit: cover; }
+.about-content h2 { margin: 0 0 12px; font-size: 2.2rem; }
+.about-content .section-rule { height: 1px; background: var(--border); border: 0; margin: 12px 0 16px; }
+.about-content p { color: var(--muted); margin: 0 0 12px; }
+.about-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+.btn.lg { padding: 14px 20px; border-radius: 12px; }
+
+/* Pronunciation card */
+.pronounce-card { display: inline-flex; align-items: center; gap: 12px; border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; background: #fff; }
+.pronounce-card .play { width: 36px; height: 36px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #fff; }
+.pronounce-card .play svg { width: 16px; height: 16px; fill: #fff; }
+.pronounce-card .label { display: grid; line-height: 1.2; }
+.pronounce-card .label small { color: var(--muted); }
+
 
 /* Home contact */
 .home-contact { padding: 24px 16px 64px; max-width: 900px; margin: 0 auto; }
@@ -160,6 +171,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
   .site-footer .footer-grid { grid-template-columns: 1fr; padding: 24px 20px; }
   .site-footer .copyright { padding: 12px 20px 20px; }
   .site-header .nav-inner { padding: 0 20px; }
+  .about { grid-template-columns: 1fr; }
 }
 
 @media (min-width: 641px) {

@@ -119,14 +119,25 @@
 
       <section class="about">
         <div class="about-img">
-          <img src="/assets/img/monogram_hp.png" alt="Portrait of Hardik Patil (placeholder)" />
+          <img src="/assets/img/portrait-placeholder.svg" alt="Portrait of Hardik Patil (placeholder)" />
         </div>
         <div class="about-content">
           <h2>About Me</h2>
-          <p>Hello, I’m Hardik. I’m a researcher focusing on problems at the intersection of engineering and computing. I enjoy building tools, writing about my work, and sharing milestones from my journey.</p>
+          <hr class="section-rule" />
+          <p>Hardik grew up in Nasik, Maharashtra, where his passion for understanding how structures come to life sparked early. That curiosity led him to earn a Bachelor of Technology with Honors from IIT Bombay. Next, he packed his bags for Ann Arbor, Michigan, where he’s now pursuing his PhD in civil engineering and scientific computing at the University of Michigan.</p>
+          <p>His research focuses on making structures deployable and more adaptable, developing tools to simulate the kinematics and mechanics of reconfigurable, origami‑inspired, thin‑shelled, and bar‑linked structures. He’s a published author and has presented at top conferences.</p>
+          <p>Outside the lab, you’ll find him photographing landscapes and city scenes, brewing espresso, tinkering with code, and staying active.</p>
           <div class="about-actions">
-            <button id="playNamePronunciation" class="btn tertiary" type="button">Hear pronunciation</button>
-            <a class="btn secondary" href="/assets/docs/Hardik_Patil_CV.pdf" download>Download CV</a>
+            <button id="playNamePronunciation" class="pronounce-card" type="button">
+              <span class="play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+              <span class="label">
+                <strong>/ˈhɑːrdɪk ˈpɑːtɪl/</strong>
+                <small>Hardik Patil</small>
+              </span>
+            </button>
+            <a class="btn secondary lg" href="/assets/docs/Hardik_Patil_CV.pdf" download>Download CV</a>
           </div>
           <audio id="namePronunciation" preload="none">
             <source src="/assets/audio/name-pronunciation.mp3" type="audio/mpeg" />

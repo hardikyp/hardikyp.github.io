@@ -9,9 +9,12 @@
 
   // Footer year
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-  // Ensure overlay covers entire viewport (move out of header if necessary)
+  // Ensure overlay and menu cover entire viewport (move out of header if necessary)
   if (overlay && overlay.parentElement && overlay.parentElement.tagName.toLowerCase() === 'header') {
     try { document.body.appendChild(overlay); } catch (e) {}
+  }
+  if (mobileMenu && mobileMenu.parentElement && mobileMenu.parentElement.tagName.toLowerCase() === 'header') {
+    try { document.body.appendChild(mobileMenu); } catch (e) {}
   }
 
   // Shrink header on scroll
@@ -37,7 +40,7 @@
     navToggle?.classList.add('is-active');
     navToggle?.setAttribute('aria-expanded', 'true');
     navToggle?.setAttribute('aria-label', 'Close menu');
-    document.body.style.overflow = 'hidden';
+    // Keep page scrollbars visible; do not lock body
   };
   const closeMenu = () => {
     mobileMenu?.classList.remove('open');
@@ -45,7 +48,7 @@
     navToggle?.classList.remove('is-active');
     navToggle?.setAttribute('aria-expanded', 'false');
     navToggle?.setAttribute('aria-label', 'Open menu');
-    document.body.style.overflow = '';
+    // Body scrolling unchanged
     // Move toggle back to header
     if (navInner && navToggle) {
       try { navInner.appendChild(navToggle); } catch (e) {}

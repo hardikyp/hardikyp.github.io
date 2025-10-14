@@ -152,9 +152,8 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
 .footer-brand img { width: 200px; height: auto; }
 .footer-brand .social { display: flex; gap: 14px; }
 .footer-brand .social a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 6px; }
-.footer-brand .social svg, .footer-brand .social img { width: 24px; height: 24px; }
-.footer-brand .social a[aria-label="LinkedIn"] img { width: 28px; height: 28px; }
-.footer-brand .social a:hover svg { opacity: .9; }
+.footer-brand .social img { width: 30px; height: 30px; }
+.footer-brand .social a:hover img { opacity: .8; }
 
 .footer-col h3 { margin: 0 0 8px; font-size: 1rem; color: var(--text); }
 .footer-col p { margin: 0 0 6px; color: var(--muted); }

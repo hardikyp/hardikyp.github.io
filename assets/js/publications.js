@@ -121,9 +121,9 @@
 
   const load = async () => {
     const sources = [
-      { url: '/publications/journals.json', fallbackType: 'journal' },
-      { url: '/publications/conferences.json', fallbackType: 'conference' },
-      { url: '/publications/talks.json', fallbackType: 'talk' }
+      { url: '/publications/data/journals.json', fallbackType: 'journal' },
+      { url: '/publications/data/conferences.json', fallbackType: 'conference' },
+      { url: '/publications/data/talks.json', fallbackType: 'talk' }
     ];
     try {
       const results = await Promise.all(sources.map(async s => {

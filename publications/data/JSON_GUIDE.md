@@ -15,6 +15,7 @@ Top-level shape (all files)
 }
 
 Publication fields
+
 - id: string (required, unique)
 - year: number (required) — used for grouping and sorting (desc)
 - type: string (required) — one of: "journal", "conference", "talk" (drives filter chips). You can add others; they appear under “Other”.
@@ -32,6 +33,7 @@ Publication fields
   - doi, pdf, preprint, slides, video, code, event, site
 
 Links → button priority and styles
+
 - Render order: doi, pdf, preprint, slides, video, code, event, site.
 - Styles by position within an item:
   - First: primary

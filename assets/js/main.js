@@ -3,6 +3,8 @@
   const navToggle = document.getElementById('navToggle');
   const mobileMenu = document.getElementById('mobileMenu');
   const overlay = document.getElementById('menuOverlay');
+  const menuHeader = document.getElementById('mobileMenuHeader');
+  const navInner = header?.querySelector('.nav-inner');
   const yearEl = document.getElementById('year');
 
   // Footer year
@@ -24,6 +26,10 @@
     mobileMenu?.removeAttribute('hidden');
     overlay?.classList.add('show');
     overlay?.removeAttribute('hidden');
+    // Move toggle into the mobile menu header so the X is visible within panel
+    if (menuHeader && navToggle && mobileMenu?.contains(menuHeader)) {
+      try { menuHeader.appendChild(navToggle); } catch (e) {}
+    }
     navToggle?.classList.add('is-active');
     navToggle?.setAttribute('aria-expanded', 'true');
     navToggle?.setAttribute('aria-label', 'Close menu');
@@ -36,6 +42,10 @@
     navToggle?.setAttribute('aria-expanded', 'false');
     navToggle?.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
+    // Move toggle back to header
+    if (navInner && navToggle) {
+      try { navInner.appendChild(navToggle); } catch (e) {}
+    }
     // Hide after animation for a11y
     setTimeout(() => {
       if (!mobileMenu?.classList.contains('open')) mobileMenu?.setAttribute('hidden', '');
@@ -52,4 +62,3 @@
     if (e.key === 'Escape') closeMenu();
   });
 })();
-

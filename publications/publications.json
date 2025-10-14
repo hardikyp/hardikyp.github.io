@@ -1,0 +1,55 @@
+{
+  "publications": [
+    {
+      "id": "2025-jfs-sm-hulls",
+      "year": 2025,
+      "type": "journal",
+      "status": "in-press",
+      "title": "Shape‑Morphing Hulls for Reconfigurable Vessels",
+      "authors": ["Patil, H. Y.", "Coauthor, A."],
+      "venue": "Journal of Fluids and Structures",
+      "volume": 130,
+      "issue": null,
+      "pages": "p.104176",
+      "date": "2025-02-01",
+      "abstract": "We demonstrate a shape‑morphing hull concept enabling on‑demand hydrodynamics tuning for aquatic vehicles. The approach leverages compliant shells and controllable actuation to achieve efficiency gains across operating regimes.",
+      "keywords": ["shape‑morphing", "hydrodynamics", "compliant shells"],
+      "links": {
+        "doi": "https://doi.org/10.0000/example",
+        "pdf": "#",
+        "code": "#"
+      }
+    },
+    {
+      "id": "2025-deployable-trusses",
+      "year": 2025,
+      "type": "journal",
+      "status": "under-review",
+      "title": "Transforming static trusses into functional reconfigurable systems using quadrilateral linkage principles",
+      "authors": ["Patil, H. Y.", "Filipov, E. T."],
+      "venue": "Under Review",
+      "date": "2025-01-15",
+      "abstract": "We present a method inspired by flat‑foldable quadrilateral linkages to convert static trusses into compactly stowable and rapidly deployable systems, with system‑level reconfigurability and high load capacity.",
+      "keywords": ["reconfigurable trusses", "quad linkage", "deployable"],
+      "links": {
+        "preprint": "#"
+      }
+    },
+    {
+      "id": "2024-emi-bridge",
+      "year": 2024,
+      "type": "conference",
+      "title": "Rapidly deployable bridge systems with linkage‑based nodes",
+      "authors": ["Patil, H. Y.", "Maki, K. J.", "Filipov, E. T."],
+      "venue": "ASCE EMI",
+      "date": "2024-06-01",
+      "abstract": "A deployable bridge prototype using bar‑linked nodes to enable compact stowage and quick field deployment without heavy equipment.",
+      "keywords": ["deployable", "linkages", "bridges"],
+      "links": {
+        "slides": "#",
+        "video": "#"
+      }
+    }
+  ]
+}
+

@@ -206,3 +206,16 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
 .pub-meta .tag { padding: 4px 8px; border-radius: 999px; background: #f1f5f9; color: #334155; font-size: .85rem; }
 .pub-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .pub-actions .btn { padding: 8px 12px; border-radius: 8px; }
+
+/* Publications accordion */
+.pub-item { position: relative; }
+.pub-head { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 10px; cursor: pointer; }
+.pub-title { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.pub-toggle { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 999px; background: #fff; }
+.pub-toggle::before { content: "+"; font-size: 18px; line-height: 1; color: #334155; }
+.pub-item.open .pub-toggle::before { content: "×"; }
+.pub-body { display: none; padding-top: 10px; border-top: 1px solid var(--border); margin-top: 8px; }
+.pub-item.open .pub-body { display: block; }
+.pub-abstract { display: grid; grid-template-columns: 1fr; gap: 10px; color: var(--muted); }
+.pub-abstract b { color: var(--text); }
+.pub-keys { color: var(--muted); }

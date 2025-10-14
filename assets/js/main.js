@@ -30,7 +30,10 @@
     mobileMenu?.removeAttribute('hidden');
     overlay?.classList.add('show');
     overlay?.removeAttribute('hidden');
-    // Keep toggle in the site header so X position matches exactly
+    // Move toggle into in-panel header to sit above overlay but keep alignment via padding
+    if (menuHeader && navToggle) {
+      try { menuHeader.appendChild(navToggle); } catch (e) {}
+    }
     navToggle?.classList.add('is-active');
     navToggle?.setAttribute('aria-expanded', 'true');
     navToggle?.setAttribute('aria-label', 'Close menu');
@@ -43,7 +46,10 @@
     navToggle?.setAttribute('aria-expanded', 'false');
     navToggle?.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
-    // Toggle stays in header; nothing to move
+    // Move toggle back to header
+    if (navInner && navToggle) {
+      try { navInner.appendChild(navToggle); } catch (e) {}
+    }
     // Hide after animation for a11y
     setTimeout(() => {
       if (!mobileMenu?.classList.contains('open')) mobileMenu?.setAttribute('hidden', '');

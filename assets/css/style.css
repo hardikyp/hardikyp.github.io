@@ -28,20 +28,31 @@ ul { margin: 0; padding: 0; list-style: none; }
 .site-header.scrolled .nav-inner { height: var(--header-h-scrolled); }
 
 .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; }
-.logo img { width: 36px; height: 36px; }
+.logo img { height: 36px; width: auto; object-fit: contain; }
 .logo-text { white-space: nowrap; }
 
 .primary-nav { justify-self: center; }
 .primary-nav ul { display: flex; gap: 22px; }
-.primary-nav a { color: var(--muted); font-weight: 500; }
+.primary-nav a { position: relative; color: var(--muted); font-weight: 500; display: inline-block; padding-bottom: 6px; }
 .primary-nav a:hover, .primary-nav a:focus { color: var(--text); }
+.primary-nav a::after { content: ""; position: absolute; left: 50%; bottom: 0; height: 1px; width: 100%; background: currentColor; transform: translateX(-50%) scaleX(0); transform-origin: center; transition: transform 0.5s ease; }
+.primary-nav a:hover::after, .primary-nav a:focus::after { transform: translateX(-50%) scaleX(1); }
 
 .nav-cta { justify-self: end; display: flex; gap: 10px; align-items: center; }
-.btn { display: inline-block; padding: 10px 14px; border-radius: 8px; font-weight: 600; border: 1px solid transparent; text-align: center; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 14px; border-radius: 10px; font-weight: 600; border: 1px solid transparent; text-align: center; transition: transform 160ms ease, background-color 160ms ease, color 160ms ease, border-color 160ms ease; }
+/* New button variants */
+.btn.primary { background: var(--primary); color: #fff; border: none; }
+.btn.primary:hover { background: var(--primary-600); }
+.btn.secondary { background: transparent; color: var(--text); border: 1px solid var(--primary); }
+.btn.secondary:hover { border-color: var(--primary-600); color: var(--text); }
+.btn.tertiary { background: transparent; color: var(--text); border: none; padding-left: 0; padding-right: 0; }
+.btn.tertiary::after { content: "→"; display: inline-block; transition: transform 200ms ease; }
+.btn.tertiary:hover::after { transform: translateX(6px); }
+/* Back-compat for old classes */
 .btn.solid { background: var(--primary); color: #fff; }
 .btn.solid:hover { background: var(--primary-600); }
-.btn.outline { border-color: var(--border); color: var(--text); }
-.btn.outline:hover { border-color: var(--muted); }
+.btn.outline { background: transparent; color: var(--text); border: 1px solid var(--primary); }
+.btn.outline:hover { border-color: var(--primary-600); }
 .btn.full { display: block; width: 100%; }
 
 /* Hamburger */

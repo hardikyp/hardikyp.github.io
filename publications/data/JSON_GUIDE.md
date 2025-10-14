@@ -2,6 +2,7 @@ Publications JSON Guide
 =======================
 
 Location
+
 - Preferred split files (recommended):
   - publications/journals.json
   - publications/conferences.json
@@ -54,10 +55,11 @@ Example
   "date": "2025-02-01",
   "abstract": "…",
   "keywords": ["shape‑morphing", "hydrodynamics"],
-  "links": {"doi": "https://doi.org/...", "pdf": "…", "code": "…"}
+  "links": {"doi": "add_your_url", "pdf": "…", "code": "…"}
 }
 
 Editing tips
+
 - Keep valid JSON (double quotes, commas, etc.).
 - You can omit optional fields; UI hides them automatically.
 - Add as many entries as you like; the page updates on reload.

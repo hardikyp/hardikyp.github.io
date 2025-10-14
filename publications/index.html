@@ -47,23 +47,57 @@
       </div>
       <div class="menu-overlay" id="menuOverlay" hidden></div>
     </header>
-    <main id="main" tabindex="-1" class="page">
-      <section class="hero">
-        <h1>Publications</h1>
-        <p class="muted">Peer-reviewed papers, preprints, and articles.</p>
-      </section>
-      <section class="highlights">
-        <div class="cards">
-          <article class="card">
-            <h3>Doe, J., Your Name (2024)</h3>
-            <p>Publication title in Journal — short abstract or note.</p>
-          </article>
-          <article class="card">
-            <h3>Your Name (2023)</h3>
-            <p>Conference paper title — link to PDF or DOI.</p>
-          </article>
-        </div>
-      </section>
+    <main id="main" tabindex="-1" class="pubs">
+      <h1>Publications</h1>
+      <p class="muted">Journal papers, conference papers, and talks.</p>
+
+      <div class="pub-filters" role="toolbar" aria-label="Filter publications">
+        <button class="chip" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="journal">Journal</button>
+        <button class="chip" data-filter="conference">Conference</button>
+        <button class="chip" data-filter="talk">Talk</button>
+      </div>
+
+      <h2 class="pub-year">2025</h2>
+      <div class="pub-list">
+        <article class="pub-item" data-cat="journal">
+          <div class="pub-title">Your Name, Coauthor. “Shape-Morphing Hulls for Reconfigurable Vessels.”</div>
+          <div class="pub-meta">
+            <span class="tag">Journal</span>
+            <span class="muted">Journal of Fluid Structures, 2025</span>
+          </div>
+          <div class="pub-actions">
+            <a class="btn secondary" href="#">DOI</a>
+            <a class="btn tertiary" href="#">Cite</a>
+            <a class="btn tertiary" href="#">Download PDF</a>
+          </div>
+        </article>
+      </div>
+
+      <h2 class="pub-year">2024</h2>
+      <div class="pub-list">
+        <article class="pub-item" data-cat="conference">
+          <div class="pub-title">Your Name, Coauthor. “Deployable Bridge Systems for Rapid Response.”</div>
+          <div class="pub-meta">
+            <span class="tag">Conference</span>
+            <span class="muted">ASCE EMI, 2024</span>
+          </div>
+          <div class="pub-actions">
+            <a class="btn secondary" href="#">Slides</a>
+            <a class="btn tertiary" href="#">Abstract</a>
+          </div>
+        </article>
+        <article class="pub-item" data-cat="talk">
+          <div class="pub-title">Invited Talk: Reconfigurable Structures in Harsh Environments</div>
+          <div class="pub-meta">
+            <span class="tag">Talk</span>
+            <span class="muted">Seminar, 2024</span>
+          </div>
+          <div class="pub-actions">
+            <a class="btn tertiary" href="#">Event Page</a>
+          </div>
+        </article>
+      </div>
     </main>
     <footer class="site-footer">
       <div class="footer-grid">

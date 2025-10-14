@@ -71,6 +71,22 @@
   playBtn?.addEventListener('click', () => {
     try { nameAudio?.play(); } catch (e) {}
   });
+
+  // Publications filters
+  const filterChips = document.querySelectorAll('.pub-filters .chip');
+  const pubItems = document.querySelectorAll('.pub-item');
+  filterChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      filterChips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+      chip.setAttribute('aria-pressed', 'true');
+      const f = chip.getAttribute('data-filter');
+      pubItems.forEach(item => {
+        const cat = item.getAttribute('data-cat');
+        const show = f === 'all' || f === cat;
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
   });

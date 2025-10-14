@@ -192,3 +192,17 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
   /* Match tablet header padding for panel so links start under header */
   .mobile-menu { padding: 0 50px 20px; }
 }
+
+/* Publications (appended) */
+.pubs { padding: 12px 16px 64px; max-width: 1000px; margin: 0 auto; }
+.pubs h1 { margin-bottom: 8px; }
+.pub-filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 16px; }
+.pub-filters .chip { padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-weight: 500; }
+.pub-filters .chip[aria-pressed="true"] { background: var(--primary); color: #fff; border-color: var(--primary); }
+.pub-year { font-weight: 700; margin: 18px 0 8px; color: var(--text); }
+.pub-list { display: grid; gap: 10px; }
+.pub-item { display: grid; gap: 6px; padding: 14px; border-radius: 12px; border: 1px solid var(--border); background: #fff; }
+.pub-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.pub-meta .tag { padding: 4px 8px; border-radius: 999px; background: #f1f5f9; color: #334155; font-size: .85rem; }
+.pub-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.pub-actions .btn { padding: 8px 12px; border-radius: 8px; }

@@ -75,9 +75,9 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
 .btn.full { display: block; width: 100%; }
 
 /* Hamburger */
-.hamburger { display: none; width: 42px; height: 42px; border-radius: 8px; border: 1px solid var(--border); background: #fff; align-items: center; justify-content: center; gap: 4px; cursor: pointer; transition: border-color 160ms ease, background 160ms ease; flex-direction: column; }
-.hamburger:hover { border-color: #cbd5e1; }
-.hamburger .bar { display: block; width: 22px; height: 2px; background: #0f172a; border-radius: 1px; transition: transform 200ms ease, opacity 160ms ease, width 160ms ease; }
+.hamburger { display: none; width: 42px; height: 42px; border-radius: 8px; border: none; background: transparent; align-items: center; justify-content: center; gap: 5px; cursor: pointer; transition: background 160ms ease; flex-direction: column; }
+.hamburger:hover { background: transparent; }
+.hamburger .bar { display: block; width: 22px; height: 2px; background: var(--primary); border-radius: 2px; transition: transform 200ms ease, opacity 160ms ease, width 160ms ease; }
 .hamburger .bar:nth-child(2) { width: 22px; }
 .hamburger.is-active .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .hamburger.is-active .bar:nth-child(2) { opacity: 0; width: 0; }
@@ -143,4 +143,9 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Se
   .site-footer .footer-grid { grid-template-columns: 1fr; padding: 24px 20px; }
   .site-footer .copyright { padding: 12px 20px 20px; }
   .site-header .nav-inner { padding: 0 20px; }
+}
+
+@media (min-width: 641px) {
+  /* Match tablet header padding for panel so X aligns with hamburger */
+  .mobile-menu { padding: 20px 50px; }
 }

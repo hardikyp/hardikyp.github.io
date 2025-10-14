@@ -9,6 +9,10 @@
 
   // Footer year
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+  // Ensure overlay covers entire viewport (move out of header if necessary)
+  if (overlay && overlay.parentElement && overlay.parentElement.tagName.toLowerCase() === 'header') {
+    try { document.body.appendChild(overlay); } catch (e) {}
+  }
 
   // Shrink header on scroll
   let lastKnownY = 0;
@@ -26,10 +30,7 @@
     mobileMenu?.removeAttribute('hidden');
     overlay?.classList.add('show');
     overlay?.removeAttribute('hidden');
-    // Move toggle into the mobile menu header so the X is visible within panel
-    if (menuHeader && navToggle && mobileMenu?.contains(menuHeader)) {
-      try { menuHeader.appendChild(navToggle); } catch (e) {}
-    }
+    // Keep toggle in the site header so X position matches exactly
     navToggle?.classList.add('is-active');
     navToggle?.setAttribute('aria-expanded', 'true');
     navToggle?.setAttribute('aria-label', 'Close menu');
@@ -42,10 +43,7 @@
     navToggle?.setAttribute('aria-expanded', 'false');
     navToggle?.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
-    // Move toggle back to header
-    if (navInner && navToggle) {
-      try { navInner.appendChild(navToggle); } catch (e) {}
-    }
+    // Toggle stays in header; nothing to move
     // Hide after animation for a11y
     setTimeout(() => {
       if (!mobileMenu?.classList.contains('open')) mobileMenu?.setAttribute('hidden', '');

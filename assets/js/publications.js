@@ -40,6 +40,21 @@
               ${p.links?.code ? `<a class="btn tertiary" href="${p.links.code}">Code</a>`:''}
             </div>
           </div>`;
+        // Rebuild actions so first=primary, second=secondary, others (including last)=tertiary
+        const actionsEl = item.querySelector('.pub-actions');
+        if (actionsEl) {
+          actionsEl.innerHTML = '';
+          const order = ['doi','pdf','preprint','slides','video','code','event','site'];
+          const labels = { doi:'DOI', pdf:'PDF', preprint:'Preprint', slides:'Slides', video:'Video', code:'Code', event:'Event', site:'Site' };
+          const actions = [];
+          if (p.links) order.forEach(k => { if (p.links[k]) actions.push({href:p.links[k], label:labels[k]||k}); });
+          actions.forEach((a, idx) => {
+            const btn = document.createElement('a');
+            btn.className = `btn ${idx===0?'primary':idx===1?'secondary':'tertiary'}`;
+            btn.href = a.href; btn.textContent = a.label;
+            actionsEl.appendChild(btn);
+          });
+        }
         list.appendChild(item);
       });
       app.appendChild(y);
@@ -76,4 +91,3 @@
       app.innerHTML = '<p class="muted">Failed to load publications.</p>';
     });
 })();
-

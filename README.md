@@ -6,7 +6,7 @@ Structure
 - `research/`, `publications/`, `updates/`, `blog/`, `photography/`, `hobbies/`, `contact/`: Core pages.
 - `assets/css/style.css`: Global styles and responsive layout.
 - `assets/js/main.js`: Navbar toggle, scroll effects, minor UX.
-- `assets/img/`: Logo monogram (`monogram_hp.png`) and favicon.
+- `assets/icons/`: Logo monogram (`monogram.svg`) and favicon.
 - `robots.txt`, `sitemap.xml`, `manifest.webmanifest`: SEO and PWA basics.
 
 Development

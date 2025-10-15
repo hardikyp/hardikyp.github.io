@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Updates — Your Name</title>
-    <meta name="description" content="Latest updates and announcements by Your Name." />
+    <title>Updates — Hardik Patil</title>
+    <meta name="description" content="Latest updates and announcements from Hardik Patil." />
     <link rel="canonical" href="/updates/" />
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
@@ -52,13 +52,53 @@
         <h1>Updates</h1>
         <p class="muted">Quick announcements and news.</p>
       </section>
-      <section class="highlights">
-        <div class="cards">
-          <article class="card">
-            <h3>Site Launched</h3>
-            <p>Initial scaffolding and responsive navigation in place.</p>
+      <section class="updates-feed" aria-labelledby="updatesFeedHeading">
+        <h2 id="updatesFeedHeading">Latest announcements</h2>
+        <div class="update-list">
+          <article class="update-card">
+            <a class="update-card__media" href="/updates/items/nsf-grfp.html">
+              <img src="/assets/img/updates/award.svg" alt="Abstract illustration representing an award ribbon" loading="lazy" />
+            </a>
+            <div class="update-card__content">
+            <h3 class="update-card__title"><a href="/updates/items/nsf-grfp.html">NSF Graduate Research Fellowship Awarded</a></h3>
+            <div class="update-card__meta">
+                <span class="update-tag">Award</span>
+                <time datetime="2025-03-18">Mar 18, 2025</time>
+              </div>
+            <p class="update-card__excerpt">The NSF GRFP will support the next phase of our deployable bridge research, including a new field test with the Smart Structures Lab.</p>
+              <a class="btn tertiary" href="/updates/items/nsf-grfp.html">Read more</a>
+            </div>
+          </article>
+          <article class="update-card">
+            <a class="update-card__media" href="/updates/items/emi-paper.html">
+              <img src="/assets/img/updates/publication.svg" alt="Stylised publication icon" loading="lazy" />
+            </a>
+            <div class="update-card__content">
+            <h3 class="update-card__title"><a href="/updates/items/emi-paper.html">Deployable Bridges Paper Accepted to ASCE EMI 2025</a></h3>
+            <div class="update-card__meta">
+                <span class="update-tag">Publication</span>
+                <time datetime="2025-02-10">Feb 10, 2025</time>
+              </div>
+            <p class="update-card__excerpt">Our forthcoming paper details a topology optimisation workflow for adaptive bridge systems and will be presented this June in Seattle.</p>
+              <a class="btn tertiary" href="/updates/items/emi-paper.html">Read more</a>
+            </div>
+          </article>
+          <article class="update-card">
+            <a class="update-card__media" href="/updates/items/grs-keynote.html">
+              <img src="/assets/img/updates/milestone.svg" alt="Podium graphic" loading="lazy" />
+            </a>
+            <div class="update-card__content">
+            <h3 class="update-card__title"><a href="/updates/items/grs-keynote.html">Keynote at the Graduate Research Symposium</a></h3>
+            <div class="update-card__meta">
+                <span class="update-tag">Milestone</span>
+                <time datetime="2024-11-05">Nov 5, 2024</time>
+              </div>
+            <p class="update-card__excerpt">Delivered an invited keynote outlining the design space for shape-morphing structures and highlighted collaborations across the department.</p>
+              <a class="btn tertiary" href="/updates/items/grs-keynote.html">Read more</a>
+            </div>
           </article>
         </div>
+        <!-- To add another update, duplicate an <article class="update-card"> block above and update the tag, date, image, copy, and link. -->
       </section>
     </main>
     <footer class="site-footer">
@@ -66,10 +106,10 @@
         <div class="footer-brand">
           <img src="/assets/img/monogram_hp.png" alt="HP logo" width="120" height="120" />
           <div class="social">
-            <a href="#" aria-label="LinkedIn"><span class="icon linkedin" aria-hidden="true"></span></a>
-            <a href="#" aria-label="GitHub"><span class="icon github" aria-hidden="true"></span></a>
-            <a href="#" aria-label="Instagram"><span class="icon instagram" aria-hidden="true"></span></a>
-            <a href="#" aria-label="Facebook"><span class="icon facebook" aria-hidden="true"></span></a>
+            <a href="https://www.linkedin.com/in/hardikypatil" aria-label="LinkedIn"><span class="icon linkedin" aria-hidden="true"></span></a>
+            <a href="https://github.com/hardikyp" aria-label="GitHub"><span class="icon github" aria-hidden="true"></span></a>
+            <a href="https://www.instagram.com/_hardikpatil_" aria-label="Instagram"><span class="icon instagram" aria-hidden="true"></span></a>
+            <a href="https://www.facebook.com/hardik.patil.520" aria-label="Facebook"><span class="icon facebook" aria-hidden="true"></span></a>
           </div>
         </div>
         <div class="footer-col">
@@ -103,5 +143,8 @@
     <script src="/assets/js/main.js" defer></script>
   </body>
   </html>
+
+
+
 
 

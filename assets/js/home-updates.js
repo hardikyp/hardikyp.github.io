@@ -2,25 +2,51 @@
   const container = document.querySelector('.updates-preview .update-list');
   if (!container) return;
 
+  const isISODate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s || '');
+  const validTag = (t) => !t || ['Award','Publication','Milestone','Other'].includes(t);
+  const validate = (u) => {
+    const errs = [];
+    if (!u || typeof u !== 'object') { errs.push('not an object'); return errs; }
+    if (!u.slug || typeof u.slug !== 'string') errs.push('missing slug');
+    if (!u.title || typeof u.title !== 'string') errs.push('missing title');
+    if (u.tag && !validTag(u.tag)) errs.push('invalid tag');
+    if (!isISODate(u.date)) errs.push('invalid date (YYYY-MM-DD)');
+    if (!u.image || typeof u.image.src !== 'string') errs.push('missing image.src');
+    return errs;
+  };
+  const normalize = (u) => ({ ...u, url: u.url || `/updates/view.html?slug=${encodeURIComponent(u.slug)}` });
+
   const injectFromUpdates = async () => {
     try {
-      const res = await fetch('/updates/');
-      if (!res.ok) return; // keep fallback
-      const html = await res.text();
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      const cards = Array.from(doc.querySelectorAll('.updates-feed .update-list .update-card')).slice(0, 3);
-      if (!cards.length) return;
-      container.innerHTML = '';
-      cards.forEach(card => container.appendChild(card.cloneNode(true)));
+      const res = await fetch('/updates/data/updates.json');
+      if (!res.ok) return;
+      const j = await res.json();
+      const items = (j.updates || [])
+        .map(normalize)
+        .filter(u => { const e = validate(u); if (e.length) { console.warn('[home] invalid update', u?.slug, e); return false; } return true; })
+        .sort((a,b)=> (b.date||'').localeCompare(a.date||''))
+        .slice(0,3);
+      if (!items.length) return;
+      const card = (u) => `
+        <article class="update-card">
+          <a class="update-card__media" href="${u.url}">
+            <img src="${u.image?.src || '/assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" />
+          </a>
+          <div class="update-card__content">
+            <h3 class="update-card__title"><a href="${u.url}">${u.title}</a></h3>
+            <div class="update-card__meta">
+              ${u.tag ? `<span class="update-tag">${u.tag}</span>` : ''}
+              ${u.date ? `<time datetime="${u.date}">${new Date(u.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</time>` : ''}
+            </div>
+            ${u.excerpt ? `<p class="update-card__excerpt">${u.excerpt}</p>` : ''}
+            <a class="btn tertiary" href="${u.url}">Read more</a>
+          </div>
+        </article>`;
+      container.innerHTML = items.map(card).join('');
     } catch (_) {
-      // swallow; leave fallback content
+      // keep fallback if any
     }
   };
-  // Run after parse
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectFromUpdates);
-  } else {
-    injectFromUpdates();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectFromUpdates); else injectFromUpdates();
 })();
 

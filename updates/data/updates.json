@@ -1,0 +1,84 @@
+{
+  "updates": [
+    {
+      "slug": "emi-2025-student-paper-award",
+      "title": "Hardik secured 2nd Place in ASCE’s EMI Conference Structural Stability Student Paper Competition",
+      "tag": "Award",
+      "date": "2025-05-30",
+      "excerpt": "Hardik attented American Society of Civil Engineers’ (ASCE) Engineering Mechanics Institute (EMI) conference in Anaheim, California from May 27 to May 30, 2025. In this conference, Hardik prensented his paper titled ‘Force-stable reconfigurable truss structures using quadrilateral linkage principles’ in the Structural Stabiliy student paper competition and bagged 2nd position.",
+      "image": { "src": "/assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" }
+    },
+    {
+      "slug": "rackham-doctoral-intern-fellowship",
+      "title": "Hardik received the Rackham Doctoral Intern Fellowship",
+      "tag": "Award",
+      "date": "2025-04-08",
+      "excerpt": "Hardik received the Rackham Doctoral Internship Fellowship to support his internship at Thornton Tomasetti during Summer 2025.",
+      "image": { "src": "/assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" }
+    },
+    {
+      "slug": "jlfs-publication",
+      "title": "Hardik published his first paper in the Journal of Fluids and Structures",
+      "tag": "Publication",
+      "date": "2024-09-11",
+      "excerpt": "Hardik’s paper titled “Rapidly deployable hulls and on-demand tunable hydrodynamics with shape morphing curved crease origami,“ co-authored with K. J. Maki and E. T. Filipov, has been published in the Journal of Fluids and Structures. Read the full article here to learn more.",
+      "image": { "src": "/assets/img/updates/jlfs-cover.jpg", "alt": "Abstract illustration representing an award ribbon" }
+    },
+    {
+      "slug": "hardik-dissertation-proposal",
+      "title": "Hardik successfully defended his Dissertation Proposal.",
+      "tag": "Milestone",
+      "date": "2024-05-14",
+      "excerpt": "Hardik successfully defends his dissertation proposal on ‘Transforming Optimized Static Trusses into Shape-morphing Functional Systems’. He begins to work towards the dissertation.",
+      "image": { "src": "/assets/img/updates/milestone.svg", "alt": "Abstract illustration representing an award ribbon" }
+    },
+    {
+      "slug": "hardik-gsi-eng100",
+      "title": "Hardik served as GSI for ENG 100: Introduction to Adaptable & Deployable Structures.",
+      "tag": "Milestone",
+      "date": "2023-01-04",
+      "excerpt": "Hardik serves as a Graduate Student Instructor (GSI) for the first-ever offering of ENG 100: Introduction to Adaptable and Deployable Structures at the University of Michigan.",
+      "image": { "src": "/assets/img/updates/milestone.svg", "alt": "Abstract illustration representing an award ribbon" }
+    },
+    {
+      "slug": "hardik-imece-2022",
+      "title": "Hardik attended the International Mechanical Engineering Congress and Exposition (IMECE) 2022.",
+      "tag": "Other",
+      "date": "2022-11-01",
+      "excerpt": "Hardik was a finalist in a student poster competition at the ASME’s International Mechanical Engineering Congress and Exposition (IMECE), held in Columbus, OH, from October 30 – November 3, 2022. Hardik’s poster was on “Adaptable Hull Hydrodynamics using Shape Morphing Curved-Crease Origami”.",
+      "image": { "src": "/assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" }
+    },
+    {
+      "slug": "hardik-emi-2022",
+      "title": "Hardik presented at the Engineering Mechanics Institute Conference (EMIC) 2022",
+      "tag": "Other",
+      "date": "2022-06-01",
+      "excerpt": "Hardik gave a talk on “Hydrodynamic Characteristics of Shape Morphing Curved-Crease Origami Surfaces” at the ASCE’s Engineering Mechanics Institute Conference (EMIC) 2022, held in Baltimore, MD, from May 31 – June 3, 2022.",
+      "image": { "src": "/assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" }
+    },
+    {
+      "slug": "hardik-micde-fellowship",
+      "title": "Hardik received the MICDE fellowship",
+      "tag": "Award",
+      "date": "2021-09-01",
+      "excerpt": "Hardik received the Michigan Institute for Computational Discovery and Engineering fellowship and started his joint doctoral studies in Civil (Structural) Engineering and Scientific Computing at the University of Michigan.",
+      "image": { "src": "/assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" }
+    },
+    {
+      "slug": "hardik-mse-grad",
+      "title": "Hardik received an MSE in Structural Engineering",
+      "tag": "Milestone",
+      "date": "2021-05-01",
+      "excerpt": "Hardik graduated with a Master of Science in Engineering (MSE) degree in Civil (Structural) Engineering from the University of Michigan with a GPA of 4.0.",
+      "image": { "src": "/assets/img/updates/milestone.svg", "alt": "Stylised publication icon" }
+    },
+    {
+      "slug": "hardik-btech-grad",
+      "title": "Hardik received a B. Tech. with Honors in Civil Engineering from IIT-Bombay",
+      "tag": "Milestone",
+      "date": "2019-08-10",
+      "excerpt": "Hardik graduated with a Bachelor of Technology (B. Tech.) with Honors degree in Civil Engineering from the Indian Institute of Technology Bombay (IIT-B) with a GPA of 8.5/10.",
+      "image": { "src": "/assets/img/updates/milestone.svg", "alt": "Podium graphic" }
+    }
+  ]
+}

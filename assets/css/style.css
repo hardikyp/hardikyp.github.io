@@ -67,8 +67,8 @@ h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, 
 /* New button variants */
 .btn.primary { background: var(--primary); color: #fff; border: none; }
 .btn.primary:hover { background: var(--primary-600); }
-.btn.secondary { background: transparent; color: var(--text); border: 1px solid var(--primary); }
-.btn.secondary:hover { border-color: var(--primary-600); color: var(--text); }
+.btn.secondary { background: transparent; color: var(--text); border: 1px solid var(--primary); transition: background-color 220ms ease-in, color 220ms ease-in, border-color 220ms ease-in, transform 160ms ease; }
+.btn.secondary:hover, .btn.secondary:focus { background: var(--primary-600); color: var(--bg); border-color: var(--primary); }
 .btn.tertiary { background: transparent; color: var(--text); border: none; padding-left: 0; padding-right: 0; }
 .btn.tertiary::after { content: "→"; display: inline-block; }
 .btn.tertiary:hover { transform: translateX(6px); }

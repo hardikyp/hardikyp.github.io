@@ -10,43 +10,7 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header id="site-header" class="site-header" role="banner">
-      <div class="nav-inner">
-        <a class="logo" href="/"><img src="/assets/img/monogram_hp.png" alt="HP logo" width="36" height="36" /></a>
-        <nav class="primary-nav" aria-label="Primary">
-          <ul>
-            <li><a href="/research/">Research</a></li>
-            <li><a href="/publications/">Publications</a></li>
-            <li><a href="/updates/" aria-current="page">Updates</a></li>
-            <li><a href="/blog/">Blog</a></li>
-            <li><a href="/photography/">Photography</a></li>
-            <li><a href="/hobbies/">Hobbies</a></li>
-          </ul>
-        </nav>
-        <div class="nav-cta">
-          <a class="btn secondary" href="/assets/docs/Hardik_Patil_CV.pdf" download>Download CV</a>
-          <a class="btn primary" href="/#contact">Contact</a>
-        </div>
-        <button class="hamburger" id="navToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span class="icon icon-menu" aria-hidden="true"></span><span class="icon icon-close" aria-hidden="true"></span></button>
-      </div>
-      <div id="mobileMenu" class="mobile-menu" hidden>
-        <div class="menu-header" id="mobileMenuHeader"></div>
-        <nav aria-label="Mobile">
-          <ul>
-            <li><a href="/research/">Research</a></li>
-            <li><a href="/publications/">Publications</a></li>
-            <li><a href="/updates/">Updates</a></li>
-            <li><a href="/blog/">Blog</a></li>
-            <li><a href="/photography/">Photography</a></li>
-            <li><a href="/hobbies/">Hobbies</a></li>
-            <li class="divider"></li>
-            <li><a class="btn secondary full" href="/assets/docs/Hardik_Patil_CV.pdf" download>Download CV</a></li>
-            <li><a class="btn primary full" href="/#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="menu-overlay" id="menuOverlay" hidden></div>
-    </header>
+    <div data-include="/assets/partials/header.html"></div>
     <main id="main" tabindex="-1" class="page">
       <section class="hero">
         <h1>Updates</h1>
@@ -101,49 +65,11 @@
         <!-- To add another update, duplicate an <article class="update-card"> block above and update the tag, date, image, copy, and link. -->
       </section>
     </main>
-    <footer class="site-footer">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="/assets/img/monogram_hp.png" alt="HP logo" width="120" height="120" />
-          <div class="social">
-            <a href="https://www.linkedin.com/in/hardikypatil" aria-label="LinkedIn"><span class="icon linkedin" aria-hidden="true"></span></a>
-            <a href="https://github.com/hardikyp" aria-label="GitHub"><span class="icon github" aria-hidden="true"></span></a>
-            <a href="https://www.instagram.com/_hardikpatil_" aria-label="Instagram"><span class="icon instagram" aria-hidden="true"></span></a>
-            <a href="https://www.facebook.com/hardik.patil.520" aria-label="Facebook"><span class="icon facebook" aria-hidden="true"></span></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h3>Contact</h3>
-          <p>Email: <a href="mailto:hardikyp@umich.edu">hardikyp[at]umich.edu</a></p>
-          <p>Phone: <a href="tel:+17348821248">+1 (734)-882-1248</a></p>
-        </div>
-        <div class="footer-col">
-          <h3>Location</h3>
-          <p>1250 G. G. Brown Laboratories,<br/>2350 Hayward St,<br/>Ann Arbor, MI 48109</p>
-        </div>
-        <div class="footer-col">
-          <h3>Profiles</h3>
-          <div class="footer-links">
-            <a href="#">Research Gate</a>
-            <a href="#">Google Scholar</a>
-            <a href="#">ORCiD</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h3>Site</h3>
-          <div class="footer-links">
-            <a href="/research/">Research</a>
-            <a href="/publications/">Publications</a>
-            <a href="/updates/" aria-current="page">Updates</a>
-          </div>
-        </div>
-      </div>
-      <div class="copyright">&copy; <span id="year"></span> Hardik Patil. All Rights Reserved.</div>
-    </footer>
+    <div data-include="/assets/partials/footer.html"></div>
+    <script src="/assets/js/includes.js"></script>
     <script src="/assets/js/main.js" defer></script>
   </body>
   </html>
-
 
 
 

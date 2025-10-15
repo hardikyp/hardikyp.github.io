@@ -35,7 +35,7 @@
       var parts = path.split('/').filter(Boolean);
       if (parts.length > 0) section = '/' + parts[0] + '/';
 
-      var candidates = new Set(['/research/','/publications/','/updates/','/blog/','/photography/','/hobbies/']);
+      var candidates = new Set(['/projects/','/publications/','/updates/','/blog/','/photography/','/hobbies/']);
       if (!candidates.has(section)) return; // home or non-section page
 
       var markActive = function(anchor) {
@@ -60,4 +60,3 @@
   // Then set active indicators
   setActiveLinks();
 })();
-

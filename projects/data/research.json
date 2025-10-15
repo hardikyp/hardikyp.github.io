@@ -1,0 +1,29 @@
+{
+  "projects": [
+    {
+      "slug": "deployable-bridges",
+      "title": "Deployable Bridges: Kinematics to Nonlinear Mechanics",
+      "years": "2023–present",
+      "summary": "End-to-end workflow for adaptive, quickly deployable bridge systems.",
+      "card": { "image": "/assets/img/updates/publication.svg", "alt": "Bridge graphic" },
+      "abstract": "<p>We develop a computational pipeline coupling origami-based kinematics with nonlinear structural analysis to design reconfigurable bridges that can be rapidly deployed under load.</p>",
+      "detail": {
+        "images": [ {"src": "/assets/img/updates/publication.svg", "alt": "Bridge"} ],
+        "body": "<p>More detailed description of objectives, methods, and findings. Include figures and links as needed.</p>"
+      }
+    },
+    {
+      "slug": "deployable-bridges",
+      "title": "Deployable Bridges: Kinematics to Nonlinear Mechanics",
+      "years": "2023–present",
+      "summary": "End-to-end workflow for adaptive, quickly deployable bridge systems.",
+      "card": { "image": "/assets/img/updates/publication.svg", "alt": "Bridge graphic" },
+      "abstract": "<p>We develop a computational pipeline coupling origami-based kinematics with nonlinear structural analysis to design reconfigurable bridges that can be rapidly deployed under load.</p>",
+      "detail": {
+        "images": [ {"src": "/assets/img/updates/publication.svg", "alt": "Bridge"} ],
+        "body": "<p>More detailed description of objectives, methods, and findings. Include figures and links as needed.</p>"
+      }
+    }
+  ]
+}
+

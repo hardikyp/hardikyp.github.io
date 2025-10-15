@@ -1,0 +1,19 @@
+{ "projects": [
+  {
+    "slug": "industry-intern-structural-tools",
+    "title": "Internship: Structural Analysis Tooling",
+    "years": "Summer 2023",
+    "summary": "Built internal toolchains to automate analysis workflows and reporting.",
+    "card": { "image": "/assets/img/updates/award.svg", "alt": "Tools" },
+    "detail": { "body": "<p>Scope of work, stack, and impact. Screenshots and examples.</p>" }
+  },
+  {
+    "slug": "industry-intern-structural-tools",
+    "title": "Internship: Structural Analysis Tooling",
+    "years": "Summer 2023",
+    "summary": "Built internal toolchains to automate analysis workflows and reporting.",
+    "card": { "image": "/assets/img/updates/award.svg", "alt": "Tools" },
+    "detail": { "body": "<p>Scope of work, stack, and impact. Screenshots and examples.</p>" }
+  }
+] }
+

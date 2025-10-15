@@ -1,0 +1,19 @@
+{ "projects": [
+  {
+    "slug": "grad-kinematics-course",
+    "title": "Graduate Course Project: Mechanism Kinematics",
+    "years": "2024",
+    "summary": "Designed and analyzed a reconfigurable mechanism as a course capstone.",
+    "card": { "image": "/assets/img/updates/milestone.svg", "alt": "Mechanism graphic" },
+    "detail": { "body": "<p>Course objectives, methods, and outcomes with select figures.</p>" }
+  },
+  {
+    "slug": "grad-kinematics-course",
+    "title": "Graduate Course Project: Mechanism Kinematics",
+    "years": "2024",
+    "summary": "Designed and analyzed a reconfigurable mechanism as a course capstone.",
+    "card": { "image": "/assets/img/updates/milestone.svg", "alt": "Mechanism graphic" },
+    "detail": { "body": "<p>Course objectives, methods, and outcomes with select figures.</p>" }
+  }
+] }
+

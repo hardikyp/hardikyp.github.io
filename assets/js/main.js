@@ -65,12 +65,29 @@
     expanded ? closeMenu() : openMenu();
   });
   overlay?.addEventListener('click', closeMenu);
-  // Play name pronunciation if available
+  // Play name pronunciation with animated waves
   const playBtn = document.getElementById('playNamePronunciation');
   const nameAudio = document.getElementById('namePronunciation');
-  playBtn?.addEventListener('click', () => {
-    try { nameAudio?.play(); } catch (e) {}
-  });
+  if (playBtn && nameAudio) {
+    const updatePlayingState = () => {
+      const playing = !nameAudio.paused && !nameAudio.ended;
+      playBtn.classList.toggle('is-playing', playing);
+      playBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+    };
+    playBtn.addEventListener('click', () => {
+      try {
+        if (nameAudio.paused || nameAudio.ended) {
+          nameAudio.currentTime = 0;
+          nameAudio.play()?.catch(() => {});
+        } else {
+          nameAudio.pause();
+        }
+      } catch (e) {}
+    });
+    nameAudio.addEventListener('playing', updatePlayingState);
+    nameAudio.addEventListener('pause', updatePlayingState);
+    nameAudio.addEventListener('ended', updatePlayingState);
+  }
 
   // Publications filters
   const filterChips = document.querySelectorAll('.pub-filters .chip');

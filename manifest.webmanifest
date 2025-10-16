@@ -1,13 +1,13 @@
 {
-  "name": "Your Name — Personal Website",
-  "short_name": "Your Site",
+  "name": "Hardik Patil | Home",
+  "short_name": "Hardik Patil",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0f172a",
   "icons": [
     {
-      "src": "/assets/img/favicon.svg",
+      "src": "/assets/icons/monogram.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }

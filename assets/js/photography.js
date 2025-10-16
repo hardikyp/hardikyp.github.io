@@ -276,6 +276,7 @@
   const cleanup = () => {
     hero.removeEventListener('pointermove', handlePointerMove);
     hero.removeEventListener('pointerleave', handlePointerLeave);
+    hero.removeEventListener('wheel', handleHeroWheel);
     window.removeEventListener('scroll', handleScroll);
     if (timerId) clearInterval(timerId);
     if (rafId) cancelAnimationFrame(rafId);
@@ -292,9 +293,31 @@
     }
     hero.addEventListener('pointermove', handlePointerMove);
     hero.addEventListener('pointerleave', handlePointerLeave);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    // disable scroll-based parallax; hero should move as one
     restartTimer();
+  };
+
+  // Snap scroll the hero by one full screen when using the mouse wheel
+  let snapScrolling = false;
+  const handleHeroWheel = (e) => {
+    if (reduceMotion) return;
+    if (snapScrolling) { e.preventDefault(); return; }
+    const rect = hero.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!inView) return;
+    e.preventDefault();
+    const nextSection = hero.nextElementSibling;
+    if (e.deltaY > 0) {
+      const targetY = nextSection ? nextSection.offsetTop : window.scrollY + Math.max(rect.height, window.innerHeight);
+      snapScrolling = true;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      setTimeout(() => { snapScrolling = false; }, 700);
+    } else if (e.deltaY < 0) {
+      const targetY = Math.max(0, hero.offsetTop);
+      snapScrolling = true;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      setTimeout(() => { snapScrolling = false; }, 700);
+    }
   };
 
   const hydrate = async () => {
@@ -304,6 +327,8 @@
     renderStories(data.stories);
     setTimeout(observeReveals, 20);
     initCarouselControls();
+    // Enable full-screen snapping scroll for hero only
+    hero.addEventListener('wheel', handleHeroWheel, { passive: false });
   };
 
   hydrate();

@@ -60,6 +60,30 @@
       renderTypes(types);
       grid.innerHTML = items.map(cardHTML).join('');
       bindTypeChips();
+      // Measure heights to precisely place title above excerpt on hover
+      const measureLayout = () => {
+        const cards = grid.querySelectorAll('.project-card');
+        cards.forEach(card => {
+          const title = card.querySelector('.project-card__title');
+          const actions = card.querySelector('.project-card__actions');
+          const excerpt = card.querySelector('.project-card__excerpt');
+          if (!title) return;
+          const titleH = title.getBoundingClientRect().height || 0;
+          const actionsH = actions ? (actions.getBoundingClientRect().height || 0) : 0;
+          const excerptH = excerpt ? (excerpt.getBoundingClientRect().height || 0) : 0;
+          if (titleH > 0) card.style.setProperty('--title-h', `${titleH}px`);
+          card.style.setProperty('--actions-h', `${Math.max(0, Math.round(actionsH))}px`);
+          card.style.setProperty('--excerpt-h', `${Math.max(0, Math.round(excerptH))}px`);
+        });
+      };
+      // Initial measure after content paints
+      setTimeout(measureLayout, 0);
+      // Recompute on resize (debounced)
+      let t;
+      window.addEventListener('resize', () => {
+        clearTimeout(t);
+        t = setTimeout(measureLayout, 120);
+      }, { passive: true });
     } catch {}
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();

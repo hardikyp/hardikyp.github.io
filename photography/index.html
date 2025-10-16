@@ -3,30 +3,64 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Photography — Your Name</title>
-    <meta name="description" content="Photography by Your Name." />
+    <title>Hardik Patil | Photography</title>
+    <meta name="description" content="An immersive look at Hardik Patil’s photography across portraits, nightscapes, and roaming stories." />
     <link rel="canonical" href="/photography/" />
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
-  <body>
+  <body class="page-photography">
     <a class="skip-link" href="#main">Skip to content</a>
-    <div data-include="/assets/partials/header.html"></div>
-    <main id="main" tabindex="-1" class="page">
-      <section class="hero">
-        <h1>Photography</h1>
-        <p class="muted">Selected shots and galleries.</p>
-      </section>
-      <section class="highlights">
-        <div class="cards">
-          <article class="card"><h3>Landscape</h3><p>Mountains, coasts, and open skies.</p></article>
-          <article class="card"><h3>Street</h3><p>Everyday life and candid moments.</p></article>
-          <article class="card"><h3>Portraits</h3><p>People, expressions, and stories.</p></article>
+    <header class="photo-topbar" role="banner">
+      <a class="photo-logo" href="/" aria-label="Return home">
+        <span class="photo-logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img" aria-label="Home icon">
+            <path d="M12.3911 4.26185C11.986 3.84943 11.3167 3.86534 10.9317 4.29654L4.75406 11.2155C4.59044 11.3987 4.5 11.6358 4.5 11.8815V19.5C4.5 20.0523 4.94772 20.5 5.5 20.5H8.5C9.05228 20.5 9.5 20.0523 9.5 19.5V16C9.5 15.4477 9.94772 15 10.5 15H13.5C14.0523 15 14.5 15.4477 14.5 16V19.5C14.5 20.0523 14.9477 20.5 15.5 20.5H18.5C19.0523 20.5 19.5 20.0523 19.5 19.5V11.909C19.5 11.6469 19.3971 11.3953 19.2134 11.2083L12.3911 4.26185Z" />
+          </svg>
+        </span>
+      </a>
+    </header>
+    <main id="main" tabindex="-1" class="photography">
+      <section class="photo-hero" aria-label="Featured photography carousel">
+        <div class="photo-hero__carousel" data-carousel></div>
+        <div class="photo-hero__content">
+          <h1>Photography</h1>
+          <p>See the world through my lens where light, motion, and memory dissolving into a single frame.</p>
+        </div>
+        <div class="photo-hero__nav" role="group" aria-label="Carousel navigation">
+          <button class="carousel-arrow prev" type="button" aria-label="Previous slide" data-carousel-nav="prev">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button class="carousel-arrow next" type="button" aria-label="Next slide" data-carousel-nav="next">
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+        <div class="photo-hero__ambient" aria-hidden="true">
+          <span class="ambient-orb ambient-orb--one"></span>
+          <span class="ambient-orb ambient-orb--two"></span>
+          <span class="ambient-orb ambient-orb--three"></span>
         </div>
       </section>
+
+      <section class="photo-categories reveal-on-scroll" aria-labelledby="photo-categories-title">
+        <header class="photo-section-head reveal-on-scroll">
+          <h2 id="photo-categories-title">Collections</h2>
+          <p class="muted">Curated sets that unravel themes — each with its own palette, rhythm, and temperament.</p>
+        </header>
+        <div class="photo-category-grid" data-photo-categories></div>
+      </section>
+
+      <section class="photo-stories reveal-on-scroll" aria-labelledby="photo-stories-title">
+        <header class="photo-section-head reveal-on-scroll">
+          <h2 id="photo-stories-title">Storylines</h2>
+          <p class="muted">Long-form narratives that trace journeys and collaborations. Each vignette unfolds in chapters.</p>
+        </header>
+        <div class="photo-story-grid" data-photo-stories></div>
+      </section>
     </main>
-    <div data-include="/assets/partials/footer.html"></div>
-    <script src="/assets/js/includes.js"></script>
+    <button class="back-to-top" type="button" aria-label="Back to top">
+      <span class="back-to-top__icon" aria-hidden="true">&#8593;</span>
+    </button>
+    <script src="/assets/js/photography.js" defer></script>
     <script src="/assets/js/main.js" defer></script>
   </body>
-  </html>
-
+</html>

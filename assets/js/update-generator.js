@@ -48,7 +48,8 @@
       <label class="full"><span>Image URL</span><input name="imgsrc" value="/assets/img/updates/" /></label>
       <label class="full"><span>Image Alt</span><input name="imgalt" /></label>
       <label class="full"><span>Meta Description</span><input name="metadesc" /></label>
-      <label class="full"><span>Body HTML (optional)</span><textarea name="body" rows="6" placeholder="<p>Body content...</p>"></textarea></label>
+      <label class="full"><span>Detail HTML (optional)</span><textarea name="detail" rows="6" placeholder="<p>Body content...</p>"></textarea></label>
+      <label class="full"><span>Gallery (one per line: src | alt | caption)</span><textarea name="gallery" rows="4" placeholder="/assets/img/updates/example.jpg | Alt text | Optional caption"></textarea></label>
       <div class="full" style="display:flex; gap:8px; margin-top:6px;"><button class="btn primary" type="submit">Generate</button><button class="btn secondary" type="button" id="copyAll">Copy JSON</button></div>
     </form>
     <div id="uOut" style="display:grid; gap:12px; margin-top:16px;">
@@ -72,7 +73,19 @@
     const htmlOut = wrap.querySelector('#htmlOut');
     const copyBtn = wrap.querySelector('#copyAll');
 
-  const tplHTML = (d) => `<!doctype html>
+  const tplHTML = (d) => {
+    const galleryMarkup = Array.isArray(d.gallery) && d.gallery.length
+      ? `<div class="update-gallery">
+${d.gallery.map((g) => {
+        if (!g || !g.src) return '';
+        const caption = g.caption ? `\n            <figcaption class="update-gallery__caption">${g.caption}</figcaption>` : '';
+        return `          <figure class="update-gallery__item">
+            <img src="${g.src}" alt="${g.alt || ''}" loading="lazy" />${caption}
+          </figure>`;
+      }).join('\n')}
+        </div>`
+      : '';
+    return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -99,7 +112,8 @@
         <div class="update-detail__media">
           <img src="${d.image.src}" alt="${d.image.alt || ''}" loading="lazy" />
         </div>
-        ${d.body || `<p>${d.excerpt || ''}</p>`}
+        ${d.detail || `<p>${d.excerpt || ''}</p>`}
+        ${galleryMarkup}
         <a class="btn tertiary" href="/updates/">Back to updates</a>
       </article>
     </main>
@@ -109,29 +123,52 @@
     <script src="/assets/js/main.js" defer></script>
   </body>
 </html>`;
+  };
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const fd = new FormData(form);
+    const galleryRaw = (fd.get('gallery') || '').toString().trim();
+    const gallery = galleryRaw
+      ? galleryRaw.split('\n').map(line => {
+          const parts = line.split('|').map(p => p.trim()).filter(Boolean);
+          if (!parts.length) return null;
+          const [src, alt, caption] = parts;
+          if (!src) return null;
+          const item = { src };
+          if (alt) item.alt = alt;
+          if (caption) item.caption = caption;
+          return item;
+        }).filter(Boolean)
+      : [];
     const d = {
       slug: (fd.get('slug')||'').toString().trim(),
       title: (fd.get('title')||'').toString().trim(),
       tag: (fd.get('tag')||'Other').toString().trim(),
       date: (fd.get('date')||'').toString().trim(),
       excerpt: (fd.get('excerpt')||'').toString().trim(),
-      image: { src: (fd.get('imgsrc')||'').toString().trim(), alt: (fd.get('imgalt')||'').toString().trim() },
-      url: ''
+      image: { src: (fd.get('imgsrc')||'').toString().trim(), alt: (fd.get('imgalt')||'').toString().trim() }
     };
-    d.url = `/updates/items/${d.slug}.html`;
+
     const metadesc = (fd.get('metadesc')||'').toString().trim();
-    const body = (fd.get('body')||'').toString();
+    const detail = (fd.get('detail')||'').toString();
 
     // JSON block
-    const obj = { slug: d.slug, title: d.title, tag: d.tag, date: d.date, excerpt: d.excerpt, image: d.image, url: d.url };
+    const obj = {
+      slug: d.slug,
+      title: d.title,
+      tag: d.tag,
+      date: d.date,
+      excerpt: d.excerpt,
+      detail: detail || undefined,
+      image: d.image,
+      gallery: gallery.length ? gallery : undefined
+    };
+    
     jsonOut.value = JSON.stringify(obj, null, 2);
 
     // HTML page
-    htmlOut.value = tplHTML({ ...d, metadesc, body });
+    htmlOut.value = tplHTML({ ...d, metadesc, detail, gallery });
   });
 
   copyBtn.addEventListener('click', async () => {

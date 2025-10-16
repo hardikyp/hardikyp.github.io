@@ -29,7 +29,8 @@ Optional fields:
 - `tag` (one of: `Award`, `Publication`, `Milestone`, `Other`)
 - `image.alt` (string)
 - `excerpt` (string) — short summary used on listing and home cards
-- `body` (HTML string) — full content for the detail page; if omitted, the `excerpt` is shown
+- `detail` (HTML string) — rich content for the detail page; falls back to `excerpt` if omitted
+- `gallery[]` (array) — extra images for the detail page only, each item `{ "src": "...", "alt": "...", "caption": "optional" }`
 - `url` (string) — external or custom link; if omitted, the site links to `/updates/view.html?slug=<slug>`
 
 ### Example entry
@@ -54,7 +55,10 @@ With a custom body:
   "tag": "Publication",
   "date": "2025-02-10",
   "excerpt": "Topology optimisation workflow for adaptive bridge systems.",
-  "body": "<p>Our manuscript details a new workflow that couples kinematics with nonlinear analysis...</p>",
+  "detail": "<p>Our manuscript details a new workflow that couples kinematics with nonlinear analysis...</p>",
+  "gallery": [
+    { "src": "/assets/img/updates/publication.svg", "alt": "Publication icon", "caption": "Workflow summary" }
+  ],
   "image": { "src": "/assets/img/updates/publication.svg", "alt": "Publication icon" }
 }
 ```
@@ -100,7 +104,7 @@ Note: any client‑side secret can be discovered by a determined user. For stron
 - Keep `slug` unique and URL‑safe (letters, numbers, dashes).
 - Prefer adding `image.alt` for accessibility.
 - Sorting is by `date` descending; ensure dates are correct.
-- The home page automatically shows the latest three entries.
+- The home page automatically shows the latest three entries. Detail text and gallery are only rendered on the update view page.
 
 ## Troubleshooting
 

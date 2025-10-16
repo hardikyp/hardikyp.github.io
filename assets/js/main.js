@@ -90,4 +90,19 @@
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
   });
+
+  // Back-to-top button
+  const backToTop = document.querySelector('.back-to-top');
+  const hero = document.querySelector('main > section');
+  const toggleBackToTop = () => {
+    if (!backToTop || !hero) return;
+    const threshold = hero.offsetHeight || 400;
+    if (window.scrollY > threshold) backToTop.classList.add('is-visible');
+    else backToTop.classList.remove('is-visible');
+  };
+  backToTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
+  toggleBackToTop();
 })();

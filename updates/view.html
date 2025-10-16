@@ -3,22 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Update — Hardik Patil</title>
+    <title>Hardik Patil | Update</title>
     <meta name="description" content="Latest updates and announcements." />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <meta property="og:type" content="article" />
   </head>
-  <body>
+  <body class="page-update">
     <a class="skip-link" href="#main">Skip to content</a>
     <div data-include="/assets/partials/header.html"></div>
 
-    <main id="main" tabindex="-1" class="page">
+    <main id="main" tabindex="-1" class="update-page">
       <section class="hero hero--update">
+        <h1 id="viewTitle">Update</h1>
         <div class="update-detail__meta">
           <span class="update-tag" id="viewTag"></span>
           <time id="viewDate"></time>
         </div>
-        <h1 id="viewTitle">Update</h1>
       </section>
       <article class="update-detail" id="viewArticle">
         <div class="update-detail__media" id="viewMedia"></div>
@@ -26,6 +26,9 @@
         <a class="btn tertiary" href="/updates/">Back to updates</a>
       </article>
     </main>
+    <button class="back-to-top" type="button" aria-label="Back to top">
+      <span class="back-to-top__icon" aria-hidden="true">&#8593;</span>
+    </button>
 
     <div data-include="/assets/partials/footer.html"></div>
     <script src="/assets/js/includes.js"></script>

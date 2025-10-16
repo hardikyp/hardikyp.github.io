@@ -3,7 +3,7 @@ Your Personal Website
 
 Structure
 - `index.html`: Home with responsive navbar and hero.
-- `research/`, `publications/`, `updates/`, `blog/`, `photography/`, `hobbies/`, `contact/`: Core pages.
+- `research/`, `publications/`, `updates/`, `photography/`, `contact/`: Core pages.
 - `assets/css/style.css`: Global styles and responsive layout.
 - `assets/js/main.js`: Navbar toggle, scroll effects, minor UX.
 - `assets/icons/`: Logo monogram (`monogram.svg`) and favicon.

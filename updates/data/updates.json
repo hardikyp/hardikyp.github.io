@@ -7,9 +7,9 @@
       "date": "2025-05-30",
       "excerpt": "Hardik attended the American Society of Civil Engineers’ (ASCE) Engineering Mechanics Institute (EMI) conference in Anaheim, California, from May 27 to May 30, 2025, where he presented “Force-stable reconfigurable truss structures using quadrilateral linkage principles.”",
       "detail": "<p>Hardik attended the American Society of Civil Engineers’ (ASCE) Engineering Mechanics Institute (EMI) conference in Anaheim, California, from May 27 to May 30, 2025. He presented his paper, “Force-stable reconfigurable truss structures using quadrilateral linkage principles,” in the Structural Stability student paper competition and was awarded second place.</p><p>The work showcases a workflow for creating deployable truss systems that remain force-stable through large configuration changes, coupling geometric insight with rigorous structural analysis.</p>",
-      "image": { "src": "/assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" },
+      "image": { "src": "assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" },
       "gallery": [
-        { "src": "/assets/img/updates/award.svg", "alt": "Conference award illustration" }
+        { "src": "assets/img/updates/award.svg", "alt": "Conference award illustration" }
       ]
     },
     {
@@ -19,7 +19,7 @@
       "date": "2025-04-08",
       "excerpt": "Hardik received the Rackham Doctoral Internship Fellowship to support his internship at Thornton Tomasetti during Summer 2025.",
       "detail": "<p>Hardik received the Rackham Doctoral Internship Fellowship to support his internship at Thornton Tomasetti during Summer 2025. The fellowship enables doctoral candidates to explore career pathways outside academia while applying their research expertise in industry.</p>",
-      "image": { "src": "/assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" },
+      "image": { "src": "assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" },
       "gallery": []
     },
     {
@@ -29,7 +29,7 @@
       "date": "2024-09-11",
       "excerpt": "Hardik’s paper “Rapidly deployable hulls and on-demand tunable hydrodynamics with shape morphed curved crease origami,” co-authored with K. J. Maki and E. T. Filipov, has been published in the Journal of Fluids and Structures.",
       "detail": "<p>Hardik’s paper “Rapidly deployable hulls and on-demand tunable hydrodynamics with shape morphed curved crease origami,” co-authored with K. J. Maki and E. T. Filipov, was published in the Journal of Fluids and Structures. The article demonstrates how origami-inspired morphing surfaces can be used to tune hydrodynamic performance on demand.</p>",
-      "image": { "src": "/assets/img/updates/jlfs-cover.jpg", "alt": "Journal of Fluids and Structures cover illustration" },
+      "image": { "src": "assets/img/updates/jlfs-cover.jpg", "alt": "Journal of Fluids and Structures cover illustration" },
       "gallery": []
     },
     {
@@ -39,7 +39,7 @@
       "date": "2024-05-14",
       "excerpt": "Hardik defended his dissertation proposal on “Transforming Optimized Static Trusses into Shape-morphing Functional Systems” and began the final phase of his doctoral research.",
       "detail": "<p>Hardik successfully defended his doctoral proposal, “Transforming Optimized Static Trusses into Shape-morphing Functional Systems.” The defense formalized his research plan for converting optimized static truss designs into adaptive, deployable structures.</p>",
-      "image": { "src": "/assets/img/updates/milestone.svg", "alt": "Abstract illustration representing a milestone" },
+      "image": { "src": "assets/img/updates/milestone.svg", "alt": "Abstract illustration representing a milestone" },
       "gallery": []
     },
     {
@@ -49,7 +49,7 @@
       "date": "2023-01-04",
       "excerpt": "Hardik served as a Graduate Student Instructor for the first offering of ENG 100: Introduction to Adaptable and Deployable Structures at the University of Michigan.",
       "detail": "<p>Hardik served as a Graduate Student Instructor for the inaugural offering of ENG 100: Introduction to Adaptable and Deployable Structures at the University of Michigan. He guided students through kinematics, rapid prototyping, and analysis fundamentals for morphing systems.</p>",
-      "image": { "src": "/assets/img/updates/milestone.svg", "alt": "Abstract illustration representing an award ribbon" },
+      "image": { "src": "assets/img/updates/milestone.svg", "alt": "Abstract illustration representing an award ribbon" },
       "gallery": []
     },
     {
@@ -59,7 +59,7 @@
       "date": "2022-11-01",
       "excerpt": "Hardik was a finalist in the student poster competition at ASME’s IMECE 2022 in Columbus, Ohio, presenting “Adaptable Hull Hydrodynamics using Shape Morphing Curved-Crease Origami.”",
       "detail": "<p>Hardik was a finalist in the student poster competition at ASME’s International Mechanical Engineering Congress and Exposition (IMECE) 2022, held in Columbus, Ohio. His poster, “Adaptable Hull Hydrodynamics using Shape Morphing Curved-Crease Origami,” highlighted adaptive marine structures inspired by origami geometry.</p>",
-      "image": { "src": "/assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" },
+      "image": { "src": "assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" },
       "gallery": []
     },
     {
@@ -69,7 +69,7 @@
       "date": "2022-06-01",
       "excerpt": "Hardik presented “Hydrodynamic Characteristics of Shape Morphing Curved-Crease Origami Surfaces” at ASCE’s Engineering Mechanics Institute Conference (EMIC) 2022 in Baltimore, Maryland.",
       "detail": "<p>At ASCE’s Engineering Mechanics Institute Conference (EMIC) 2022, held in Baltimore, Maryland, Hardik presented “Hydrodynamic Characteristics of Shape Morphing Curved-Crease Origami Surfaces.” The talk detailed experimental and numerical insights into tunable hydrodynamic behavior.</p>",
-      "image": { "src": "/assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" },
+      "image": { "src": "assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" },
       "gallery": []
     },
     {
@@ -79,7 +79,7 @@
       "date": "2021-09-01",
       "excerpt": "Hardik received the Michigan Institute for Computational Discovery and Engineering (MICDE) fellowship and began joint doctoral studies in Civil (Structural) Engineering and Scientific Computing at the University of Michigan.",
       "detail": "<p>Hardik was awarded the Michigan Institute for Computational Discovery and Engineering (MICDE) fellowship and began joint doctoral studies in Civil (Structural) Engineering and Scientific Computing at the University of Michigan, focusing on adaptable structural systems.</p>",
-      "image": { "src": "/assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" },
+      "image": { "src": "assets/img/updates/award.svg", "alt": "Abstract illustration representing an award ribbon" },
       "gallery": []
     },
     {
@@ -89,7 +89,7 @@
       "date": "2021-05-01",
       "excerpt": "Hardik graduated with a Master of Science in Engineering (MSE) degree in Civil (Structural) Engineering from the University of Michigan with a 4.0 GPA.",
       "detail": "<p>Hardik graduated with a Master of Science in Engineering (MSE) in Civil (Structural) Engineering from the University of Michigan, earning a 4.0 GPA while developing his research on deployable structures.</p>",
-      "image": { "src": "/assets/img/updates/milestone.svg", "alt": "Stylised publication icon" },
+      "image": { "src": "assets/img/updates/milestone.svg", "alt": "Stylised publication icon" },
       "gallery": []
     },
     {
@@ -99,7 +99,7 @@
       "date": "2019-08-10",
       "excerpt": "Hardik graduated with a Bachelor of Technology (B. Tech.) with Honors in Civil Engineering from the Indian Institute of Technology Bombay with a GPA of 8.5/10.",
       "detail": "<p>Hardik completed his Bachelor of Technology (B. Tech.) with Honors in Civil Engineering at the Indian Institute of Technology Bombay, graduating with a GPA of 8.5/10 and setting the foundation for his research in adaptable structures.</p>",
-      "image": { "src": "/assets/img/updates/milestone.svg", "alt": "Podium graphic" },
+      "image": { "src": "assets/img/updates/milestone.svg", "alt": "Podium graphic" },
       "gallery": []
     }
   ]

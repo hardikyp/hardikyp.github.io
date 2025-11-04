@@ -121,15 +121,13 @@
 
   const load = async () => {
     const sources = [
-      { url: '/publications/data/journals.json', fallbackType: 'journal' },
-      { url: '/publications/data/conferences.json', fallbackType: 'conference' },
-      { url: '/publications/data/talks.json', fallbackType: 'talk' }
+      { url: 'publications/data/journals.json', fallbackType: 'journal' },
+      { url: 'publications/data/conferences.json', fallbackType: 'conference' },
+      { url: 'publications/data/talks.json', fallbackType: 'talk' }
     ];
     try {
       const results = await Promise.all(sources.map(async s => {
-        const res = await fetch(s.url);
-        if (!res.ok) return { publications: [] };
-        const j = await res.json();
+        const j = await (window.loadJSON ? window.loadJSON(s.url) : (await fetch(s.url)).json()).catch(() => ({ publications: [] }));
         j.publications.forEach(p => { if (!p.type) p.type = s.fallbackType; });
         return j;
       }));
@@ -139,8 +137,7 @@
     } catch (e) {
       // Back-compat: try single file if present
       try {
-        const r = await fetch('/publications/publications.json');
-        const j = await r.json();
+        const j = await (window.loadJSON ? window.loadJSON('publications/publications.json') : (await fetch('publications/publications.json')).json());
         render(j.publications || []);
       } catch {
         app.innerHTML = '<p class="muted">Failed to load publications.</p>';

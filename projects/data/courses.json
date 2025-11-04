@@ -4,7 +4,7 @@
     "title": "Graduate Course Project: Mechanism Kinematics",
     "years": "2024",
     "summary": "Designed and analyzed a reconfigurable mechanism as a course capstone.",
-    "card": { "image": "/assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
+    "card": { "image": "assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
     "detail": { "body": "<p>Course objectives, methods, and outcomes with select figures.</p>" }
   },
   {
@@ -12,7 +12,7 @@
     "title": "Graduate Course Project: Mechanism Kinematics",
     "years": "2024",
     "summary": "Designed and analyzed a reconfigurable mechanism as a course capstone.",
-    "card": { "image": "/assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
+    "card": { "image": "assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
     "detail": { "body": "<p>Course objectives, methods, and outcomes with select figures.</p>" }
   }
 ] }

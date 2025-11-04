@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base href="./" />
     <title>Hardik Patil | Home</title>
     <meta name="description" content="Personal website featuring research, publications, updates, photography, and more." />
     <link rel="canonical" href="/" />
@@ -13,28 +14,28 @@
     <meta property="og:title" content="Hardik Patil | Home" />
     <meta property="og:description" content="Research, publications, updates, photography, and more." />
     <meta property="og:url" content="/" />
-    <meta property="og:image" content="/assets/img/favicon.svg" />
+    <meta property="og:image" content="assets/img/favicon.svg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Hardik Patil | Home" />
     <meta name="twitter:description" content="Research, publications, updates, photography, and more." />
-    <meta name="twitter:image" content="/assets/img/favicon.svg" />
+    <meta name="twitter:image" content="assets/img/favicon.svg" />
 
     <!-- Security best-effort (meta-based; prefer server headers in production) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' file: data:; script-src 'self' file:; style-src 'self' file: data: 'unsafe-inline'; img-src 'self' data: file:; font-src 'self' data: file:; connect-src 'self' file: data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'" />
 
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="icon" href="/assets/icons/monogram.svg" type="image/svg+xml" />
-    <link rel="preload" href="/assets/css/style.css" as="style" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="assets/icons/monogram.svg" type="image/svg+xml" />
+    <link rel="preload" href="assets/css/style.css" as="style" />
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <div data-include="/assets/partials/header.html"></div>
+    <div data-include="assets/partials/header.html"></div>
 
     <main id="main" tabindex="-1">
       <section class="hero hero--home">
@@ -42,8 +43,8 @@
           <h1>HELLO!</h1>
           <p>I’m Hardik — a structural engineering PhD candidate specializing in deployable and reconfigurable structures.</p>
           <div class="hero-cta">
-            <a class="btn primary" href="/assets/docs/Hardik_Patil_CV.pdf" download>Get CV</a>
-            <a class="btn tertiary" href="/projects/">Explore my work</a>
+            <a class="btn primary" href="assets/docs/Hardik_Patil_CV.pdf" download>Get CV</a>
+            <a class="btn tertiary" href="projects/index.html">Explore my work</a>
           </div>
         </div>
 
@@ -56,13 +57,13 @@
         </div>
         <div class="update-list"></div>
         <div class="updates-preview__more">
-          <a class="updates-preview__link" href="/updates/">View all updates</a>
+          <a class="updates-preview__link" href="updates/index.html">View all updates</a>
         </div>
       </section>
 
       <section class="about">
         <div class="about-img">
-          <img src="/assets/img/portrait.jpg" alt="Portrait of Hardik Patil" />
+          <img src="assets/img/portrait.jpg" alt="Portrait of Hardik Patil" />
         </div>
         <div class="about-content">
           <h2>About Me</h2>
@@ -81,10 +82,10 @@
                 <span class="name">Hardik Patil</span>
               </span>
             </button>
-            <a class="btn secondary lg" href="/assets/docs/Hardik_Patil_CV.pdf" download>Get CV</a>
+            <a class="btn secondary lg" href="assets/docs/Hardik_Patil_CV.pdf" download>Get CV</a>
           </div>
           <audio id="namePronunciation" preload="none">
-            <source src="/assets/audio/name-pronunciation.mp3" type="audio/mpeg" />
+            <source src="assets/audio/name-pronunciation.mp3" type="audio/mpeg" />
           </audio>
         </div>
       </section>
@@ -122,16 +123,10 @@
       <span class="back-to-top__icon" aria-hidden="true"><strong>&#8593;</strong></span>
     </button>
 
-    <div data-include="/assets/partials/footer.html"></div>
+    <div data-include="assets/partials/footer.html"></div>
 
-    <script src="/assets/js/includes.js"></script>
-    <script src="/assets/js/home-updates.js" defer></script>
-    <script src="/assets/js/main.js" defer></script>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/home-updates.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
   </body>
   </html>
-
-
-
-
-
-

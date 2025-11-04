@@ -4,7 +4,7 @@
     "title": "Internship: Structural Analysis Tooling",
     "years": "Summer 2023",
     "summary": "Built internal toolchains to automate analysis workflows and reporting.",
-    "card": { "image": "/assets/img/placeholder.jpg", "alt": "Tools" },
+    "card": { "image": "assets/img/placeholder.jpg", "alt": "Tools" },
     "detail": { "body": "<p>Scope of work, stack, and impact. Screenshots and examples.</p>" }
   },
   {
@@ -12,7 +12,7 @@
     "title": "Internship: Structural Analysis Tooling",
     "years": "Summer 2023",
     "summary": "Built internal toolchains to automate analysis workflows and reporting.",
-    "card": { "image": "/assets/img/placeholder.jpg", "alt": "Tools" },
+    "card": { "image": "assets/img/placeholder.jpg", "alt": "Tools" },
     "detail": { "body": "<p>Scope of work, stack, and impact. Screenshots and examples.</p>" }
   }
 ] }

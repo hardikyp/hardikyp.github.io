@@ -27,9 +27,9 @@
 
   const defaultData = {
     carousel: [
-      { src: '/assets/photography/carousel/neon-portrait.jpg', alt: 'Portrait bathed in neon light', speed: 0.3 },
-      { src: '/assets/photography/carousel/mountain-dusk.jpg', alt: 'Mountain range under a dramatic dusk sky', speed: 0.22 },
-      { src: '/assets/photography/carousel/night-transit.jpg', alt: 'Night street scene with motion blur', speed: 0.28 }
+      { src: 'assets/photography/carousel/neon-portrait.jpg', alt: 'Portrait bathed in neon light', speed: 0.3 },
+      { src: 'assets/photography/carousel/mountain-dusk.jpg', alt: 'Mountain range under a dramatic dusk sky', speed: 0.22 },
+      { src: 'assets/photography/carousel/night-transit.jpg', alt: 'Night street scene with motion blur', speed: 0.28 }
     ],
     categories: [
       {
@@ -37,10 +37,10 @@
         title: 'Portrait Reveries',
         description: 'Intimate studies of expression and the architecture of light—environmental portraits and studio experiments.',
         accent: 'warm',
-        cover: '/assets/photography/portraits/cover.jpg',
+        cover: 'assets/photography/portraits/cover.jpg',
         gallery: [
           {
-            src: '/assets/photography/portraits/cover.jpg',
+            src: 'assets/photography/portraits/cover.jpg',
             alt: 'Portrait lit with magenta and cyan light',
             caption: 'Resonance in Neon — Mumbai, 2024'
           }
@@ -51,10 +51,10 @@
         title: 'Edge of Horizons',
         description: 'Landscapes oscillating between moody dusk and crystalline dawn—a survey of terrain and atmosphere in flux.',
         accent: 'dusk',
-        cover: '/assets/photography/landscapes/cover.jpg',
+        cover: 'assets/photography/landscapes/cover.jpg',
         gallery: [
           {
-            src: '/assets/photography/landscapes/cover.jpg',
+            src: 'assets/photography/landscapes/cover.jpg',
             alt: 'Ridge line during monsoon clouds',
             caption: 'Monsoon Ridgeline — Sahyadris, 2023'
           }
@@ -65,10 +65,10 @@
         title: 'Midnight Transit',
         description: 'City veins after dark—neon reflections, kinetic blur, and the conversations between shadows.',
         accent: 'night',
-        cover: '/assets/photography/night-stories/cover.jpg',
+        cover: 'assets/photography/night-stories/cover.jpg',
         gallery: [
           {
-            src: '/assets/photography/night-stories/cover.jpg',
+            src: 'assets/photography/night-stories/cover.jpg',
             alt: 'Long exposure of city traffic at night',
             caption: 'Echoes of Transit — Ann Arbor, 2022'
           }
@@ -81,7 +81,7 @@
         title: 'Monsoon Cartography',
         summary: 'Charting weather patterns across the Western Ghats—a visual atlas of humidity, mist, and waiting.',
         accent: 'dusk',
-        cover: '/assets/photography/stories/monsoon-cover.jpg',
+        cover: 'assets/photography/stories/monsoon-cover.jpg',
         meta: { location: 'Sahyadris, India', year: 2023 }
       },
       {
@@ -89,7 +89,7 @@
         title: 'Sonic Spectrums',
         summary: 'Backstage portraiture of independent musicians—translating sound into chroma and motion.',
         accent: 'warm',
-        cover: '/assets/photography/stories/sonic-cover.jpg',
+        cover: 'assets/photography/stories/sonic-cover.jpg',
         meta: { location: 'Detroit & Ann Arbor', year: 2022 }
       }
     ]
@@ -97,7 +97,7 @@
 
   const fetchData = async () => {
     try {
-      const res = await fetch('/photography/data/photos.json', { cache: 'no-cache' });
+      const res = await fetch('photography/data/photos.json', { cache: 'no-cache' });
       if (!res.ok) return defaultData;
       const json = await res.json();
       return { ...defaultData, ...json };

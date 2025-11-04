@@ -15,9 +15,7 @@
 
   const load = async () => {
     try {
-      const res = await fetch('/updates/data/updates.json');
-      if (!res.ok) return;
-      const j = await res.json();
+      const j = await (window.loadJSON ? window.loadJSON('updates/data/updates.json') : (await fetch('updates/data/updates.json')).json());
       const u = (j.updates || []).find(x => x.slug === slug);
       if (!u) {
         el.title.textContent = 'Update not found';

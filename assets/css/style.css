@@ -55,7 +55,19 @@ ul { margin: 0; padding: 0; list-style: none; }
 .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; }
 .logo svg { height: 50px; width: auto; display: block; }
 /* Mask-based monogram for header */
-.logo .icon.monogram { width: 100px; height: 50px; display: inline-block; background-color: var(--primary); -webkit-mask: url('/assets/icons/monogram.svg') no-repeat center / contain; mask: url('/assets/icons/monogram.svg') no-repeat center / contain; }
+.logo .icon.monogram { width: 100px; height: 50px; display: inline-block; background-color: var(--primary); -webkit-mask: url('../icons/monogram.svg') no-repeat center / contain; mask: url('../icons/monogram.svg') no-repeat center / contain; }
+.file-protocol .logo .icon.monogram,
+.file-protocol .footer-brand .monogram,
+.file-protocol .photo-brand,
+.file-protocol .photo-brand-center {
+  background-color: transparent;
+  -webkit-mask: none;
+  mask: none;
+  background-image: url('../icons/monogram.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
 .logo-text { white-space: nowrap; }
 
 /* Typography */
@@ -96,8 +108,19 @@ h2 { font-size: var(--step-lg); line-height: 1.15; }
 .hamburger:hover { background: transparent; }
 /* Icon-based hamburger/close using CSS mask to match accent color */
 .hamburger .icon { width: 30px; height: 30px; display: block; background-color: var(--primary); }
-.hamburger .icon-menu { -webkit-mask: url('/assets/icons/menu.svg') no-repeat center / contain; mask: url('/assets/icons/menu.svg') no-repeat center / contain; }
-.hamburger .icon-close { -webkit-mask: url('/assets/icons/close.svg') no-repeat center / contain; mask: url('/assets/icons/close.svg') no-repeat center / contain; display: none; }
+.hamburger .icon-menu { -webkit-mask: url('../icons/menu.svg') no-repeat center / contain; mask: url('../icons/menu.svg') no-repeat center / contain; }
+.hamburger .icon-close { -webkit-mask: url('../icons/close.svg') no-repeat center / contain; mask: url('../icons/close.svg') no-repeat center / contain; display: none; }
+.file-protocol .hamburger .icon-menu,
+.file-protocol .hamburger .icon-close {
+  -webkit-mask: none;
+  mask: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.file-protocol .hamburger .icon-menu { background-image: url('../icons/menu.svg'); }
+.file-protocol .hamburger .icon-close { background-image: url('../icons/close.svg'); }
 .hamburger.is-active .icon-menu { display: none; }
 .hamburger.is-active .icon-close { display: block; }
 
@@ -689,7 +712,7 @@ main > section::before {
   align-items: center;
   gap: clamp(24px, 4vw, 60px);
   padding: clamp(96px, 12vw, 160px) clamp(16px, 8vw, 86px) clamp(40px, 6vw, 80px);
-  background-image: url('/assets/img/hero-bg.jpg');
+  background-image: url('../img/hero-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: clamp(15%, 22vw, 30%) center;
@@ -954,16 +977,29 @@ main > section::before {
 .footer-brand { display: grid; justify-items: center; gap: 14px; }
 .footer-brand img { width: 200px; height: auto; }
 /* Mask-based monogram for footer */
-.footer-brand .monogram { display: block; width: 200px; aspect-ratio: 100 / 56; background-color: var(--primary); -webkit-mask: url('/assets/icons/monogram.svg') no-repeat center / contain; mask: url('/assets/icons/monogram.svg') no-repeat center / contain; }
+.footer-brand .monogram { display: block; width: 200px; aspect-ratio: 100 / 56; background-color: var(--primary); -webkit-mask: url('../icons/monogram.svg') no-repeat center / contain; mask: url('../icons/monogram.svg') no-repeat center / contain; }
 .footer-brand .social { display: flex; gap: 14px; }
 .footer-brand .social a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 6px; }
 /* Mask-based icons so all pages use CSS color */
 .footer-brand .social .icon { display: inline-block; width: 24px; height: 24px; background-color: var(--primary); }
 .footer-brand .social a:hover .icon { background-color: var(--primary-600); }
-.footer-brand .social .icon.linkedin { -webkit-mask: url('/assets/icons/linkedin.svg') no-repeat center / contain; mask: url('/assets/icons/linkedin.svg') no-repeat center / contain; }
-.footer-brand .social .icon.github { -webkit-mask: url('/assets/icons/github.svg') no-repeat center / contain; mask: url('/assets/icons/github.svg') no-repeat center / contain; }
-.footer-brand .social .icon.instagram { -webkit-mask: url('/assets/icons/instagram.svg') no-repeat center / contain; mask: url('/assets/icons/instagram.svg') no-repeat center / contain; }
-.footer-brand .social .icon.facebook { -webkit-mask: url('/assets/icons/facebook.svg') no-repeat center / contain; mask: url('/assets/icons/facebook.svg') no-repeat center / contain; }
+.footer-brand .social .icon.linkedin { -webkit-mask: url('../icons/linkedin.svg') no-repeat center / contain; mask: url('../icons/linkedin.svg') no-repeat center / contain; }
+.footer-brand .social .icon.github { -webkit-mask: url('../icons/github.svg') no-repeat center / contain; mask: url('../icons/github.svg') no-repeat center / contain; }
+.footer-brand .social .icon.instagram { -webkit-mask: url('../icons/instagram.svg') no-repeat center / contain; mask: url('../icons/instagram.svg') no-repeat center / contain; }
+.footer-brand .social .icon.facebook { -webkit-mask: url('../icons/facebook.svg') no-repeat center / contain; mask: url('../icons/facebook.svg') no-repeat center / contain; }
+.file-protocol .footer-brand .social .icon {
+  -webkit-mask: none;
+  mask: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.file-protocol .footer-brand .social .icon.linkedin { background-image: url('../icons/linkedin.svg'); }
+.file-protocol .footer-brand .social .icon.github { background-image: url('../icons/github.svg'); }
+.file-protocol .footer-brand .social .icon.instagram { background-image: url('../icons/instagram.svg'); }
+.file-protocol .footer-brand .social .icon.facebook { background-image: url('../icons/facebook.svg'); }
+.file-protocol .footer-brand .social a:hover .icon { filter: brightness(0.8); }
 
 .footer-col h3 { margin: 0 0 8px; font-size: 1.2rem; color: var(--text); }
 .footer-col p { margin: 0 0 6px; color: var(--muted); }
@@ -1107,8 +1143,8 @@ main > section::before {
   width: clamp(80px, 10vw, 110px);
   height: clamp(28px, 3.6vw, 42px);
   background-color: currentColor;
-  -webkit-mask: url('/assets/icons/monogram.svg') no-repeat center / contain;
-  mask: url('/assets/icons/monogram.svg') no-repeat center / contain;
+  -webkit-mask: url('../icons/monogram.svg') no-repeat center / contain;
+  mask: url('../icons/monogram.svg') no-repeat center / contain;
   opacity: 0.95;
   pointer-events: none;
 }
@@ -1123,8 +1159,8 @@ main > section::before {
   width: clamp(150px, 18vw, 240px);
   height: clamp(48px, 6vw, 75px);
   background-color: currentColor;
-  -webkit-mask: url('/assets/icons/monogram.svg') no-repeat center / contain;
-  mask: url('/assets/icons/monogram.svg') no-repeat center / contain;
+  -webkit-mask: url('../icons/monogram.svg') no-repeat center / contain;
+  mask: url('../icons/monogram.svg') no-repeat center / contain;
   color: rgba(248, 250, 252, 0.92);
   pointer-events: none;
 }

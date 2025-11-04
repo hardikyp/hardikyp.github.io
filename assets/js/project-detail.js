@@ -11,17 +11,16 @@
   };
 
   const sources = [
-    '/projects/data/research.json',
-    '/projects/data/courses.json',
-    '/projects/data/internships.json',
-    '/projects/data/others.json'
+    'projects/data/research.json',
+    'projects/data/courses.json',
+    'projects/data/internships.json',
+    'projects/data/others.json'
   ];
 
   const load = async () => {
     for (const url of sources) {
       try {
-        const r = await fetch(url); if (!r.ok) continue;
-        const j = await r.json();
+        const j = await (window.loadJSON ? window.loadJSON(url) : (await fetch(url)).json());
         const p = (j.projects||[]).find(x => x.slug === slug);
         if (p) { render(p); return; }
       } catch {}
@@ -51,4 +50,3 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
 })();
-

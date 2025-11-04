@@ -17,13 +17,13 @@
 
   const normalize = (u) => ({
     ...u,
-    url: u.url || `/updates/view.html?slug=${encodeURIComponent(u.slug)}`
+    url: u.url || `updates/view.html?slug=${encodeURIComponent(u.slug)}`
   });
 
   const cardHTML = (u) => `
     <article class="update-card">
       <a class="update-card__media" href="${u.url}">
-        <img src="${u.image?.src || '/assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" />
+        <img src="${u.image?.src || 'assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" />
       </a>
       <div class="update-card__content">
         <h3 class="update-card__title"><a href="${u.url}">${u.title}</a></h3>
@@ -43,9 +43,7 @@
 
   const load = async () => {
     try {
-      const res = await fetch('/updates/data/updates.json');
-      if (!res.ok) return;
-      const j = await res.json();
+      const j = await (window.loadJSON ? window.loadJSON('updates/data/updates.json') : (await fetch('updates/data/updates.json')).json());
       const items = (j.updates || [])
         .map(normalize)
         .filter(u => {

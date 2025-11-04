@@ -4,14 +4,14 @@
   if (!grid || !typeBar) return;
 
   const sources = [
-    { type: 'Research', url: '/projects/data/research.json' },
-    { type: 'Course', url: '/projects/data/courses.json' },
-    { type: 'Internship', url: '/projects/data/internships.json' },
-    { type: 'Other', url: '/projects/data/others.json' }
+    { type: 'Research', url: 'projects/data/research.json' },
+    { type: 'Course', url: 'projects/data/courses.json' },
+    { type: 'Internship', url: 'projects/data/internships.json' },
+    { type: 'Other', url: 'projects/data/others.json' }
   ];
 
   const cardHTML = (p) => `
-    <a class="project-card" href="/projects/view.html?slug=${encodeURIComponent(p.slug)}" data-type="${p.type}">
+    <a class="project-card" href="projects/view.html?slug=${encodeURIComponent(p.slug)}" data-type="${p.type}">
       <div class="project-card__media">${p.card?.image ? `<img src="${p.card.image}" alt="${p.card.alt || ''}" loading="lazy"/>` : ''}</div>
       <div class="project-card__title">${p.title}</div>
       <div class="project-card__hover">
@@ -50,8 +50,7 @@
     try {
       const results = await Promise.all(sources.map(async s => {
         try {
-          const r = await fetch(s.url); if (!r.ok) return [];
-          const j = await r.json();
+          const j = await (window.loadJSON ? window.loadJSON(s.url) : (await fetch(s.url)).json());
           return (j.projects||[]).map(p => ({ ...p, type: s.type }));
         } catch { return []; }
       }));

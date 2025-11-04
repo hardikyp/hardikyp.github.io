@@ -45,11 +45,11 @@
       <label><span>Date</span><input name="date" type="date" required /></label>
       <label><span>Slug</span><input name="slug" placeholder="my-update" required /></label>
       <label class="full"><span>Excerpt</span><input name="excerpt" /></label>
-      <label class="full"><span>Image URL</span><input name="imgsrc" value="/assets/img/updates/" /></label>
+      <label class="full"><span>Image URL</span><input name="imgsrc" value="assets/img/updates/" /></label>
       <label class="full"><span>Image Alt</span><input name="imgalt" /></label>
       <label class="full"><span>Meta Description</span><input name="metadesc" /></label>
       <label class="full"><span>Detail HTML (optional)</span><textarea name="detail" rows="6" placeholder="<p>Body content...</p>"></textarea></label>
-      <label class="full"><span>Gallery (one per line: src | alt | caption)</span><textarea name="gallery" rows="4" placeholder="/assets/img/updates/example.jpg | Alt text | Optional caption"></textarea></label>
+      <label class="full"><span>Gallery (one per line: src | alt | caption)</span><textarea name="gallery" rows="4" placeholder="assets/img/updates/example.jpg | Alt text | Optional caption"></textarea></label>
       <div class="full" style="display:flex; gap:8px; margin-top:6px;"><button class="btn primary" type="submit">Generate</button><button class="btn secondary" type="button" id="copyAll">Copy JSON</button></div>
     </form>
     <div id="uOut" style="display:grid; gap:12px; margin-top:16px;">
@@ -90,17 +90,18 @@ ${d.gallery.map((g) => {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base href="../../" />
     <title>${d.title} — Updates — Hardik Patil</title>
     <meta name="description" content="${d.metadesc || d.excerpt || ''}" />
-    <link rel="canonical" href="/updates/items/${d.slug}.html" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="canonical" href="updates/items/${d.slug}.html" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <meta property="og:type" content="article" />
   </head>
-  <body>
+  <body class="page-update">
     <a class="skip-link" href="#main">Skip to content</a>
-    <div data-include="/assets/partials/header.html"></div>
+    <div data-include="assets/partials/header.html"></div>
 
-    <main id="main" tabindex="-1" class="page">
+    <main id="main" tabindex="-1" class="update-page">
       <section class="hero hero--update">
         <div class="update-detail__meta">
           <span class="update-tag">${d.tag}</span>
@@ -114,13 +115,13 @@ ${d.gallery.map((g) => {
         </div>
         ${d.detail || `<p>${d.excerpt || ''}</p>`}
         ${galleryMarkup}
-        <a class="btn tertiary" href="/updates/">Back to updates</a>
+        <a class="btn tertiary" href="updates/index.html">Back to updates</a>
       </article>
     </main>
 
-    <div data-include="/assets/partials/footer.html"></div>
-    <script src="/assets/js/includes.js"></script>
-    <script src="/assets/js/main.js" defer></script>
+    <div data-include="assets/partials/footer.html"></div>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/main.js" defer></script>
   </body>
 </html>`;
   };

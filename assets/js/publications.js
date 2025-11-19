@@ -2,9 +2,129 @@
   const app = document.getElementById('pubApp');
   if (!app) return;
 
+  const filterBar = document.getElementById('pubFilters');
+  let tabsContainer;
+  let underlineEl;
+  let activeTab;
+  let resizeTimer;
+  let resizeBound = false;
+
   const fmtAuthors = (arr) => arr.join(', ');
+  const normalizeCat = (val) => (val || 'other').toLowerCase();
+  const labelForCat = (val) => normalizeCat(val).replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+
+  const updateYearVisibility = () => {
+    app.querySelectorAll('section').forEach(sec => {
+      const items = sec.querySelectorAll('.pub-item');
+      const hasVisible = Array.from(items).some(it => it.style.display !== 'none');
+      sec.style.display = hasVisible ? '' : 'none';
+    });
+  };
+
+  const filterByCategory = (filter) => {
+    app.querySelectorAll('.pub-item').forEach(it => {
+      const cat = it.dataset.cat;
+      const show = filter === 'all' || filter === cat;
+      it.style.display = show ? '' : 'none';
+    });
+    updateYearVisibility();
+  };
+
+  const moveUnderline = (tab) => {
+    if (!underlineEl || !tab) return;
+    underlineEl.style.setProperty('--underline-offset', `${tab.offsetLeft}px`);
+    underlineEl.style.setProperty('--underline-width', `${tab.offsetWidth}px`);
+  };
+
+  const setActiveTab = (tab) => {
+    if (!tab) return;
+    if (activeTab && activeTab !== tab) {
+      activeTab.setAttribute('aria-selected', 'false');
+      activeTab.setAttribute('tabindex', '-1');
+    }
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    activeTab = tab;
+    requestAnimationFrame(() => moveUnderline(tab));
+  };
+
+  const activateTab = (tab) => {
+    if (!tab) return;
+    setActiveTab(tab);
+    filterByCategory(tab.getAttribute('data-filter') || 'all');
+  };
+
+  const buildFilterTabs = (categories) => {
+    if (!filterBar) return;
+    const preferredOrder = ['journal', 'conference', 'talk'];
+    const uniqueCats = Array.from(new Set(categories.map(normalizeCat)));
+    const ordered = preferredOrder.filter(c => uniqueCats.includes(c));
+    uniqueCats.forEach(c => { if (!ordered.includes(c)) ordered.push(c); });
+
+    filterBar.innerHTML = '';
+    tabsContainer = document.createElement('div');
+    tabsContainer.className = 'pub-filters__tabs';
+    tabsContainer.setAttribute('role', 'tablist');
+
+    const createTab = (label, value, selected = false) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'pub-filters__tab';
+      btn.textContent = label;
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('data-filter', value);
+      btn.setAttribute('aria-selected', selected ? 'true' : 'false');
+      btn.setAttribute('tabindex', selected ? '0' : '-1');
+      return btn;
+    };
+
+    const allTab = createTab('All', 'all', true);
+    tabsContainer.appendChild(allTab);
+    ordered.forEach(cat => tabsContainer.appendChild(createTab(labelForCat(cat), cat)));
+
+    underlineEl = document.createElement('span');
+    underlineEl.className = 'pub-filters__underline';
+    underlineEl.setAttribute('aria-hidden', 'true');
+    tabsContainer.appendChild(underlineEl);
+    filterBar.appendChild(tabsContainer);
+
+    tabsContainer.addEventListener('click', (e) => {
+      const tab = e.target.closest('.pub-filters__tab');
+      if (!tab || tab === activeTab) return;
+      activateTab(tab);
+    });
+    tabsContainer.addEventListener('keydown', (e) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+      const tabs = Array.from(tabsContainer.querySelectorAll('.pub-filters__tab'));
+      const current = document.activeElement && document.activeElement.closest('.pub-filters__tab');
+      const idx = tabs.indexOf(current);
+      if (idx === -1) return;
+      let nextIdx = idx;
+      if (e.key === 'ArrowRight') nextIdx = (idx + 1) % tabs.length;
+      if (e.key === 'ArrowLeft') nextIdx = (idx - 1 + tabs.length) % tabs.length;
+      if (e.key === 'Home') nextIdx = 0;
+      if (e.key === 'End') nextIdx = tabs.length - 1;
+      const nextTab = tabs[nextIdx];
+      if (nextTab) {
+        e.preventDefault();
+        nextTab.focus();
+        if (nextTab !== activeTab) activateTab(nextTab);
+      }
+    });
+
+    if (!resizeBound) {
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => moveUnderline(activeTab), 120);
+      }, { passive: true });
+      resizeBound = true;
+    }
+
+    activateTab(allTab);
+  };
 
   const render = (data) => {
+    const categories = Array.from(new Set(data.map(p => normalizeCat(p.type))));
     // Group by year desc
     const byYear = data.reduce((acc, p) => {
       (acc[p.year] ||= []).push(p); return acc;
@@ -16,16 +136,17 @@
       y.innerHTML = `<h2 class="pub-year">${year}</h2><div class="pub-list"></div>`;
       const list = y.querySelector('.pub-list');
       byYear[year].forEach(p => {
+        const cat = normalizeCat(p.type);
         const item = document.createElement('article');
         item.className = 'pub-item';
-        item.dataset.cat = p.type || 'other';
+        item.dataset.cat = cat;
         const title = `${fmtAuthors(p.authors)}. ${p.status ? `(${p.status.replace('-', ' ')}, ${year})` : `(${year})`} ${p.title}.`;
         const venueLine = [p.venue, p.volume && ` ${p.volume}`, p.pages && `, ${p.pages}`].filter(Boolean).join('');
         item.innerHTML = `
           <div class="pub-head">
             <div>
               <div class="pub-title">${title}</div>
-              <div class="pub-meta"><span class="tag">${(p.type||'').charAt(0).toUpperCase()+ (p.type||'').slice(1)}</span><span class="muted">${venueLine}</span></div>
+              <div class="pub-meta"><span class="tag">${labelForCat(cat)}</span><span class="muted">${venueLine}</span></div>
             </div>
             <button class="pub-toggle" aria-expanded="false" aria-label="Toggle details"></button>
           </div>
@@ -97,26 +218,8 @@
     });
 
     // Filters
-    const chips = document.querySelectorAll('.pub-filters .chip');
-    const updateYearVisibility = () => {
-      app.querySelectorAll('section').forEach(sec => {
-        const items = sec.querySelectorAll('.pub-item');
-        const hasVisible = Array.from(items).some(it => it.style.display !== 'none');
-        sec.style.display = hasVisible ? '' : 'none';
-      });
-    };
-    chips.forEach(ch => ch.addEventListener('click', () => {
-      chips.forEach(c => c.setAttribute('aria-pressed','false'));
-      ch.setAttribute('aria-pressed','true');
-      const f = ch.getAttribute('data-filter');
-      app.querySelectorAll('.pub-item').forEach(it => {
-        const show = f === 'all' || it.dataset.cat === f;
-        it.style.display = show ? '' : 'none';
-      });
-      updateYearVisibility();
-    }));
-    // Initial ensure years without items are hidden (in case of empty categories)
-    updateYearVisibility();
+    if (filterBar) buildFilterTabs(categories);
+    else filterByCategory('all');
   };
 
   const load = async () => {

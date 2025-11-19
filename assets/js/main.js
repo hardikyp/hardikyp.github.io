@@ -110,16 +110,73 @@
 
   // Back-to-top button
   const backToTop = document.querySelector('.back-to-top');
-  const hero = document.querySelector('main > section');
+  const PROGRESS_VIEWBOX = 64;
+  const PROGRESS_RADIUS = 30;
+  const PROGRESS_CENTER = PROGRESS_VIEWBOX / 2;
+  const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * PROGRESS_RADIUS;
+  let progressCircle;
+  const getScrollThreshold = () => 24;
+
+  const createProgressIndicator = () => {
+    if (!backToTop) return;
+    const wrapper = document.createElement('span');
+    wrapper.className = 'back-to-top__progress';
+    wrapper.setAttribute('aria-hidden', 'true');
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', `0 0 ${PROGRESS_VIEWBOX} ${PROGRESS_VIEWBOX}`);
+    const track = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    track.setAttribute('cx', PROGRESS_CENTER.toString());
+    track.setAttribute('cy', PROGRESS_CENTER.toString());
+    track.setAttribute('r', PROGRESS_RADIUS.toString());
+    track.classList.add('back-to-top__progress-track');
+    const indicator = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    indicator.setAttribute('cx', PROGRESS_CENTER.toString());
+    indicator.setAttribute('cy', PROGRESS_CENTER.toString());
+    indicator.setAttribute('r', PROGRESS_RADIUS.toString());
+    indicator.classList.add('back-to-top__progress-active');
+    indicator.style.strokeDasharray = `${PROGRESS_CIRCUMFERENCE}`;
+    indicator.style.strokeDashoffset = `${PROGRESS_CIRCUMFERENCE}`;
+    svg.appendChild(track);
+    svg.appendChild(indicator);
+    wrapper.appendChild(svg);
+    backToTop.appendChild(wrapper);
+    progressCircle = indicator;
+  };
+  createProgressIndicator();
   const toggleBackToTop = () => {
-    if (!backToTop || !hero) return;
-    const threshold = hero.offsetHeight || 400;
+    if (!backToTop) return;
+    const threshold = getScrollThreshold();
     if (window.scrollY > threshold) backToTop.classList.add('is-visible');
     else backToTop.classList.remove('is-visible');
+  };
+  const updateScrollProgress = () => {
+    if (!progressCircle) return;
+    const scrollTop = Math.max(
+      window.scrollY || 0,
+      document.documentElement.scrollTop || 0,
+      document.body.scrollTop || 0
+    );
+    const pageHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.clientHeight
+    );
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+    const maxScroll = Math.max(0, pageHeight - viewportHeight);
+    const progress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+    const offset = PROGRESS_CIRCUMFERENCE * (1 - progress);
+    progressCircle.style.strokeDashoffset = `${Math.max(0, offset)}`;
   };
   backToTop?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-  window.addEventListener('scroll', toggleBackToTop, { passive: true });
-  toggleBackToTop();
+  const handleScroll = () => {
+    toggleBackToTop();
+    updateScrollProgress();
+  };
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 })();

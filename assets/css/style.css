@@ -1058,8 +1058,8 @@ main > section::before {
   padding: 6px 0;
   font-weight: 350;
   font-size: 1rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: var(--muted);
   opacity: 0.7;
   cursor: pointer;
@@ -1068,6 +1068,10 @@ main > section::before {
   transition: color 220ms ease;
   white-space: nowrap;
   flex: 0 0 auto;
+}
+.page-pubs .pub-filters__tab {
+  font-family: var(--font-body);
+  font-size: var(--type-p);
 }
 .pub-filters__tab[aria-selected="true"] {
   color: var(--text);
@@ -1097,7 +1101,15 @@ main > section::before {
 .pub-item { display: grid; gap: 6px; padding: 16px 0; border-radius: 0; border: none; background: transparent; border-top: 1px solid var(--border); }
 .pub-list .pub-item:first-child { border-top: none; }
 .pub-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-.pub-meta .tag { padding: 4px 12px; border-radius: 999px; background: #f1f5f9; color: #334155; font-size: .85rem; }
+.pub-meta .tag {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--type-p);
+}
 .pub-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .pub-actions .btn { padding: 8px 24px; border-radius: 8px; }
 

@@ -1015,6 +1015,9 @@ main > section::before {
 @media (max-width: 640px) {
   .cards { grid-template-columns: 1fr; }
   .site-footer .footer-grid { grid-template-columns: 1fr; padding: 24px 20px; }
+  .site-footer .footer-grid .footer-col { justify-self: stretch; text-align: left; }
+  .footer-brand { justify-self: center; text-align: center; }
+  .footer-links { justify-items: start; }
   .site-footer .copyright { padding: 12px 20px 20px; }
   .site-header .nav-inner { padding: 0 20px; }
   .about { grid-template-columns: 1fr; }

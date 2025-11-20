@@ -91,32 +91,49 @@
       </section>
 
       <section class="home-contact" id="contact">
-        <h2>Get In Touch</h2>
-        <form id="homeContactForm" action="https://formspree.io/f/your-id" method="POST" class="contact-form">
-          <label class="full">
-            <span>Full Name <span class="muted">(required)</span></span>
-          </label>
-          <label>
-            <span>First Name</span>
-            <input type="text" name="first_name" required />
-          </label>
-          <label>
-            <span>Last Name</span>
-            <input type="text" name="last_name" />
-          </label>
-          <label class="full">
-            <span>Email ID <span class="muted">(required)</span></span>
-            <input type="email" name="email" required />
-          </label>
-          <label class="full">
-            <span>Message <span class="muted">(required)</span></span>
-            <textarea name="message" rows="6" required></textarea>
-          </label>
-          <div class="actions">
-            <button class="btn primary" type="submit">Send Message</button>
-            <a class="btn secondary" href="mailto:you@example.com?subject=Website%20Contact">Send Email</a>
+        <h2>Have a question?</h2>
+        <div class="home-contact__grid">
+          <div class="home-contact__details">
+            <h2>I would love to get in touch!</h2>
+            <p>Drop an email, give a ring, or fill out the form to start a conversation about collaboration ideas or any questions you've got. I'll get back to you within 24 to 48 hours on weekdays. Looking forward to chatting!</p>
+            <ul class="contact-list">
+              <li>
+                <span>Email</span>
+                <a href="mailto:hardikyp@umich.edu">hardikyp[at]umich.edu</a>
+              </li>
+              <li>
+                <span>Phone</span>
+                <a href="tel:+17348821248">+1 (734) 882-1248</a>
+              </li>
+              <li>
+                <span>Location</span>
+                <address>1250 G. G. Brown Laboratories,<br />2350 Hayward St,<br />Ann Arbor, MI 48109</address>
+              </li>
+            </ul>
           </div>
-        </form>
+          <form id="homeContactForm" action="https://formspree.io/f/your-id" method="POST" class="contact-form">
+            <label class="full">
+              <span>Full Name <span class="muted">(required)</span></span>
+            </label>
+            <label>
+              <input type="text" name="first_name" placeholder="First Name" aria-label="First Name" required />
+            </label>
+            <label>
+              <input type="text" name="last_name" placeholder="Last Name" aria-label="Last Name" />
+            </label>
+            <label class="full">
+              <span>Email ID <span class="muted">(required)</span></span>
+              <input type="email" name="email" placeholder="name@example.com" required />
+            </label>
+            <label class="full">
+              <span>Message <span class="muted">(required)</span></span>
+              <textarea name="message" rows="6" placeholder="Your friendly message goes here... :)" required></textarea>
+            </label>
+            <div class="actions">
+              <button class="btn primary" type="submit">Send Message</button>
+            </div>
+          </form>
+        </div>
       </section>
     </main>
     <div data-include="assets/partials/back-to-top.html"></div>

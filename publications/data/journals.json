@@ -28,12 +28,28 @@
       "title": "Transforming static trusses into functional reconfigurable systems using quadrilateral linkage principles",
       "authors": ["Hardik Y. Patil", "Evgueni T. Filipov"],
       "venue": "Under review",
-      "date": "2025-12-31",
+      "date": "2025-11-30",
       "abstract": "Trusses are valued for their simple design principles and efficient load-bearing capability. However, their slow assembly process and static topology restrict rapid deployment and reconfiguration for functional use. Mechanical linkages, in contrast, offer rapid deployability and reconfigurability but are challenging to apply as large-scale civil structures. These challenges raise the question: Can the design versatility of trusses be combined with the kinematic advantages of mechanical linkages to create structurally efficient, deployable, and reconfigurable large-scale systems? To that end, we present a method inspired by flat-foldable quadrilateral linkages to transform static trusses into compactly stowable, reconfigurable systems. An additional node is introduced on the tensile members of triangular units based on Grashof linkage principles. This node converts triangles into flat-foldable quadrilateral linkages, enabling system-level reconfigurability while preserving the load capacity, stiffness and stability of the structure. We show that the Fink, Scissor, and Warren trusses can be transformed into reconfigurable systems, achieving up to 93% and 60% reduction in convex hull area and maximum length, respectively, upon actuation of all degrees of freedom. Our method also extends to topology-optimized trusses, enabling the design of functional, shape-morphing trusses for arbitrary geometries, loads, and support conditions. Proof-of-concept prototypes, including a reconfigurable cantilever and a three-meter Warren truss bridge, validate feasibility while demonstrating load capacities and stiffness comparable to their static counterparts. We believe the proposed method will advance the design, analysis and fabrication of sophisticated bar-linked reconfigurable structures with potential applications in deployable infrastructure, aerospace systems, robotic components, consumer devices, metamaterials, and more.",
       "keywords": ["Reconfigurable trusses", "Shape-morphing trusses", "Foldable trusses", "Four-bar linkages"],
       "links": {
         "preprint": "assets\\docs\\2025_IJSS_preprint_rev_1.pdf",
         "code": "https://github.com/hardikyp/reconfigurable-trusses"
+      }
+    },
+    {
+      "id": "2025-jam-reconfigurable-trusses",
+      "year": 2025,
+      "type": "journal",
+      "status": "in prep",
+      "title": "Three-node torsional spring element formulation for the analysis of bar-linked reconfigurable structures",
+      "authors": ["Hardik Y. Patil", "Evgueni T. Filipov"],
+      "venue": "In prep",
+      "date": "2025-12-31",
+      "abstract": "This technical note presents the derivation, validation, and application of a three-node torsional spring (3NTS) element for the analysis of bar-linked, reconfigurable structures. The 3NTS element assigns rotational stiffness to a joint (node) of two axial force members (bars) in truss-like assemblies. This element avoids the use of rotational degrees of freedom by recasting its resisting moment into equivalent nodal forces, which are consistent with global equilibrium, thereby keeping the model size compact and computationally efficient. The 3NTS is integrated into standard non-linear solvers to simulate large-displacement response and validated against analytical solutions of two benchmark examples: the simplest 3NTS structure and the buckling of a vertical column. We further apply the framework to a reconfigurable truss structure from our previous work to illustrate potential functional use cases and outline its broader applicability to metamaterials, kirigami systems, and biomechanical assemblies. An open-source matrix structural analysis tool implementing the 3NTS and axial force members is made available with this note.",
+      "keywords": ["Reconfigurable trusses", "Shape-morphing trusses", "Foldable trusses", "Four-bar linkages"],
+      "links": {
+        "preprint": "assets\\docs\\2025-JAM-3NT-springs-draft.pdf",
+        "code": "https://github.com/hardikyp/bar-linked-torsional-springs"
       }
     }
   ]

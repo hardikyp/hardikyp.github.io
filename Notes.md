@@ -15,13 +15,10 @@ Need a studio/art gallery type effect.
 # TYPOGRAPHY
 
 ## Font size
-
 - Set a base size for paragraph at 16px
-- The scale up everything by stops of 1.25
-- Eg. hg = 1.25p
+- Then scale up everything by stops of 1.25. Eg. h6 = 1.25*p, h5 = 1.25*h6
 
 ## Letter spacing
-
 - p: default
 - h6: -0.5%
 - h3: -1.5%
@@ -29,7 +26,6 @@ Need a studio/art gallery type effect.
 
 
 ## Line height
-
 - p: 150%
 - h4: 130%
 - h2: 110%

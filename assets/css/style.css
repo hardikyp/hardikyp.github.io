@@ -39,19 +39,19 @@
   --btn-radius: var(--radius-md);
   --btn-padding-y: var(--space-2);
   --btn-padding-x: var(--space-5);
-  --btn-font: 1rem;
+  --btn-font: var(--type-p);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
   padding: var(--btn-padding-y) var(--btn-padding-x);
   border-radius: var(--btn-radius);
-  font-weight: 500;
+  font-weight: 400;
   border: 1px solid var(--btn-border);
   text-align: center;
   transition: transform 160ms ease, background-color 160ms ease, color 160ms ease, border-color 160ms ease;
   font-family: var(--font-body);
-  letter-spacing: 0.22px;
+  letter-spacing: normal;
   background: var(--btn-bg);
   color: var(--btn-color);
   font-size: var(--btn-font);
@@ -67,16 +67,23 @@
   --btn-border: transparent;
   --btn-padding-x: 0;
 }
+.btn.tertiary:hover,
+.btn.tertiary:focus-visible {
+  transform: translateX(6px);
+}
 .btn.tertiary::after { content: "→"; display: inline-block; margin-left: var(--space-1); transition: transform 160ms ease; }
 .btn.tertiary:hover::after,
-.btn.tertiary:focus-visible::after { transform: translateX(6px); }
+.btn.tertiary:focus-visible::after { transform: translateX(0); }
+.btn.tertiary:active {
+  transform: translate3d(6px, 1px, 0);
+}
 .btn.solid { --btn-bg: var(--color-primary); --btn-color: var(--color-on-primary); }
 .btn.solid:hover { background: var(--color-primary-strong); }
 .btn.outline { --btn-bg: transparent; --btn-color: var(--color-text); --btn-border: var(--color-primary); }
 .btn.outline:hover { border-color: var(--color-primary-strong); }
 .btn.full { display: flex; width: 100%; }
-.btn.sm { --btn-padding-y: var(--space-1); --btn-padding-x: var(--space-3); --btn-font: 0.9rem; }
-.btn.lg { --btn-padding-y: calc(var(--space-2) + 4px); --btn-padding-x: var(--space-6); --btn-font: 1.05rem; }
+.btn.sm { --btn-padding-y: var(--space-1); --btn-padding-x: var(--space-3); }
+.btn.lg { --btn-padding-y: calc(var(--space-2) + 4px); --btn-padding-x: var(--space-6); }
 
 /* Hamburger */
 .hamburger { display: none; width: 42px; height: 42px; border-radius: 8px; border: none; background: transparent; align-items: center; justify-content: center; gap: 5px; cursor: pointer; transition: background 160ms ease; flex-direction: column; position: relative; z-index: 1600; }

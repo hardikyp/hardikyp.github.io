@@ -1100,15 +1100,16 @@ main > section::before {
 .pub-list { display: grid; gap: 0; padding-left: 0; }
 .pub-item { display: grid; gap: 6px; padding: 16px 0; border-radius: 0; border: none; background: transparent; border-top: 1px solid var(--border); }
 .pub-list .pub-item:first-child { border-top: none; }
-.pub-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.pub-meta { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
 .pub-meta .tag {
-  padding: 4px 12px;
+  padding: 2px 10px;
   border-radius: 999px;
   background: var(--color-primary);
   color: var(--color-on-primary);
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: var(--type-p);
+  font-weight: 500;
+  font-size: calc(var(--type-p) * 0.85);
+  line-height: 1.2;
 }
 .pub-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .pub-actions .btn { padding: 8px 24px; border-radius: 8px; }

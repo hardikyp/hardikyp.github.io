@@ -125,7 +125,10 @@
     </div>
   </div>
   <div class="copyright">&copy; <span id="year"></span> Hardik Patil. All Rights Reserved.</div>
-</footer>`
+</footer>`,
+    'assets/partials/back-to-top.html': `<button class="back-to-top" type="button" aria-label="Back to top">
+  <span class="back-to-top__icon" aria-hidden="true"></span>
+</button>`
   };
 
   function replaceWithFallback(el, url) {

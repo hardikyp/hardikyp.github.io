@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="120" viewBox="0 0 160 120">
-  <rect width="160" height="120" rx="20" fill="#eef6ff"/>
-  <path d="M44 86h72l-12-48H56z" fill="#cbdceb"/>
-  <path d="M72 32h16v16h-16z" fill="#243D58" opacity="0.25"/>
-  <path d="M52 74h56l-8-32H60z" fill="#26374D" opacity="0.18"/>
-  <circle cx="80" cy="80" r="10" fill="#26374D" opacity="0.25"/>
-  <text x="80" y="104" text-anchor="middle" font-family="'Montserrat', 'Segoe UI', sans-serif" font-size="18" fill="#243D58" letter-spacing="3">EVENT</text>
-</svg>

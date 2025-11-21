@@ -19,7 +19,7 @@
       "date": "2025-04-08",
       "excerpt": "Hardik received the Rackham Doctoral Internship Fellowship to support his internship at Thornton Tomasetti during Summer 2025.",
       "detail": "<p>Hardik received the Rackham Doctoral Internship Fellowship to support his internship at Thornton Tomasetti during Summer 2025. The fellowship enables doctoral candidates to explore career pathways outside academia while applying their research expertise in industry.</p>",
-      "image": { "src": "assets/img/updates/rdifp.jpg", "alt": "rdifp.logo" },
+      "image": { "src": "assets/img/updates/rdifp.png", "alt": "rdifp.logo" },
       "gallery": []
     },
     {
@@ -29,7 +29,7 @@
       "date": "2024-09-11",
       "excerpt": "Hardik’s paper “Rapidly deployable hulls and on-demand tunable hydrodynamics with shape morphed curved crease origami,” co-authored with K. J. Maki and E. T. Filipov, has been published in the Journal of Fluids and Structures.",
       "detail": "<p>Hardik’s paper “Rapidly deployable hulls and on-demand tunable hydrodynamics with shape morphed curved crease origami,” co-authored with K. J. Maki and E. T. Filipov, was published in the Journal of Fluids and Structures. The article demonstrates how origami-inspired morphing surfaces can be used to tune hydrodynamic performance on demand.</p>",
-      "image": { "src": "assets/img/updates/jlfs-cover.jpg", "alt": "Journal of Fluids and Structures cover illustration" },
+      "image": { "src": "assets/img/updates/jlfs-cover.png", "alt": "Journal of Fluids and Structures cover illustration" },
       "gallery": []
     },
     {
@@ -59,7 +59,7 @@
       "date": "2022-11-01",
       "excerpt": "Hardik was a finalist in the student poster competition at ASME’s IMECE 2022 in Columbus, Ohio, presenting “Adaptable Hull Hydrodynamics using Shape Morphing Curved-Crease Origami.”",
       "detail": "<p>Hardik was a finalist in the student poster competition at ASME’s International Mechanical Engineering Congress and Exposition (IMECE) 2022, held in Columbus, Ohio. His poster, “Adaptable Hull Hydrodynamics using Shape Morphing Curved-Crease Origami,” highlighted adaptive marine structures inspired by origami geometry.</p>",
-      "image": { "src": "assets/img/updates/imece.jpg", "alt": "imece-logo" },
+      "image": { "src": "assets/img/updates/imece.png", "alt": "imece-logo" },
       "gallery": []
     },
     {
@@ -79,7 +79,7 @@
       "date": "2021-09-01",
       "excerpt": "Hardik received the Michigan Institute for Computational Discovery and Engineering (MICDE) fellowship and began joint doctoral studies in Civil (Structural) Engineering and Scientific Computing at the University of Michigan.",
       "detail": "<p>Hardik was awarded the Michigan Institute for Computational Discovery and Engineering (MICDE) fellowship and began joint doctoral studies in Civil (Structural) Engineering and Scientific Computing at the University of Michigan, focusing on adaptable structural systems.</p>",
-      "image": { "src": "assets/img/updates/micde.jpeg", "alt": "micde-logo" },
+      "image": { "src": "assets/img/updates/micde.png", "alt": "micde-logo" },
       "gallery": []
     },
     {

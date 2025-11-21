@@ -1,27 +1,63 @@
 {
   "projects": [
     {
-      "slug": "deployable-bridges",
-      "title": "Deployable Bridges: Kinematics to Nonlinear Mechanics",
-      "years": "2023–present",
-      "summary": "End-to-end workflow for adaptive, quickly deployable bridge systems.",
-      "card": { "image": "assets/img/placeholder.jpg", "alt": "Bridge graphic" },
-      "abstract": "<p>We develop a computational pipeline coupling origami-based kinematics with nonlinear structural analysis to design reconfigurable bridges that can be rapidly deployed under load.</p>",
+      "slug": "",
+      "title": "",
+      "years": "",
+      "summary": "",
+      "card": { "image": "", "alt": "" },
+      "abstract": "<p></p>",
       "detail": {
-        "images": [ {"src": "assets/img/updates/publication.svg", "alt": "Bridge"} ],
-        "body": "<p>More detailed description of objectives, methods, and findings. Include figures and links as needed.</p>"
+        "images": [ {"src": "", "alt": ""} ],
+        "body": "<p></p>"
       }
     },
     {
-      "slug": "deployable-bridges",
-      "title": "Deployable Bridges: Kinematics to Nonlinear Mechanics",
-      "years": "2023–present",
-      "summary": "End-to-end workflow for adaptive, quickly deployable bridge systems.",
+      "slug": "",
+      "title": "",
+      "years": "",
+      "summary": "",
+      "card": { "image": "", "alt": "" },
+      "abstract": "<p></p>",
+      "detail": {
+        "images": [ {"src": "", "alt": ""} ],
+        "body": "<p></p>"
+      }
+    },
+    {
+      "slug": "reconfigurable-origami-ship-hulls",
+      "title": "Shape-morphing Curved-crease Origami Hulls for Rapid Deployment and Tunable Hydrodynamics",
+      "years": "2023",
+      "summary": "",
+      "card": { "image": "", "alt": "" },
+      "abstract": "<p></p>",
+      "detail": {
+        "images": [ {"src": "", "alt": ""} ],
+        "body": "<p>Implemented the principles of curved-crease origami to develop a method for the rapid fabrication of planing hulls from flat sheets, enabling the creation of deployable hulls that match traditional hull shapes and emulate desired hydrodynamics. Demonstrated the shape-morphing ability of curved-crease origami hulls, enabling on-demand transition between low and high deadrise configurations to optimize hydrodynamic efficiency and passenger comfort across varying water conditions.</p>"
+      }
+    },
+    {
+      "slug": "bridges-in-hurricane",
+      "title": "Hurricane Induced Surge and Wave forces on Coastal Bridges",
+      "years": "2019",
+      "summary": "Bachelor Technical Project studying hurricane induced forces on coastal bridge decks.",
       "card": { "image": "assets/img/placeholder.jpg", "alt": "Bridge graphic" },
-      "abstract": "<p>We develop a computational pipeline coupling origami-based kinematics with nonlinear structural analysis to design reconfigurable bridges that can be rapidly deployed under load.</p>",
+      "abstract": "<p>Lorem Ipsum.</p>",
       "detail": {
         "images": [ {"src": "assets/img/updates/publication.svg", "alt": "Bridge"} ],
-        "body": "<p>More detailed description of objectives, methods, and findings. Include figures and links as needed.</p>"
+        "body": "<p>Investigated deck unseating in coastal bridges subjected to hurricane-induced storm surges and wave impacts. Performed fluid-structure interaction analysis of coastal highway bridge deck in ANSYS, simulating wave-induced forces across surge levels, and validating uplift and slamming forces against experimental data.</p>"
+      }
+    },
+    {
+      "slug": "soil-moisture-mapping",
+      "title": "Soil Moisture Mapping Using P-Band Radiometer",
+      "years": "2018",
+      "summary": "End-to-end workflow for adaptive, quickly deployable bridge systems.",
+      "card": { "image": "assets/img/placeholder.jpg", "alt": "Bridge graphic" },
+      "abstract": "<p>Lorem Ipsum.</p>",
+      "detail": {
+        "images": [ {"src": "assets/img/updates/publication.svg", "alt": "Bridge"} ],
+        "body": "<p>Collected ground samples to create a time series dataset of parameters including soil moisture, temperature, ground roughness, particle size distribution, vegetation water content and normalized difference vegetation index (NDVI). Analyzed ground and radiometer data to support development of a soil-moisture retrieval algorithm in the P-band spectrum, demonstrating 15~cm penetrability compared to 5~cm for L-band radiometers.</p>"
       }
     }
   ]

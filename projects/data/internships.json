@@ -1,18 +1,10 @@
 { "projects": [
   {
-    "slug": "industry-intern-structural-tools",
-    "title": "Internship: Structural Analysis Tooling",
-    "years": "Summer 2023",
-    "summary": "Built internal toolchains to automate analysis workflows and reporting.",
+    "slug": "industry-intern-project",
+    "title": "Single-zone fire simulator for mass-timber structures",
+    "years": "2025",
+    "summary": "Developed a single-zone fire simulator in Python to predict char-depth and gas temperatures in mass timber structures.",
     "card": { "image": "assets/img/placeholder.jpg", "alt": "Tools" },
-    "detail": { "body": "<p>Scope of work, stack, and impact. Screenshots and examples.</p>" }
-  },
-  {
-    "slug": "industry-intern-structural-tools",
-    "title": "Internship: Structural Analysis Tooling",
-    "years": "Summer 2023",
-    "summary": "Built internal toolchains to automate analysis workflows and reporting.",
-    "card": { "image": "assets/img/placeholder.jpg", "alt": "Tools" },
-    "detail": { "body": "<p>Scope of work, stack, and impact. Screenshots and examples.</p>" }
+    "detail": { "body": "<p>Developed a single-zone fire simulator by implementing a one-dimensional heat transfer solver in Python, predicting char depth in mass-timber members to support structural performance assessments in various fire scenarios.</p>" }
   }
 ] }

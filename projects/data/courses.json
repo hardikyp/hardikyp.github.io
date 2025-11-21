@@ -1,18 +1,58 @@
 { "projects": [
   {
-    "slug": "grad-kinematics-course",
-    "title": "Graduate Course Project: Mechanism Kinematics",
-    "years": "2024",
-    "summary": "Designed and analyzed a reconfigurable mechanism as a course capstone.",
+    "slug": "machine-learning-course-project",
+    "title": "Solving Wordle using Deep Reinforcement Learning",
+    "years": "2022",
+    "summary": "Using Advantage actor-critic deep reinforcement learning algorithm to solve Worlve.",
     "card": { "image": "assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
-    "detail": { "body": "<p>Course objectives, methods, and outcomes with select figures.</p>" }
+    "detail": { "body": "<p>Implemented the Advantage Actor-Critic Deep Reinforcement Learning method to solve 4, 5, and 6-letter variations of Wordle with varying dictionary sizes, demonstrating expertise in advanced machine learning techniques and algorithms.</p>" }
   },
   {
-    "slug": "grad-kinematics-course",
-    "title": "Graduate Course Project: Mechanism Kinematics",
-    "years": "2024",
-    "summary": "Designed and analyzed a reconfigurable mechanism as a course capstone.",
+    "slug": "wood-engineering-course-project",
+    "title": "Analysis of a Wooden Arch Bridge using STAAD.Pro",
+    "years": "2021",
+    "summary": "Performed a comprehensive analysis of glued laminated  members of the Eagle River Timber Bridge (Michigan, USA) using STAAD.Pro and AITC 1994 Code.",
     "card": { "image": "assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
-    "detail": { "body": "<p>Course objectives, methods, and outcomes with select figures.</p>" }
+    "detail": { "body": "<p>Performed a comprehensive analysis of glued laminated  members of the Eagle River Timber Bridge (Michigan, USA) using STAAD.Pro and AITC 1994 Code, accounting for load combinations as per AASHTO LRFD guidelines.</p>" }
+  },
+  {
+    "slug": "optimization-course-project",
+    "title": "Optimization of Traffic Flow Network",
+    "years": "2021",
+    "summary": "Optimized the total travel time for a transportation network of centrally guided, autonomous vehicles.",
+    "card": { "image": "assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
+    "detail": { "body": "<p>Optimized the total travel time for a transportation network of centrally guided, autonomous vehicles by utilizing the General Algebraic Modeling System.</p>" }
+  },
+  {
+    "slug": "sensors-course-project",
+    "title": "Arduino-driven Equatorial Mount (Star Tracker) for Astrophotography",
+    "years": "2021",
+    "summary": "Designed and fabricated an Arduino-driven equatorial mount under $50 for tracking deep-sky objects.",
+    "card": { "image": "assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
+    "detail": { "body": "<p>Designed and fabricated an Arduino-driven equatorial mount under $50, optimized for tracking deep-sky objects and capturing high-quality astrophotographs.</p>" }
+  },
+  {
+    "slug": "deployable-structures-course-project",
+    "title": "Origami Inspired Foldable Bridge with Rigid Thick Panels",
+    "years": "2020",
+    "summary": "Modeling thick zipper-coupled Miura origami tubes in Fusion 360.",
+    "card": { "image": "assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
+    "detail": { "body": "<p>Utilized Fusion360 to model the kinematics of zipper-coupled Miura origami tubes, incorporating rigid thick panels to develop a flat-packable, deployable bridge.</p>" }
+  },
+  {
+    "slug": "nonlinear-analysis-course-project",
+    "title": "Geometric Non-linear Analysis of Truss Structures",
+    "years": "2020",
+    "summary": "Developed a matrix structural analysis program in MATLAB to perform geometric non-linear analysis of 2D truss structures.",
+    "card": { "image": "assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
+    "detail": { "body": "<p>Developed a matrix structural analysis program in MATLAB by implementing Newton-Raphson and Arc-Length methods to perform geometric non-linear analysis of 2D truss structures, capable of capturing snap-through behavior.</p>" }
+  },
+  {
+    "slug": "image-processing-course-project",
+    "title": "Delineation of Water Bodies from Satellite Imagery",
+    "years": "2017",
+    "summary": "Developed a MATLAB program that generates a binary image for delineating water bodies from LANDSAT-8 satellite images.",
+    "card": { "image": "assets/img/placeholder.jpg", "alt": "Mechanism graphic" },
+    "detail": { "body": "<p>Developed a MATLAB program that generates a binary image for delineating water bodies from LANDSAT-8 satellite images using Normalized Difference Water Index (NDWI), Modified NDWI, and Automated Water Extraction Index.</p>" }
   }
 ] }

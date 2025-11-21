@@ -3,15 +3,7 @@
     "slug": "portfolio-site-refresh",
     "title": "Portfolio Website Refresh",
     "years": "2025",
-    "summary": "Design and frontend refactor with modular includes and data-driven pages.",
-    "card": { "image": "assets/img/placeholder.jpg", "alt": "Web" },
-    "detail": { "body": "<p>Goals, design choices, and implementation details.</p>" }
-  },
-  {
-    "slug": "portfolio-site-refresh",
-    "title": "Portfolio Website Refresh",
-    "years": "2025",
-    "summary": "Design and frontend refactor with modular includes and data-driven pages.",
+    "summary": "Design, developed and deployed the website you are reading this content on! :)",
     "card": { "image": "assets/img/placeholder.jpg", "alt": "Web" },
     "detail": { "body": "<p>Goals, design choices, and implementation details.</p>" }
   }

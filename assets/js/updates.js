@@ -20,21 +20,30 @@
     url: u.url || `updates/view.html?slug=${encodeURIComponent(u.slug)}`
   });
 
-  const cardHTML = (u) => `
-    <article class="update-card">
-      <a class="update-card__media" href="${u.url}">
-        <img src="${u.image?.src || 'assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" />
-      </a>
-      <div class="update-card__content">
-        <h3 class="update-card__title"><a href="${u.url}">${u.title}</a></h3>
-        <div class="update-card__meta">
-          ${u.tag ? `<span class="update-tag">${u.tag}</span>` : ''}
-          ${u.date ? `<time datetime="${u.date}">${new Date(u.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</time>` : ''}
+  const cardHTML = (u) => {
+    const formattedDate = u.date
+      ? new Date(u.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })
+      : '';
+    return `
+      <article class="update-card">
+        <div class="update-card__header">
+          <a class="update-card__logo" href="${u.url}">
+            <img src="${u.image?.src || 'assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" />
+          </a>
+          <div class="update-card__heading">
+            <h3 class="update-card__title"><a href="${u.url}">${u.title}</a></h3>
+            <div class="update-card__meta">
+              ${u.tag ? `<span class="update-tag">${u.tag}</span>` : ''}
+              ${formattedDate ? `<time datetime="${u.date}">${formattedDate}</time>` : ''}
+            </div>
+          </div>
         </div>
-        ${u.excerpt ? `<p class="update-card__excerpt">${u.excerpt}</p>` : ''}
-        <a class="btn tertiary" href="${u.url}">Read more</a>
-      </div>
-    </article>`;
+        <div class="update-card__body">
+          ${u.excerpt ? `<p class="update-card__excerpt">${u.excerpt}</p>` : ''}
+          <a class="btn tertiary" href="${u.url}">Read more</a>
+        </div>
+      </article>`;
+  };
 
   const render = (arr) => {
     feed.innerHTML = '';

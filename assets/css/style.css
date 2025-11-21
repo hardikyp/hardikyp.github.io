@@ -1011,7 +1011,7 @@ main > section::before {
 
 /* Footer */
 .site-footer { background: #fff; }
-.site-footer .footer-grid { --content-inline-pad: 50px; padding: 28px var(--content-inline-pad); display: grid; grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.site-footer .footer-grid { --content-inline-pad: 50px; padding: 28px var(--content-inline-pad); display: grid; grid-template-columns: 1fr auto auto; gap: 24px; align-items: start; }
 .footer-brand { display: grid; justify-items: center; gap: 16px; text-align: center; justify-self: start; }
 .footer-brand img { width: 200px; height: auto; }
 .footer-brand .logo-link { display: inline-flex; align-items: center; justify-content: center; }
@@ -1061,7 +1061,7 @@ main > section::before {
   .site-header .nav-inner { grid-template-columns: 1fr auto; --content-inline-pad: 50px; padding: 0 var(--content-inline-pad); }
   .cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .cards.single { grid-template-columns: 1fr; }
-  .site-footer .footer-grid { grid-template-columns: 1fr 1fr; }
+  .site-footer .footer-grid { grid-template-columns: 1fr auto auto; }
   .home-contact__grid { grid-template-columns: 1fr; }
 }
 

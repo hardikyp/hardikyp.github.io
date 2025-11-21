@@ -1,9 +1,9 @@
 @import url('./base.css');
 
 /* Header */
-.site-header { position: sticky; top: 0; z-index: 1100; background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(10px); transition: height 160ms ease, background 160ms ease; }
+.site-header { position: sticky; top: 0; z-index: 1100; background: transparent; backdrop-filter: none; box-shadow: none; transition: height 160ms ease, background 160ms ease, backdrop-filter 160ms ease, box-shadow 160ms ease; }
 .site-header .nav-inner { height: var(--header-h); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--space-3); padding: 0 clamp(1.5rem, 4vw, 3.5rem); max-width: none; width: 100%; margin: 0; }
-.site-header.scrolled { background: rgba(255,255,255,0.95); }
+.site-header.scrolled { background: rgba(255,255,255,0.95); backdrop-filter: saturate(180%) blur(10px); box-shadow: 0 16px 32px rgba(15,23,42,0.08); }
 .site-header.scrolled .nav-inner { height: var(--header-h-scrolled); }
 
 .logo { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 700; }

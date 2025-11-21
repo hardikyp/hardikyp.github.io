@@ -18,15 +18,13 @@
   }
 
   // Shrink header on scroll
-  let lastKnownY = 0;
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY || window.pageYOffset;
-    if (Math.abs(y - lastKnownY) > 4) {
-      if (y > 10) header?.classList.add('scrolled');
-      else header?.classList.remove('scrolled');
-      lastKnownY = y;
-    }
-  }, { passive: true });
+  const updateHeaderState = () => {
+    const y = window.scrollY || window.pageYOffset || 0;
+    if (!header) return;
+    header.classList.toggle('scrolled', y > 10);
+  };
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+  updateHeaderState();
 
   const openMenu = () => {
     mobileMenu?.classList.add('open');

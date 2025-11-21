@@ -53,6 +53,8 @@
   --header-h: 72px;
   --header-h-scrolled: 72px;
   --pub-abstract-maxh: 400px;
+  --content-max-width: 1200px;
+  --section-inline-pad: clamp(16px, 4vw, 48px);
   /* legacy aliases */
   --bg: var(--color-bg);
   --bg-secondary: var(--color-surface);

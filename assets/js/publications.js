@@ -186,39 +186,56 @@
       app.appendChild(y);
     });
 
-    // Toggle
-    app.querySelectorAll('.pub-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.pub-item');
-        const body = item.querySelector('.pub-body');
-        const isOpening = !item.classList.contains('open');
-        item.classList.toggle('open');
-        btn.setAttribute('aria-expanded', String(isOpening));
-        if (isOpening) {
-          body.removeAttribute('hidden');
+    const toggleItemState = (item, expand) => {
+      if (!item) return;
+      const body = item.querySelector('.pub-body');
+      const btn = item.querySelector('.pub-toggle');
+      if (!body || !btn) return;
+      const isOpen = item.classList.contains('open');
+      const shouldOpen = typeof expand === 'boolean' ? expand : !isOpen;
+      if (shouldOpen === isOpen) return;
+      item.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', String(shouldOpen));
+      if (shouldOpen) {
+        body.removeAttribute('hidden');
+        body.style.maxHeight = '0px';
+        body.style.opacity = '0';
+        requestAnimationFrame(() => {
+          body.style.maxHeight = body.scrollHeight + 'px';
+          body.style.opacity = '1';
+        });
+        const onEnd = (e) => {
+          if (e.propertyName === 'max-height') {
+            body.style.maxHeight = 'none';
+            body.removeEventListener('transitionend', onEnd);
+          }
+        };
+        body.addEventListener('transitionend', onEnd);
+      } else {
+        body.style.maxHeight = (body.scrollHeight || 0) + 'px';
+        body.style.opacity = '1';
+        requestAnimationFrame(() => {
           body.style.maxHeight = '0px';
           body.style.opacity = '0';
-          requestAnimationFrame(() => {
-            body.style.maxHeight = body.scrollHeight + 'px';
-            body.style.opacity = '1';
-          });
-          const onEnd = (e) => {
-            if (e.propertyName === 'max-height') {
-              body.style.maxHeight = 'none';
-              body.removeEventListener('transitionend', onEnd);
-            }
-          };
-          body.addEventListener('transitionend', onEnd);
-        } else {
-          // collapse
-          body.style.maxHeight = (body.scrollHeight || 0) + 'px';
-          body.style.opacity = '1';
-          requestAnimationFrame(() => {
-            body.style.maxHeight = '0px';
-            body.style.opacity = '0';
-          });
-          setTimeout(() => { body.setAttribute('hidden',''); }, 280);
-        }
+        });
+        const hideBody = () => {
+          body.setAttribute('hidden', '');
+          body.removeEventListener('transitionend', hideBody);
+        };
+        body.addEventListener('transitionend', hideBody);
+        setTimeout(() => {
+          if (!item.classList.contains('open')) body.setAttribute('hidden', '');
+        }, 280);
+      }
+    };
+
+    app.querySelectorAll('.pub-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        const actionLink = e.target.closest('.pub-actions a');
+        if (actionLink) return;
+        const interactive = e.target.closest('a, button');
+        if (interactive && !interactive.classList.contains('pub-toggle')) return;
+        toggleItemState(item);
       });
     });
 

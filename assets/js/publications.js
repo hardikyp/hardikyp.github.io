@@ -133,8 +133,13 @@
     app.innerHTML = '';
     years.forEach(year => {
       const y = document.createElement('section');
-      y.innerHTML = `<h2 class="pub-year">${year}</h2><div class="pub-list"></div>`;
-      const list = y.querySelector('.pub-list');
+      const heading = document.createElement('h2');
+      heading.className = 'pub-year';
+      heading.textContent = year;
+      const list = document.createElement('div');
+      list.className = 'pub-list';
+      y.appendChild(heading);
+      y.appendChild(list);
       byYear[year].forEach(p => {
         const cat = normalizeCat(p.type);
         const item = document.createElement('article');

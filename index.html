@@ -40,7 +40,7 @@
     <main id="main" tabindex="-1">
       <section class="hero hero--home">
         <div class="hero__content">
-          <h1>Designing structures<br>that <span class="hero-highlight">MOVE</span>.</h1>
+          <h1>DESIGNING STRUCTURES<br>THAT <span class="hero-highlight">MOVE</span>.</h1>
           <p class="hero__intro">Meet Hardik Patil, a structural engineering PhD candidate who works on analysis and design tools for deployable and reconfigurable systems.</p>
           <div class="hero-cta">
             <a class="btn primary" href="assets/docs/Hardik_Patil_CV.pdf" download>View CV</a>
@@ -51,7 +51,7 @@
 
       <section class="updates-preview">
         <div class="updates-preview__heading">
-          <h2>Latest in Hardik's life</h2>
+          <h2>LATEST IN HARDIK'S LIFE</h2>
         </div>
         <div class="update-list"></div>
         <div class="updates-preview__more">
@@ -64,7 +64,7 @@
           <img src="assets/img/portrait.jpg" alt="Portrait of Hardik Patil" />
         </div>
         <div class="about-content">
-          <h2>About Hardik</h2>
+          <h2>ABOUT HARDIK</h2>
           <hr class="section-rule" />
           <p>Hardik grew up in Nasik, Maharashtra, where his passion for understanding how structures come to life sparked early, thanks to conversations with his civil engineer father. This curiosity led him to earn a Bachelor of Technology with Honors in civil engineering from the Indian Institute of Technology Bombay. Next, he packed his bags for Ann Arbor, Michigan, where he’s now pursuing his PhD in civil engineering and scientific computing at the University of Michigan after obtaining his Master’s there.</p>
           <p>Hardik’s research is all about making structures deployable and more adaptable. He focuses on developing tools to simulate the kinematics and mechanics of reconfigurable, origami-inspired, thin-shelled, and bar-linked structures. He’s a published author in the Journal of Fluids and Structures and presented at top conferences like ASCE’s EMI and ASME’s IMECE. Teaching as a Graduate Student Instructor for a course on adaptable and deployable structures has added another layer of depth to his academic experience.</p>
@@ -89,10 +89,10 @@
       </section>
 
       <section class="home-contact" id="contact">
-        <h2>Have a question?</h2>
+        <h2>HAVE A QUESTION?</h2>
         <div class="home-contact__grid">
           <div class="home-contact__details">
-            <h3>I would love to get in touch!</h3>
+            <h3>Let us get in touch!</h3>
             <p>Drop an email, give a ring, or fill out the form to start a conversation about collaboration ideas or any questions you've got. I'll get back to you within 24 to 48 hours on weekdays. Looking forward to chatting!</p>
             <ul class="contact-list">
               <li>
@@ -105,27 +105,34 @@
               </li>
               <li>
                 <span>Location</span>
-                <address>1250 G. G. Brown Laboratories,<br />2350 Hayward St,<br />Ann Arbor, MI 48109</address>
+                <address>2350 Hayward St,<br/>1250 G. G. Brown Laboratories,<br/>Ann Arbor, Michigan - 48109</address>
               </li>
             </ul>
           </div>
           <form id="homeContactForm" action="https://formspree.io/f/your-id" method="POST" class="contact-form">
-            <label class="full">
-              <span>Full Name <span class="muted">(required)</span></span>
+            <label class="field">
+              <input type="text" name="first_name" placeholder=" " required />
+              <span class="field__label">First Name *</span>
+              <span class="field__base" aria-hidden="true"></span>
+              <span class="field__underline" aria-hidden="true"></span>
             </label>
-            <label>
-              <input type="text" name="first_name" placeholder="First Name" aria-label="First Name" required />
+            <label class="field">
+              <input type="text" name="last_name" placeholder=" " />
+              <span class="field__label">Last Name</span>
+              <span class="field__base" aria-hidden="true"></span>
+              <span class="field__underline" aria-hidden="true"></span>
             </label>
-            <label>
-              <input type="text" name="last_name" placeholder="Last Name" aria-label="Last Name" />
+            <label class="field full">
+              <input type="email" name="email" placeholder=" " required />
+              <span class="field__label">Email ID *</span>
+              <span class="field__base" aria-hidden="true"></span>
+              <span class="field__underline" aria-hidden="true"></span>
             </label>
-            <label class="full">
-              <span>Email ID <span class="muted">(required)</span></span>
-              <input type="email" name="email" placeholder="name@example.com" required />
-            </label>
-            <label class="full">
-              <span>Message <span class="muted">(required)</span></span>
-              <textarea name="message" rows="6" placeholder="Your friendly message goes here... :)" required></textarea>
+            <label class="field field--textarea full">
+              <textarea name="message" rows="6" required></textarea>
+              <span class="field__label">Message *</span>
+              <span class="field__base" aria-hidden="true"></span>
+              <span class="field__underline" aria-hidden="true"></span>
             </label>
             <div class="actions">
               <button class="btn primary" type="submit">Send Message</button>

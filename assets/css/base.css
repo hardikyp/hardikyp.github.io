@@ -22,6 +22,13 @@
   --color-primary: #213a56;
   --color-primary-strong: hsl(212, 45%, 30%);
   --color-on-primary: #ffffff;
+  /* neutral palette from white to black for flexible UI accents */
+  --color-neutral-50: #ffffff;
+  --color-neutral-200: #e0e0e0;
+  --color-neutral-400: #a6a6a6;
+  --color-neutral-600: #6c6c6c;
+  --color-neutral-800: #353535;
+  --color-neutral-1000: #000000;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;

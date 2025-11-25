@@ -15,15 +15,24 @@
     return errs;
   };
 
+  const toDisplayDate = (iso) => {
+    if (!isISODate(iso)) return '';
+    const parts = iso.split('-').map(Number);
+    if (parts.length !== 3 || parts.some(Number.isNaN)) return '';
+    const [y, m, d] = parts;
+    const local = new Date(y, m - 1, d);
+    return Number.isNaN(local.getTime())
+      ? ''
+      : local.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+  };
+
   const normalize = (u) => ({
     ...u,
     url: u.url || `updates/view.html?slug=${encodeURIComponent(u.slug)}`
   });
 
   const cardHTML = (u) => {
-    const formattedDate = u.date
-      ? new Date(u.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })
-      : '';
+    const formattedDate = toDisplayDate(u.date);
     return `
       <article class="update-card">
         <div class="update-card__header">

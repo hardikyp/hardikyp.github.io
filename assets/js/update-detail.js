@@ -10,7 +10,14 @@
     body: document.getElementById('viewBody')
   };
 
-  const toDateStr = (d) => new Date(d).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' });
+  const toDateStr = (iso) => {
+    if (!iso || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return '';
+    const [y, m, d] = iso.split('-').map(Number);
+    const local = new Date(y, m - 1, d);
+    return Number.isNaN(local.getTime())
+      ? ''
+      : local.toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' });
+  };
 
   const load = async () => {
     try {
@@ -26,7 +33,13 @@
       // Populate
       el.title.textContent = u.title || 'Update';
       if (u.tag) el.tag.textContent = u.tag; else el.tag.style.display = 'none';
-      if (u.date) { el.date.setAttribute('datetime', u.date); el.date.textContent = toDateStr(u.date); } else el.date.style.display = 'none';
+      if (u.date) {
+        el.date.setAttribute('datetime', u.date);
+        const displayDate = toDateStr(u.date);
+        if (displayDate) el.date.textContent = displayDate; else el.date.style.display = 'none';
+      } else {
+        el.date.style.display = 'none';
+      }
       const detailHTML = u.detail || u.body || (u.excerpt ? `<p>${u.excerpt}</p>` : '');
       el.body.innerHTML = detailHTML;
       if (Array.isArray(u.gallery) && u.gallery.length) {

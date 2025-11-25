@@ -27,6 +27,14 @@
   };
 
   const host = document.querySelector('.updates-feed') || document.body;
+  const formatISODate = (iso) => {
+    if (!iso || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return '';
+    const [y, m, d] = iso.split('-').map(Number);
+    const local = new Date(y, m - 1, d);
+    return Number.isNaN(local.getTime())
+      ? ''
+      : local.toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' });
+  };
   const wrap = document.createElement('section');
   wrap.style.cssText = 'padding:24px 16px; max-width:960px; margin:0 auto; border:1px dashed var(--border); border-radius:12px; background:#fff;';
   wrap.innerHTML = `
@@ -74,6 +82,7 @@
     const copyBtn = wrap.querySelector('#copyAll');
 
   const tplHTML = (d) => {
+    const displayDate = formatISODate(d.date) || d.date;
     const galleryMarkup = Array.isArray(d.gallery) && d.gallery.length
       ? `<div class="update-gallery">
 ${d.gallery.map((g) => {
@@ -105,7 +114,7 @@ ${d.gallery.map((g) => {
       <section class="hero hero--update">
         <div class="update-detail__meta">
           <span class="update-tag">${d.tag}</span>
-          <time datetime="${d.date}">${new Date(d.date).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' })}</time>
+          <time datetime="${d.date}">${displayDate}</time>
         </div>
         <h1>${d.title}</h1>
       </section>

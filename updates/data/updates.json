@@ -1,12 +1,24 @@
 {
   "updates": [
     {
+      "slug": "thornton-tomasetti-forensics-internship",
+      "title": "Summer internship at Thornton Tomasetti, San Francisco",
+      "tag": "Milestone",
+      "date": "2025-06-02",
+      "excerpt": "I interned at Thornton Tomasetti's San Francisco office within their structural design, forensics and renewal group from June 02, 2025 to August 22, 2025.",
+      "detail": "<p>I interned at Thornton Tomasetti's San Francisco office within their structural design, forensics and renewal group from June 02, 2025 to August 22, 2025.",
+      "image": { "src": "assets/img/updates/tt.png", "alt": "tt-logo" },
+      "gallery": [
+        { "src": "assets/img/updates/award.svg", "alt": "Conference award illustration" }
+      ]
+    },
+    {
       "slug": "emi-2025-student-paper-award",
       "title": "2nd Place in ASCE EMI Conference's Structural Stability Student Paper Competition",
       "tag": "Award",
       "date": "2025-05-30",
-      "excerpt": "I attended the American Society of Civil Engineers’ (ASCE) Engineering Mechanics Institute (EMI) conference in Anaheim, California, from May 27 to May 30, 2025, where I presented “Force-stable reconfigurable truss structures using quadrilateral linkage principles.”",
-      "detail": "<p>I attended the American Society of Civil Engineers’ (ASCE) Engineering Mechanics Institute (EMI) conference in Anaheim, California, from May 27 to May 30, 2025. I presented his paper, “Force-stable reconfigurable truss structures using quadrilateral linkage principles,” in the Structural Stability student paper competition and was awarded second place.</p><p>The work showcases a workflow for creating deployable truss systems that remain force-stable through large configuration changes, coupling geometric insight with rigorous structural analysis.</p>",
+      "excerpt": "I attended the American Society of Civil Engineers’ (ASCE) Engineering Mechanics Institute (EMI) conference in Anaheim, California, from May 27 to May 30, 2025, where I presented my paper and gave a talk on “Force-stable reconfigurable truss structures using quadrilateral linkage principles.”",
+      "detail": "<p>I attended the American Society of Civil Engineers’ (ASCE) Engineering Mechanics Institute (EMI) conference in Anaheim, California, from May 27 to May 30, 2025. I presented my paper, “Force-stable reconfigurable truss structures using quadrilateral linkage principles,” in the Structural Stability student paper competition and earned second place.</p><p>This work showcases a workflow for creating deployable truss systems that remain force-stable through large configuration changes, coupling geometric insight with rigorous structural analysis.</p>",
       "image": { "src": "assets/img/updates/emi.png", "alt": "emi-logo" },
       "gallery": [
         { "src": "assets/img/updates/award.svg", "alt": "Conference award illustration" }
@@ -17,8 +29,8 @@
       "title": "Rackham Doctoral Intern Fellowship",
       "tag": "Award",
       "date": "2025-04-08",
-      "excerpt": "Hardik received the Rackham Doctoral Internship Fellowship to support his internship at Thornton Tomasetti during Summer 2025.",
-      "detail": "<p>Hardik received the Rackham Doctoral Internship Fellowship to support his internship at Thornton Tomasetti during Summer 2025. The fellowship enables doctoral candidates to explore career pathways outside academia while applying their research expertise in industry.</p>",
+      "excerpt": "I received the Rackham Doctoral Internship Fellowship to support my internship at Thornton Tomasetti during Summer 2025.",
+      "detail": "<p>I received the Rackham Doctoral Internship Fellowship to support my internship at Thornton Tomasetti during Summer 2025. The fellowship enables me to explore career pathways outside academia while applying my research expertise in industry.</p>",
       "image": { "src": "assets/img/updates/rdifp.png", "alt": "rdifp.logo" },
       "gallery": []
     },
@@ -27,8 +39,8 @@
       "title": "Research article in the Journal of Fluids and Structures",
       "tag": "Publication",
       "date": "2024-09-11",
-      "excerpt": "Hardik’s paper “Rapidly deployable hulls and on-demand tunable hydrodynamics with shape morphed curved crease origami,” co-authored with K. J. Maki and E. T. Filipov, has been published in the Journal of Fluids and Structures.",
-      "detail": "<p>Hardik’s paper “Rapidly deployable hulls and on-demand tunable hydrodynamics with shape morphed curved crease origami,” co-authored with K. J. Maki and E. T. Filipov, was published in the Journal of Fluids and Structures. The article demonstrates how origami-inspired morphing surfaces can be used to tune hydrodynamic performance on demand.</p>",
+      "excerpt": "My paper “Rapidly deployable hulls and on-demand tunable hydrodynamics with shape morphed curved crease origami,” co-authored with K. J. Maki and E. T. Filipov, has been published in the Journal of Fluids and Structures.",
+      "detail": "<p>My paper “Rapidly deployable hulls and on-demand tunable hydrodynamics with shape morphed curved crease origami,” co-authored with K. J. Maki and E. T. Filipov, was published in the Journal of Fluids and Structures. The article demonstrates how origami-inspired morphing surfaces can be used to tune hydrodynamic performance on demand.</p>",
       "image": { "src": "assets/img/updates/jlfs-cover.png", "alt": "Journal of Fluids and Structures cover illustration" },
       "gallery": []
     },
@@ -37,8 +49,8 @@
       "title": "Dissertation Proposal Exam",
       "tag": "Milestone",
       "date": "2024-05-14",
-      "excerpt": "Hardik defended his dissertation proposal on “Transforming Optimized Static Trusses into Shape-morphing Functional Systems” and began the final phase of his doctoral research.",
-      "detail": "<p>Hardik successfully defended his doctoral proposal, “Transforming Optimized Static Trusses into Shape-morphing Functional Systems.” The defense formalized his research plan for converting optimized static truss designs into adaptive, deployable structures.</p>",
+      "excerpt": "I defended my dissertation proposal on “Transforming Optimized Static Trusses into Shape-morphing Functional Systems” and began the final phase of my doctoral research.",
+      "detail": "<p>I successfully defended my doctoral proposal, “Transforming Optimized Static Trusses into Shape-morphing Functional Systems.” The defense formalized my research plan for converting optimized static truss designs into adaptive, deployable structures.</p>",
       "image": { "src": "assets/img/updates/uofm.png", "alt": "uofm-logo" },
       "gallery": []
     },
@@ -47,8 +59,8 @@
       "title": "Graduate student instructor for Introduction to Adaptable & Deployable Structures class",
       "tag": "Milestone",
       "date": "2023-01-04",
-      "excerpt": "Hardik served as a Graduate Student Instructor for the first offering of ENG 100: Introduction to Adaptable and Deployable Structures at the University of Michigan.",
-      "detail": "<p>Hardik served as a Graduate Student Instructor for the inaugural offering of ENG 100: Introduction to Adaptable and Deployable Structures at the University of Michigan. He guided students through kinematics, rapid prototyping, and analysis fundamentals for morphing systems.</p>",
+      "excerpt": "I served as a Graduate Student Instructor for the first offering of ENG 100: Introduction to Adaptable and Deployable Structures at the University of Michigan.",
+      "detail": "<p>I served as a Graduate Student Instructor for the inaugural offering of ENG 100: Introduction to Adaptable and Deployable Structures at the University of Michigan. I guided students through kinematics, rapid prototyping, and analysis fundamentals for morphing systems.</p>",
       "image": { "src": "assets/img/updates/uofm.png", "alt": "uofm-logo" },
       "gallery": []
     },
@@ -57,8 +69,8 @@
       "title": "Talk at the International Mechanical Engineering Congress and Exposition (IMECE) 2022",
       "tag": "Other",
       "date": "2022-11-01",
-      "excerpt": "Hardik was a finalist in the student poster competition at ASME’s IMECE 2022 in Columbus, Ohio, presenting “Adaptable Hull Hydrodynamics using Shape Morphing Curved-Crease Origami.”",
-      "detail": "<p>Hardik was a finalist in the student poster competition at ASME’s International Mechanical Engineering Congress and Exposition (IMECE) 2022, held in Columbus, Ohio. His poster, “Adaptable Hull Hydrodynamics using Shape Morphing Curved-Crease Origami,” highlighted adaptive marine structures inspired by origami geometry.</p>",
+      "excerpt": "I was a finalist in the student poster competition at ASME’s IMECE 2022 in Columbus, Ohio, presenting “Adaptable Hull Hydrodynamics using Shape Morphing Curved-Crease Origami.”",
+      "detail": "<p>I was a finalist in the student poster competition at ASME’s International Mechanical Engineering Congress and Exposition (IMECE) 2022, held in Columbus, Ohio. My poster, “Adaptable Hull Hydrodynamics using Shape Morphing Curved-Crease Origami,” highlighted adaptive marine structures inspired by origami geometry.</p>",
       "image": { "src": "assets/img/updates/imece.png", "alt": "imece-logo" },
       "gallery": []
     },
@@ -67,8 +79,8 @@
       "title": "Talk at the Engineering Mechanics Institute Conference (EMIC) 2022",
       "tag": "Other",
       "date": "2022-06-01",
-      "excerpt": "Hardik presented “Hydrodynamic Characteristics of Shape Morphing Curved-Crease Origami Surfaces” at ASCE’s Engineering Mechanics Institute Conference (EMIC) 2022 in Baltimore, Maryland.",
-      "detail": "<p>At ASCE’s Engineering Mechanics Institute Conference (EMIC) 2022, held in Baltimore, Maryland, Hardik presented “Hydrodynamic Characteristics of Shape Morphing Curved-Crease Origami Surfaces.” The talk detailed experimental and numerical insights into tunable hydrodynamic behavior.</p>",
+      "excerpt": "I presented “Hydrodynamic Characteristics of Shape Morphing Curved-Crease Origami Surfaces” at ASCE’s Engineering Mechanics Institute Conference (EMIC) 2022 in Baltimore, Maryland.",
+      "detail": "<p>At ASCE’s Engineering Mechanics Institute Conference (EMIC) 2022, held in Baltimore, Maryland, I presented “Hydrodynamic Characteristics of Shape Morphing Curved-Crease Origami Surfaces.” The talk detailed experimental and numerical insights into tunable hydrodynamic behavior.</p>",
       "image": { "src": "assets/img/updates/emi.png", "alt": "emic-logo" },
       "gallery": []
     },
@@ -88,7 +100,7 @@
       "tag": "Milestone",
       "date": "2021-05-01",
       "excerpt": "I graduated with a Master of Science in Engineering (MSE) degree in Civil (Structural) Engineering from the University of Michigan with a 4.0 GPA.",
-      "detail": "<p>I graduated with a Master of Science in Engineering (MSE) in Civil (Structural) Engineering from the University of Michigan, earning a 4.0 GPA while developing his research on deployable structures.</p>",
+      "detail": "<p>I graduated with a Master of Science in Engineering (MSE) in Civil (Structural) Engineering from the University of Michigan, earning a 4.0 GPA while developing my research on deployable structures.</p>",
       "image": { "src": "assets/img/updates/uofm.png", "alt": "uofm-logo" },
       "gallery": []
     },

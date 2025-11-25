@@ -778,7 +778,44 @@ main > section::before {
   font-weight: 600;
   text-transform: none;
 }
-.hero-highlight { font-style: italic; letter-spacing: 0.04em; }
+.hero-highlight {
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  height: 1em;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+.hero-highlight__mask {
+  display: inline-flex;
+  flex-direction: column;
+  animation: heroHighlightCycle 6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  will-change: transform;
+}
+.hero-highlight__word {
+  display: block;
+  line-height: 1;
+}
+@keyframes heroHighlightCycle {
+  0%,
+  30% { transform: translateY(0%); }
+  34% { transform: translateY(-106%); }
+  38% { transform: translateY(-96%); }
+  40%,
+  64% { transform: translateY(-100%); }
+  68% { transform: translateY(-206%); }
+  72% { transform: translateY(-196%); }
+  74%,
+  90% { transform: translateY(-200%); }
+  94% { transform: translateY(-306%); }
+  98% { transform: translateY(-294%); }
+  100% { transform: translateY(-300%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-highlight__mask {
+    animation: none;
+  }
+}
 .hero--home .hero__intro {
   margin: 0 0 clamp(24px, 3vw, 40px);
   color: var(--muted);

@@ -106,6 +106,56 @@
     if (e.key === 'Escape') closeMenu();
   });
 
+  // Smooth contact scroll handling across pages
+  const CONTACT_SELECTOR = '#contact';
+  const CONTACT_SCROLL_KEY = 'hp:scroll-to-contact';
+  const smoothScrollIntoView = (el) => {
+    if (!el) return false;
+    requestAnimationFrame(() => {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    return true;
+  };
+  const queueContactScroll = () => {
+    try { sessionStorage.setItem(CONTACT_SCROLL_KEY, CONTACT_SELECTOR); } catch (_) {}
+  };
+  const handleContactLinks = () => {
+    const contactLinks = document.querySelectorAll('a[href$="#contact"]');
+    if (!contactLinks.length) return;
+    contactLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        const contactSection = document.querySelector(CONTACT_SELECTOR);
+        closeMenu();
+        if (contactSection) {
+          event.preventDefault();
+          smoothScrollIntoView(contactSection);
+        } else {
+          queueContactScroll();
+        }
+      });
+    });
+  };
+  handleContactLinks();
+  const applyQueuedContactScroll = () => {
+    const contactSection = document.querySelector(CONTACT_SELECTOR);
+    if (!contactSection) return;
+    let shouldScroll = window.location.hash === CONTACT_SELECTOR;
+    if (!shouldScroll) {
+      try {
+        const pending = sessionStorage.getItem(CONTACT_SCROLL_KEY);
+        if (pending === CONTACT_SELECTOR) {
+          shouldScroll = true;
+          sessionStorage.removeItem(CONTACT_SCROLL_KEY);
+        }
+      } catch (_) {}
+    }
+    if (!shouldScroll) return;
+    const run = () => smoothScrollIntoView(contactSection);
+    if (document.readyState === 'complete') setTimeout(run, 120);
+    else window.addEventListener('load', () => setTimeout(run, 120), { once: true });
+  };
+  applyQueuedContactScroll();
+
   // Back-to-top button
   const backToTop = document.querySelector('.back-to-top');
   const PROGRESS_VIEWBOX = 64;

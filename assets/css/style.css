@@ -876,7 +876,11 @@ main > section::before {
 .pronounce-card .label .name { font-weight: 200; color: var(--muted); font-size: 0.9rem; letter-spacing: 1px; }
 
 /* Home contact */
-.home-contact { --content-inline-pad: 16px; padding: 48px var(--content-inline-pad) 48px; }
+.home-contact {
+  --content-inline-pad: 16px;
+  padding: 48px var(--content-inline-pad) 48px;
+  scroll-margin-top: var(--header-h);
+}
 .home-contact > h2 { text-align: center; margin-top: 0px; margin-bottom: 32px; }
 .home-contact__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 6vw, 64px); align-items: stretch; }
 .home-contact__details { display: flex; flex-direction: column; gap: 16px; height: 100%; }

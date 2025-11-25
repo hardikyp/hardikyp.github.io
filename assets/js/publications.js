@@ -123,13 +123,36 @@
     activateTab(allTab);
   };
 
+  const byDateDesc = (a, b) => {
+    const da = a._sortDate || 0;
+    const db = b._sortDate || 0;
+    return db - da;
+  };
+
+  const annotateSortDate = (pubs) => {
+    pubs.forEach((p) => {
+      if (p._sortDate) return;
+      const dateStr = p.date || (p.year ? String(p.year) : '');
+      let sortValue = 0;
+      if (dateStr) {
+        const parsed = Date.parse(dateStr);
+        if (!Number.isNaN(parsed)) sortValue = parsed;
+      }
+      if (!sortValue && p.year) {
+        sortValue = Date.parse(`${p.year}-01-01`) || p.year;
+      }
+      p._sortDate = sortValue;
+    });
+  };
+
   const render = (data) => {
+    annotateSortDate(data);
     const categories = Array.from(new Set(data.map(p => normalizeCat(p.type))));
-    // Group by year desc
     const byYear = data.reduce((acc, p) => {
-      (acc[p.year] ||= []).push(p); return acc;
+      (acc[p.year] ||= []).push(p);
+      return acc;
     }, {});
-    const years = Object.keys(byYear).map(Number).sort((a,b)=>b-a);
+    const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
     app.innerHTML = '';
     years.forEach(year => {
       const y = document.createElement('section');
@@ -140,7 +163,8 @@
       list.className = 'pub-list';
       y.appendChild(heading);
       y.appendChild(list);
-      byYear[year].forEach(p => {
+      const items = byYear[year].slice().sort(byDateDesc);
+      items.forEach(p => {
         const cat = normalizeCat(p.type);
         const item = document.createElement('article');
         item.className = 'pub-item';

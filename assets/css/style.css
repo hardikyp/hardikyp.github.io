@@ -181,8 +181,15 @@ main > section::before {
   display: grid;
   gap: 12px;
 }
-.hero--update h1 { font-weight: 350; }
+.hero--update h2 { font-weight: 350; }
 .hero--update .update-detail__meta { margin-bottom: 8px; }
+.project-detail-hero {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.project-detail-hero h2 { margin: 0; font-weight: 350; }
+.project-detail-hero p { margin: 0; }
 
 .updates-preview,
 .updates-feed {
@@ -369,7 +376,8 @@ main > section::before {
   object-fit: cover;
   display: block;
 }
-.update-detail h1 { margin: 0; }
+.update-detail h1,
+.update-detail h2 { margin: 0; }
 .update-detail p { margin: 0 0 12px; color: var(--muted); }
 .update-gallery {
   margin: 12px 0 8px;
@@ -1220,7 +1228,7 @@ main > section::before {
   padding-right: var(--section-inline-pad);
   box-sizing: border-box;
 }
-.projects-page > h1 { margin-top: 0; margin-bottom: 12px; }
+.projects-page > h1 { margin-top: 0; margin-bottom: 16px; }
 .pubs h1 { margin-top: 0; margin-bottom: 12px; }
 .pub-filters {
   --tab-gap: clamp(18px, 2vw, 32px);
@@ -1341,10 +1349,14 @@ main > section::before {
 .page-update { background-color: var(--bg-secondary); }
 .updates-page,
 .update-page { background-color: var(--bg-secondary); }
+.update-page { padding-top: 32px; }
 .updates-page .muted { margin-top: 0; margin-bottom: 8px; }
-.updates-page .updates-hero { margin-bottom: 16px; }
-.updates-page .updates-hero h1 { margin-top: 0; margin-bottom: 12px; }
-.updates-page .updates-hero p { margin-top: 0; }
+.updates-page .updates-hero,
+.update-page .updates-hero { margin-bottom: 16px; }
+.updates-page .updates-hero h1,
+.update-page .updates-hero h1 { margin-top: 0; margin-bottom: 12px; }
+.updates-page .updates-hero p,
+.update-page .updates-hero p { margin-top: 0; }
 .updates-page > section { background-color: var(--bg-secondary); }
 .updates-page .updates-feed { margin-top: 24px; }
 .update-page > section { background-color: var(--bg-secondary); }

@@ -183,11 +183,7 @@ main > section::before {
 }
 .hero--update h2 { font-weight: 350; }
 .hero--update .update-detail__meta { margin-bottom: 8px; }
-.project-detail-hero {
-  display: grid;
-  gap: 8px;
-  margin-bottom: 16px;
-}
+.project-detail-hero { gap: 12px; margin-bottom: 16px; }
 .project-detail-hero h2 { margin: 0; font-weight: 350; }
 .project-detail-hero p { margin: 0; }
 
@@ -1352,11 +1348,14 @@ main > section::before {
 .update-page { padding-top: 32px; }
 .updates-page .muted { margin-top: 0; margin-bottom: 8px; }
 .updates-page .updates-hero,
-.update-page .updates-hero { margin-bottom: 16px; }
+.update-page .updates-hero,
+.projects-page .updates-hero { margin-bottom: 16px; }
 .updates-page .updates-hero h1,
-.update-page .updates-hero h1 { margin-top: 0; margin-bottom: 12px; }
+.update-page .updates-hero h1,
+.projects-page .updates-hero h1 { margin-top: 0; margin-bottom: 12px; }
 .updates-page .updates-hero p,
-.update-page .updates-hero p { margin-top: 0; }
+.update-page .updates-hero p,
+.projects-page .updates-hero p { margin-top: 0; }
 .updates-page > section { background-color: var(--bg-secondary); }
 .updates-page .updates-feed { margin-top: 24px; }
 .update-page > section { background-color: var(--bg-secondary); }

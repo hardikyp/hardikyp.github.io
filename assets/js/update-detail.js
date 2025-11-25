@@ -7,7 +7,6 @@
     title: document.getElementById('viewTitle'),
     tag: document.getElementById('viewTag'),
     date: document.getElementById('viewDate'),
-    media: document.getElementById('viewMedia'),
     body: document.getElementById('viewBody')
   };
 
@@ -28,9 +27,6 @@
       el.title.textContent = u.title || 'Update';
       if (u.tag) el.tag.textContent = u.tag; else el.tag.style.display = 'none';
       if (u.date) { el.date.setAttribute('datetime', u.date); el.date.textContent = toDateStr(u.date); } else el.date.style.display = 'none';
-      if (u.image && u.image.src) {
-        el.media.innerHTML = `<img src="${u.image.src}" alt="${u.image.alt || ''}" loading="lazy" />`;
-      }
       const detailHTML = u.detail || u.body || (u.excerpt ? `<p>${u.excerpt}</p>` : '');
       el.body.innerHTML = detailHTML;
       if (Array.isArray(u.gallery) && u.gallery.length) {

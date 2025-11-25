@@ -40,10 +40,10 @@
     }
     if (p.detail?.body) {
       els.content.innerHTML = p.detail.body;
-    } else if (p.abstract) {
-      els.content.innerHTML = p.abstract;
     } else if (p.summary) {
       els.content.innerHTML = `<p>${p.summary}</p>`;
+    } else {
+      els.content.innerHTML = '<p class="muted">This project does not have additional details yet.</p>';
     }
     try { document.title = `${p.title} — Projects — Hardik Patil`; } catch {}
   };

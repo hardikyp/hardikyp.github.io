@@ -28,10 +28,11 @@ Required fields:
 Optional fields:
 - `tag` (one of: `Award`, `Publication`, `Milestone`, `Other`)
 - `image.alt` (string)
-- `excerpt` (string) — short summary used on listing and home cards
-- `detail` (HTML string) — rich content for the detail page; falls back to `excerpt` if omitted
+- `detail` (HTML string, strongly recommended) — rich content for the detail page; the first paragraph is also used to build listing/home excerpts
 - `gallery[]` (array) — extra images for the detail page only, each item `{ "src": "...", "alt": "...", "caption": "optional" }`
 - `url` (string) — external or custom link; if omitted, the site links to `/updates/view.html?slug=<slug>`
+
+> Listing cards now derive their excerpt text from the `detail` field, so include at least one paragraph of copy there for each entry.
 
 ### Example entry
 
@@ -41,7 +42,6 @@ Optional fields:
   "title": "NSF Graduate Research Fellowship Awarded",
   "tag": "Award",
   "date": "2025-03-18",
-  "excerpt": "The NSF GRFP will support the next phase of our deployable bridge research...",
   "image": { "src": "/assets/img/updates/award.svg", "alt": "Award illustration" }
 }
 ```
@@ -54,7 +54,6 @@ With a custom body:
   "title": "Deployable Bridges Paper Accepted to ASCE EMI 2025",
   "tag": "Publication",
   "date": "2025-02-10",
-  "excerpt": "Topology optimisation workflow for adaptive bridge systems.",
   "detail": "<p>Our manuscript details a new workflow that couples kinematics with nonlinear analysis...</p>",
   "gallery": [
     { "src": "/assets/img/updates/publication.svg", "alt": "Publication icon", "caption": "Workflow summary" }

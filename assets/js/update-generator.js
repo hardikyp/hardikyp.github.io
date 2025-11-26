@@ -35,6 +35,18 @@
       ? ''
       : local.toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' });
   };
+  const sanitizeWhitespace = (str) => (str || '').replace(/\s+/g, ' ').trim();
+  const detailToSummary = (html, limit = 180) => {
+    if (!html) return '';
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    const source = tmp.querySelector('p') || tmp;
+    const raw = sanitizeWhitespace(source.textContent || tmp.textContent || '');
+    if (!raw) return '';
+    if (raw.length <= limit) return raw;
+    const shortened = raw.slice(0, limit).replace(/\s+\S*$/, '');
+    return `${shortened}…`;
+  };
   const wrap = document.createElement('section');
   wrap.style.cssText = 'padding:24px 16px; max-width:960px; margin:0 auto; border:1px dashed var(--border); border-radius:12px; background:#fff;';
   wrap.innerHTML = `
@@ -52,7 +64,6 @@
       </label>
       <label><span>Date</span><input name="date" type="date" required /></label>
       <label><span>Slug</span><input name="slug" placeholder="my-update" required /></label>
-      <label class="full"><span>Excerpt</span><input name="excerpt" /></label>
       <label class="full"><span>Image URL</span><input name="imgsrc" value="assets/img/updates/" /></label>
       <label class="full"><span>Image Alt</span><input name="imgalt" /></label>
       <label class="full"><span>Meta Description</span><input name="metadesc" /></label>
@@ -83,6 +94,7 @@
 
   const tplHTML = (d) => {
     const displayDate = formatISODate(d.date) || d.date;
+    const metaDescription = d.metadesc || detailToSummary(d.detail || '');
     const galleryMarkup = Array.isArray(d.gallery) && d.gallery.length
       ? `<div class="update-gallery">
 ${d.gallery.map((g) => {
@@ -101,7 +113,7 @@ ${d.gallery.map((g) => {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <base href="../../" />
     <title>${d.title} — Updates — Hardik Patil</title>
-    <meta name="description" content="${d.metadesc || d.excerpt || ''}" />
+    <meta name="description" content="${metaDescription || ''}" />
     <link rel="canonical" href="updates/items/${d.slug}.html" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <meta property="og:type" content="article" />
@@ -122,7 +134,7 @@ ${d.gallery.map((g) => {
         <div class="update-detail__media">
           <img src="${d.image.src}" alt="${d.image.alt || ''}" loading="lazy" />
         </div>
-        ${d.detail || `<p>${d.excerpt || ''}</p>`}
+        ${d.detail || (metaDescription ? `<p>${metaDescription}</p>` : '<p>Update details coming soon.</p>')}
         ${galleryMarkup}
         <a class="btn tertiary" href="updates/index.html">Back to updates</a>
       </article>
@@ -156,7 +168,6 @@ ${d.gallery.map((g) => {
       title: (fd.get('title')||'').toString().trim(),
       tag: (fd.get('tag')||'Other').toString().trim(),
       date: (fd.get('date')||'').toString().trim(),
-      excerpt: (fd.get('excerpt')||'').toString().trim(),
       image: { src: (fd.get('imgsrc')||'').toString().trim(), alt: (fd.get('imgalt')||'').toString().trim() }
     };
 
@@ -169,7 +180,6 @@ ${d.gallery.map((g) => {
       title: d.title,
       tag: d.tag,
       date: d.date,
-      excerpt: d.excerpt,
       detail: detail || undefined,
       image: d.image,
       gallery: gallery.length ? gallery : undefined

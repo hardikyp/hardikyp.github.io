@@ -2,6 +2,31 @@
   const feed = document.querySelector('.updates-feed .update-list');
   if (!feed) return;
 
+  const sanitizeWhitespace = (str) => (str || '').replace(/\s+/g, ' ').trim();
+  const detailToExcerpt = (html, limit = 220) => {
+    if (!html) return '';
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    const source = tmp.querySelector('p') || tmp;
+    const raw = sanitizeWhitespace(source.textContent || tmp.textContent || '');
+    if (!raw) return '';
+    if (raw.length <= limit) return raw;
+    const shortened = raw.slice(0, limit).replace(/\s+\S*$/, '');
+    return `${shortened}…`;
+  };
+  const normalizeExcerpt = (u) => {
+    const htmlDetail = u.detail || u.body || '';
+    const derived = detailToExcerpt(htmlDetail);
+    if (derived) return derived;
+    return sanitizeWhitespace(u.excerpt || '');
+  };
+  const escapeHTML = (str) =>
+    (str || '').replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
   const isISODate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s || '');
   const validTag = (t) => !t || ['Award','Publication','Milestone','Other'].includes(t);
   const validate = (u) => {
@@ -28,7 +53,8 @@
 
   const normalize = (u) => ({
     ...u,
-    url: u.url || `updates/view.html?slug=${encodeURIComponent(u.slug)}`
+    url: u.url || `updates/view.html?slug=${encodeURIComponent(u.slug)}`,
+    excerpt: normalizeExcerpt(u)
   });
 
   const cardHTML = (u) => {
@@ -48,7 +74,7 @@
           </div>
         </div>
         <div class="update-card__body">
-          ${u.excerpt ? `<p class="update-card__excerpt">${u.excerpt}</p>` : ''}
+          ${u.excerpt ? `<p class="update-card__excerpt">${escapeHTML(u.excerpt)}</p>` : ''}
           <a class="btn tertiary" href="${u.url}">Read more</a>
         </div>
       </article>`;

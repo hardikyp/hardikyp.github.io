@@ -3,6 +3,19 @@
   const slug = params.get('slug');
   if (!slug) return;
 
+  const sanitizeWhitespace = (str) => (str || '').replace(/\s+/g, ' ').trim();
+  const detailToSummary = (html, limit = 180) => {
+    if (!html) return '';
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    const source = tmp.querySelector('p') || tmp;
+    const raw = sanitizeWhitespace(source.textContent || tmp.textContent || '');
+    if (!raw) return '';
+    if (raw.length <= limit) return raw;
+    const shortened = raw.slice(0, limit).replace(/\s+\S*$/, '');
+    return `${shortened}…`;
+  };
+
   const el = {
     title: document.getElementById('viewTitle'),
     tag: document.getElementById('viewTag'),
@@ -40,8 +53,12 @@
       } else {
         el.date.style.display = 'none';
       }
-      const detailHTML = u.detail || u.body || (u.excerpt ? `<p>${u.excerpt}</p>` : '');
-      el.body.innerHTML = detailHTML;
+      const detailHTML = u.detail || u.body || '';
+      if (detailHTML) {
+        el.body.innerHTML = detailHTML;
+      } else {
+        el.body.innerHTML = '<p class="muted">Additional details will be posted soon.</p>';
+      }
       if (Array.isArray(u.gallery) && u.gallery.length) {
         const galleryItems = u.gallery
           .map((g) => {
@@ -68,7 +85,10 @@
       try {
         document.title = `${u.title} — Updates — Hardik Patil`;
         const md = document.querySelector('meta[name="description"]');
-        if (md) md.setAttribute('content', u.meta || u.excerpt || '');
+        if (md) {
+          const summary = detailToSummary(detailHTML);
+          md.setAttribute('content', u.meta || summary || '');
+        }
       } catch {}
     } catch {}
   };

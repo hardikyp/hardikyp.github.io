@@ -76,7 +76,7 @@
           .join('');
         if (galleryItems.trim()) {
           el.body.insertAdjacentHTML(
-            'beforeend',
+            'afterbegin',
             `<div class="update-gallery" role="list">${galleryItems}</div>`
           );
         }

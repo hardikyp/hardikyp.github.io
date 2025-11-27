@@ -352,6 +352,7 @@ main > section::before {
   display: grid;
   gap: 20px;
 }
+.update-detail #viewBody { display: flow-root; }
 .update-detail__meta {
   display: flex;
   flex-wrap: wrap;
@@ -380,9 +381,11 @@ main > section::before {
 .update-detail h2 { margin: 0; }
 .update-detail p { margin: 0 0 12px; color: var(--muted); }
 .update-gallery {
-  margin: 12px 0 8px;
+  margin: 0 0 16px 32px;
   display: grid;
-  gap: 16px;
+  gap: 12px;
+  float: right;
+  width: min(480px, 60%);
 }
 .update-gallery__item {
   margin: 0;
@@ -392,8 +395,7 @@ main > section::before {
 }
 .update-gallery__item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 .update-gallery__caption {
@@ -401,9 +403,11 @@ main > section::before {
   font-size: 0.9rem;
   color: var(--muted);
 }
-@media (min-width: 640px) {
+@media (max-width: 768px) {
   .update-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    float: none;
+    margin: 0 0 18px;
+    width: 100%;
   }
 }
 
@@ -1205,6 +1209,20 @@ main > section::before {
   .home-contact .contact-form { grid-template-columns: 1fr; }
 }
 
+@media (min-width: 640px) and (max-width: 1024px) {
+  .site-header .nav-inner {
+    --content-inline-pad: var(--section-inline-pad);
+    padding-left: var(--content-inline-pad);
+    padding-right: var(--content-inline-pad);
+  }
+  .site-footer .footer-grid,
+  .site-footer .copyright {
+    --content-inline-pad: var(--section-inline-pad);
+    padding-left: var(--content-inline-pad);
+    padding-right: var(--content-inline-pad);
+  }
+}
+
 @media (min-width: 768px) {
   /* Desktop: actions side-by-side with equal widths */
   .home-contact .actions { grid-template-columns: 1fr 1fr; }
@@ -1376,6 +1394,9 @@ main > section::before {
 .updates-page > section { background-color: var(--bg-secondary); }
 .updates-page .updates-feed { margin-top: 24px; }
 .update-page > section { background-color: var(--bg-secondary); }
+.update-page :is(.updates-hero, .hero--update, .update-detail) {
+  --content-inline-pad: clamp(1.5rem, 4vw, 3.5rem);
+}
 
 /* Publications page secondary background */
 .page-pubs { background-color: var(--bg-secondary); }

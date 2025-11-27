@@ -6,9 +6,9 @@
       "tag": "Milestone",
       "date": "2025-06-02",
       "detail": "<p>I worked as a Structural Forensics Intern in the Structural Design, Forensics, and Renewal group at Thornton Tomasetti’s San Francisco office from June 2, 2025, to August 22, 2025). Durign this internship, I split my time between developing analysis tools, running nonlinear analyses for structural diagnostics, and supporting active forensic investigations and projects.</p> <p>A major focus of my internship was fire simulation in mass timber structures. I built a single-zone fire simulator in Python by implementing a one-dimensional heat transfer solver to predict char depth in mass-timber members. The tool enables quick evaluation of structural capacity of timber members after different fire scenarios and char rates instead of relying only on handbook-style checks. I also performed nonlinear pushover analyses of steel frames in SAP2000 for demolition studies, validating expected collapse mechanisms against hand calculations to confirm that proposed demolition sequences matched analytical behavior.</p> <p>On the forensic side, I contributed to investigation reports by organizing and interpreting field data: preparing foundation markups, compiling coring logs, and structuring large sets of site photos so they could be traced directly back to specific defects and locations. I researched concrete material deficiencies and their impact on slab performance, helping connect observed cracking and serviceability problems to underlying mix and placement issues.</p> <p>In parallel, I supported ongoing design work by reviewing slab reinforcement submittals and backchecking structural drawings on a healthcare facility project. This involved checking bar layouts, development and lap lengths, and coordination against design intent, giving me a close look at how quality control is actually enforced between analysis models, drawings, and what gets built on site.</p>",
-      "image": { "src": "assets/img/updates/tt.png", "alt": "tt-logo" },
+      "image": { "src": "assets/img/updates/thumbnails/tt.png", "alt": "tt-logo" },
       "gallery": [
-        { "src": "assets/img/updates/award.svg", "alt": "Conference award illustration" }
+        { "src": "assets/img/updates/gallery/tt-internship.jpg", "alt": "Images from Hardik's internship at Thornton Tomasetti, San Francisco" }
       ]
     },
     {
@@ -17,9 +17,9 @@
       "tag": "Award",
       "date": "2025-05-30",
       "detail": "<p>I attended the ASCE Engineering Mechanics Institute (EMI) Conference in Anaheim, CA between May 27-30, 2025, where I presented my paper, <em>“Force-stable reconfigurable truss structures using quadrilateral linkage principles”</em>. This work introduces a class of reconfigurable truss systems that can both move and reliably carry load, by embedding quadrilateral linkage behavior into otherwise conventional truss topologies.</p> <p>In the talk, I walked through how these structures transition between configurations while remaining force-stable, meaning they don’t rely on external bracing or locking devices to hold their shape under load. I discussed the underlying linkage mechanics, the role of joint rotational stiffness, and how we use nonlinear structural analysis to trace equilibrium paths through large displacements. I also showed how small changes in geometry and stiffness can switch the structure between kinematically flexible, deployable modes and stiff, load-bearing configurations, opening up applications in rapidly deployable systems, adaptive roofs, and temporary works.</p> <p>Presenting at EMI 2025 was a chance to stress-test the ideas in front of people who live and breathe mechanics and stability. The questions I received pushed on practical issues—joint detailing, robustness to imperfections, and how these concepts might scale to real structures with code constraints and construction tolerances. This work was recognized with 2nd Place in the 2025 ASCE EMI Conference Structural Stability Student Paper Competition, which was a solid validation that the community sees value in combining classical stability theory with reconfigurable, mechanism-inspired design.</p></p>",
-      "image": { "src": "assets/img/updates/emi.png", "alt": "emi-logo" },
+      "image": { "src": "assets/img/updates/thumbnails/emi.png", "alt": "emi-logo" },
       "gallery": [
-        { "src": "assets/img/updates/award.svg", "alt": "Conference award illustration" }
+        { "src": "assets/img/updates/gallery/emi-2025.jpg", "alt": "Images of Hardik presenting and getting award at EMI Conference 2025" }
       ]
     },
     {
@@ -28,7 +28,7 @@
       "tag": "Award",
       "date": "2025-04-08",
       "detail": "<p>I received the Rackham Doctoral Intern Fellowship from the University of Michigan to support an industry summer internship aligned with my dissertation research. The fellowship is designed to help doctoral students apply their technical skills in non-academic settings, while maintaining continuity in their doctoral progress and support.</p> <p>This award provided supplementary funding to my Structural Forensics Intern role at Thornton Tomasetti, San Francisco. The fellowship provided relocation support and additional health care coverage, making it financially feasible to live and work in the Bay Area for the duration of the internship. It also formally recognized the internship as an integral part of my doctoral training, linking day-to-day project work in structural forensics and performance-based assessment back to the broader goals of my PhD in deployable and reconfigurable structures.</p>",
-      "image": { "src": "assets/img/updates/rdifp.png", "alt": "rdifp.logo" },
+      "image": { "src": "assets/img/updates/thumbnails/rdifp.png", "alt": "rdifp-logo" },
       "gallery": []
     },
     {
@@ -37,7 +37,7 @@
       "tag": "Publication",
       "date": "2024-09-11",
       "detail": "<p>I’m thrilled to announce the publication of my first journal paper, “Rapidly deployable hulls and on-demand tunable hydrodynamics with shape morphing curved crease origami,” in the Journal of Fluids and Structures!</p> <p>This paper introduces a novel method for fabricating planing hulls using curved-crease origami principles. These origami-inspired hulls can deploy from flat sheets to replicate traditional hull shapes and their hydrodynamics. Moreover, they possess a unique ability to morph their shape, enabling on-demand tunability of hydrodynamic performance.</p> <p>We believe this approach offers a new philosophy for designing and fabricating hull forms that can provide a revolutionary alternative in naval engineering. These concepts could lead to rapidly deployable vessels for rescue operations, crewless aquatic vehicles, and adaptive hull structures that enhance efficiency and passenger comfort.</p> <p>A huge thank you to my mentors and collaborators, Prof. Evgueni Filipov and Prof. Kevin Maki, for their incredible guidance throughout this journey. I am truly grateful for their support and expertise.</p> <p>Check out the paper <a href=\"https://doi.org/10.1016/j.jfluidstructs.2024.104176\">here.</a></p>",
-      "image": { "src": "assets/img/updates/jlfs-cover.png", "alt": "Journal of Fluids and Structures cover illustration" },
+      "image": { "src": "assets/img/updates/thumbnails/jlfs-cover.png", "alt": "Journal of Fluids and Structures cover illustration" },
       "gallery": []
     },
     {
@@ -45,8 +45,8 @@
       "title": "Dissertation Proposal Exam",
       "tag": "Milestone",
       "date": "2024-05-14",
-      "detail": "<p>I successfully defended my doctoral proposal, “Transforming Optimized Static Trusses into Shape-morphing Functional Systems.” The defense formalized my research plan for converting optimized static truss designs into adaptive, deployable structures.</p>",
-      "image": { "src": "assets/img/updates/uofm.png", "alt": "uofm-logo" },
+      "detail": "<p>On May 14, 2024, I successfully defended and passed my dissertation proposal exam for my PhD in Civil and Environmental Engineering at the University of Michigan. My committee consists of Associate Professor Evgueni T. Filipov (chair), Associate Professor Jeff Scruggs, Professor Kevin Maki, and Professor Sherif El-Tawil.<p> </p>My proposed dissertation, “Transforming Optimized Static Trusses into Shape-morphing Functional Systems,” aims to bridge the gap between traditional, static truss design and highly reconfigurable structural systems. The work develops a framework to take topology-optimized trusses and strategically introduce additional nodes so that each triangular unit behaves like a four-bar linkage. This turns otherwise fixed trusses into flat-foldable, shape-morphing systems that can be packed, deployed, and reused with minimal loss in stiffness or load capacity.<p> </p>The research is organized around three main aims: (A) harnessing the kinematics of 2D trusses for foldability and controlled shape morphing, (B) integrating torsional springs to create spring-loaded trusses for reusable energy absorption and efficient actuation, and (C) extending these ideas to 3D trusses that act as deployable support systems for continuous structures such as membranes and origami-based surfaces. Together, these directions set the roadmap for the remainder of my PhD and push toward reconfigurable truss systems that are both mechanically efficient and practical for real applications—ranging from rapidly deployable shelters to morphing support structures for architectural, marine, and aerospace systems.</p>",
+      "image": { "src": "assets/img/updates/thumbnails/uofm.png", "alt": "uofm-logo" },
       "gallery": []
     },
     {
@@ -54,17 +54,17 @@
       "title": "Graduate student instructor for Introduction to Adaptable & Deployable Structures class",
       "tag": "Milestone",
       "date": "2023-01-04",
-      "detail": "<p>I served as a Graduate Student Instructor for the inaugural offering of ENG 100: Introduction to Adaptable and Deployable Structures at the University of Michigan. I guided students through kinematics, rapid prototyping, and analysis fundamentals for morphing systems.</p>",
-      "image": { "src": "assets/img/updates/uofm.png", "alt": "uofm-logo" },
+      "detail": "<p>This was my first formal teaching role, and I jumped in early: I helped co-develop and co-teach the first-ever “Introduction to Adaptable & Deployable Structures” course for first-year engineering students. Alongside the instructor, I designed assignments, exams, and grading rubrics, and then used lab and office hours each week to help students understand and apply what we had designed.<p> </p>I led weekly labs where students learned AutoCAD, Fusion 360, and Arduino through structured follow-along activities, building the skills they needed to design, analyze, and fabricate deployable structures. Early in the term, I organized a tour of the Duderstadt Center's Underground Fabrication Lab so students could see 3D printers, laser cutters, and other tools in action before they had to rely on them for their final projects. To support a brand-new course with no legacy material, I created detailed handouts for each lab, including step-by-step instructions, screenshots, and extra practice tasks—resources that will continue to serve future offerings.<p> </p>A big emphasis for me was demystifying the engineering design process. I designed a catapult team project where students had to combine CAD modeling, fabrication, and Arduino-driven actuation, then compare test results to theory. Many were initially uncomfortable with the open-ended nature of the task; my role was to coach them through iteration, trade-offs, and the idea that there isn't a single “right” design. I reinforced core mechanics concepts (tension, compression, moments) using simple physical demonstrations during office hours—rulers, simple setups, and lots of questions.<p> </p>When fabrication lab access became a bottleneck near the end of the semester, I set up a booking system and opened our research lab so every team had time on the machines. Between extended in-person and Zoom office hours and detailed feedback on reports, I tried to be the kind of instructor I would’ve wanted as a first-year.</p>",
+      "image": { "src": "assets/img/updates/thumbnails/uofm.png", "alt": "uofm-logo" },
       "gallery": []
     },
     {
       "slug": "hardik-imece-2022",
-      "title": "Talk at the International Mechanical Engineering Congress and Exposition (IMECE) 2022",
+      "title": "Talk at the International Mechanical Engineering Congress & Exposition (IMECE) 2022",
       "tag": "Other",
       "date": "2022-11-01",
-      "detail": "<p>I was a finalist in the student poster competition at ASME’s International Mechanical Engineering Congress and Exposition (IMECE) 2022, held in Columbus, Ohio. My poster, “Adaptable Hull Hydrodynamics using Shape Morphing Curved-Crease Origami,” highlighted adaptive marine structures inspired by origami geometry.</p>",
-      "image": { "src": "assets/img/updates/imece.png", "alt": "imece-logo" },
+      "detail": "<p>At IMECE 2022 in Columbus, OH, I presented a poster on curved-crease origami ship hulls and their adaptable hydrodynamic behavior. I attended the conference with support from a $1,200 NSF travel grant and was selected as a finalist in the student poster competition.<p> </p>My work introduced a way to fabricate planing hulls from flat sheets using curved-crease origami, where active folding allows the hull shape—and therefore its hydrodynamic response—to change on demand. In the poster, I showed how we use a bar-and-hinge model to analyze the kinematics of these morphing hulls and a simplified strip-theory-based hydrodynamic model to study drag, motion response, and seakeeping performance in calm and wavy conditions.<p> </p>I highlighted how varying the actuation level and the underlying crease pattern lets us tune deadrise angle, manage resonant responses, and trade off between reduced drag and reduced motions in waves. Conversations at IMECE, especially from naval architects and hydrodynamics experts, helped sharpen the practical framing of this work and clarified how morphing hull concepts might fit into real-world ship design.</p>",
+      "image": { "src": "assets/img/updates/thumbnails/imece.png", "alt": "imece-logo" },
       "gallery": []
     },
     {
@@ -72,17 +72,17 @@
       "title": "Talk at the Engineering Mechanics Institute Conference (EMIC) 2022",
       "tag": "Other",
       "date": "2022-06-01",
-      "detail": "<p>At ASCE’s Engineering Mechanics Institute Conference (EMIC) 2022, held in Baltimore, Maryland, I presented “Hydrodynamic Characteristics of Shape Morphing Curved-Crease Origami Surfaces.” The talk detailed experimental and numerical insights into tunable hydrodynamic behavior.</p>",
-      "image": { "src": "assets/img/updates/emi.png", "alt": "emic-logo" },
+      "detail": "<p>EMI 2022 in Baltimore was the first professional conference I attended, and also the first time I presented my research to a broader mechanics community. I gave a talk on curved-crease origami ship hulls, based on my work exploring how flat sheets folded along curved creases can quickly form smooth, stiff, and highly functional hull geometries.<p> </p>In the talk, I described how we use bar-and-hinge models to design and analyze curved-crease origami patterns that fold into planing hulls. I showed that the resulting hull shape is highly sensitive to the crease pattern and folding extent, which means the same base sheet can morph between different configurations. I also discussed a simplified hydrodynamic model we used to study drag, natural frequencies, and motions such as heave, surge, and pitch, demonstrating how small parametric changes in the crease pattern can tune the hydrodynamic performance.<p> </p>What made this experience especially valuable were the questions that followed—on practical fabrication, thickness effects in curved origami panels, impact loads, and how these systems might scale to real vessels. Those conversations pushed me to refine the mechanics and modeling in more detail and directly influenced the journal article that later grew out of this work.</p>",
+      "image": { "src": "assets/img/updates/thumbnails/emi.png", "alt": "emic-logo" },
       "gallery": []
     },
     {
       "slug": "hardik-micde-fellowship",
-      "title": "Michigan Institute of Computational Discovery and Engineering fellowship",
+      "title": "Michigan Institute of Computational Discovery & Engineering fellowship",
       "tag": "Award",
       "date": "2021-09-01",
-      "detail": "<p>I was awarded the Michigan Institute for Computational Discovery and Engineering (MICDE) fellowship and began joint doctoral studies in Civil (Structural) Engineering and Scientific Computing at the University of Michigan, focusing on adaptable structural systems.</p>",
-      "image": { "src": "assets/img/updates/micde.png", "alt": "micde-logo" },
+      "detail": "<p>I was awarded the Michigan Institute for Computational Discovery and Engineering (MICDE) fellowship and began joint doctoral studies in Civil (Structural) Engineering and Scientific Computing at the University of Michigan, focusing on reconfigurable structural systems for functional use. The fellowship has directly supported the computational side of my work, including funding high-performance workstations for large-scale nonlinear simulations and model development in computational mechanics.<p> </p>As part of the MICDE program, I expanded my training beyond classical structural engineering into modern computational methods. I completed coursework in Machine Learning, Numerical Linear Algebra, C++ Programming, Statistics and Data Analysis, and Probabilistic Reliability of Structures. This combination of mechanics, algorithms, and data-driven methods underpins my current research, where I use numerical tools to explore how reconfigurable structures move, carry load, and can be tuned for performance.</p>",
+      "image": { "src": "assets/img/updates/thumbnails/micde.png", "alt": "micde-logo" },
       "gallery": []
     },
     {
@@ -90,8 +90,8 @@
       "title": "M.S.E. in Structural Engineering, University of Michigan",
       "tag": "Milestone",
       "date": "2021-05-01",
-      "detail": "<p>I graduated with a Master of Science in Engineering (MSE) in Civil (Structural) Engineering from the University of Michigan, earning a 4.0 GPA while developing my research on deployable structures.</p>",
-      "image": { "src": "assets/img/updates/uofm.png", "alt": "uofm-logo" },
+      "detail": "<p>I completed my Master of Science in Engineering (M.S.E.) in Civil (Structural) Engineering at the University of Michigan with a 4.0 GPA. The program was a deep dive into how structures actually behave once you move beyond the simplifying assumptions of basic design courses, and it solidified my decision to stay on for a PhD.</p> <p>My coursework spanned both fundamentals and advanced analysis: Plastic Analysis and Design of Steel Frames, Finite Element Methods, Nonlinear Analysis, Deployable and Reconfigurable Structures, Reliability of Structures, Infrastructure Systems Optimization, Design of Wood Structures, Sensing Systems, and Analysis of Dynamic Systems. Together, these courses pushed me to think about structures not just as static objects, but as systems that can yield, move, adapt, and perform under uncertainty.</p> <p>Michigan is also where I first encountered deployable and reconfigurable structures in a serious way. That exposure led me to take up an independent research project on curved-origami systems, where I began exploring how flat sheets could be transformed into complex, load-carrying geometries through controlled folding. That project was my first real taste of combining mechanics, geometry, and computation in a research setting—and it ultimately laid the groundwork for my decision to pursue a PhD focused on adaptable, reconfigurable structural systems.</p>",
+      "image": { "src": "assets/img/updates/thumbnails/uofm.png", "alt": "uofm-logo" },
       "gallery": []
     },
     {
@@ -99,8 +99,8 @@
       "title": "B. Tech. with Honors in Civil Engineering, IIT-Bombay",
       "tag": "Milestone",
       "date": "2019-08-10",
-      "detail": "<p>I completed my Bachelor of Technology (B. Tech.) with Honors in Civil Engineering at the Indian Institute of Technology Bombay, graduating with a GPA of 8.5/10 and setting the foundation for my research in adaptable structures.</p>",
-      "image": { "src": "assets/img/updates/iitb.png", "alt": "iitb-logo" },
+      "detail": "<p>I completed my Bachelor of Technology (B. Tech.) with Honors in Civil Engineering at the Indian Institute of Technology Bombay (IIT-B) with a GPA of 8.5/10. The program gave me a strong grounding in structural mechanics, analysis, and design, and it was where I first became seriously interested in advanced methods for understanding how structures behave. Courses in structural analysis, stability, and finite element methods sparked a curiosity to go beyond textbook examples and learn more complex analysis techniques—laying the technical foundation that later shaped my decision to pursue a Master's and then a PhD in structural engineering.</p> <p>Life at IIT Bombay was much more than lectures and exams. I was deeply involved in inter hostel (student hall) cultural events, especially in dance and photography competitions. I regularly participated in these events and helped lead my hostel to multiple wins in both dance and photography contests. Those experiences sharpened my ability to work in creative, high-energy teams and deliver under pressure.</p> <p>I also served as a core team member at E-Cell, IIT Bombay. Working in a 22-member core team, I helped organize national and international entrepreneurship events with an annual budget of around $290,000. I led a two-tier team of about 40 students handling media associations, event coverage, and social media marketing. This included negotiating terms with major Indian media houses to secure deliverables worth roughly $140,000 and launching targeted campaigns and brand integrations that drove a 150% year-on-year increase in social media followers. Together, these technical, creative, and leadership experiences set the stage for my graduate studies.</p>",
+      "image": { "src": "assets/img/updates/thumbnails/iitb.png", "alt": "iitb-logo" },
       "gallery": []
     }
   ]

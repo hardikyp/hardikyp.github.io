@@ -4,32 +4,32 @@
       "slug": "torsional-springs",
       "title": "Torsional spring formulation for the analysis of reconfigurable bar-linked structures",
       "years": "2025",
-      "summary": "",
+      "summary": "Formulated and implemented torsional (coil) springs to assign joint rotational stiffness in reconfigurable trusses.",
       "card": { "image": "https://placehold.net/8-800x600.png", "alt": "" },
       "detail": {
-        "images": [ {"src": "", "alt": ""} ],
-        "body": "<p>asdasdasd</p>"
+        "images": [ ],
+        "body": "<p>Derived closed-form internal force and tangent stiffness expressions of a torsional (coil) spring element for modeling semi-rigid joints with programmable stiffness in 2D truss-like structures while avoiding rotational degrees of freedom. Developed a nonlinear structural analysis program in MATLAB implementing the torsional spring element to capture global structural response, including buckling behaviour and actuation force demands in bar-linked reconfigurable structures</p>"
       }
     },
     {
       "slug": "reconfigurable-bar-linked-structures",
       "title": "Transforming Static Trusses into Functional Shape-morphing Systems ",
       "years": "",
-      "summary": "",
+      "summary": "Developed a method to make static trusses reconfigurable without sacrificing load capacity and stiffness.",
       "card": { "image": "https://placehold.net/8-800x600.png", "alt": "" },
       "detail": {
-        "images": [ {"src": "", "alt": ""} ],
-        "body": "<p></p>"
+        "images": [ ],
+        "body": "<p>Created a workflow to transform static triangles in traditional trusses into quadrilateral linkages, enabling flat-foldable and reconfigurable trusses that reduce footprint by up to 97% without loss of stiffness or peak load capacity. Built a kinematic simulator based on the analytical solution of quadrilateral linkages in MATLAB, allowing the visualization of truss deployment due to sequential actuation of kinematic degrees of freedom</p>"
       }
     },
     {
       "slug": "reconfigurable-origami-ship-hulls",
       "title": "Shape-morphing Curved-crease Origami Hulls for Rapid Deployment and Tunable Hydrodynamics",
       "years": "2023",
-      "summary": "",
+      "summary": "Designed curved-crease origami-based ship hulls that can transform shape and tune hydrodynamics on-demand",
       "card": { "image": "https://placehold.net/8-800x600.png", "alt": "" },
       "detail": {
-        "images": [ {"src": "", "alt": ""} ],
+        "images": [ ],
         "body": "<p>Implemented the principles of curved-crease origami to develop a method for the rapid fabrication of planing hulls from flat sheets, enabling the creation of deployable hulls that match traditional hull shapes and emulate desired hydrodynamics. Demonstrated the shape-morphing ability of curved-crease origami hulls, enabling on-demand transition between low and high deadrise configurations to optimize hydrodynamic efficiency and passenger comfort across varying water conditions.</p>"
       }
     },
@@ -40,7 +40,7 @@
       "summary": "Bachelor Technical Project studying hurricane induced forces on coastal bridge decks.",
       "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Bridge graphic" },
       "detail": {
-        "images": [ {"src": "assets/img/updates/publication.svg", "alt": "Bridge"} ],
+        "images": [ ],
         "body": "<p>Investigated deck unseating in coastal bridges subjected to hurricane-induced storm surges and wave impacts. Performed fluid-structure interaction analysis of coastal highway bridge deck in ANSYS, simulating wave-induced forces across surge levels, and validating uplift and slamming forces against experimental data.</p>"
       }
     },
@@ -48,10 +48,10 @@
       "slug": "soil-moisture-mapping",
       "title": "Soil Moisture Mapping Using P-Band Radiometer",
       "years": "2018",
-      "summary": "End-to-end workflow for adaptive, quickly deployable bridge systems.",
+      "summary": "Summer research experience at Monash University exploring remote soil moisture retrieval techniques.",
       "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Bridge graphic" },
       "detail": {
-        "images": [ {"src": "assets/img/updates/publication.svg", "alt": "Bridge"} ],
+        "images": [ ],
         "body": "<p>Collected ground samples to create a time series dataset of parameters including soil moisture, temperature, ground roughness, particle size distribution, vegetation water content and normalized difference vegetation index (NDVI). Analyzed ground and radiometer data to support development of a soil-moisture retrieval algorithm in the P-band spectrum, demonstrating 15~cm penetrability compared to 5~cm for L-band radiometers.</p>"
       }
     }

@@ -1513,7 +1513,7 @@ main > section::before {
   background: var(--bg);
   color: var(--primary);
   cursor: pointer;
-  box-shadow: 0 12px 28px rgba(33, 58, 86, 0.35);
+  box-shadow: 0 6px 28px rgba(33, 58, 86, 0.35);
   opacity: 0;
   pointer-events: none;
   transform: translate3d(0, 12px, 0);

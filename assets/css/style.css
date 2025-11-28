@@ -795,7 +795,6 @@ main > section::before {
   position: relative;
   overflow: hidden;
   height: 1em;
-  font-style: italic;
   letter-spacing: 0.04em;
 }
 .hero-highlight__mask {

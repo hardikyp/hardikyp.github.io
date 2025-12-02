@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base id="basePath" href="./" />
+    <script>
+      (function() {
+        try {
+          if (location.protocol !== 'file:') {
+            var el = document.getElementById('basePath');
+            if (el) { el.setAttribute('href', '/'); }
+          }
+        } catch (_) {}
+      })();
+    </script>
+    <title>Page Not Found | Hardik Patil</title>
+    <meta name="description" content="The page you were looking for could not be found." />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="404.html" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="error-page-body">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-include="assets/partials/header.html"></div>
+    <main id="main" tabindex="-1" class="error-page">
+      <div class="error-page__inner contained">
+        <p class="error-page__kicker" aria-hidden="true">404</p>
+        <h1>Page not found.</h1>
+        <p class="error-page__message">It seems the page you are looking for does not exist. Let's get you back on track</p>
+        <a class="btn primary error-page__cta" href="index.html">Return to Home</a>
+      </div>
+    </main>
+    <div data-include="assets/partials/back-to-top.html"></div>
+    <div data-include="assets/partials/footer.html"></div>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

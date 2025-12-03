@@ -154,6 +154,26 @@ main > * { --content-inline-pad: 0px; }
 .hero { --content-inline-pad: 16px; padding: 64px var(--content-inline-pad) 24px; }
 .hero h1 { line-height: 1.15; margin: 24px 0 8px; font-weight: 700; }
 .hero p { color: var(--muted); margin: 0 0 16px; }
+.hero-banner {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100vw;
+  margin: 0;
+  padding: var(--space-2) clamp(24px, 6vw, 80px);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  overflow: hidden;
+}
+.hero-banner__track { display: flex; width: max-content; animation: hero-banner-scroll 26s linear infinite; }
+.hero-banner__set { display: flex; align-items: center; gap: var(--space-4); padding: 0 var(--space-5); flex: none; }
+.hero-banner__text { white-space: nowrap; font-weight: 600; letter-spacing: 0.02em; }
+.hero-banner__separator { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,0.65); flex: none; }
+@keyframes hero-banner-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
 /* Section backgrounds */
 main > section {
@@ -812,11 +832,14 @@ main > section::before {
 .hero-cta { display: flex; gap: 20px; flex-wrap: nowrap; align-items: center; }
 .hero--home {
   --content-inline-pad: clamp(16px, 8vw, 86px);
+  --hero-block-pad: clamp(76px, 9.5vw, 128px);
+  --hero-banner-offset: 56px;
   display: flex;
   align-items: center;
-  padding: clamp(96px, 12vw, 160px) var(--content-inline-pad) clamp(96px, 12vw, 160px);
+  padding: var(--hero-block-pad) var(--content-inline-pad) calc(var(--hero-block-pad) + var(--hero-banner-offset));
   background-color: var(--bg);
-  min-height: clamp(480px, 70vh, 720px);
+  min-height: clamp(380px, 56vh, 580px);
+  position: relative;
 }
 .hero--home .hero__content {
   flex: 0 1 100%;
@@ -879,14 +902,14 @@ main > section::before {
 @media (max-width: 900px) {
   .hero--home {
     --content-inline-pad: clamp(20px, 6vw, 60px);
-    padding: clamp(80px, 10vw, 120px) var(--content-inline-pad) clamp(80px, 10vw, 120px);
+    --hero-block-pad: clamp(64px, 8vw, 96px);
   }
 }
 
 @media (max-width: 640px) {
   .hero--home {
     --content-inline-pad: 20px;
-    padding: 72px var(--content-inline-pad) 72px;
+    --hero-block-pad: 58px;
   }
 }
 /* About */

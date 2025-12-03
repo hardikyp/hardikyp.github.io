@@ -166,7 +166,14 @@ main > * { --content-inline-pad: 0px; }
   color: var(--color-on-primary);
   overflow: hidden;
 }
-.hero-banner__track { display: flex; width: max-content; animation: hero-banner-scroll 26s linear infinite; }
+.hero-banner__track {
+  --hero-banner-speed: 20s;
+  display: flex;
+  width: max-content;
+  animation: hero-banner-scroll var(--hero-banner-speed) linear infinite;
+  will-change: transform;
+}
+.hero-banner__sequence { display: flex; flex: none; }
 .hero-banner__set { display: flex; align-items: center; gap: var(--space-4); padding: 0 var(--space-5); flex: none; }
 .hero-banner__text { white-space: nowrap; font-weight: 600; letter-spacing: 0.02em; }
 .hero-banner__separator { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,0.65); flex: none; }

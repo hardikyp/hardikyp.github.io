@@ -8,21 +8,26 @@
     <meta name="description" content="Project details." />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body class="page-pubs">
+  <body class="page-update project-view">
     <a class="skip-link" href="#main">Skip to content</a>
     <div data-include="assets/partials/header.html"></div>
-    <main id="main" tabindex="-1" class="pubs projects-page">
+    <main id="main" tabindex="-1" class="update-page project-view">
       <section class="updates-hero contained">
         <h1>Projects</h1>
       </section>
       <section class="hero hero--update project-detail-hero contained">
         <h2 id="projTitle">Project</h2>
-        <p class="muted" id="projSubtitle"></p>
+        <div class="project-hero__meta" id="projMeta">
+          <span class="project-card__pill project-hero__pill" id="projType"></span>
+          <span class="project-hero__year" id="projYear"></span>
+        </div>
       </section>
-      <article class="update-detail" id="projBody">
+      <article class="update-detail contained project-detail" id="projArticle">
         <div class="update-detail__media" id="projMedia"></div>
         <div id="projContent"></div>
-        <a class="btn tertiary" href="projects/index.html">Back to Projects</a>
+        <div class="project-detail__actions">
+          <a class="btn tertiary" href="projects/index.html">Back to projects</a>
+        </div>
       </article>
     </main>
     <div data-include="assets/partials/back-to-top.html"></div>

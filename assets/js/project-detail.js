@@ -5,39 +5,67 @@
 
   const els = {
     title: document.getElementById('projTitle'),
-    subtitle: document.getElementById('projSubtitle'),
+    type: document.getElementById('projType'),
+    year: document.getElementById('projYear'),
+    meta: document.getElementById('projMeta'),
     media: document.getElementById('projMedia'),
     content: document.getElementById('projContent')
   };
 
+  const setMedia = (images) => {
+    if (!els.media) return;
+    if (!images?.length) {
+      els.media.innerHTML = '';
+      els.media.style.display = 'none';
+      return;
+    }
+    els.media.style.display = '';
+    els.media.innerHTML = images.map(img => `
+      <figure class="project-media__item">
+        <img src="${img.src}" alt="${img.alt || ''}" loading="lazy" />
+        ${img.caption ? `<figcaption>${img.caption}</figcaption>` : ''}
+      </figure>
+    `).join('');
+  };
+
   const sources = [
-    'projects/data/research.json',
-    'projects/data/courses.json',
-    'projects/data/internships.json',
-    'projects/data/others.json'
+    { type: 'Research', url: 'projects/data/research.json' },
+    { type: 'Course', url: 'projects/data/courses.json' },
+    { type: 'Internship', url: 'projects/data/internships.json' },
+    { type: 'Other', url: 'projects/data/others.json' }
   ];
 
   const load = async () => {
-    for (const url of sources) {
+    for (const src of sources) {
       try {
-        const j = await (window.loadJSON ? window.loadJSON(url) : (await fetch(url)).json());
+        const j = await (window.loadJSON ? window.loadJSON(src.url) : (await fetch(src.url)).json());
         const p = (j.projects||[]).find(x => x.slug === slug);
-        if (p) { render(p); return; }
+        if (p) { render({ ...p, type: p.type || src.type }); return; }
       } catch {}
     }
     els.title.textContent = 'Project not found';
-    els.subtitle.textContent = '';
+    if (els.meta) els.meta.style.display = 'none';
+    setMedia();
     els.content.innerHTML = '<p class="muted">No project matches this link.</p>';
   };
 
   const render = (p) => {
     els.title.textContent = p.title || 'Project';
-    els.subtitle.textContent = [p.type, p.years].filter(Boolean).join(' • ');
-    if (p.detail?.images?.length) {
-      els.media.innerHTML = p.detail.images.map(img => `<img src="${img.src}" alt="${img.alt||''}" loading="lazy" />`).join('');
-    } else if (p.card?.image) {
-      els.media.innerHTML = `<img src="${p.card.image}" alt="${p.card.alt||''}" loading="lazy" />`;
+    const typeLabel = p.type || '';
+    const hasType = Boolean(typeLabel);
+    const hasYear = Boolean(p.years);
+    if (els.type) {
+      els.type.textContent = hasType ? typeLabel : '';
+      els.type.style.display = hasType ? '' : 'none';
     }
+    if (els.year) {
+      els.year.textContent = hasYear ? p.years : '';
+      els.year.style.display = hasYear ? '' : 'none';
+    }
+    if (els.meta) {
+      els.meta.style.display = (hasType || hasYear) ? '' : 'none';
+    }
+    setMedia(p.detail?.images || []);
     if (p.detail?.body) {
       els.content.innerHTML = p.detail.body;
     } else if (p.summary) {

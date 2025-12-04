@@ -10,15 +10,27 @@
     { type: 'Other', url: 'projects/data/others.json' }
   ];
 
-  const cardHTML = (p) => `
-    <a class="project-card" href="projects/view.html?slug=${encodeURIComponent(p.slug)}" data-type="${p.type}">
-      <div class="project-card__media">${p.card?.image ? `<img src="${p.card.image}" alt="${p.card.alt || ''}" loading="lazy"/>` : ''}</div>
-      <div class="project-card__title">${p.title}</div>
-      <div class="project-card__hover">
-        ${p.summary ? `<div class=\"project-card__excerpt\">${p.summary}</div>` : ''}
-        <div class="project-card__actions"><span class="btn tertiary">Read more</span></div>
-      </div>
-    </a>`;
+  const cardHTML = (p) => {
+    const link = `projects/view.html?slug=${encodeURIComponent(p.slug)}`;
+    const yearText = (p.years || '').trim();
+    const typeLabel = p.type || '';
+    const meta = (typeLabel || yearText)
+      ? `<div class="project-card__meta">
+          ${typeLabel ? `<span class="project-card__pill">${typeLabel}</span>` : ''}
+          ${yearText ? `<span class="project-card__year">${yearText}</span>` : ''}
+        </div>`
+      : '';
+    return `
+      <a class="project-card" href="${link}" data-type="${p.type}">
+        ${p.card?.image ? `<div class="project-card__media"><img src="${p.card.image}" alt="${p.card.alt || ''}" loading="lazy"/></div>` : ''}
+        <div class="project-card__body">
+          <h3 class="project-card__title">${p.title}</h3>
+          ${meta}
+          ${p.summary ? `<p class="project-card__summary">${p.summary}</p>` : ''}
+          <span class="btn tertiary project-card__link">Read more</span>
+        </div>
+      </a>`;
+  };
 
   let tabsContainer;
   let underlineEl;
@@ -104,30 +116,10 @@
       grid.innerHTML = items.map(cardHTML).join('');
       filterCards('all');
       bindTypeTabs();
-      // Measure heights to precisely place title above excerpt on hover
-      const measureLayout = () => {
-        const cards = grid.querySelectorAll('.project-card');
-        cards.forEach(card => {
-          const title = card.querySelector('.project-card__title');
-          const actions = card.querySelector('.project-card__actions');
-          const excerpt = card.querySelector('.project-card__excerpt');
-          if (!title) return;
-          const titleH = title.getBoundingClientRect().height || 0;
-          const actionsH = actions ? (actions.getBoundingClientRect().height || 0) : 0;
-          const excerptH = excerpt ? (excerpt.getBoundingClientRect().height || 0) : 0;
-          if (titleH > 0) card.style.setProperty('--title-h', `${titleH}px`);
-          card.style.setProperty('--actions-h', `${Math.max(0, Math.round(actionsH))}px`);
-          card.style.setProperty('--excerpt-h', `${Math.max(0, Math.round(excerptH))}px`);
-        });
-      };
-      // Initial measure after content paints
-      setTimeout(measureLayout, 0);
-      // Recompute on resize (debounced)
       let t;
       window.addEventListener('resize', () => {
         clearTimeout(t);
         t = setTimeout(() => {
-          measureLayout();
           moveUnderline(activeTab);
         }, 120);
       }, { passive: true });

@@ -68,22 +68,24 @@
         const formatted = toDisplayDate(u.date);
         return `
           <article class="update-card">
-            <div class="update-card__header">
-              <a class="update-card__logo" href="${u.url}">
-                <img src="${u.image?.src || 'assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" />
-              </a>
-              <div class="update-card__heading">
-                <h3 class="update-card__title"><a href="${u.url}">${u.title}</a></h3>
-                <div class="update-card__meta">
-                  ${u.tag ? `<span class="update-tag">${u.tag}</span>` : ''}
-                  ${formatted ? `<time datetime="${u.date}">${formatted}</time>` : ''}
+            <a class="update-card__link" href="${u.url}">
+              <div class="update-card__header">
+                <div class="update-card__logo">
+                  <img src="${u.image?.src || 'assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" />
+                </div>
+                <div class="update-card__heading">
+                  <h3 class="update-card__title">${u.title}</h3>
+                  <div class="update-card__meta">
+                    ${u.tag ? `<span class="update-tag">${u.tag}</span>` : ''}
+                    ${formatted ? `<time datetime="${u.date}">${formatted}</time>` : ''}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="update-card__body">
-              ${u.excerpt ? `<p class="update-card__excerpt">${escapeHTML(u.excerpt)}</p>` : ''}
-              <a class="btn tertiary" href="${u.url}">Read more</a>
-            </div>
+              <div class="update-card__body">
+                ${u.excerpt ? `<p class="update-card__excerpt">${escapeHTML(u.excerpt)}</p>` : ''}
+                <span class="btn tertiary">Read more</span>
+              </div>
+            </a>
           </article>`;
       };
       container.innerHTML = items.map(card).join('');

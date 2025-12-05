@@ -370,6 +370,19 @@ main > section::before {
   box-sizing: border-box;
   width: min(100%, calc(var(--content-max-width) + (var(--content-inline-pad, var(--section-inline-pad)) * 2)));
 }
+.update-card__link {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: inherit;
+}
+.update-card__link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
 .update-card__header {
   display: flex;
   gap: 16px;
@@ -406,10 +419,6 @@ main > section::before {
   min-width: 0;
   font-size: 1rem;
   font-weight: 600;
-}
-.update-card__title a {
-  color: inherit;
-  display: block;
 }
 .update-card__meta {
   display: flex;
@@ -942,7 +951,7 @@ main > section::before {
   display: inline-flex;
   position: relative;
   overflow: hidden;
-  height: 1em;
+  height: 1.15em;
   letter-spacing: 0.04em;
 }
 .hero-highlight__mask {
@@ -953,7 +962,7 @@ main > section::before {
 }
 .hero-highlight__word {
   display: block;
-  line-height: 1;
+  line-height: 1.15;
 }
 @keyframes heroHighlightCycle {
   0%,

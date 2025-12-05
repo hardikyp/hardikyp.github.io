@@ -14,14 +14,16 @@
   font-display: swap;
 }
 :root {
-  --color-bg: #ffffff;
-  --color-surface: #f4f4f4;
-  --color-text: #26374D;
-  --color-muted: #475569;
-  --color-border: #5a5a5a;
-  --color-primary: #213a56;
-  --color-primary-strong: hsl(212, 45%, 30%);
-  --color-on-primary: #ffffff;
+  --color-bg: hsl(50, 100%, 100%, 1);
+  --color-surface: hsla(53, 31%, 99%, 1);
+  --color-text: hsla(204, 42%, 19%, 1);
+  --color-muted: hsla(204, 42%, 19%, 0.7);
+  --color-border: hsla(204, 42%, 19%, 0.2);
+  --color-primary: hsla(204, 42%, 19%, 1);
+  --color-primary-strong: hsla(192, 68%, 21%, 1);
+  --color-on-primary: hsla(53, 31%, 95%, 1);
+  --color-accent: hsla(30, 100%, 60%, 1);
+  --color-accent-muted: hsla(47, 100%, 50%, 1);
   /* neutral palette from white to black for flexible UI accents */
   --color-neutral-50: #ffffff;
   --color-neutral-200: #e0e0e0;
@@ -146,6 +148,6 @@ h6 {
   font-size: var(--type-h6);
   line-height: 1.35;
   letter-spacing: -0.005em;
-  font-weight: 600;
+  font-weight: 500;
 }
 p { margin: 0 0 var(--space-3); font-weight: 400; font-size: var(--type-p); line-height: 1.5; }

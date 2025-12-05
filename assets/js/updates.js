@@ -60,7 +60,7 @@
   const cardHTML = (u) => {
     const formattedDate = toDisplayDate(u.date);
     return `
-      <article class="update-card">
+      <article class="update-card" data-url="${u.url}" role="link" tabindex="0">
         <div class="update-card__header">
           <a class="update-card__logo" href="${u.url}">
             <img src="${u.image?.src || 'assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" />
@@ -80,9 +80,45 @@
       </article>`;
   };
 
+  const bindCardNavigation = () => {
+    document.querySelectorAll('.update-card[data-url]').forEach(card => {
+      if (card.dataset.cardNav === 'true') return;
+      const url = card.dataset.url;
+      if (!url) return;
+      const shouldIgnore = (event) => event?.target?.closest('a, button');
+      const go = (event, forceNewTab = false) => {
+        const openInNewTab = forceNewTab || event?.metaKey || event?.ctrlKey;
+        if (openInNewTab) {
+          window.open(url, '_blank', 'noopener');
+        } else {
+          window.location.href = url;
+        }
+      };
+      card.addEventListener('click', (event) => {
+        if (event.defaultPrevented || event.button !== 0 || shouldIgnore(event)) return;
+        event.preventDefault();
+        go(event);
+      });
+      card.addEventListener('auxclick', (event) => {
+        if (event.defaultPrevented || event.button !== 1 || shouldIgnore(event)) return;
+        event.preventDefault();
+        go(event, true);
+      });
+      card.addEventListener('keydown', (event) => {
+        if (event.defaultPrevented || shouldIgnore(event)) return;
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          go(event);
+        }
+      });
+      card.dataset.cardNav = 'true';
+    });
+  };
+
   const render = (arr) => {
     feed.innerHTML = '';
     arr.forEach(u => { feed.insertAdjacentHTML('beforeend', cardHTML(u)); });
+    bindCardNavigation();
   };
 
   const load = async () => {

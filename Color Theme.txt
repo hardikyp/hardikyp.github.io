@@ -1,5 +1,6 @@
-#26374D
-#567C8D
-#F5EFEB
-#EEEEEE
-#FFFFFF
+background: hsla(48, 100%, 99%, 1)
+background-muted: hsla(53, 31%, 95%, 1)
+primary: hsla(204, 42%, 19%, 1)
+primary-muted: hsla(192, 68%, 21%, 1)
+accent: hsla(30, 100%, 60%, 1)
+accent-muted: hsla(47, 100%, 50%, 1)

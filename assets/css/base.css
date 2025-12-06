@@ -22,15 +22,20 @@
   --color-primary: hsla(204, 42%, 19%, 1);
   --color-primary-strong: hsla(192, 68%, 21%, 1);
   --color-on-primary: hsla(53, 31%, 95%, 1);
-  --color-accent: hsla(30, 100%, 60%, 1);
+  --color-accent: hsla(30, 100%, 60%, 1);     
   --color-accent-muted: hsla(47, 100%, 50%, 1);
   /* neutral palette from white to black for flexible UI accents */
-  --color-neutral-50: #ffffff;
-  --color-neutral-200: #e0e0e0;
-  --color-neutral-400: #a6a6a6;
-  --color-neutral-600: #6c6c6c;
-  --color-neutral-800: #353535;
-  --color-neutral-1000: #000000;
+  --color-neutral: hsla(0, 0%, 100%, 1);
+  --color-neutral-100: hsla(0, 0%, 90%, 1);
+  --color-neutral-200: hsla(0, 0%, 80%, 1);
+  --color-neutral-300: hsla(0, 0%, 70%, 1);
+  --color-neutral-400: hsla(0, 0%, 60%, 1);
+  --color-neutral-500: hsla(0, 0%, 50%, 1);
+  --color-neutral-600: hsla(0, 0%, 40%, 1);
+  --color-neutral-700: hsla(0, 0%, 30%, 1);
+  --color-neutral-800: hsla(0, 0%, 20%, 1);
+  --color-neutral-900: hsla(0, 0%, 10%, 1);
+  --color-neutral-1000: hsla(0, 0%, 0%, 1);
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;

@@ -274,16 +274,16 @@ main > section::before {
   display: inline-flex;
   align-items: center;
   gap: 0.35em;
-  padding: 0.25em 0.85em;
+  padding: 0.15em 0.85em;
   border-radius: 999px;
   background: var(--color-accent);
   color: var(--color-primary);
   font-family: var(--font-body);
   font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: none;
 }
 .project-hero__year {
   font-size: 0.95rem;
@@ -1043,7 +1043,7 @@ main > section::before {
 .about-actions .btn { width: 100%; justify-content: center; }
 
 /* Pronunciation card */
-.pronounce-card { position: relative; display: inline-grid; grid-template-columns: 56px 1fr; align-items: center; border: 0px solid var(--border); border-radius: 16px; background: #f6f7f9; overflow: hidden; }
+.pronounce-card { position: relative; display: inline-grid; grid-template-columns: 56px 1fr; align-items: center; border: 0px solid var(--border); border-radius: 16px; background: var(--color-neutral-100); overflow: hidden; cursor: pointer; }
 .pronounce-card .play { width: 56px; height: 100%; display: flex; align-items: center; justify-content: center; background: transparent; position: relative; border-right: 1px solid var(--border); }
 .pronounce-card .play::before { content: ""; position: absolute; width: 36px; height: 36px; border-radius: 999px; background: var(--color-accent); left: 50%; top: 50%; transform: translate(-50%, -50%); transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease; box-shadow: 0 0 0 rgba(33,58,86,0); }
 .pronounce-card:hover .play::before,
@@ -1060,7 +1060,7 @@ main > section::before {
   70% { opacity: 0.15; }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(2.3); }
 }
-.pronounce-card .play svg { position: relative; width: 16px; height: 16px; fill: #fff; transform: translateY(0) scale(1); transition: transform 180ms ease; }
+.pronounce-card .play svg { position: relative; width: 24px; height: 24px; fill: var(--color-bg); transform: translateY(0) scale(1); transition: transform 180ms ease; }
 .pronounce-card:hover .play svg,
 .pronounce-card:focus-visible .play svg,
 .pronounce-card.is-playing .play svg { transform: translateY(-1px) scale(1.06); }
@@ -1250,7 +1250,7 @@ main > section::before {
   flex-wrap: wrap;
 }
 
-.project-card__pill { align-self: flex-start; }
+.project-card__pill { align-self: center; }
 
 .project-card__year {
   font-size: 0.92rem;

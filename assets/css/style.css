@@ -47,7 +47,7 @@
   padding: var(--btn-padding-y) var(--btn-padding-x);
   border-radius: var(--btn-radius);
   font-weight: 400;
-  border: 1px solid var(--btn-border);
+  border: 1.5px solid var(--btn-border);
   text-align: center;
   transition: transform 160ms ease, background-color 160ms ease, color 160ms ease, border-color 160ms ease;
   font-family: var(--font-body);
@@ -65,7 +65,7 @@
   transform: scale(1.0);
   box-shadow: 0 16px 30px rgba(15, 23, 42, 0.25);
 }
-.btn.secondary { --btn-bg: transparent; --btn-color: var(--color-primary); --btn-border: var(--color-accent); }
+.btn.secondary { --btn-bg: transparent; --btn-color: var(--color-primary); --btn-border: var(--color-primary-strong); }
 .btn.secondary:hover,
 .btn.secondary:focus-visible {
   background: var(--color-primary-strong);

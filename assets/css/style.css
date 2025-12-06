@@ -82,7 +82,13 @@
 .btn.tertiary:focus-visible {
   transform: translateX(6px);
 }
-.btn.tertiary::after { content: "→"; display: inline-block; margin-left: var(--space-1); transition: transform 160ms ease; }
+.btn.tertiary::after {
+  content: "\1F86D";
+  display: inline-block;
+  margin-left: var(--space-1);
+  font-family: 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Manrope', sans-serif;
+  transition: transform 160ms ease;
+}
 .btn.tertiary:hover::after,
 .btn.tertiary:focus-visible::after { transform: translateX(0); }
 .btn.tertiary:active {

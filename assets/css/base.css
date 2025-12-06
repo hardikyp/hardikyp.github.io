@@ -62,14 +62,6 @@
   --pub-abstract-maxh: 400px;
   --content-max-width: 1200px;
   --section-inline-pad: clamp(16px, 4vw, 48px);
-  /* legacy aliases */
-  --bg: var(--color-bg);
-  --bg-secondary: var(--color-surface);
-  --text: var(--color-text);
-  --muted: var(--color-muted);
-  --border: var(--color-border);
-  --primary: var(--color-primary);
-  --primary-600: var(--color-primary-strong);
 }
 
 /* Base font sizing per breakpoint */

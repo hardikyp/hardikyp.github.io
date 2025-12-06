@@ -48,7 +48,7 @@
     return `${shortened}…`;
   };
   const wrap = document.createElement('section');
-  wrap.style.cssText = 'padding:24px 16px; max-width:960px; margin:0 auto; border:1px dashed var(--border); border-radius:12px; background:#fff;';
+  wrap.style.cssText = 'padding:24px 16px; max-width:960px; margin:0 auto; border:1px dashed var(--color-border); border-radius:12px; background:#fff;';
   wrap.innerHTML = `
     <h2 style="margin:0 0 12px">New Update Generator</h2>
     <p class="muted" style="margin:0 0 16px">Fill the fields and copy the generated JSON entry and item page HTML. Save the JSON entry into <code>updates/data/updates.json</code> and create <code>updates/items/&lt;slug&gt;.html</code> with the HTML output.</p>

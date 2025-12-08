@@ -12,20 +12,33 @@
     content: document.getElementById('projContent')
   };
 
+  const escape = (value = '') => String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+
   const setMedia = (images) => {
     if (!els.media) return;
-    if (!images?.length) {
+    const items = (images || []).filter(img => img && img.src).slice(0, 2);
+    if (!items.length) {
       els.media.innerHTML = '';
       els.media.style.display = 'none';
+      els.media.classList.remove('project-media--multi');
       return;
     }
+    els.media.classList.toggle('project-media--multi', items.length > 1);
     els.media.style.display = '';
-    els.media.innerHTML = images.map(img => `
+    els.media.innerHTML = items.map((img, index) => {
+      const idx = index + 1;
+      const captionText = img.caption || img.alt || `Project illustration ${idx}`;
+      const caption = `${escape(captionText)}`;
+      return `
       <figure class="project-media__item">
-        <img src="${img.src}" alt="${img.alt || ''}" loading="lazy" />
-        ${img.caption ? `<figcaption>${img.caption}</figcaption>` : ''}
+        <img src="${escape(img.src)}" alt="${escape(img.alt || '')}" loading="lazy" />
+        <figcaption><strong>Fig. ${idx}.</strong> ${caption}</figcaption>
       </figure>
-    `).join('');
+    `; }).join('');
   };
 
   const sources = [

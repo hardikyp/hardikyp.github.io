@@ -1,0 +1,26 @@
+{
+  "enabled": true,
+  "items": [
+    {
+      "name": "Dr. Maya Sterling",
+      "title": "Research Scientist",
+      "affiliation": "Adaptive Structures Lab, U-M",
+      "quote": "Hardik brings rigor and creativity to every project. His deployable systems expertise pushed our prototypes far beyond expectations.",
+      "photo": "assets/img/portrait.jpg"
+    },
+    {
+      "name": "Prof. Louis Bennett",
+      "title": "Professor of Civil Engineering",
+      "affiliation": "IIT Bombay",
+      "quote": "He is among the rare researchers who can discuss mechanics fundamentals and translate them into production-ready code in the same afternoon.",
+      "photo": "assets/img/portrait.jpg"
+    },
+    {
+      "name": "Alex Rivera",
+      "title": "Structural Diagnostics Lead",
+      "affiliation": "DeployXR",
+      "quote": "Collaborating with Hardik was effortless. His simulations de-risked our field tests and gave leadership immediate confidence.",
+      "photo": "assets/img/portrait.jpg"
+    }
+  ]
+}

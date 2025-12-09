@@ -112,26 +112,15 @@
         </div>
       </section>
 
-      <!-- <section class="expertise">
+      <section class="expertise" aria-labelledby="homeExpertiseHeading">
         <div class="expertise__intro">
-          <h2>Scientific expertise</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet consectetur.</p>
+          <h2 id="homeExpertiseHeading">Scientific expertise</h2>
+          <p>A quick snapshot of my expertise beyond deployable and reconfigurable systems.</p>
         </div>
-        <div class="expertise__grid">
-          <article class="expertise-card">
-            <h3>Responsive Deployable Systems</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet vehicula ligula ut leo.</p>
-          </article>
-          <article class="expertise-card">
-            <h3>Computational Mechanics</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vulputate, arcu quis volutpat viverra.</p>
-          </article>
-          <article class="expertise-card">
-            <h3>Structural Diagnostics</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis libero vel justo vehicula cursus.</p>
-          </article>
+        <div class="expertise__grid" aria-live="polite">
+          <p class="expertise__fallback">Loading focus areas...</p>
         </div>
-      </section> -->
+      </section>
 
       <section class="about">
         <div class="about-img">
@@ -167,8 +156,20 @@
           <h2 id="homeTestimonialsHeading">What collaborators say</h2>
           <p>Short reflections from people I've worked with.</p>
         </div>
-        <div class="testimonials-list" aria-live="polite">
-          <p class="testimonials__fallback">Loading kind words...</p>
+        <div class="testimonials-carousel">
+          <div class="testimonials-viewport">
+            <div class="testimonials-track" aria-live="polite">
+              <p class="testimonials__fallback">Loading kind words...</p>
+            </div>
+          </div>
+          <div class="testimonials-controls">
+            <button class="testimonials-nav testimonials-nav--prev" type="button" aria-label="Previous testimonial" disabled>
+              <span aria-hidden="true"><span class="symbol-text">&#129144;</span></span>
+            </button>
+            <button class="testimonials-nav testimonials-nav--next" type="button" aria-label="Next testimonial" disabled>
+              <span aria-hidden="true"><span class="symbol-text">&#10132;</span></span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -230,6 +231,7 @@
     <script src="assets/js/includes.js"></script>
     <script src="assets/js/home-updates.js" defer></script>
     <script src="assets/js/home-testimonials.js" defer></script>
+    <script src="assets/js/home-expertise.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>
   </html>

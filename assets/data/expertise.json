@@ -1,0 +1,17 @@
+{
+  "enabled": false,
+  "items": [
+    {
+      "title": "Deployable & Reconfigurable Systems",
+      "summary": "Tools for actuating bar-linked, origami, and thin-shell structures so they can fold compactly yet carry load once deployed."
+    },
+    {
+      "title": "Computational Mechanics",
+      "summary": "Matrix structural analysis, nonlinear solvers, and reduced-order simulations that couple kinematics and mechanics."
+    },
+    {
+      "title": "Diagnostics & Sensing",
+      "summary": "Field-friendly workflows that combine structural testing, inference, and automation to de-risk infrastructure."
+    }
+  ]
+}

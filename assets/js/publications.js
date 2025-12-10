@@ -200,8 +200,10 @@
           if (p.links) order.forEach(k => { if (p.links[k]) actions.push({href:p.links[k], label:labels[k]||k}); });
           actions.forEach((a, idx) => {
             const btn = document.createElement('a');
-            btn.className = `btn ${idx===0?'primary':idx===1?'secondary':'tertiary'}`;
-            btn.href = a.href; btn.textContent = a.label;
+            const tier = idx===0?'primary':idx===1?'secondary':'tertiary';
+            btn.className = `btn ${tier}`;
+            btn.href = a.href;
+            btn.textContent = a.label;
             actionsEl.appendChild(btn);
           });
         }

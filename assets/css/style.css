@@ -9,7 +9,7 @@
 .logo { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 700; }
 .logo svg { height: 50px; width: auto; display: block; }
 /* Mask-based monogram for header */
-.logo .icon.monogram { width: 100px; height: 50px; display: inline-block; background-color: var(--color-primary); -webkit-mask: url('../icons/monogram.svg') no-repeat center / contain; mask: url('../icons/monogram.svg') no-repeat center / contain; }
+.logo .icon.monogram { width: 100px; height: 50px; display: inline-block; background-color: var(--color-primary-strong); -webkit-mask: url('../icons/monogram.svg') no-repeat center / contain; mask: url('../icons/monogram.svg') no-repeat center / contain; }
 .file-protocol .logo .icon.monogram,
 .file-protocol .footer-brand .monogram,
 .file-protocol .photo-brand,
@@ -77,16 +77,22 @@
   --btn-color: var(--color-primary);
   --btn-border: transparent;
   --btn-padding-x: 0;
+  align-items: baseline;
 }
-.btn.tertiary:hover,
-.btn.tertiary:focus-visible {
-  transform: translateX(6px);
+.btn.tertiary::after {
+  content: '\01F86A';
+  font-family: 'Noto Sans Symbols 2', var(--font-body), system-ui, sans-serif;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-left: 0px;
+  line-height: 1;
+  transform: translate3d(4px, 0px, 0) rotate(0deg);
+  transition: transform 160ms ease;
 }
-.btn.tertiary::after { content: "→"; display: inline-block; margin-left: 0.8*var(--space-1); transition: transform 160ms ease; }
 .btn.tertiary:hover::after,
-.btn.tertiary:focus-visible::after { transform: translateX(0); }
-.btn.tertiary:active {
-  transform: translate3d(6px, 1px, 0);
+.btn.tertiary:focus-visible::after {
+  transform: translate3d(4px, 0px, 0) rotate(-45deg);
 }
 .btn.solid { --btn-bg: var(--color-primary); --btn-color: var(--color-on-primary); }
 .btn.solid:hover { background: var(--color-primary-strong); }
@@ -637,8 +643,8 @@ main > section::before {
   gap: 12px;
 }
 .testimonials-nav {
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   border-radius: 999px;
   border: none;
   background: var(--color-bg);
@@ -648,6 +654,22 @@ main > section::before {
   justify-content: center;
   cursor: pointer;
   color: var(--color-primary);
+  font-size: 0;
+}
+.testimonials-nav > span[aria-hidden="true"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.testimonials-nav .symbol-text {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(2px);
 }
 .testimonials-nav[disabled] { opacity: 0.5; cursor: not-allowed; }
 .testimonials-nav--prev,
@@ -1504,13 +1526,13 @@ main > section::before {
 .footer-brand .logo-link { display: inline-flex; align-items: center; justify-content: center; }
 .footer-brand .logo-link:focus-visible { outline: 3px solid rgba(38,55,77,0.3); outline-offset: 6px; border-radius: 12px; }
 /* Mask-based monogram for footer */
-.footer-brand .monogram { display: block; width: 200px; aspect-ratio: 100 / 56; background-color: var(--color-primary); -webkit-mask: url('../icons/monogram.svg') no-repeat center / contain; mask: url('../icons/monogram.svg') no-repeat center / contain; }
+.footer-brand .monogram { display: block; width: 200px; aspect-ratio: 100 / 56; background-color: var(--color-primary-strong); -webkit-mask: url('../icons/monogram.svg') no-repeat center / contain; mask: url('../icons/monogram.svg') no-repeat center / contain; }
 .footer-brand .social { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 .footer-brand .social a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: transparent; box-shadow: none; transition: transform 200ms ease, box-shadow 200ms ease; }
 .footer-brand .social a:hover,
-.footer-brand .social a:focus-visible { transform: scale(1.05); box-shadow: 0 10px 22px rgba(15,23,42,0.24); background: transparent; }
+.footer-brand .social a:focus-visible { transform: scale(1); box-shadow: 0 10px 22px rgba(15,23,42,0.24); background: transparent; }
 /* Mask-based icons so all pages use CSS color */
-.footer-brand .social .icon { display: inline-block; width: 24px; height: 24px; background-color: var(--color-primary); transition: background-color 200ms ease; }
+.footer-brand .social .icon { display: inline-block; width: 24px; height: 24px; background-color: var(--color-primary-strong); transition: background-color 200ms ease; }
 .footer-brand .social a:hover .icon,
 .footer-brand .social a:focus-visible .icon { background-color: var(--color-primary-strong); }
 .footer-brand .social .icon.linkedin { -webkit-mask: url('../icons/linkedin.svg') no-repeat center / contain; mask: url('../icons/linkedin.svg') no-repeat center / contain; }

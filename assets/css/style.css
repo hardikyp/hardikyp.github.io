@@ -57,24 +57,24 @@
   font-size: var(--btn-font);
 }
 .btn:active { transform: translateY(1px); }
-.btn.primary { --btn-bg: var(--color-primary-strong); --btn-color: var(--color-on-primary); --btn-border: var(--color-primary-strong); }
+.btn.primary { --btn-bg: var(--color-primary); --btn-color: var(--color-on-primary); --btn-border: var(--color-primary); }
 .btn.primary:hover,
 .btn.primary:focus-visible {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+  background: var(--color-primary-strong);
+  border-color: var(--color-primary-strong);
   transform: scale(1.0);
   box-shadow: 0 16px 30px rgba(15, 23, 42, 0.25);
 }
-.btn.secondary { --btn-bg: transparent; --btn-color: var(--color-primary); --btn-border: var(--color-primary-strong); }
+.btn.secondary { --btn-bg: transparent; --btn-color: var(--color-primary); --btn-border: var(--color-primary); }
 .btn.secondary:hover,
 .btn.secondary:focus-visible {
-  background: var(--color-primary-strong);
+  background: var(--color-primary);
   color: var(--color-surface);
-  border-color: var(--color-primary-strong);
+  border-color: var(--color-primary);
 }
 .btn.tertiary {
   --btn-bg: transparent;
-  --btn-color: var(--color-primary);
+  --btn-color: var(--color-text);
   --btn-border: transparent;
   --btn-padding-x: 0;
   align-items: baseline;
@@ -1221,10 +1221,10 @@ main > section::before {
   line-height: 1.15;
   background-image: linear-gradient(
     to right,
-    var(--color-primary) 18%,
-    var(--color-accent-muted) 30%,
+    var(--color-primary-strong) 18%,
+    var(--color-accent) 30%,
     var(--color-accent) 60%,
-    var(--color-primary) 78%
+    var(--color-primary-strong) 78%
   );
   background-size: 500% auto;
   animation: heroHighlightShine 3s ease-in-out infinite alternate;

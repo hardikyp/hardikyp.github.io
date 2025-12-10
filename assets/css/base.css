@@ -26,8 +26,8 @@
   --color-text: hsla(204, 42%, 19%, 1);
   --color-muted: hsla(204, 42%, 19%, 0.7);
   --color-border: hsla(204, 42%, 19%, 0.2);
-  --color-primary: hsla(204, 42%, 19%, 1);
-  --color-primary-strong: hsla(192, 68%, 21%, 1);
+  --color-primary: hsla(192, 68%, 21%, 1);
+  --color-primary-strong: hsla(204, 42%, 19%, 1);
   --color-on-primary: hsla(53, 31%, 95%, 1);
   --color-accent: hsla(30, 100%, 60%, 1);     
   --color-accent-muted: hsla(47, 100%, 50%, 1);

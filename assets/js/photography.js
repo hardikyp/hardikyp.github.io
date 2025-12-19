@@ -245,17 +245,6 @@
     }, 180);
   };
 
-  const handleScroll = () => {
-    if (reduceMotion || !slides.length) return;
-    const rect = hero.getBoundingClientRect();
-    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    const progress = 1 - Math.min(Math.max(rect.top / viewportHeight, 0), 1);
-    const slide = slides[index];
-    if (!slide) return;
-    const speed = parseFloat(slide.dataset.speed || '0.25');
-    slide.style.setProperty('--scroll-y', `${progress * -160 * speed}px`);
-  };
-
   const observeReveals = () => {
     const revealTargets = document.querySelectorAll('.reveal-on-scroll');
     if (!revealTargets.length) return;
@@ -276,8 +265,6 @@
   const cleanup = () => {
     hero.removeEventListener('pointermove', handlePointerMove);
     hero.removeEventListener('pointerleave', handlePointerLeave);
-    hero.removeEventListener('wheel', handleHeroWheel);
-    window.removeEventListener('scroll', handleScroll);
     if (timerId) clearInterval(timerId);
     if (rafId) cancelAnimationFrame(rafId);
     if (animId) cancelAnimationFrame(animId);
@@ -297,29 +284,6 @@
     restartTimer();
   };
 
-  // Snap scroll the hero by one full screen when using the mouse wheel
-  let snapScrolling = false;
-  const handleHeroWheel = (e) => {
-    if (reduceMotion) return;
-    if (snapScrolling) { e.preventDefault(); return; }
-    const rect = hero.getBoundingClientRect();
-    const inView = rect.top < window.innerHeight && rect.bottom > 0;
-    if (!inView) return;
-    e.preventDefault();
-    const nextSection = hero.nextElementSibling;
-    if (e.deltaY > 0) {
-      const targetY = nextSection ? nextSection.offsetTop : window.scrollY + Math.max(rect.height, window.innerHeight);
-      snapScrolling = true;
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
-      setTimeout(() => { snapScrolling = false; }, 700);
-    } else if (e.deltaY < 0) {
-      const targetY = Math.max(0, hero.offsetTop);
-      snapScrolling = true;
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
-      setTimeout(() => { snapScrolling = false; }, 700);
-    }
-  };
-
   const hydrate = async () => {
     const data = await fetchData();
     renderCarousel(data.carousel);
@@ -327,8 +291,6 @@
     renderStories(data.stories);
     setTimeout(observeReveals, 20);
     initCarouselControls();
-    // Enable full-screen snapping scroll for hero only
-    hero.addEventListener('wheel', handleHeroWheel, { passive: false });
   };
 
   hydrate();

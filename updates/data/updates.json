@@ -1,6 +1,15 @@
 {
   "updates": [
     {
+      "slug": "hardik-gsi-cee211",
+      "title": "Graduate student instructor for CEE 211 - Statics and Dynamics",
+      "tag": "Milestone",
+      "date": "2026-01-07",
+      "detail": "<p>In Winter 2026, I will serve as a Graduate Student Instructor for CEE 211: Statics and Dynamics in the Department of Civil & Environmental Engineering at the University of Michigan. This appointment runs from January 7 to April 30, 2026, at a 25% fraction and includes full tuition support.</p><p>CEE 211 is a core mechanics course for civil and related engineering majors. On the statics side, it covers vector mechanics, force and moment resultants, static equilibrium in two and three dimensions, centroids, centers of gravity, distributed loadings, and mass and area moments of inertia. The dynamics portion introduces kinematics and kinetics of particles and rigid bodies, including velocity and acceleration, work–energy, impulse–momentum, and vibration concepts.</p><p>As GSI, I’ll assist with teaching and support students through a mix of classroom contact, office hours, and problem-solving sessions. My responsibilities include helping students work through equilibrium and free-body problems, guiding them on dynamics concepts like relative motion and energy methods, and grading homework and exams to provide clear, constructive feedback. I’m looking forward to helping students build a solid mechanics foundation that will carry into later courses in structural engineering, materials, and design.</p>",
+      "image": { "src": "assets/img/updates/thumbnails/uofm.png", "alt": "University of Michigan logo" },
+      "gallery": []
+    },
+    {
       "slug": "thornton-tomasetti-forensics-internship",
       "title": "Summer internship at Thornton Tomasetti, San Francisco",
       "tag": "Milestone",
@@ -51,7 +60,7 @@
     },
     {
       "slug": "hardik-gsi-eng100",
-      "title": "Graduate student instructor for Introduction to Adaptable & Deployable Structures class",
+      "title": "Graduate student instructor for ENG 100 - Intro to Adaptable & Deployable Structures",
       "tag": "Milestone",
       "date": "2023-01-04",
       "detail": "<p>This was my first formal teaching role, and I jumped in early: I helped co-develop and co-teach the first-ever “Introduction to Adaptable & Deployable Structures” course for first-year engineering students. Alongside the instructor, I designed assignments, exams, and grading rubrics, and then used lab and office hours each week to help students understand and apply what we had designed.</p><p>I led weekly labs where students learned AutoCAD, Fusion 360, and Arduino through structured follow-along activities, building the skills they needed to design, analyze, and fabricate deployable structures. Early in the term, I organized a tour of the Duderstadt Center's Underground Fabrication Lab so students could see 3D printers, laser cutters, and other tools in action before they had to rely on them for their final projects. To support a brand-new course with no legacy material, I created detailed handouts for each lab, including step-by-step instructions, screenshots, and extra practice tasks—resources that will continue to serve future offerings.</p><p>A big emphasis for me was demystifying the engineering design process. I designed a catapult team project where students had to combine CAD modeling, fabrication, and Arduino-driven actuation, then compare test results to theory. Many were initially uncomfortable with the open-ended nature of the task; my role was to coach them through iteration, trade-offs, and the idea that there isn't a single “right” design. I reinforced core mechanics concepts (tension, compression, moments) using simple physical demonstrations during office hours—rulers, simple setups, and lots of questions.</p><p>When fabrication lab access became a bottleneck near the end of the semester, I set up a booking system and opened our research lab so every team had time on the machines. Between extended in-person and Zoom office hours and detailed feedback on reports, I tried to be the kind of instructor I would’ve wanted as a first-year.</p>",

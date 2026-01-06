@@ -4,7 +4,7 @@
     "title": "Single-zone fire simulator for mass-timber structures",
     "years": "2025",
     "summary": "Python tool to predict char-depth and gas temperatures in mass timber structures.",
-    "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Tools" },
+    "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Mass timber fire simulation tool visualization" },
     "detail": { "body": "<p>Developed a single-zone fire simulator by implementing a one-dimensional heat transfer solver in Python, predicting char depth in mass-timber members to support structural performance assessments in various fire scenarios.</p>" }
   }
 ] }

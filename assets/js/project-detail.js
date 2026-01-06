@@ -3,6 +3,55 @@
   const slug = params.get('slug');
   if (!slug) return;
 
+  const BASE_URL = 'https://hardikpatil.com/';
+  const toAbsoluteUrl = (url = '') => {
+    if (!url) return BASE_URL;
+    try { return new URL(url, BASE_URL).toString(); } catch { return BASE_URL; }
+  };
+  const setMeta = (attr, key, value) => {
+    if (!value) return;
+    let node = document.querySelector(`meta[${attr}="${key}"]`);
+    if (!node) {
+      node = document.createElement('meta');
+      node.setAttribute(attr, key);
+      document.head.appendChild(node);
+    }
+    node.setAttribute('content', value);
+  };
+  const setLink = (rel, href) => {
+    if (!href) return;
+    let node = document.querySelector(`link[rel="${rel}"]`);
+    if (!node) {
+      node = document.createElement('link');
+      node.setAttribute('rel', rel);
+      document.head.appendChild(node);
+    }
+    node.setAttribute('href', href);
+  };
+  const setStructuredData = (data) => {
+    if (!data) return;
+    let node = document.getElementById('structuredData');
+    if (!node) {
+      node = document.createElement('script');
+      node.id = 'structuredData';
+      node.type = 'application/ld+json';
+      document.head.appendChild(node);
+    }
+    node.textContent = JSON.stringify(data);
+  };
+  const sanitizeWhitespace = (str) => (str || '').replace(/\s+/g, ' ').trim();
+  const htmlToSummary = (html, limit = 180) => {
+    if (!html) return '';
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    const source = tmp.querySelector('p') || tmp;
+    const raw = sanitizeWhitespace(source.textContent || tmp.textContent || '');
+    if (!raw) return '';
+    if (raw.length <= limit) return raw;
+    const shortened = raw.slice(0, limit).replace(/\s+\S*$/, '');
+    return `${shortened}…`;
+  };
+
   const els = {
     title: document.getElementById('projTitle'),
     type: document.getElementById('projType'),
@@ -86,7 +135,41 @@
     } else {
       els.content.innerHTML = '<p class="muted">This project does not have additional details yet.</p>';
     }
-    try { document.title = `${p.title} — Projects — Hardik Patil`; } catch {}
+    try {
+      const bodySummary = htmlToSummary(p.detail?.body || '');
+      const desc = p.summary || bodySummary || 'Project details from Hardik Patil.';
+      const pageTitle = `${p.title || 'Project'} — Projects — Hardik Patil`;
+      const canonicalUrl = toAbsoluteUrl(`projects/view.html?slug=${encodeURIComponent(p.slug)}`);
+      const imageSrc = p.detail?.images?.[0]?.src || p.card?.image || 'assets/img/portrait.jpg';
+      const imageAlt = p.detail?.images?.[0]?.alt || p.card?.alt || p.title || 'Hardik Patil project';
+      const imageUrl = toAbsoluteUrl(imageSrc);
+      document.title = pageTitle;
+      setMeta('name', 'description', desc);
+      setMeta('property', 'og:title', pageTitle);
+      setMeta('property', 'og:description', desc);
+      setMeta('property', 'og:url', canonicalUrl);
+      setMeta('property', 'og:image', imageUrl);
+      setMeta('property', 'og:image:alt', imageAlt);
+      setMeta('property', 'og:type', 'article');
+      setMeta('name', 'twitter:title', pageTitle);
+      setMeta('name', 'twitter:description', desc);
+      setMeta('name', 'twitter:image', imageUrl);
+      setMeta('name', 'twitter:image:alt', imageAlt);
+      setLink('canonical', canonicalUrl);
+      setStructuredData({
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": p.title || 'Project',
+        "description": desc,
+        "author": {
+          "@type": "Person",
+          "name": "Hardik Patil"
+        },
+        "dateCreated": p.years || undefined,
+        "image": imageUrl,
+        "mainEntityOfPage": canonicalUrl
+      });
+    } catch {}
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();

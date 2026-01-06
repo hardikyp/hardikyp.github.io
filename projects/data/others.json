@@ -4,7 +4,7 @@
     "title": "Portfolio Website Refresh",
     "years": "2025",
     "summary": "Design, developed and deployed the website you are reading this content on! :)",
-    "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Web" },
+    "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Portfolio website layout preview" },
     "detail": { 
       "images": [ ],
       "body": "<h3>Why I rebuilt my site</h3><p>This very website started as a “I should really fix my portfolio” moment and turned into a full rebuild from scratch. I didn't want to keep paying for Squarespace or fight against template constraints that made everything look generic and limited what I could do with layout, interactions, and content structure.</p><h3>What I set out to do</h3><p>The goal was simple: a fast, clean, content-first site that I fully understand and control. No black-box CMS, no drag-and-drop page builder—just hand-crafted pages where I decide how projects, publications, teaching, and photography are organized and presented.</p><h3>How I built it</h3><p>I used ChatGPT as a coding and design copilot, especially for the JavaScript that powers components and interactions, while still wiring everything together myself. I iterated on layout, typography, and component structure until the site felt like a cohesive system rather than a collection of pages. Everything from navigation to project cards is now custom, version-controlled, and easy for me to extend as my work evolves.</p>" 

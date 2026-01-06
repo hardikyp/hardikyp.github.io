@@ -1,18 +1,18 @@
 {
-  "enabled": true,
+  "enabled": false,
   "items": [
     {
-      "name": "Dr. John Doe",
-      "title": "Title",
-      "affiliation": "Affiliation",
-      "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "name": "Sujay Mundada",
+      "title": "Quantitative Trader, Researcher and Developer",
+      "affiliation": "OptimusPrime Securities and Research LLP",
+      "quote": "Hardik is one of the most brilliant minds I have ever worked with. Along with his smart working and prioritizing skills , his ability to deal with pressure situations and his capacity to do hard work is incomparable.",
       "photo": "assets/img/user.png"
     },
     {
-      "name": "Prof. Jane Doe",
-      "title": "Title",
-      "affiliation": "Affiliation",
-      "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "name": "Karan Mehta",
+      "title": "Product Lead",
+      "affiliation": "Curefit",
+      "quote": "It was great working with Hardik. He is a goal oriented person and highly organized. He had worked directly under me as the Media Co-ordinator of Techfest 16-17. His perseverance is commendable and his ability to complete any task assigned to him is truly inspiring. He has the ability to develop a good rapport with his colleagues. I wish him all the luck for his future endeavours.",
       "photo": "assets/img/user.png"
     },
     {

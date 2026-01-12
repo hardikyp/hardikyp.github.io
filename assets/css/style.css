@@ -752,6 +752,7 @@ main > section::before {
   gap: 20px;
 }
 .update-detail #viewBody { display: flow-root; }
+.update-detail #viewBody a { text-decoration: underline; }
 .update-detail__meta {
   display: flex;
   flex-wrap: wrap;

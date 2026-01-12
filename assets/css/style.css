@@ -1713,6 +1713,7 @@ main > section::before {
 .pub-meta { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
 .pub-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .pub-actions .btn { padding: 8px 24px; border-radius: 8px; }
+.pub-actions .btn.primary + .btn.secondary { margin-left: 12px; }
 
 /* Publications accordion */
 .pub-item { position: relative; }

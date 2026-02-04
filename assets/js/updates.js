@@ -63,7 +63,7 @@
       <article class="update-card" data-url="${u.url}" role="link" tabindex="0">
         <div class="update-card__header">
           <a class="update-card__logo" href="${u.url}">
-            <img src="${u.image?.src || 'assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" />
+            <img src="${u.image?.src || 'assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" width="64" height="64" />
           </a>
           <div class="update-card__heading">
             <h3 class="update-card__title"><a href="${u.url}">${u.title}</a></h3>

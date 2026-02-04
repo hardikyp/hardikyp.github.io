@@ -1,8 +1,4 @@
 (() => {
-  const params = new URLSearchParams(location.search);
-  const slug = params.get('slug');
-  if (!slug) return;
-
   const sanitizeWhitespace = (str) => (str || '').replace(/\s+/g, ' ').trim();
   const detailToSummary = (html, limit = 180) => {
     if (!html) return '';
@@ -60,6 +56,20 @@
     node.textContent = JSON.stringify(data);
   };
 
+  const buildSrcset = (src) => {
+    if (!src || !/\\.(jpe?g)$/i.test(src)) return '';
+    const withSize = (w) => src.replace(/\\.(jpe?g)$/i, `-${w}.$1`);
+    return [800, 1200, 1600].map(w => `${withSize(w)} ${w}w`).join(', ');
+  };
+
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('slug');
+  if (!slug) {
+    setMeta('name', 'robots', 'noindex,follow');
+    setLink('canonical', toAbsoluteUrl('updates/'));
+    return;
+  }
+
   const toDateStr = (iso) => {
     if (!iso || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return '';
     const [y, m, d] = iso.split('-').map(Number);
@@ -78,6 +88,8 @@
         el.tag.style.display = 'none';
         el.date.style.display = 'none';
         el.body.innerHTML = '<p class="muted">No update matches this link.</p>';
+        setMeta('name', 'robots', 'noindex,follow');
+        setLink('canonical', toAbsoluteUrl('updates/'));
         return;
       }
       // Populate
@@ -101,12 +113,16 @@
           .map((g) => {
             if (!g) return '';
             if (typeof g === 'string') {
-              return `<figure class="update-gallery__item" role="listitem"><img src="${g}" alt="" loading="lazy" /></figure>`;
+              const srcset = buildSrcset(g);
+              const sizes = '(min-width: 1024px) 720px, 92vw';
+              return `<figure class="update-gallery__item" role="listitem"><img src="${g}" alt="" loading="lazy"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} /></figure>`;
             }
             if (!g.src) return '';
             const caption = g.caption || '';
+            const srcset = buildSrcset(g.src);
+            const sizes = '(min-width: 1024px) 720px, 92vw';
             return `<figure class="update-gallery__item" role="listitem">
-              <img src="${g.src}" alt="${g.alt || ''}" loading="lazy" />
+              <img src="${g.src}" alt="${g.alt || ''}" loading="lazy"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
               ${caption ? `<figcaption class="update-gallery__caption">${caption}</figcaption>` : ''}
             </figure>`;
           })
@@ -151,6 +167,19 @@
             "name": "Hardik Patil"
           },
           "image": imageUrl,
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "Hardik Patil",
+            "url": "https://hardikpatil.com/"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hardikpatil.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Updates", "item": "https://hardikpatil.com/updates/" },
+              { "@type": "ListItem", "position": 3, "name": u.title || 'Update', "item": canonicalUrl }
+            ]
+          },
           "mainEntityOfPage": canonicalUrl
         });
       } catch {}

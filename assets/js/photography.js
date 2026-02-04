@@ -111,8 +111,12 @@
     const markup = (items || []).map((item, i) => {
       const overlay = item.overlay;
       const speed = typeof item.speed === 'number' ? item.speed : 0.25;
+      const srcset = buildSrcset(item.src);
+      const sizes = '100vw';
+      const loading = i === 0 ? 'eager' : 'lazy';
+      const fetchPriority = i === 0 ? ' fetchpriority="high"' : '';
       return `<article class="photo-slide${i === 0 ? ' is-active' : ''}" data-speed="${speed}">
-        <img src="${item.src}" alt="${item.alt || ''}" loading="lazy" decoding="async" />
+        <img src="${item.src}" alt="${item.alt || ''}" loading="${loading}" decoding="async"${fetchPriority}${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
         ${overlay ? `<div class="photo-slide__overlay gradient-${overlay}"></div>` : ''}
       </article>`;
     }).join('');
@@ -121,9 +125,17 @@
     index = 0;
   };
 
+  const buildSrcset = (src) => {
+    if (!src || !/\\.(jpe?g)$/i.test(src)) return '';
+    const withSize = (w) => src.replace(/\\.(jpe?g)$/i, `-${w}.$1`);
+    return [800, 1200, 1600].map(w => `${withSize(w)} ${w}w`).join(', ');
+  };
+
   const categoryCard = (item) => {
     const accent = item.accent || 'warm';
     const galleryCount = (item.gallery || []).length;
+    const srcset = buildSrcset(item.cover);
+    const sizes = '(min-width: 1024px) 40vw, 90vw';
     return `<article class="photo-category gradient-${accent} reveal-on-scroll" id="${item.slug || ''}" aria-label="${item.title || 'Gallery'} collection">
       <div class="photo-category__content">
         <h3>${item.title || ''}</h3>
@@ -132,16 +144,18 @@
         <button class="btn tertiary light" type="button" data-gallery="${item.slug || ''}">View series</button>
       </div>
       <div class="photo-category__preview">
-        <img src="${item.cover || ''}" alt="${item.title || ''} cover" loading="lazy" decoding="async" />
+        <img src="${item.cover || ''}" alt="${item.title || ''} cover" loading="lazy" decoding="async"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
       </div>
     </article>`;
   };
 
   const storyCard = (item) => {
     const meta = item.meta ? `<span class="muted">${[item.meta.location, item.meta.year].filter(Boolean).join(' · ')}</span>` : '';
+    const srcset = buildSrcset(item.cover);
+    const sizes = '(min-width: 1024px) 45vw, 90vw';
     return `<article class="photo-story reveal-on-scroll" id="${item.slug || ''}">
       <div class="photo-story__media">
-        <img src="${item.cover || ''}" alt="${item.title || ''} cover" loading="lazy" decoding="async" />
+        <img src="${item.cover || ''}" alt="${item.title || ''} cover" loading="lazy" decoding="async"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
       </div>
       <div class="photo-story__body">
         <h3>${item.title || ''}</h3>

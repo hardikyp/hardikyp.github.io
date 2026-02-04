@@ -1,8 +1,4 @@
 (() => {
-  const params = new URLSearchParams(location.search);
-  const slug = params.get('slug');
-  if (!slug) return;
-
   const BASE_URL = 'https://hardikpatil.com/';
   const toAbsoluteUrl = (url = '') => {
     if (!url) return BASE_URL;
@@ -51,6 +47,14 @@
     const shortened = raw.slice(0, limit).replace(/\s+\S*$/, '');
     return `${shortened}…`;
   };
+
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('slug');
+  if (!slug) {
+    setMeta('name', 'robots', 'noindex,follow');
+    setLink('canonical', toAbsoluteUrl('projects/'));
+    return;
+  }
 
   const els = {
     title: document.getElementById('projTitle'),
@@ -109,6 +113,8 @@
     if (els.meta) els.meta.style.display = 'none';
     setMedia();
     els.content.innerHTML = '<p class="muted">No project matches this link.</p>';
+    setMeta('name', 'robots', 'noindex,follow');
+    setLink('canonical', toAbsoluteUrl('projects/'));
   };
 
   const render = (p) => {
@@ -167,6 +173,19 @@
         },
         "dateCreated": p.years || undefined,
         "image": imageUrl,
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Hardik Patil",
+          "url": "https://hardikpatil.com/"
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hardikpatil.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://hardikpatil.com/projects/" },
+            { "@type": "ListItem", "position": 3, "name": p.title || 'Project', "item": canonicalUrl }
+          ]
+        },
         "mainEntityOfPage": canonicalUrl
       });
     } catch {}

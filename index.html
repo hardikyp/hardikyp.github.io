@@ -16,7 +16,7 @@
     <meta property="og:title" content="Hardik Patil | Structural Engineering PhD Candidate" />
     <meta property="og:description" content="Deployable and reconfigurable structures, origami-inspired systems, and structural engineering research by Hardik Patil." />
     <meta property="og:url" content="https://hardikpatil.com/" />
-    <meta property="og:image" content="https://hardikpatil.com/assets/img/portrait.jpg" />
+    <meta property="og:image" content="https://hardikpatil.com/assets/img/portrait-1200.jpg" />
     <meta property="og:image:alt" content="Portrait of Hardik Patil" />
     <meta property="og:site_name" content="Hardik Patil" />
     <meta property="og:locale" content="en_US" />
@@ -25,14 +25,14 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Hardik Patil | Structural Engineering PhD Candidate" />
     <meta name="twitter:description" content="Deployable and reconfigurable structures, origami-inspired systems, and structural engineering research by Hardik Patil." />
-    <meta name="twitter:image" content="https://hardikpatil.com/assets/img/portrait.jpg" />
+    <meta name="twitter:image" content="https://hardikpatil.com/assets/img/portrait-1200.jpg" />
     <meta name="twitter:image:alt" content="Portrait of Hardik Patil" />
 
     <!-- Security best-effort (meta-based; prefer server headers in production) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' file: data:; script-src 'self' file: 'unsafe-inline'; style-src 'self' file: data: 'unsafe-inline'; img-src 'self' data: file:; font-src 'self' data: file:; connect-src 'self' file: data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' file: data:; script-src 'self' file: 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' file: data: 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: file:; font-src 'self' data: file:; connect-src 'self' file: data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'" />
 
     <script type="application/ld+json">
       {
@@ -40,7 +40,7 @@
         "@type": "Person",
         "name": "Hardik Patil",
         "url": "https://hardikpatil.com/",
-        "image": "https://hardikpatil.com/assets/img/portrait.jpg",
+        "image": "https://hardikpatil.com/assets/img/portrait-1200.jpg",
         "jobTitle": "Structural Engineering PhD Candidate",
         "affiliation": {
           "@type": "CollegeOrUniversity",
@@ -65,6 +65,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="/assets/icons/monogram.svg" type="image/svg+xml" />
     <link rel="preload" href="/assets/css/style.css" as="style" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body class="page-home">
@@ -158,7 +159,9 @@
 
       <section class="about">
         <div class="about-img">
-          <img src="/assets/img/portrait.jpg" alt="Portrait of Hardik Patil" width="897" height="1196" loading="lazy" decoding="async" />
+          <img src="/assets/img/portrait-640.jpg" alt="Portrait of Hardik Patil" width="640" height="800" loading="lazy" decoding="async"
+            srcset="/assets/img/portrait-320.jpg 320w, /assets/img/portrait-480.jpg 480w, /assets/img/portrait-640.jpg 640w, /assets/img/portrait-800.jpg 800w, /assets/img/portrait-960.jpg 960w, /assets/img/portrait-1280.jpg 1280w"
+            sizes="(max-width: 720px) 90vw, 640px" />
         </div>
         <div class="about-content">
           <h2>About Me</h2>
@@ -182,6 +185,28 @@
           <audio id="namePronunciation" preload="none">
             <source src="/assets/audio/name-pronunciation.mp3" type="audio/mpeg" />
           </audio>
+        </div>
+      </section>
+
+      <section class="testimonials" aria-labelledby="testimonialsHeading">
+        <div class="testimonials__intro">
+          <h2 id="testimonialsHeading">What collaborators are saying</h2>
+          <p>Short reflections from the people I've worked with</p>
+        </div>
+        <div class="testimonials-carousel" data-testimonials-carousel>
+          <p class="testimonials__fallback">Loading testimonials...</p>
+        </div>
+        <div class="testimonials-controls" role="group" aria-label="Testimonials navigation">
+          <button class="testimonials-nav testimonials-nav--prev" type="button" aria-label="Previous testimonial" data-testimonials-nav="prev">
+            <span aria-hidden="true">
+              <span class="symbol-text">←</span>
+            </span>
+          </button>
+          <button class="testimonials-nav testimonials-nav--next" type="button" aria-label="Next testimonial" data-testimonials-nav="next">
+            <span aria-hidden="true">
+              <span class="symbol-text">→</span>
+            </span>
+          </button>
         </div>
       </section>
 
@@ -243,6 +268,9 @@
     <div data-include="/assets/partials/footer.html"></div>
 
     <script src="/assets/js/includes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script src="/assets/js/home-testimonials.js" defer></script>
     <script src="/assets/js/home-updates.js" defer></script>
     <script src="/assets/js/home-expertise.js" defer></script>
     <script src="/assets/js/main.js" defer></script>

@@ -3,9 +3,9 @@
     {
       "slug": "torsional-springs",
       "title": "Torsional spring formulation for the analysis of reconfigurable bar-linked structures",
-      "years": "2025",
+      "years": "2026",
       "summary": "Formulated and implemented torsional (coil) springs to assign joint rotational stiffness in reconfigurable trusses.",
-      "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Visualization of a torsional spring element in a reconfigurable truss" },
+      "card": { "image": "assets/img/projects/torsional-spring.jpg", "alt": "Illustration of a torsional spring element in bar-linked structures" },
       "detail": {
         "images": [ ],
         "body": "<h3>Why this matters</h3><p>Truss-like structures are usually modeled with pin joints that carry only axial forces, but many real systems—from deployable trusses and metamaterials to biomechanical linkages—depend on controlled joint rotation. The common workaround is to bolt on short beam elements with rotational degrees of freedom, which inflates the model size and can give unreliable results if the chosen rotational stiffness is arbitrary. This project introduces a torsional spring element that gives joints programmable rotational stiffness while keeping the model as compact as a standard truss.</p><h3>What I did</h3><p>I derived a three-node torsional spring (3NTS) element that sits at the intersection of two bars and resists changes in their relative angle. Starting from the spring’s strain energy, I expressed the resisting moment as equivalent nodal forces and obtained a closed-form stiffness matrix using the gradient and Hessian of the relative bar angle. The key feature is that the element uses only six translational degrees of freedom—no rotational DOFs—so a spring-fitted bar-linked assembly has the same global DOF count as a classic truss.</p><h3>Validation, applications &amp; tools</h3><p>I implemented the 3NTS in non-linear structural solvers and validated it against analytical solutions for two benchmark problems: a single torsional-spring unit under load and a buckling column with a spring at mid-height. I then applied the framework to a reconfigurable truss from my earlier work to study actuation forces, buckling-like behavior, and energy storage during reconfiguration. The result is an open-source matrix structural analysis tool for efficiently exploring bar-linked systems with joint rotational stiffness in applications such as deployable structures, metamaterials, and compliant mechanisms.</p>"
@@ -14,7 +14,7 @@
     {
       "slug": "reconfigurable-bar-linked-structures",
       "title": "Transforming Static Trusses into Functional Shape-morphing Systems",
-      "years": "2024",
+      "years": "2025",
       "summary": "Developed a method to make static trusses reconfigurable without sacrificing load capacity and stiffness.",
       "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Reconfigurable truss concept rendering" },
       "detail": {

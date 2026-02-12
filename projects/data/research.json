@@ -13,7 +13,7 @@
     },
     {
       "slug": "reconfigurable-bar-linked-structures",
-      "title": "Transforming Static Trusses into Functional Shape-morphing Systems",
+      "title": "Transforming static trusses into functional shape-morphing systems",
       "years": "2025",
       "summary": "Developed a method to make static trusses reconfigurable without sacrificing load capacity and stiffness.",
       "card": { "image": "assets/img/projects/reconfigurable-truss.jpg", "alt": "Reconfigurable truss concept rendering" },
@@ -24,7 +24,7 @@
     },
     {
       "slug": "reconfigurable-origami-ship-hulls",
-      "title": "Shape-morphing Curved-crease Origami Hulls for Rapid Deployment and Tunable Hydrodynamics",
+      "title": "Shape-morphing curved-crease origami hulls for rapid deployment and tunable hydrodynamics",
       "years": "2023",
       "summary": "Designed curved-crease origami-based ship hulls that can transform shape and tune hydrodynamics on-demand",
       "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Origami-inspired ship hull illustration" },
@@ -35,7 +35,7 @@
     },
     {
       "slug": "bridges-in-hurricane",
-      "title": "Hurricane Induced Surge and Wave forces on Coastal Bridges",
+      "title": "Hurricane induced surge and wave forces on coastal bridges",
       "years": "2019",
       "summary": "Bachelor Technical Project studying hurricane induced forces on coastal bridge decks.",
       "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Coastal bridge under wave loading illustration" },
@@ -46,7 +46,7 @@
     },
     {
       "slug": "soil-moisture-mapping",
-      "title": "Soil Moisture Mapping Using P-Band Radiometer",
+      "title": "Soil moisture mapping using P-band radiometer",
       "years": "2018",
       "summary": "Summer research experience at Monash University exploring remote soil moisture retrieval techniques.",
       "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Soil moisture remote sensing illustration" },

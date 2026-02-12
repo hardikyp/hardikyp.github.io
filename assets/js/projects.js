@@ -32,6 +32,13 @@
       </a>`;
   };
 
+  const getLatestYear = (years) => {
+    if (!years) return 0;
+    const matches = String(years).match(/\d{4}/g);
+    if (!matches || !matches.length) return 0;
+    return Math.max(...matches.map(Number));
+  };
+
   let tabsContainer;
   let underlineEl;
   let activeTab;
@@ -110,7 +117,9 @@
           return (j.projects||[]).map(p => ({ ...p, type: s.type }));
         } catch { return []; }
       }));
-      const items = results.flat();
+      const items = results
+        .flat()
+        .sort((a, b) => getLatestYear(b.years) - getLatestYear(a.years));
       const types = sources.map(s=>s.type);
       renderTypes(types);
       grid.innerHTML = items.map(cardHTML).join('');

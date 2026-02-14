@@ -26,7 +26,7 @@
 
 .primary-nav { justify-self: center; }
 .primary-nav ul { display: flex; gap: var(--space-3); }
-.primary-nav a { position: relative; color: var(--color-muted); font-weight: 400; font-size: 0.95rem; display: inline-block; padding-bottom: 2px; text-transform: uppercase; }
+.primary-nav a { position: relative; color: var(--color-muted); font-weight: 400; font-size: 0.9rem; display: inline-block; padding-bottom: 2px; text-transform: uppercase; }
 .primary-nav a:hover, .primary-nav a:focus { color: var(--color-text); }
 .primary-nav a::after { content: ""; position: absolute; left: 50%; bottom: 0; height: 0.75px; width: 100%; background: currentColor; transform: translateX(-50%) scaleX(0); transform-origin: center; transition: transform 0.5s ease; }
 .primary-nav a:hover::after, .primary-nav a:focus::after { transform: translateX(-50%) scaleX(1); }
@@ -63,7 +63,7 @@
   background: var(--color-primary-strong);
   border-color: var(--color-primary-strong);
   transform: scale(1.0);
-  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.25);
+  box-shadow: 0 2px 24px rgba(15, 23, 42, 0.25);
 }
 .btn.secondary { --btn-bg: transparent; --btn-color: var(--color-primary); --btn-border: var(--color-primary); }
 .btn.secondary:hover,

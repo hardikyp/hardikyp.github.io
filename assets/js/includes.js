@@ -54,6 +54,7 @@
     <nav class="primary-nav" aria-label="Primary">
       <ul>
         <li><a href="projects/index.html">Projects</a></li>
+        <li><a href="teaching/index.html">Teaching</a></li>
         <li><a href="publications/index.html">Publications</a></li>
         <li><a href="updates/index.html">Updates</a></li>
         <li><a href="photography/index.html">Photography</a></li>
@@ -74,6 +75,7 @@
         <nav aria-label="Mobile">
           <ul>
             <li><a href="projects/index.html">Projects</a></li>
+            <li><a href="teaching/index.html">Teaching</a></li>
             <li><a href="publications/index.html">Publications</a></li>
             <li><a href="updates/index.html">Updates</a></li>
             <li><a href="photography/index.html">Photography</a></li>
@@ -119,6 +121,7 @@
       <h3>Site</h3>
       <div class="footer-links">
         <a href="projects/index.html">Projects</a>
+        <a href="teaching/index.html">Teaching</a>
         <a href="publications/index.html">Publications</a>
         <a href="updates/index.html">Updates</a>
       </div>
@@ -178,7 +181,7 @@
       var parts = path.split('/').filter(Boolean);
       if (parts.length > 0) section = '/' + parts[0] + '/';
 
-      var candidates = new Set(['/projects/','/publications/','/updates/','/photography/']);
+      var candidates = new Set(['/projects/','/teaching/','/publications/','/updates/','/photography/']);
       if (!candidates.has(section)) return; // home or non-section page
 
       var markActive = function(anchor) {

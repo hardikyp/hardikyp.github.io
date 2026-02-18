@@ -1767,6 +1767,230 @@ main > section::before {
 .page-pubs { background-color: var(--color-bg); }
 .page-pubs main > section { background-color: var(--color-bg); }
 
+.teaching-page .teaching-hero h1 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.teaching-page .teaching-hero p {
+  margin: 0;
+}
+
+.teaching-philosophy,
+.teaching-experience {
+  margin-top: 28px;
+}
+
+.teaching-philosophy h2,
+.teaching-experience h2 {
+  margin: 0 0 10px;
+}
+
+.teaching-philosophy {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
+  gap: clamp(16px, 2.6vw, 28px);
+  align-items: stretch;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.teaching-philosophy__media {
+  min-width: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 260px;
+  background: linear-gradient(140deg, #e2e8f0 0%, #f8fafc 100%);
+  position: relative;
+}
+
+.teaching-philosophy__media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.teaching-philosophy__media:not(.has-image) img {
+  display: none;
+}
+
+.teaching-philosophy__placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border: 1px dashed rgba(51, 65, 85, 0.28);
+  border-radius: 14px;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.7) 10px,
+    rgba(241, 245, 249, 0.8) 10px,
+    rgba(241, 245, 249, 0.8) 20px
+  );
+}
+
+.teaching-philosophy__media.has-image .teaching-philosophy__placeholder {
+  display: none;
+}
+
+.teaching-philosophy__content {
+  min-width: 0;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+}
+
+.teaching-philosophy__content h2 {
+  margin: 0;
+}
+
+.teaching-philosophy__headline {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.teaching-philosophy__principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.teaching-philosophy__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  max-width: 100%;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  color: var(--color-primary-strong);
+  border: 1px solid rgba(38, 55, 77, 0.24);
+  background: rgba(255, 255, 255, 0.72);
+  overflow-wrap: anywhere;
+}
+
+.teaching-philosophy__outcome {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.96rem;
+  overflow-wrap: anywhere;
+}
+
+.teaching-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(20px, 2vw, 28px);
+}
+
+.teaching-experience .pub-filters {
+  margin: 8px 0 18px;
+}
+
+@media (min-width: 640px) {
+  .teaching-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .teaching-philosophy {
+    grid-template-columns: 1fr;
+  }
+  .teaching-philosophy__media {
+    min-height: 220px;
+  }
+}
+
+.teaching-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.teaching-card__media {
+  aspect-ratio: 16 / 9;
+}
+
+.teaching-card__media:not(.has-image) {
+  background: linear-gradient(140deg, #e2e8f0 0%, #f8fafc 100%);
+}
+
+.teaching-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 16px;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  border: 1px dashed rgba(51, 65, 85, 0.28);
+  border-radius: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.72),
+    rgba(255, 255, 255, 0.72) 10px,
+    rgba(241, 245, 249, 0.82) 10px,
+    rgba(241, 245, 249, 0.82) 20px
+  );
+}
+
+.teaching-card__body {
+  gap: 8px;
+}
+
+.teaching-card__title {
+  margin: 0;
+  font-size: clamp(1.05rem, 0.9rem + 0.4vw, 1.2rem);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.25;
+}
+
+.teaching-card__meta-line {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.teaching-card__pill {
+  align-self: center;
+}
+
+.teaching-card__summary {
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+.teaching-card__sep {
+  color: var(--color-muted);
+  line-height: 1;
+}
+
+.teaching-empty {
+  margin: 0;
+  color: var(--color-muted);
+}
+
 .photo-topbar {
   position: fixed;
   top: clamp(18px, 4vw, 32px);

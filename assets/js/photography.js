@@ -27,9 +27,9 @@
 
   const defaultData = {
     carousel: [
-      { src: 'assets/photography/carousel/neon-portrait.jpg', alt: 'Portrait bathed in neon light', speed: 0.3 },
-      { src: 'assets/photography/carousel/mountain-dusk.jpg', alt: 'Mountain range under a dramatic dusk sky', speed: 0.22 },
-      { src: 'assets/photography/carousel/night-transit.jpg', alt: 'Night street scene with motion blur', speed: 0.28 }
+      { src: 'assets/photography/carousel/sunrise-on-rocky-mountain.jpg', alt: 'Landscape picture from the Lower Antelope Canyon titled Sunrise on the Rocky Mountain', speed: 0.3 },
+      { src: 'assets/photography/carousel/mumbai-sealink.jpg', alt: 'Long exposure photograph of Bandra-Worli Sealink, Mumbai at dawn', speed: 0.22 },
+      { src: 'assets/photography/carousel/midnight-sky.jpg', alt: 'Tawas Point lighthouse, Michigan under the backdrop of Milkyway and Perseides meteor shower', speed: 0.28 }
     ],
     categories: [
       {
@@ -51,10 +51,10 @@
         title: 'Edge of Horizons',
         description: 'Landscapes oscillating between moody dusk and crystalline dawn—a survey of terrain and atmosphere in flux.',
         accent: 'dusk',
-        cover: 'assets/photography/landscapes/cover.jpg',
+        cover: 'assets/photography/carousel/sunrise-on-rocky-mountain.jpg',
         gallery: [
           {
-            src: 'assets/photography/landscapes/cover.jpg',
+            src: 'assets/photography/carousel/sunrise-on-rocky-mountain.jpg',
             alt: 'Ridge line during monsoon clouds',
             caption: 'Monsoon Ridgeline — Sahyadris, 2023'
           }
@@ -65,10 +65,10 @@
         title: 'Midnight Transit',
         description: 'City veins after dark—neon reflections, kinetic blur, and the conversations between shadows.',
         accent: 'night',
-        cover: 'assets/photography/night-stories/cover.jpg',
+        cover: 'assets/photography/carousel/midnight-sky.jpg',
         gallery: [
           {
-            src: 'assets/photography/night-stories/cover.jpg',
+            src: 'assets/photography/carousel/midnight-sky.jpg',
             alt: 'Long exposure of city traffic at night',
             caption: 'Echoes of Transit — Ann Arbor, 2022'
           }
@@ -81,7 +81,7 @@
         title: 'Monsoon Cartography',
         summary: 'Charting weather patterns across the Western Ghats—a visual atlas of humidity, mist, and waiting.',
         accent: 'dusk',
-        cover: 'assets/photography/stories/monsoon-cover.jpg',
+        cover: 'assets/photography/carousel/hut.jpg',
         meta: { location: 'Sahyadris, India', year: 2023 }
       },
       {
@@ -97,7 +97,7 @@
 
   const fetchData = async () => {
     try {
-      const res = await fetch('photography/data/photos.json', { cache: 'no-cache' });
+      const res = await fetch('/photography/data/photos.json', { cache: 'no-cache' });
       if (!res.ok) return defaultData;
       const json = await res.json();
       return { ...defaultData, ...json };
@@ -106,17 +106,24 @@
     }
   };
 
+  const toPrimaryImage = (src, width = 1200) => {
+    if (!src || !/\.(jpe?g)$/i.test(src)) return src || '';
+    if (/-\d{3,4}\.(jpe?g)$/i.test(src)) return src;
+    return src.replace(/\.(jpe?g)$/i, `-${width}.$1`);
+  };
+
   const renderCarousel = (items) => {
     if (!carouselHost) return;
     const markup = (items || []).map((item, i) => {
       const overlay = item.overlay;
       const speed = typeof item.speed === 'number' ? item.speed : 0.25;
       const srcset = buildSrcset(item.src);
+      const src = toPrimaryImage(item.src);
       const sizes = '100vw';
       const loading = i === 0 ? 'eager' : 'lazy';
       const fetchPriority = i === 0 ? ' fetchpriority="high"' : '';
       return `<article class="photo-slide${i === 0 ? ' is-active' : ''}" data-speed="${speed}">
-        <img src="${item.src}" alt="${item.alt || ''}" loading="${loading}" decoding="async"${fetchPriority}${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
+        <img src="${src}" alt="${item.alt || ''}" loading="${loading}" decoding="async"${fetchPriority}${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
         ${overlay ? `<div class="photo-slide__overlay gradient-${overlay}"></div>` : ''}
       </article>`;
     }).join('');
@@ -127,7 +134,8 @@
 
   const buildSrcset = (src) => {
     if (!src || !/\\.(jpe?g)$/i.test(src)) return '';
-    const withSize = (w) => src.replace(/\\.(jpe?g)$/i, `-${w}.$1`);
+    const normalized = src.replace(/-\d{3,4}(?=\\.(jpe?g)$)/i, '');
+    const withSize = (w) => normalized.replace(/\\.(jpe?g)$/i, `-${w}.$1`);
     return [800, 1200, 1600].map(w => `${withSize(w)} ${w}w`).join(', ');
   };
 
@@ -135,6 +143,7 @@
     const accent = item.accent || 'warm';
     const galleryCount = (item.gallery || []).length;
     const srcset = buildSrcset(item.cover);
+    const src = toPrimaryImage(item.cover);
     const sizes = '(min-width: 1024px) 40vw, 90vw';
     return `<article class="photo-category gradient-${accent} reveal-on-scroll" id="${item.slug || ''}" aria-label="${item.title || 'Gallery'} collection">
       <div class="photo-category__content">
@@ -144,7 +153,7 @@
         <button class="btn tertiary light" type="button" data-gallery="${item.slug || ''}">View series</button>
       </div>
       <div class="photo-category__preview">
-        <img src="${item.cover || ''}" alt="${item.title || ''} cover" loading="lazy" decoding="async"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
+        <img src="${src}" alt="${item.title || ''} cover" loading="lazy" decoding="async"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
       </div>
     </article>`;
   };
@@ -152,10 +161,11 @@
   const storyCard = (item) => {
     const meta = item.meta ? `<span class="muted">${[item.meta.location, item.meta.year].filter(Boolean).join(' · ')}</span>` : '';
     const srcset = buildSrcset(item.cover);
+    const src = toPrimaryImage(item.cover);
     const sizes = '(min-width: 1024px) 45vw, 90vw';
     return `<article class="photo-story reveal-on-scroll" id="${item.slug || ''}">
       <div class="photo-story__media">
-        <img src="${item.cover || ''}" alt="${item.title || ''} cover" loading="lazy" decoding="async"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
+        <img src="${src}" alt="${item.title || ''} cover" loading="lazy" decoding="async"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
       </div>
       <div class="photo-story__body">
         <h3>${item.title || ''}</h3>

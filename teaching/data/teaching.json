@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "title": "Teaching",
+    "subtitle": "Instruction, mentorship, and hands-on learning in structural engineering and mechanics."
+  },
+  "philosophy": {
+    "title": "My Philosophy",
+    "headline": "I teach mechanics by helping students connect equations to engineering decisions they can test, explain, and improve.",
+    "principles": [
+      "Concept clarity before complexity",
+      "Hands-on iteration and prototyping",
+      "Constructive, actionable feedback"
+    ],
+    "outcomeLine": "Students leave able to model, build, and defend their design choices with confidence.",
+    "image": {
+      "src": "",
+      "alt": "Presentation photo placeholder"
+    }
+  },
+  "experiences": [
+    {
+      "slug": "cee-211-statics-and-dynamics",
+      "courseNumber": "CEE 211",
+      "courseTitle": "Statics and Dynamics",
+      "university": "University of Michigan",
+      "year": "2026",
+      "card": {
+        "summary": "Supported a core mechanics course through discussion, office hours, and feedback to strengthen student understanding of statics and dynamics.",
+        "image": "",
+        "alt": "Course image placeholder"
+      },
+      "detail": {
+        "body": "<p>In Winter 2026, I served as a Graduate Student Instructor for CEE 211: Statics and Dynamics in the Department of Civil and Environmental Engineering at the University of Michigan.</p><p>CEE 211 is a foundational mechanics course covering vector mechanics, static equilibrium in 2D and 3D, distributed loading, centroids, and moments of inertia, along with particle and rigid-body dynamics topics including work-energy and impulse-momentum methods.</p><p>My responsibilities included helping students work through free-body diagrams and equilibrium formulations, guiding problem-solving for dynamics topics, and supporting assessment through grading and constructive feedback.</p>"
+      }
+    },
+    {
+      "slug": "eng-100-adaptable-and-deployable-structures",
+      "courseNumber": "ENG 100",
+      "courseTitle": "Intro to Adaptable and Deployable Structures",
+      "university": "University of Michigan",
+      "year": "2023",
+      "card": {
+        "summary": "Co-developed and co-taught a first-year course integrating mechanics, CAD, fabrication, and Arduino-based prototyping workflows.",
+        "image": "",
+        "alt": "Course image placeholder"
+      },
+      "detail": {
+        "body": "<p>This was my first formal teaching role. I helped co-develop and co-teach the first offering of ENG 100: Introduction to Adaptable and Deployable Structures for first-year engineering students.</p><p>I designed assignments, exams, grading rubrics, and lab materials, and led weekly labs where students learned AutoCAD, Fusion 360, and Arduino through structured activities.</p><p>I also mentored student teams through open-ended design-build-test projects, supported office hours, and helped coordinate fabrication access so teams could complete their final prototypes effectively.</p>"
+      }
+    }
+  ]
+}

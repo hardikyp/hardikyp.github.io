@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base href="../" />
+    <title>Design System | Hardik Patil</title>
+    <meta name="description" content="Local design system reference for website UI components." />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <link rel="preload" href="/assets/css/style.css" as="style" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/design-system/design-system.css" />
+    <script>
+      (function () {
+        var host = (window.location && window.location.hostname) || '';
+        var localHosts = ['localhost', '127.0.0.1', '::1', '[::1]'];
+        var isLocal =
+          window.location.protocol === 'file:' ||
+          localHosts.indexOf(host) !== -1 ||
+          /\.localhost$/i.test(host) ||
+          /\.local$/i.test(host);
+        if (!isLocal) {
+          document.documentElement.classList.add('ds-locked');
+        }
+      })();
+    </script>
+  </head>
+  <body class="page-design-system">
+    <div class="ds-locked-message" role="status" aria-live="polite">
+      <main class="ds-locked-card" aria-labelledby="dsLockedTitle">
+        <p class="eyebrow">Local Only</p>
+        <h1 id="dsLockedTitle">Design system is only visible on localhost.</h1>
+        <p>Run this repository locally and open <code>/design-system/index.html</code> to view the component library.</p>
+      </main>
+    </div>
+
+    <div class="ds-shell">
+      <a class="skip-link" href="#main">Skip to content</a>
+      <div data-include="/assets/partials/header.html"></div>
+
+      <main id="main" tabindex="-1" class="ds-main">
+        <section class="contained ds-intro">
+          <p class="eyebrow">Personal Website</p>
+          <h1>Design System</h1>
+          <p class="muted">Single place to review and reuse existing UI patterns before integrating them into live pages.</p>
+        </section>
+
+        <section class="contained ds-section" aria-labelledby="typographyTitle">
+          <h2 id="typographyTitle">Typography</h2>
+          <div class="ds-stack">
+            <h1>Heading One (H1)</h1>
+            <h2>Heading Two (H2)</h2>
+            <h3>Heading Three (H3)</h3>
+            <h4>Heading Four (H4)</h4>
+            <h5>Heading Five (H5)</h5>
+            <h6>Heading Six (H6)</h6>
+            <p>Paragraph text style with readable line height and spacing.</p>
+            <p class="muted">Muted paragraph style for supporting copy.</p>
+            <p class="eyebrow">Eyebrow Label</p>
+          </div>
+        </section>
+
+        <section class="contained ds-section" aria-labelledby="buttonsTitle">
+          <h2 id="buttonsTitle">Buttons And Text Links</h2>
+          <div class="ds-row">
+            <a class="btn primary" href="#">Primary</a>
+            <a class="btn secondary" href="#">Secondary</a>
+            <a class="btn tertiary" href="#">Tertiary</a>
+            <a class="btn primary sm" href="#">Small</a>
+            <a class="btn primary lg" href="#">Large</a>
+          </div>
+          <div class="ds-row">
+            <a class="updates-preview__link" href="#">Text-only content link</a>
+            <a href="#" class="muted ds-inline-link">Default inline link style</a>
+          </div>
+        </section>
+
+        <section class="contained ds-section" aria-labelledby="badgeTitle">
+          <h2 id="badgeTitle">Meta Badges</h2>
+          <div class="ds-row">
+            <span class="project-card__pill">Research</span>
+            <span class="update-tag">Publication</span>
+            <span class="pub-meta"><span class="tag">Journal</span></span>
+          </div>
+        </section>
+
+        <section class="contained ds-section pubs" aria-labelledby="tabsTitle">
+          <h2 id="tabsTitle">Tab Filters</h2>
+          <div class="pub-filters" aria-label="Filter examples">
+            <div class="pub-filters__tabs" role="tablist" aria-label="Publication filters">
+              <button type="button" class="pub-filters__tab" role="tab" aria-selected="true" tabindex="0">All</button>
+              <button type="button" class="pub-filters__tab" role="tab" aria-selected="false" tabindex="-1">Journal</button>
+              <button type="button" class="pub-filters__tab" role="tab" aria-selected="false" tabindex="-1">Conference</button>
+              <button type="button" class="pub-filters__tab" role="tab" aria-selected="false" tabindex="-1">Talk</button>
+              <span class="pub-filters__underline" aria-hidden="true" style="--underline-offset: 0px; --underline-width: 58px;"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="contained ds-section home-contact" aria-labelledby="formsTitle">
+          <h2 id="formsTitle">Forms</h2>
+          <div class="home-contact__grid ds-form-wrap">
+            <form class="contact-form" aria-label="Form style sample">
+              <label class="field">
+                <input type="text" name="first_name" placeholder=" " required />
+                <span class="field__label">First Name *</span>
+                <span class="field__base" aria-hidden="true"></span>
+                <span class="field__underline" aria-hidden="true"></span>
+              </label>
+              <label class="field">
+                <input type="text" name="last_name" placeholder=" " />
+                <span class="field__label">Last Name</span>
+                <span class="field__base" aria-hidden="true"></span>
+                <span class="field__underline" aria-hidden="true"></span>
+              </label>
+              <label class="field full">
+                <input type="email" name="email" placeholder=" " required />
+                <span class="field__label">Email *</span>
+                <span class="field__base" aria-hidden="true"></span>
+                <span class="field__underline" aria-hidden="true"></span>
+              </label>
+              <label class="field field--textarea full">
+                <textarea name="message" rows="5" required></textarea>
+                <span class="field__label">Message *</span>
+                <span class="field__base" aria-hidden="true"></span>
+                <span class="field__underline" aria-hidden="true"></span>
+              </label>
+              <div class="actions full">
+                <button class="btn primary" type="submit">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section class="contained ds-section" aria-labelledby="cardsTitle">
+          <h2 id="cardsTitle">Cards</h2>
+          <div class="ds-grid ds-grid-2">
+            <a class="project-card" href="#" data-type="Research">
+              <div class="project-card__media">
+                <img src="/assets/img/projects/reconfigurable-truss.jpg" alt="Project sample" loading="lazy" />
+              </div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Project Card</h3>
+                <div class="project-card__meta">
+                  <span class="project-card__pill">Research</span>
+                  <span class="project-card__year">2024-2026</span>
+                </div>
+                <p class="project-card__summary">Reusable project card with image, meta badge, year, and summary.</p>
+                <span class="btn tertiary project-card__link">Read more</span>
+              </div>
+            </a>
+
+            <article class="update-card" role="article" tabindex="0">
+              <div class="update-card__header">
+                <div class="update-card__logo">
+                  <img src="/assets/img/updates/thumbnails/emi.png" alt="Update thumbnail" loading="lazy" />
+                </div>
+                <div class="update-card__heading">
+                  <h3 class="update-card__title">Update Card</h3>
+                  <div class="update-card__meta">
+                    <span class="update-tag">Milestone</span>
+                    <time datetime="2026-02-17">Feb 17, 2026</time>
+                  </div>
+                </div>
+              </div>
+              <div class="update-card__body">
+                <p class="update-card__excerpt">Card used on updates pages with title, tag, date, and compact excerpt text.</p>
+                <a class="btn tertiary" href="#">Read more</a>
+              </div>
+            </article>
+
+            <a class="project-card teaching-card" href="#">
+              <div class="project-card__media teaching-card__media has-image">
+                <img src="/assets/img/updates/gallery/emi-2025-800.jpg" alt="Teaching card media" loading="lazy" />
+              </div>
+              <div class="project-card__body teaching-card__body">
+                <h3 class="project-card__title teaching-card__title">Teaching Card</h3>
+                <p class="teaching-card__meta-line">
+                  <span class="project-card__pill teaching-card__pill">University of Michigan</span>
+                  <span class="teaching-card__sep" aria-hidden="true">*</span>
+                  <span class="project-card__year teaching-card__year">2026</span>
+                </p>
+                <p class="project-card__summary teaching-card__summary">Specialized project-card variant for teaching entries.</p>
+              </div>
+            </a>
+
+            <article class="testimonial-card">
+              <div class="testimonial-card__profile">
+                <div class="testimonial-card__photo testimonial-card__photo--placeholder" aria-hidden="true">HP</div>
+                <div>
+                  <p class="testimonial-card__name">Testimonial Card</p>
+                  <p class="testimonial-card__meta">
+                    <span class="testimonial-card__title">Collaborator</span>
+                    <span class="testimonial-card__affiliation">University affiliation</span>
+                  </p>
+                </div>
+              </div>
+              <blockquote>
+                <p>Carousel card style used for social proof content.</p>
+              </blockquote>
+            </article>
+
+            <article class="expertise-card">
+              <h3>Expertise Card</h3>
+              <p>Simple title + summary tile used on the homepage expertise section.</p>
+            </article>
+
+            <div class="about-actions">
+              <button class="pronounce-card" type="button">
+                <span class="play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+                </span>
+                <span class="label">
+                  <span class="ipa">/ha:r-dik pa:-til/</span>
+                  <span class="name">Pronunciation Card</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="contained ds-section" aria-labelledby="accordionTitle">
+          <h2 id="accordionTitle">Publication Accordion</h2>
+          <div class="pub-list">
+            <article class="pub-item open" data-cat="journal">
+              <div class="pub-head">
+                <div>
+                  <div class="pub-title">Authors (2026). Publication title and venue text.</div>
+                  <div class="pub-meta"><span class="tag">Journal</span><span class="muted">Journal Name, 24(1), 100-120</span></div>
+                </div>
+                <button class="pub-toggle" aria-expanded="true" aria-label="Toggle details"></button>
+              </div>
+              <div class="pub-body" style="max-height:none; opacity:1;" aria-hidden="false">
+                <div class="pub-abstract">
+                  <p><b>Abstract:</b> Expandable abstract content using animated panel behavior.</p>
+                  <p class="pub-keys"><b>Keywords:</b> deployable structures; computational mechanics</p>
+                </div>
+                <div class="pub-actions">
+                  <a class="btn primary" href="#">DOI</a>
+                  <a class="btn secondary" href="#">PDF</a>
+                  <a class="btn tertiary" href="#">Code</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="contained ds-section" aria-labelledby="detailTitle">
+          <h2 id="detailTitle">Detail Content Blocks</h2>
+          <article class="update-detail">
+            <div id="viewBody">
+              <p>This is the body container used on update and project detail pages.</p>
+              <div class="update-gallery" role="list">
+                <figure class="update-gallery__item" role="listitem">
+                  <img src="/assets/img/updates/gallery/emi-2025-800.jpg" alt="Gallery sample one" loading="lazy" />
+                  <figcaption class="update-gallery__caption">Gallery caption style.</figcaption>
+                </figure>
+                <figure class="update-gallery__item" role="listitem">
+                  <img src="/assets/img/updates/gallery/tt-internship-800.jpg" alt="Gallery sample two" loading="lazy" />
+                </figure>
+              </div>
+            </div>
+            <a class="btn tertiary" href="#">Back to updates</a>
+          </article>
+        </section>
+
+        <section class="contained ds-section" aria-labelledby="logoTitle">
+          <h2 id="logoTitle">Site Logo Variants</h2>
+          <div class="ds-logo-row">
+            <a class="logo" href="#" aria-label="Primary logo"><span class="icon monogram" aria-hidden="true"></span></a>
+            <a class="photo-logo" href="#" aria-label="Photography home icon">
+              <span class="photo-logo__mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-label="Home icon">
+                  <path d="M12.3911 4.26185C11.986 3.84943 11.3167 3.86534 10.9317 4.29654L4.75406 11.2155C4.59044 11.3987 4.5 11.6358 4.5 11.8815V19.5C4.5 20.0523 4.94772 20.5 5.5 20.5H8.5C9.05228 20.5 9.5 20.0523 9.5 19.5V16C9.5 15.4477 9.94772 15 10.5 15H13.5C14.0523 15 14.5 15.4477 14.5 16V19.5C14.5 20.0523 14.9477 20.5 15.5 20.5H18.5C19.0523 20.5 19.5 20.0523 19.5 19.5V11.909C19.5 11.6469 19.3971 11.3953 19.2134 11.2083L12.3911 4.26185Z"></path>
+                </svg>
+              </span>
+            </a>
+            <a class="photo-brand-center" href="#" aria-label="Photography brand mark"></a>
+          </div>
+        </section>
+
+        <section class="contained ds-section page-photography" aria-labelledby="photoTitle">
+          <h2 id="photoTitle">Photography Components</h2>
+          <div class="ds-grid ds-grid-2">
+            <article class="photo-category gradient-warm reveal-on-scroll is-visible" id="portraits" aria-label="Portraits collection">
+              <div class="photo-category__content">
+                <h3>Photo Category Card</h3>
+                <p>Used for category previews in photography sections.</p>
+                <span class="muted">5 images</span>
+                <button class="btn tertiary light" type="button">View series</button>
+              </div>
+              <div class="photo-category__preview">
+                <img src="/assets/photography/portraits/cover-800.jpg" alt="Portrait category cover" loading="lazy" />
+              </div>
+            </article>
+
+            <article class="photo-story reveal-on-scroll is-visible" id="story-sample">
+              <div class="photo-story__media">
+                <img src="/assets/photography/stories/sonic-cover-800.jpg" alt="Story cover" loading="lazy" />
+              </div>
+              <div class="photo-story__body">
+                <h3>Photo Story Card</h3>
+                <p>Used for essay-style visual stories and supporting metadata.</p>
+                <span class="muted">Ann Arbor * 2022</span>
+                <button class="btn secondary light" type="button">Read photo essay</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="testimonials-controls" role="group" aria-label="Arrow buttons sample">
+            <button class="testimonials-nav testimonials-nav--prev" type="button" aria-label="Previous">
+              <span aria-hidden="true"><span class="symbol-text">&larr;</span></span>
+            </button>
+            <button class="testimonials-nav testimonials-nav--next" type="button" aria-label="Next">
+              <span aria-hidden="true"><span class="symbol-text">&rarr;</span></span>
+            </button>
+            <button class="carousel-arrow prev" type="button" aria-label="Carousel previous"><span aria-hidden="true">&lt;</span></button>
+            <button class="carousel-arrow next" type="button" aria-label="Carousel next"><span aria-hidden="true">&gt;</span></button>
+          </div>
+        </section>
+      </main>
+
+      <div data-include="/assets/partials/back-to-top.html"></div>
+      <div data-include="/assets/partials/footer.html"></div>
+    </div>
+
+    <script src="/assets/js/includes.js"></script>
+    <script src="/assets/js/main.js" defer></script>
+  </body>
+</html>

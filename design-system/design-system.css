@@ -1,0 +1,137 @@
+:root {
+  --ds-max: 1080px;
+}
+
+.ds-locked-message {
+  display: none;
+}
+
+.ds-locked .ds-locked-message {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--color-surface);
+}
+
+.ds-locked-card {
+  max-width: 680px;
+  width: 100%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.ds-locked-card code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+}
+
+.ds-locked .ds-shell {
+  display: none;
+}
+
+.page-design-system .site-header,
+.page-design-system .site-footer {
+  position: static;
+}
+
+.ds-main {
+  padding-bottom: 48px;
+}
+
+.ds-intro {
+  --content-inline-pad: clamp(16px, 4vw, 48px);
+  padding-top: 44px;
+  padding-bottom: 24px;
+}
+
+.ds-section {
+  --content-inline-pad: clamp(16px, 4vw, 48px);
+  padding-top: 28px;
+  padding-bottom: 28px;
+  border-top: 1px solid var(--color-border);
+}
+
+.ds-stack {
+  display: grid;
+  gap: 10px;
+  max-width: var(--ds-max);
+}
+
+.ds-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.ds-inline-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ds-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.ds-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.ds-main .update-card {
+  width: 100%;
+}
+
+.ds-form-wrap {
+  display: block;
+}
+
+.ds-form-wrap .contact-form {
+  max-width: 860px;
+}
+
+.ds-logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+}
+
+.ds-logo-row .photo-logo {
+  position: static;
+}
+
+.ds-logo-row .photo-brand-center {
+  position: static;
+  transform: none;
+}
+
+.page-design-system .update-detail {
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.page-design-system .pub-list,
+.page-design-system .pub-item {
+  max-width: var(--ds-max);
+}
+
+.page-design-system .home-contact {
+  padding: 0;
+}
+
+.page-design-system .home-contact__grid {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 720px) {
+  .ds-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

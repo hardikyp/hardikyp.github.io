@@ -174,22 +174,26 @@
   };
   const updateScrollProgress = () => {
     if (!progressCircle) return;
-    const scrollTop = Math.max(
-      window.scrollY || 0,
-      document.documentElement.scrollTop || 0,
-      document.body.scrollTop || 0
+    const docEl = document.documentElement;
+    const body = document.body;
+    const scrollTop = Math.max(0, window.pageYOffset || docEl.scrollTop || body.scrollTop || 0);
+    const viewportHeight = Math.max(0, window.innerHeight || docEl.clientHeight || 0);
+    const docHeight = Math.max(
+      docEl.scrollHeight || 0,
+      body.scrollHeight || 0
     );
-    const pageHeight = Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.offsetHeight,
-      document.body.clientHeight,
-      document.documentElement.clientHeight
-    );
-    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
-    const maxScroll = Math.max(0, pageHeight - viewportHeight);
-    const progress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+    const docMaxScroll = Math.max(0, docHeight - viewportHeight);
+    const footer = document.querySelector('.site-footer, .photo-footer');
+    let footerMaxScroll = 0;
+    if (footer) {
+      const footerRect = footer.getBoundingClientRect();
+      const footerBottom = scrollTop + footerRect.bottom;
+      footerMaxScroll = Math.max(0, footerBottom - viewportHeight);
+    }
+    const maxScroll = Math.max(docMaxScroll, footerMaxScroll);
+    const remaining = Math.max(0, maxScroll - scrollTop);
+    const atBottom = remaining <= 1;
+    const progress = atBottom || maxScroll === 0 ? 1 : Math.min(1, Math.max(0, scrollTop / maxScroll));
     const offset = PROGRESS_CIRCUMFERENCE * (1 - progress);
     progressCircle.style.strokeDashoffset = `${Math.max(0, offset)}`;
   };
@@ -201,5 +205,12 @@
     updateScrollProgress();
   };
   window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', updateScrollProgress, { passive: true });
+  window.addEventListener('load', updateScrollProgress, { once: true });
+  if (typeof ResizeObserver !== 'undefined') {
+    const observer = new ResizeObserver(() => updateScrollProgress());
+    if (document.body) observer.observe(document.body);
+    if (document.documentElement) observer.observe(document.documentElement);
+  }
   handleScroll();
 })();

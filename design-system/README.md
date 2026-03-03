@@ -10,6 +10,7 @@ Local component library for the personal website.
 ## Local-only behavior
 - `design-system/index.html` is intentionally hidden unless opened on localhost or file protocol.
 - On non-local hosts, the page shows a restricted message.
+- All UI links are demo-only and navigation is disabled on this page.
 
 ## How to use
 1. Run the site locally.

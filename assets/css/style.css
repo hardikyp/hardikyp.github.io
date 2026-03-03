@@ -2175,7 +2175,7 @@ main > section::before {
 }
 .back-to-top__progress-active {
   stroke: var(--progress-color);
-  stroke-linecap: round;
+  stroke-linecap: butt;
   transition: stroke-dashoffset 260ms ease-out;
 }
 .back-to-top.is-visible {

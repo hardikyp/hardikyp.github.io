@@ -48,15 +48,24 @@
         <section class="contained ds-section" aria-labelledby="typographyTitle">
           <h2 id="typographyTitle">Typography</h2>
           <div class="ds-stack">
-            <h1>Heading One (H1)</h1>
-            <h2>Heading Two (H2)</h2>
-            <h3>Heading Three (H3)</h3>
-            <h4>Heading Four (H4)</h4>
-            <h5>Heading Five (H5)</h5>
-            <h6>Heading Six (H6)</h6>
-            <p>Paragraph text style with readable line height and spacing.</p>
-            <p class="muted">Muted paragraph style for supporting copy.</p>
-            <p class="eyebrow">Eyebrow Label</p>
+            <p class="ds-type-meta">Size: <span class="ds-type-px" data-size-for="ds-typo-h1">-- px</span></p>
+            <h1 id="ds-typo-h1">Heading One (H1)</h1>
+            <p class="ds-type-meta">Size: <span class="ds-type-px" data-size-for="ds-typo-h2">-- px</span></p>
+            <h2 id="ds-typo-h2">Heading Two (H2)</h2>
+            <p class="ds-type-meta">Size: <span class="ds-type-px" data-size-for="ds-typo-h3">-- px</span></p>
+            <h3 id="ds-typo-h3">Heading Three (H3)</h3>
+            <p class="ds-type-meta">Size: <span class="ds-type-px" data-size-for="ds-typo-h4">-- px</span></p>
+            <h4 id="ds-typo-h4">Heading Four (H4)</h4>
+            <p class="ds-type-meta">Size: <span class="ds-type-px" data-size-for="ds-typo-h5">-- px</span></p>
+            <h5 id="ds-typo-h5">Heading Five (H5)</h5>
+            <p class="ds-type-meta">Size: <span class="ds-type-px" data-size-for="ds-typo-h6">-- px</span></p>
+            <h6 id="ds-typo-h6">Heading Six (H6)</h6>
+            <p class="ds-type-meta">Size: <span class="ds-type-px" data-size-for="ds-typo-p">-- px</span></p>
+            <p id="ds-typo-p">Paragraph text style with readable line height and spacing.</p>
+            <p class="ds-type-meta">Size: <span class="ds-type-px" data-size-for="ds-typo-muted">-- px</span></p>
+            <p id="ds-typo-muted" class="muted">Muted paragraph style for supporting copy.</p>
+            <p class="ds-type-meta">Size: <span class="ds-type-px" data-size-for="ds-typo-eyebrow">-- px</span></p>
+            <p id="ds-typo-eyebrow" class="eyebrow">Eyebrow Label</p>
           </div>
         </section>
 
@@ -73,6 +82,63 @@
             <a class="updates-preview__link" href="#">Text-only content link</a>
             <a href="#" class="muted ds-inline-link">Default inline link style</a>
           </div>
+          <div class="ds-row">
+            <button class="pronounce-card" type="button">
+              <span class="play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+              </span>
+              <span class="label">
+                <span class="ipa">/ha:r-dik pa:-til/</span>
+                <span class="name">Pronunciation Button</span>
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <section class="contained ds-section" aria-labelledby="paletteTitle">
+          <h2 id="paletteTitle">Color Palette</h2>
+          <div class="ds-palette">
+            <article class="ds-swatch">
+              <span class="ds-swatch__chip" style="background: var(--color-bg);"></span>
+              <p><strong>Background</strong><br /><code>--color-bg</code></p>
+            </article>
+            <article class="ds-swatch">
+              <span class="ds-swatch__chip" style="background: var(--color-surface);"></span>
+              <p><strong>Surface</strong><br /><code>--color-surface</code></p>
+            </article>
+            <article class="ds-swatch">
+              <span class="ds-swatch__chip" style="background: var(--color-text);"></span>
+              <p><strong>Text</strong><br /><code>--color-text</code></p>
+            </article>
+            <article class="ds-swatch">
+              <span class="ds-swatch__chip" style="background: var(--color-muted);"></span>
+              <p><strong>Muted</strong><br /><code>--color-muted</code></p>
+            </article>
+            <article class="ds-swatch">
+              <span class="ds-swatch__chip" style="background: var(--color-border);"></span>
+              <p><strong>Border</strong><br /><code>--color-border</code></p>
+            </article>
+            <article class="ds-swatch">
+              <span class="ds-swatch__chip" style="background: var(--color-primary);"></span>
+              <p><strong>Primary</strong><br /><code>--color-primary</code></p>
+            </article>
+            <article class="ds-swatch">
+              <span class="ds-swatch__chip" style="background: var(--color-primary-strong);"></span>
+              <p><strong>Primary Strong</strong><br /><code>--color-primary-strong</code></p>
+            </article>
+            <article class="ds-swatch">
+              <span class="ds-swatch__chip" style="background: var(--color-on-primary);"></span>
+              <p><strong>On Primary</strong><br /><code>--color-on-primary</code></p>
+            </article>
+            <article class="ds-swatch">
+              <span class="ds-swatch__chip" style="background: var(--color-accent);"></span>
+              <p><strong>Accent</strong><br /><code>--color-accent</code></p>
+            </article>
+            <article class="ds-swatch">
+              <span class="ds-swatch__chip" style="background: var(--color-accent-muted);"></span>
+              <p><strong>Accent Muted</strong><br /><code>--color-accent-muted</code></p>
+            </article>
+          </div>
         </section>
 
         <section class="contained ds-section" aria-labelledby="badgeTitle">
@@ -84,7 +150,21 @@
           </div>
         </section>
 
-        <section class="contained ds-section pubs" aria-labelledby="tabsTitle">
+        <section class="contained ds-section" aria-labelledby="radiusTitle">
+          <h2 id="radiusTitle">Corner Radii</h2>
+          <div class="ds-radius-grid">
+            <article class="ds-radius-card">
+              <span class="ds-radius-sample" style="border-radius: 10px;"></span>
+              <p><strong>Buttons</strong><br /><code>10px</code></p>
+            </article>
+            <article class="ds-radius-card">
+              <span class="ds-radius-sample" style="border-radius: 16px;"></span>
+              <p><strong>Cards</strong><br /><code>16px</code></p>
+            </article>
+          </div>
+        </section>
+
+        <section class="contained ds-section" aria-labelledby="tabsTitle">
           <h2 id="tabsTitle">Tab Filters</h2>
           <div class="pub-filters" aria-label="Filter examples">
             <div class="pub-filters__tabs" role="tablist" aria-label="Publication filters">
@@ -134,87 +214,90 @@
 
         <section class="contained ds-section" aria-labelledby="cardsTitle">
           <h2 id="cardsTitle">Cards</h2>
-          <div class="ds-grid ds-grid-2">
-            <a class="project-card" href="#" data-type="Research">
-              <div class="project-card__media">
-                <img src="/assets/img/projects/reconfigurable-truss.jpg" alt="Project sample" loading="lazy" />
-              </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Project Card</h3>
-                <div class="project-card__meta">
-                  <span class="project-card__pill">Research</span>
-                  <span class="project-card__year">2024-2026</span>
+          <div class="ds-card-rows">
+            <div class="ds-card-row">
+              <h3>Project Card</h3>
+              <a class="project-card" href="#" data-type="Research">
+                <div class="project-card__media">
+                  <img src="/assets/img/projects/reconfigurable-truss.jpg" alt="Project sample" loading="lazy" />
                 </div>
-                <p class="project-card__summary">Reusable project card with image, meta badge, year, and summary.</p>
-                <span class="btn tertiary project-card__link">Read more</span>
-              </div>
-            </a>
+                <div class="project-card__body">
+                  <h3 class="project-card__title">Project Card</h3>
+                  <div class="project-card__meta">
+                    <span class="project-card__pill">Research</span>
+                    <span class="project-card__year">2024-2026</span>
+                  </div>
+                  <p class="project-card__summary">Reusable project card with image, meta badge, year, and summary.</p>
+                  <span class="btn tertiary project-card__link">Read more</span>
+                </div>
+              </a>
+            </div>
 
-            <article class="update-card" role="article" tabindex="0">
-              <div class="update-card__header">
-                <div class="update-card__logo">
-                  <img src="/assets/img/updates/thumbnails/emi.png" alt="Update thumbnail" loading="lazy" />
-                </div>
-                <div class="update-card__heading">
-                  <h3 class="update-card__title">Update Card</h3>
-                  <div class="update-card__meta">
-                    <span class="update-tag">Milestone</span>
-                    <time datetime="2026-02-17">Feb 17, 2026</time>
+            <div class="ds-card-row">
+              <h3>Update Card</h3>
+              <article class="update-card" role="article" tabindex="0">
+                <div class="update-card__header">
+                  <div class="update-card__logo">
+                    <img src="/assets/img/updates/thumbnails/emi.png" alt="Update thumbnail" loading="lazy" />
+                  </div>
+                  <div class="update-card__heading">
+                    <h3 class="update-card__title">Update Card</h3>
+                    <div class="update-card__meta">
+                      <span class="update-tag">Milestone</span>
+                      <time datetime="2026-02-17">Feb 17, 2026</time>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="update-card__body">
-                <p class="update-card__excerpt">Card used on updates pages with title, tag, date, and compact excerpt text.</p>
-                <a class="btn tertiary" href="#">Read more</a>
-              </div>
-            </article>
-
-            <a class="project-card teaching-card" href="#">
-              <div class="project-card__media teaching-card__media has-image">
-                <img src="/assets/img/updates/gallery/emi-2025-800.jpg" alt="Teaching card media" loading="lazy" />
-              </div>
-              <div class="project-card__body teaching-card__body">
-                <h3 class="project-card__title teaching-card__title">Teaching Card</h3>
-                <p class="teaching-card__meta-line">
-                  <span class="project-card__pill teaching-card__pill">University of Michigan</span>
-                  <span class="teaching-card__sep" aria-hidden="true">*</span>
-                  <span class="project-card__year teaching-card__year">2026</span>
-                </p>
-                <p class="project-card__summary teaching-card__summary">Specialized project-card variant for teaching entries.</p>
-              </div>
-            </a>
-
-            <article class="testimonial-card">
-              <div class="testimonial-card__profile">
-                <div class="testimonial-card__photo testimonial-card__photo--placeholder" aria-hidden="true">HP</div>
-                <div>
-                  <p class="testimonial-card__name">Testimonial Card</p>
-                  <p class="testimonial-card__meta">
-                    <span class="testimonial-card__title">Collaborator</span>
-                    <span class="testimonial-card__affiliation">University affiliation</span>
-                  </p>
+                <div class="update-card__body">
+                  <p class="update-card__excerpt">Card used on updates pages with title, tag, date, and compact excerpt text.</p>
+                  <a class="btn tertiary" href="#">Read more</a>
                 </div>
-              </div>
-              <blockquote>
-                <p>Carousel card style used for social proof content.</p>
-              </blockquote>
-            </article>
+              </article>
+            </div>
 
-            <article class="expertise-card">
+            <div class="ds-card-row">
+              <h3>Teaching Card</h3>
+              <a class="project-card teaching-card" href="#">
+                <div class="project-card__media teaching-card__media has-image">
+                  <img src="/assets/img/updates/gallery/emi-2025-800.jpg" alt="Teaching card media" loading="lazy" />
+                </div>
+                <div class="project-card__body teaching-card__body">
+                  <h3 class="project-card__title teaching-card__title">Teaching Card</h3>
+                  <p class="teaching-card__meta-line">
+                    <span class="project-card__pill teaching-card__pill">University of Michigan</span>
+                    <span class="teaching-card__sep" aria-hidden="true">*</span>
+                    <span class="project-card__year teaching-card__year">2026</span>
+                  </p>
+                  <p class="project-card__summary teaching-card__summary">Specialized project-card variant for teaching entries.</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="ds-card-row">
+              <h3>Testimonial Card</h3>
+              <article class="testimonial-card">
+                <div class="testimonial-card__profile">
+                  <div class="testimonial-card__photo testimonial-card__photo--placeholder" aria-hidden="true">HP</div>
+                  <div>
+                    <p class="testimonial-card__name">Testimonial Card</p>
+                    <p class="testimonial-card__meta">
+                      <span class="testimonial-card__title">Collaborator</span>
+                      <span class="testimonial-card__affiliation">University affiliation</span>
+                    </p>
+                  </div>
+                </div>
+                <blockquote>
+                  <p>Carousel card style used for social proof content.</p>
+                </blockquote>
+              </article>
+            </div>
+
+            <div class="ds-card-row">
               <h3>Expertise Card</h3>
-              <p>Simple title + summary tile used on the homepage expertise section.</p>
-            </article>
-
-            <div class="about-actions">
-              <button class="pronounce-card" type="button">
-                <span class="play" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
-                </span>
-                <span class="label">
-                  <span class="ipa">/ha:r-dik pa:-til/</span>
-                  <span class="name">Pronunciation Card</span>
-                </span>
-              </button>
+              <article class="expertise-card">
+                <h3>Expertise Card</h3>
+                <p>Simple title + summary tile used on the homepage expertise section.</p>
+              </article>
             </div>
           </div>
         </section>
@@ -265,57 +348,9 @@
         </section>
 
         <section class="contained ds-section" aria-labelledby="logoTitle">
-          <h2 id="logoTitle">Site Logo Variants</h2>
+          <h2 id="logoTitle">Site Logo</h2>
           <div class="ds-logo-row">
             <a class="logo" href="#" aria-label="Primary logo"><span class="icon monogram" aria-hidden="true"></span></a>
-            <a class="photo-logo" href="#" aria-label="Photography home icon">
-              <span class="photo-logo__mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" role="img" aria-label="Home icon">
-                  <path d="M12.3911 4.26185C11.986 3.84943 11.3167 3.86534 10.9317 4.29654L4.75406 11.2155C4.59044 11.3987 4.5 11.6358 4.5 11.8815V19.5C4.5 20.0523 4.94772 20.5 5.5 20.5H8.5C9.05228 20.5 9.5 20.0523 9.5 19.5V16C9.5 15.4477 9.94772 15 10.5 15H13.5C14.0523 15 14.5 15.4477 14.5 16V19.5C14.5 20.0523 14.9477 20.5 15.5 20.5H18.5C19.0523 20.5 19.5 20.0523 19.5 19.5V11.909C19.5 11.6469 19.3971 11.3953 19.2134 11.2083L12.3911 4.26185Z"></path>
-                </svg>
-              </span>
-            </a>
-            <a class="photo-brand-center" href="#" aria-label="Photography brand mark"></a>
-          </div>
-        </section>
-
-        <section class="contained ds-section page-photography" aria-labelledby="photoTitle">
-          <h2 id="photoTitle">Photography Components</h2>
-          <div class="ds-grid ds-grid-2">
-            <article class="photo-category gradient-warm reveal-on-scroll is-visible" id="portraits" aria-label="Portraits collection">
-              <div class="photo-category__content">
-                <h3>Photo Category Card</h3>
-                <p>Used for category previews in photography sections.</p>
-                <span class="muted">5 images</span>
-                <button class="btn tertiary light" type="button">View series</button>
-              </div>
-              <div class="photo-category__preview">
-                <img src="/assets/photography/portraits/cover-800.jpg" alt="Portrait category cover" loading="lazy" />
-              </div>
-            </article>
-
-            <article class="photo-story reveal-on-scroll is-visible" id="story-sample">
-              <div class="photo-story__media">
-                <img src="/assets/photography/stories/sonic-cover-800.jpg" alt="Story cover" loading="lazy" />
-              </div>
-              <div class="photo-story__body">
-                <h3>Photo Story Card</h3>
-                <p>Used for essay-style visual stories and supporting metadata.</p>
-                <span class="muted">Ann Arbor * 2022</span>
-                <button class="btn secondary light" type="button">Read photo essay</button>
-              </div>
-            </article>
-          </div>
-
-          <div class="testimonials-controls" role="group" aria-label="Arrow buttons sample">
-            <button class="testimonials-nav testimonials-nav--prev" type="button" aria-label="Previous">
-              <span aria-hidden="true"><span class="symbol-text">&larr;</span></span>
-            </button>
-            <button class="testimonials-nav testimonials-nav--next" type="button" aria-label="Next">
-              <span aria-hidden="true"><span class="symbol-text">&rarr;</span></span>
-            </button>
-            <button class="carousel-arrow prev" type="button" aria-label="Carousel previous"><span aria-hidden="true">&lt;</span></button>
-            <button class="carousel-arrow next" type="button" aria-label="Carousel next"><span aria-hidden="true">&gt;</span></button>
           </div>
         </section>
       </main>
@@ -326,5 +361,6 @@
 
     <script src="/assets/js/includes.js"></script>
     <script src="/assets/js/main.js" defer></script>
+    <script src="/design-system/design-system.js" defer></script>
   </body>
 </html>

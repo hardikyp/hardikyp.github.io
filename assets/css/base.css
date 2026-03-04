@@ -64,6 +64,8 @@
   --type-h3: clamp(2rem, 1rem + 2.2vw, 2.441rem);
   --type-h2: clamp(2.25rem, 1.2rem + 3vw, 3.052rem);
   --type-h1: clamp(2.5rem, 1.25rem + 4vw, 3.815rem);
+  --type-card-title: clamp(1rem, 0.9rem + 0.4vw, 1.125rem);
+  --weight-card-title: 550;
   --header-h: 72px;
   --header-h-scrolled: 72px;
   --pub-abstract-maxh: 400px;
@@ -92,12 +94,43 @@ body {
   color: var(--color-text);
   background: var(--color-bg);
 }
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; height: auto; display: block; }
 ul { margin: 0; padding: 0; list-style: none; }
 .muted,
 .text-muted { color: var(--color-muted); }
-.eyebrow { text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.78rem; color: var(--color-muted); }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.85rem; color: var(--color-muted); margin: 0; }
+.type-card-title {
+  font-family: var(--font-body);
+  font-size: var(--type-card-title);
+  font-weight: var(--weight-card-title);
+  line-height: 1.25;
+}
+/* Site-wide typography mappings mirrored from the design-system reference */
+:where(.primary-nav a, .mobile-menu nav a:not(.btn)) {
+  font-size: 0.85rem;
+}
+.update-card__title,
+.testimonial-card__name,
+.project-card__title,
+.teaching-card__title,
+.expertise-card h3,
+.card h3 {
+  font-family: var(--font-body);
+  font-size: var(--type-card-title);
+  font-weight: var(--weight-card-title);
+  line-height: 1.25;
+}
 .symbol-text { font-family: 'Noto Sans Symbols 2', var(--font-body), system-ui, sans-serif; }
 .sr-only {
   position: absolute;
@@ -155,4 +188,9 @@ h6 {
   letter-spacing: -0.005em;
   font-weight: 500;
 }
-p { margin: 0 0 var(--space-3); font-weight: 400; font-size: var(--type-p); line-height: 1.5; }
+p { 
+  margin: 0 0 var(--space-3);
+  font-weight: 400; 
+  font-size: var(--type-p);
+  line-height: 1.5; 
+}

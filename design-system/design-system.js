@@ -32,6 +32,11 @@
   };
 
   const initTypographySizes = () => {
+    const firstFontName = (fontValue = '') => {
+      const first = String(fontValue).split(',')[0] || '';
+      return first.replace(/["']/g, '').trim() || '--';
+    };
+
     const render = () => {
       document.querySelectorAll('.ds-type-px[data-size-for]').forEach((node) => {
         const targetId = node.getAttribute('data-size-for');
@@ -39,6 +44,14 @@
         if (!target) return;
         const px = window.getComputedStyle(target).fontSize;
         node.textContent = px ? `${px}` : '-- px';
+      });
+
+      document.querySelectorAll('.ds-type-font[data-font-for]').forEach((node) => {
+        const targetId = node.getAttribute('data-font-for');
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+        const family = window.getComputedStyle(target).fontFamily;
+        node.textContent = firstFontName(family);
       });
     };
     render();

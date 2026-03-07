@@ -109,7 +109,7 @@
 }
 
 .page-design-system :is(.project-card__pill, .update-tag, .pub-meta .tag) {
-  background: color-mix(in srgb, var(--color-accent) 50%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 85%, transparent);
 }
 
 .ds-grid {

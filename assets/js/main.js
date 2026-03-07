@@ -133,84 +133,16 @@
 
   // Back-to-top button
   const backToTop = document.querySelector('.back-to-top');
-  const PROGRESS_VIEWBOX = 64;
-  const PROGRESS_RADIUS = 30;
-  const PROGRESS_CENTER = PROGRESS_VIEWBOX / 2;
-  const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * PROGRESS_RADIUS;
-  let progressCircle;
   const getScrollThreshold = () => 24;
-
-  const createProgressIndicator = () => {
-    if (!backToTop) return;
-    const wrapper = document.createElement('span');
-    wrapper.className = 'back-to-top__progress';
-    wrapper.setAttribute('aria-hidden', 'true');
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', `0 0 ${PROGRESS_VIEWBOX} ${PROGRESS_VIEWBOX}`);
-    const track = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    track.setAttribute('cx', PROGRESS_CENTER.toString());
-    track.setAttribute('cy', PROGRESS_CENTER.toString());
-    track.setAttribute('r', PROGRESS_RADIUS.toString());
-    track.classList.add('back-to-top__progress-track');
-    const indicator = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    indicator.setAttribute('cx', PROGRESS_CENTER.toString());
-    indicator.setAttribute('cy', PROGRESS_CENTER.toString());
-    indicator.setAttribute('r', PROGRESS_RADIUS.toString());
-    indicator.classList.add('back-to-top__progress-active');
-    indicator.style.strokeDasharray = `${PROGRESS_CIRCUMFERENCE}`;
-    indicator.style.strokeDashoffset = `${PROGRESS_CIRCUMFERENCE}`;
-    svg.appendChild(track);
-    svg.appendChild(indicator);
-    wrapper.appendChild(svg);
-    backToTop.appendChild(wrapper);
-    progressCircle = indicator;
-  };
-  createProgressIndicator();
   const toggleBackToTop = () => {
     if (!backToTop) return;
     const threshold = getScrollThreshold();
     if (window.scrollY > threshold) backToTop.classList.add('is-visible');
     else backToTop.classList.remove('is-visible');
   };
-  const updateScrollProgress = () => {
-    if (!progressCircle) return;
-    const docEl = document.documentElement;
-    const body = document.body;
-    const scrollTop = Math.max(0, window.pageYOffset || docEl.scrollTop || body.scrollTop || 0);
-    const viewportHeight = Math.max(0, window.innerHeight || docEl.clientHeight || 0);
-    const docHeight = Math.max(
-      docEl.scrollHeight || 0,
-      body.scrollHeight || 0
-    );
-    const docMaxScroll = Math.max(0, docHeight - viewportHeight);
-    const footer = document.querySelector('.site-footer, .photo-footer');
-    let footerMaxScroll = 0;
-    if (footer) {
-      const footerRect = footer.getBoundingClientRect();
-      const footerBottom = scrollTop + footerRect.bottom;
-      footerMaxScroll = Math.max(0, footerBottom - viewportHeight);
-    }
-    const maxScroll = Math.max(docMaxScroll, footerMaxScroll);
-    const remaining = Math.max(0, maxScroll - scrollTop);
-    const atBottom = remaining <= 1;
-    const progress = atBottom || maxScroll === 0 ? 1 : Math.min(1, Math.max(0, scrollTop / maxScroll));
-    const offset = PROGRESS_CIRCUMFERENCE * (1 - progress);
-    progressCircle.style.strokeDashoffset = `${Math.max(0, offset)}`;
-  };
   backToTop?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-  const handleScroll = () => {
-    toggleBackToTop();
-    updateScrollProgress();
-  };
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  window.addEventListener('resize', updateScrollProgress, { passive: true });
-  window.addEventListener('load', updateScrollProgress, { once: true });
-  if (typeof ResizeObserver !== 'undefined') {
-    const observer = new ResizeObserver(() => updateScrollProgress());
-    if (document.body) observer.observe(document.body);
-    if (document.documentElement) observer.observe(document.documentElement);
-  }
-  handleScroll();
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
+  toggleBackToTop();
 })();

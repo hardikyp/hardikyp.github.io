@@ -46,6 +46,11 @@
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
+  /* Card shadows: tighter + softer, with NE light source (shadow cast to SW). */
+  --shadow-card-tight: -6px 8px 18px rgba(15, 23, 42, 0.10), -2px 3px 8px rgba(15, 23, 42, 0.06);
+  --shadow-card-tight-hover: -8px 12px 24px rgba(15, 23, 42, 0.12), -3px 5px 10px rgba(15, 23, 42, 0.07);
+  --shadow-card-tight-subtle: -4px 6px 14px rgba(15, 23, 42, 0.08), -1px 2px 6px rgba(15, 23, 42, 0.05);
+  --shadow-card-tight-dark: -7px 11px 24px rgba(6, 7, 12, 0.26), -2px 4px 10px rgba(6, 7, 12, 0.16);
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;

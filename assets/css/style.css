@@ -251,7 +251,7 @@ main > section::before {
 /* Updates */
 .hero--update {
   --content-inline-pad: 16px;
-  padding: 48px var(--content-inline-pad) 20px;
+  padding: 0 var(--content-inline-pad);
   display: grid;
   gap: 12px;
 }
@@ -369,6 +369,11 @@ main > section::before {
   --content-inline-pad: 16px;
   padding: 48px var(--content-inline-pad) 48px;
 }
+/* Avoid double horizontal gutters when updates feed also uses .contained */
+.updates-feed.contained {
+  padding-left: 0;
+  padding-right: 0;
+}
 .updates-preview__heading {
   display: flex;
   flex-direction: column;
@@ -399,7 +404,7 @@ main > section::before {
   padding: var(--update-card-pad);
   border-radius: var(--radius-lg);
   background: var(--color-bg);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+  box-shadow: var(--shadow-card-tight);
   box-sizing: border-box;
   width: min(100%, calc(var(--content-max-width) + (var(--content-inline-pad, var(--section-inline-pad)) * 2)));
   cursor: pointer;
@@ -531,7 +536,7 @@ main > section::before {
   background: var(--color-bg);
   border-radius: var(--radius-lg);
   padding: 32px;
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.15);
+  box-shadow: var(--shadow-card-tight);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -610,7 +615,7 @@ main > section::before {
   background: var(--color-bg);
   border-radius: var(--radius-lg);
   padding: 32px;
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.14);
+  box-shadow: var(--shadow-card-tight);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1088,7 +1093,7 @@ main > section::before {
 .photo-category__preview {
   border-radius: clamp(16px, 2vw, 24px);
   overflow: hidden;
-  box-shadow: 0 18px 48px rgba(6, 7, 12, 0.42);
+  box-shadow: var(--shadow-card-tight-dark);
 }
 .photo-category__preview img {
   width: 100%;
@@ -1113,7 +1118,7 @@ main > section::before {
   padding: clamp(24px, 4vw, 36px);
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   align-items: center;
-  box-shadow: 0 24px 60px rgba(6, 7, 12, 0.35);
+  box-shadow: var(--shadow-card-tight-dark);
 }
 .photo-story__media img {
   width: 100%;
@@ -1168,6 +1173,9 @@ main > section::before {
   .update-detail {
     --content-inline-pad: 20px;
     padding: 28px var(--content-inline-pad) 64px;
+  }
+  .page-updates .updates-feed {
+    --content-inline-pad: 20px;
   }
 }
 .hero-cta { display: flex; gap: 20px; flex-wrap: nowrap; align-items: center; }
@@ -1415,7 +1423,7 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
 .highlights h2 { margin-bottom: 12px; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
 .cards.single { grid-template-columns: 1fr; }
-.card { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 16px; background: #fff; }
+.card { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 16px; background: #fff; box-shadow: var(--shadow-card-tight-subtle); }
 .card h3 { margin: 0 0 8px; }
 .card p { margin: 0 0 10px; color: var(--color-muted); }
 .card-link { color: var(--color-primary-strong); font-weight: 600; }
@@ -1437,7 +1445,7 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
   background: var(--color-bg);
   border-radius: var(--radius-lg);
   border: none;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  box-shadow: var(--shadow-card-tight);
   overflow: hidden;
   min-height: 0;
   height: 100%;
@@ -1446,7 +1454,7 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
 
 .project-card:hover,
 .project-card:focus-within {
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  box-shadow: var(--shadow-card-tight-hover);
 }
 
 .project-card__media {
@@ -1553,6 +1561,13 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
 
 .site-footer .copyright { --content-inline-pad: 50px; text-align: center; padding: 16px var(--content-inline-pad) 24px; color: var(--color-muted); }
 
+@media (min-width: 1280px) {
+  /* Add extra separation between Profiles and Site columns on wide screens. */
+  .site-footer .footer-grid .footer-col:last-child {
+    margin-left: clamp(36px, 1.5vw, 72px);
+  }
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .primary-nav { display: none; }
@@ -1617,9 +1632,12 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
 }
 
 /* Publications (appended) */
-.pubs { --content-inline-pad: 16px; padding: 32px var(--content-inline-pad) 64px; }
+.pubs { --content-inline-pad: 16px; padding: 0 var(--content-inline-pad) 64px; }
+/* These page templates use .contained children; keep parent gutter at 0 to avoid doubled side padding. */
+.page-pubs .pubs,
+.page-updates .pubs { --content-inline-pad: 0px; }
 .pubs > *:not(.contained) { --content-inline-pad: 0px; }
-.pubs > h1,
+.pubs > h2,
 .pubs > p,
 .pubs > .pub-filters {
   width: 100%;
@@ -1630,7 +1648,7 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
   padding-right: var(--section-inline-pad);
   box-sizing: border-box;
 }
-.projects-page > h1,
+.projects-page > :is(h1, h2),
 .projects-page > p,
 .projects-page > .pub-filters,
 .projects-page > .projects-grid {
@@ -1642,8 +1660,8 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
   padding-right: var(--section-inline-pad);
   box-sizing: border-box;
 }
-.projects-page > h1 { margin-top: 0; margin-bottom: 16px; }
-.pubs h1 { margin-top: 0; margin-bottom: 12px; }
+.projects-page > :is(h1, h2) { margin-top: 0; margin-bottom: 16px; }
+.pubs :is(h1, h2) { margin-top: 0; margin-bottom: 12px; }
 .pub-filters {
   --tab-gap: clamp(18px, 2vw, 32px);
   --tab-underline-height: 3px;
@@ -1754,29 +1772,58 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
 .page-update { background-color: var(--color-bg); }
 .updates-page,
 .update-page { background-color: var(--color-bg); }
-.update-page { padding-top: 32px; }
-.updates-page .muted { margin-top: 0; margin-bottom: 8px; }
+.update-page { padding-top: 0; }
+.updates-page .updates-hero .muted,
+.update-page .updates-hero .muted { margin-top: 0; margin-bottom: 8px; }
 .updates-page .updates-hero,
 .update-page .updates-hero,
 .projects-page .updates-hero { margin-bottom: 16px; }
-.updates-page .updates-hero h1,
-.update-page .updates-hero h1,
-.projects-page .updates-hero h1 { margin-top: 0; margin-bottom: 12px; }
+.pubs .updates-hero { margin-bottom: 16px; }
+.updates-page .updates-hero :is(h1, h2),
+.update-page .updates-hero :is(h1, h2),
+.projects-page .updates-hero :is(h1, h2),
+.pubs .updates-hero :is(h1, h2) { margin-top: 0; margin-bottom: 12px; }
+.updates-page .updates-hero .eyebrow,
+.update-page .updates-hero .eyebrow,
+.projects-page .updates-hero .eyebrow,
+.teaching-page .teaching-hero .eyebrow,
+.pubs .updates-hero .eyebrow {
+  margin-bottom: 8px;
+  padding-left: 3px;
+}
 .updates-page .updates-hero p,
 .update-page .updates-hero p,
 .projects-page .updates-hero p { margin-top: 0; }
+.updates-page .updates-hero .muted,
+.update-page .updates-hero .muted,
+.projects-page .updates-hero .muted,
+.teaching-page .teaching-hero .muted,
+.pubs .updates-hero .muted {
+  padding-left: 3px;
+}
 .updates-page > section { background-color: var(--color-bg); }
 .updates-page .updates-feed { margin-top: 24px; }
 .update-page > section { background-color: var(--color-bg); }
 .update-page :is(.updates-hero, .hero--update, .update-detail) {
   --content-inline-pad: clamp(1.5rem, 4vw, 3.5rem);
 }
+@media (max-width: 640px) {
+  /* Ensure consistent 20px mobile gutters for target pages (hero + content). */
+  .page-pubs,
+  .page-updates,
+  .page-update {
+    --section-inline-pad: 20px;
+  }
+  .page-update .update-page :is(.updates-hero, .hero--update, .update-detail) {
+    --content-inline-pad: 20px;
+  }
+}
 
 /* Publications page background */
 .page-pubs { background-color: var(--color-bg); }
 .page-pubs main > section { background-color: var(--color-bg); }
 
-.teaching-page .teaching-hero h1 {
+.teaching-page .teaching-hero :is(h1, h2) {
   margin-top: 0;
   margin-bottom: 12px;
 }

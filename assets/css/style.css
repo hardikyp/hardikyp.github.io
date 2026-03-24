@@ -95,8 +95,8 @@ body:not(.page-photography) .btn.primary:focus-visible {
   content: '';
   display: inline-block;
   flex: 0 0 auto;
-  width: 0.98em;
-  height: 0.9em;
+  width: 0.89em;
+  height: 0.8em;
   margin-left: 0.18em;
   background-color: currentColor;
   -webkit-mask-image: url('../icons/tertiary-arrow.svg');

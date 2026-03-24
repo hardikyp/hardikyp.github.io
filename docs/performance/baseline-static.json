@@ -1,0 +1,226 @@
+{
+  "pages": [
+    {
+      "name": "home",
+      "path": "index.html",
+      "document_bytes": 14947,
+      "local_request_count": 24,
+      "external_request_count": 3,
+      "total_request_count": 27,
+      "local_total_bytes": 2299409,
+      "category_bytes": {
+        "audio": 6628,
+        "css": 74098,
+        "data": 28698,
+        "fonts": 2083452,
+        "images": 62907,
+        "js": 24260,
+        "other": 300,
+        "partials": 4119
+      },
+      "category_paths": {
+        "audio": [
+          "assets/audio/name-pronunciation.mp3"
+        ],
+        "css": [
+          "assets/css/base.css",
+          "assets/css/style.css"
+        ],
+        "data": [
+          "assets/data/expertise.json",
+          "updates/data/updates.json"
+        ],
+        "fonts": [
+          "assets/fonts/Manrope/Manrope-VariableFont_wght.ttf",
+          "assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf",
+          "assets/fonts/NotoSansSymbols2-Regular.ttf"
+        ],
+        "images": [
+          "assets/icons/facebook.svg",
+          "assets/icons/github.svg",
+          "assets/icons/instagram.svg",
+          "assets/icons/linkedin.svg",
+          "assets/icons/monogram.svg",
+          "assets/img/portrait-640.jpg"
+        ],
+        "js": [
+          "assets/js/home-expertise.js",
+          "assets/js/home-testimonials.js",
+          "assets/js/home-updates.js",
+          "assets/js/includes.js",
+          "assets/js/main.js"
+        ],
+        "other": [
+          "manifest.webmanifest"
+        ],
+        "partials": [
+          "assets/partials/back-to-top.html",
+          "assets/partials/footer.html",
+          "assets/partials/header.html"
+        ]
+      },
+      "runtime_requests": [
+        "http://local.test/assets/data/expertise.json",
+        "http://local.test/updates/data/updates.json"
+      ],
+      "external_requests": [
+        "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js",
+        "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css",
+        "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+      ],
+      "missing_assets": []
+    },
+    {
+      "name": "projects",
+      "path": "projects/index.html",
+      "document_bytes": 3631,
+      "local_request_count": 17,
+      "external_request_count": 0,
+      "total_request_count": 17,
+      "local_total_bytes": 2191893,
+      "category_bytes": {
+        "css": 74098,
+        "fonts": 2083452,
+        "images": 7267,
+        "js": 19326,
+        "partials": 4119
+      },
+      "category_paths": {
+        "css": [
+          "assets/css/base.css",
+          "assets/css/style.css"
+        ],
+        "fonts": [
+          "assets/fonts/Manrope/Manrope-VariableFont_wght.ttf",
+          "assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf",
+          "assets/fonts/NotoSansSymbols2-Regular.ttf"
+        ],
+        "images": [
+          "assets/icons/facebook.svg",
+          "assets/icons/github.svg",
+          "assets/icons/instagram.svg",
+          "assets/icons/linkedin.svg",
+          "assets/icons/monogram.svg"
+        ],
+        "js": [
+          "assets/js/includes.js",
+          "assets/js/main.js",
+          "assets/js/projects.js"
+        ],
+        "partials": [
+          "assets/partials/back-to-top.html",
+          "assets/partials/footer.html",
+          "assets/partials/header.html"
+        ]
+      },
+      "runtime_requests": [],
+      "external_requests": [],
+      "missing_assets": []
+    },
+    {
+      "name": "updates",
+      "path": "updates/index.html",
+      "document_bytes": 4323,
+      "local_request_count": 18,
+      "external_request_count": 0,
+      "total_request_count": 18,
+      "local_total_bytes": 2221159,
+      "category_bytes": {
+        "css": 74098,
+        "data": 28076,
+        "fonts": 2083452,
+        "images": 7267,
+        "js": 19824,
+        "partials": 4119
+      },
+      "category_paths": {
+        "css": [
+          "assets/css/base.css",
+          "assets/css/style.css"
+        ],
+        "data": [
+          "updates/data/updates.json"
+        ],
+        "fonts": [
+          "assets/fonts/Manrope/Manrope-VariableFont_wght.ttf",
+          "assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf",
+          "assets/fonts/NotoSansSymbols2-Regular.ttf"
+        ],
+        "images": [
+          "assets/icons/facebook.svg",
+          "assets/icons/github.svg",
+          "assets/icons/instagram.svg",
+          "assets/icons/linkedin.svg",
+          "assets/icons/monogram.svg"
+        ],
+        "js": [
+          "assets/js/includes.js",
+          "assets/js/main.js",
+          "assets/js/updates.js"
+        ],
+        "partials": [
+          "assets/partials/back-to-top.html",
+          "assets/partials/footer.html",
+          "assets/partials/header.html"
+        ]
+      },
+      "runtime_requests": [
+        "http://local.test/updates/data/updates.json"
+      ],
+      "external_requests": [],
+      "missing_assets": []
+    },
+    {
+      "name": "photography",
+      "path": "photography/index.html",
+      "document_bytes": 4983,
+      "local_request_count": 16,
+      "external_request_count": 0,
+      "total_request_count": 16,
+      "local_total_bytes": 2197049,
+      "category_bytes": {
+        "css": 74098,
+        "data": 612,
+        "fonts": 2083452,
+        "images": 7267,
+        "js": 26498,
+        "partials": 139
+      },
+      "category_paths": {
+        "css": [
+          "assets/css/base.css",
+          "assets/css/style.css"
+        ],
+        "data": [
+          "photography/data/photos.json"
+        ],
+        "fonts": [
+          "assets/fonts/Manrope/Manrope-VariableFont_wght.ttf",
+          "assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf",
+          "assets/fonts/NotoSansSymbols2-Regular.ttf"
+        ],
+        "images": [
+          "assets/icons/facebook.svg",
+          "assets/icons/github.svg",
+          "assets/icons/instagram.svg",
+          "assets/icons/linkedin.svg",
+          "assets/icons/monogram.svg"
+        ],
+        "js": [
+          "assets/js/includes.js",
+          "assets/js/main.js",
+          "assets/js/photography.js"
+        ],
+        "partials": [
+          "assets/partials/back-to-top.html"
+        ]
+      },
+      "runtime_requests": [
+        "http://local.test/photography/data/photos.json"
+      ],
+      "external_requests": [],
+      "missing_assets": []
+    }
+  ],
+  "generated_note": "Static asset baseline only. Dynamic browser metrics such as LCP, TBT, and CLS are collected by the Lighthouse workflow."
+}

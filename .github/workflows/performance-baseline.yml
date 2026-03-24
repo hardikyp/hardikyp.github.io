@@ -1,0 +1,109 @@
+name: Performance Baseline
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "*.html"
+      - "projects/**/*.html"
+      - "publications/**/*.html"
+      - "updates/**/*.html"
+      - "teaching/**/*.html"
+      - "photography/**/*.html"
+      - "assets/css/**"
+      - "assets/js/**"
+      - "assets/data/**"
+      - "projects/data/**"
+      - "publications/data/**"
+      - "updates/data/**"
+      - "teaching/data/**"
+      - "scripts/perf_baseline.py"
+      - "scripts/summarize_lighthouse.py"
+      - ".github/workflows/performance-baseline.yml"
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v2
+
+      - name: Start local server
+        run: |
+          python3 -m http.server 4173 >/tmp/perf-http.log 2>&1 &
+          echo $! > /tmp/perf-http.pid
+          for i in $(seq 1 10); do
+            if curl --silent --fail http://127.0.0.1:4173/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Local server failed to start."
+          exit 1
+
+      - name: Generate static baseline
+        run: |
+          python3 scripts/perf_baseline.py \
+            --root . \
+            --json-out reports/performance/static-baseline.json \
+            --md-out reports/performance/static-baseline.md
+
+      - name: Run Lighthouse
+        env:
+          CHROME_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          mkdir -p reports/performance/lighthouse
+          npx --yes lighthouse http://127.0.0.1:4173/ \
+            --chrome-path="$CHROME_PATH" \
+            --preset=desktop \
+            --only-categories=performance \
+            --output=json \
+            --output-path=reports/performance/lighthouse/home.json
+          npx --yes lighthouse http://127.0.0.1:4173/projects/index.html \
+            --chrome-path="$CHROME_PATH" \
+            --preset=desktop \
+            --only-categories=performance \
+            --output=json \
+            --output-path=reports/performance/lighthouse/projects.json
+          npx --yes lighthouse http://127.0.0.1:4173/updates/index.html \
+            --chrome-path="$CHROME_PATH" \
+            --preset=desktop \
+            --only-categories=performance \
+            --output=json \
+            --output-path=reports/performance/lighthouse/updates.json
+          npx --yes lighthouse http://127.0.0.1:4173/photography/index.html \
+            --chrome-path="$CHROME_PATH" \
+            --preset=desktop \
+            --only-categories=performance \
+            --output=json \
+            --output-path=reports/performance/lighthouse/photography.json
+          python3 scripts/summarize_lighthouse.py \
+            --input-dir reports/performance/lighthouse \
+            --output reports/performance/lighthouse-summary.md
+
+      - name: Upload performance reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-baseline
+          path: reports/performance/
+
+      - name: Stop local server
+        if: always()
+        run: |
+          if [ -f /tmp/perf-http.pid ]; then
+            kill "$(cat /tmp/perf-http.pid)" || true
+          fi

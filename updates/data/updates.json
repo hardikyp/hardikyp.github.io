@@ -129,6 +129,24 @@
       "detail": "<p>I completed my Bachelor of Technology (B. Tech.) with Honors in Civil Engineering at the Indian Institute of Technology Bombay (IIT-B) with a GPA of 8.5/10. The program gave me a strong grounding in structural mechanics, analysis, and design, and it was where I first became seriously interested in advanced methods for understanding how structures behave. Courses in structural analysis, stability, and finite element methods sparked a curiosity to go beyond textbook examples and learn more complex analysis techniques—laying the technical foundation that later shaped my decision to pursue a Master's and then a PhD in structural engineering.</p> <p>Life at IIT Bombay was much more than lectures and exams. I was deeply involved in inter hostel (student hall) cultural events, especially in dance and photography competitions. I regularly participated in these events and helped lead my hostel to multiple wins in both dance and photography contests. Those experiences sharpened my ability to work in creative, high-energy teams and deliver under pressure.</p> <p>I also served as a core team member at E-Cell, IIT Bombay. Working in a 22-member core team, I helped organize national and international entrepreneurship events with an annual budget of around $290,000. I led a two-tier team of about 40 students handling media associations, event coverage, and social media marketing. This included negotiating terms with major Indian media houses to secure deliverables worth roughly $140,000 and launching targeted campaigns and brand integrations that drove a 150% year-on-year increase in social media followers. Together, these technical, creative, and leadership experiences set the stage for my graduate studies.</p>",
       "image": { "src": "assets/img/updates/thumbnails/iitb.png", "alt": "IIT Bombay logo" },
       "gallery": []
+    },
+    {
+      "slug": "hardik-nsf-pgscholarship",
+      "title": "Narotam Sekksaria Foundation's Post Graduate Scholarship",
+      "tag": "Award",
+      "date": "2019-07-22",
+      "detail": "<p>I was awarded the Narotam Sekhsaria Foundation’s Postgraduate Scholarship, a highly selective merit-based program that supports outstanding students pursuing graduate studies. I was one of 19 scholars chosen from a pool of over 11,000 applicants nationwide. The scholarship provided an interest-free loan of INR 20,00,000, which significantly supported my Master’s studies in structural engineering at the University of Michigan.</p> <p>Beyond the financial support, the scholarship recognized academic excellence, leadership potential, and a commitment to contributing meaningfully to society. Being selected through a rigorous, multi-stage evaluation process—including interviews and holistic assessment—was a strong validation of my academic journey and future aspirations. The support from the Narotam Sekhsaria Foundation played a key role in enabling me to focus on my graduate education and research without financial constraints.</p>",
+      "image": { "src": "assets/img/updates/thumbnails/nsf.jpg", "alt": "Narotam Sekhsaria Foundation logo" },
+      "gallery": []
+    },
+    {
+      "slug": "hardik-kcmet-pgscholarship",
+      "title": "K. C. Mahindra Education Trust Scholarship for Post Graduate Studies Abroad",
+      "tag": "Award",
+      "date": "2019-07-11",
+      "detail": "<p>I was awarded the K. C. Mahindra Scholarship for Post Graduate Studies Abroad, a highly competitive and prestigious award granted to a select group of Indian students pursuing higher education at leading global universities. I was among the top 4.65% of applicants selected nationwide, reflecting a rigorous evaluation based on academic excellence, clarity of purpose, and demonstrated potential to contribute meaningfully to society. Being chosen as a Mahindra Scholar was a strong recognition of both my academic achievements and my long-term vision in structural engineering.</p> <p>The scholarship was an interest-free loan of INR 4,00,000, which contributed toward supporting my Master’s studies at the University of Michigan. Beyond financial assistance, it connected me to a distinguished network of scholars and alumni across disciplines, offering a broader perspective on leadership, impact, and responsibility. The recognition and support from the K. C. Mahindra Foundation played an important role in enabling me to pursue advanced studies and further develop my research interests.</p>",
+      "image": { "src": "assets/img/updates/thumbnails/kcmet.png", "alt": "K. C. Mahindra Education Trust logo" },
+      "gallery": []
     }
   ]
 }

@@ -1,5 +1,3 @@
-@import url('./base.css');
-
 :root {
   --layout-inline-pad: var(--section-inline-pad);
 }

@@ -190,6 +190,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
 - Notes / Risks:
   - Do not lose the distinction between design-system-only CSS and production CSS.
 
+#### Progress Log
+
+- 2026-03-24: Removed the `@import` chain from `assets/css/style.css` and switched HTML entry points to explicit `base.css` + `style.css` loading. Regenerated the static baseline after the CSS delivery change.
+
 ### P0-A4: Replace jQuery + Slick for the testimonials carousel
 
 - Priority: `P0`

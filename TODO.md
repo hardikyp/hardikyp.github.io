@@ -161,6 +161,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
   - Must preserve AGENTS partial contracts.
   - If markup changes, update both partials and any remaining fallback strings.
 
+#### Progress Log
+
+- 2026-03-24: Replaced shipped-page `data-include` placeholders with synced inline partial blocks managed by `scripts/inline_partials.py`. `assets/js/includes.js` no longer performs synchronous partial injection and now only handles file-protocol setup, active-link state, and JSON loading helpers. Added `.github/workflows/sync-shared-partials.yml` so partial changes can be checked on PRs and synced automatically on `main`. Regenerated the static baseline after inlining.
+
 ### P0-A3: Remove CSS `@import` and add build-time CSS output
 
 - Priority: `P0`

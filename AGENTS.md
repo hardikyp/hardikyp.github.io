@@ -21,7 +21,11 @@ This repository is a static personal website. Future coding agents should treat 
   - `/photography/`
   - `/design-system/`
 - Shared assets live under `/assets/`.
-- Shared layout chrome is injected from partials in `/assets/partials/` by `/assets/js/includes.js`.
+- Shared layout chrome is authored in `/assets/partials/` and synchronized into page HTML by `/scripts/inline_partials.py`.
+- `/assets/js/includes.js` now provides lightweight runtime helpers only:
+  - file-protocol flagging
+  - active-link state
+  - JSON loading helpers for `file:` previews
 - Most content-heavy sections are hydrated from JSON files at runtime.
 - The site is expected to work both on normal hosting and in local `file:` previews. Do not casually break that.
 
@@ -159,13 +163,12 @@ Before inventing new markup or styles, check whether one of these already fits:
   - `/assets/partials/header.html`
   - `/assets/partials/footer.html`
   - `/assets/partials/back-to-top.html`
-- `/assets/js/includes.js` also contains fallback HTML strings for local `file:` usage.
-- If you change header/footer/back-to-top markup, update both:
-  - the partial HTML files
-  - the fallback strings inside `/assets/js/includes.js`
+- After changing header/footer/back-to-top markup, run:
+  - `python scripts/inline_partials.py`
+- HTML pages store synced partial markup inside managed `partial-sync` comment blocks.
 - If you add a new top-level section, also review:
   - nav links in header/footer partials
-  - fallback partial markup in `includes.js`
+  - `scripts/inline_partials.py`
   - active-link logic in `includes.js`
   - `scripts/generate_sitemap.py`
 
@@ -372,6 +375,7 @@ Before inventing new markup or styles, check whether one of these already fits:
 - `/design-system/index.html`
 - `/design-system/README.md`
 - `/assets/js/includes.js`
+- `/scripts/inline_partials.py`
 - `/assets/js/main.js`
 - `/projects/README.md`
 - `/updates/README.md`

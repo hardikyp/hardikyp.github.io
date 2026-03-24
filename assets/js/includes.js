@@ -1,4 +1,4 @@
-// Synchronously include header/footer partials and set active nav links
+// Shared runtime helpers: JSON loading, file-protocol flagging, and active nav links.
 (function () {
   // Provide a global JSON loader that works over file: protocol too.
   // Some browsers block fetch() for file URLs; fallback to XHR when needed.
@@ -43,131 +43,6 @@
     document.documentElement.classList.add('file-protocol');
   }
 
-  var FALLBACKS = {
-    'assets/partials/header.html': `<header id="site-header" class="site-header" role="banner">
-  <div class="nav-inner">
-    <!-- Left: Logo -->
-    <a class="logo" href="index.html" aria-label="Home">
-      <span class="icon monogram" aria-hidden="true"></span>
-    </a>
-    <!-- Center: Nav links (desktop/tablet) -->
-    <nav class="primary-nav" aria-label="Primary">
-      <ul>
-        <li><a href="projects/index.html">Projects</a></li>
-        <li><a href="teaching/index.html">Teaching</a></li>
-        <li><a href="publications/index.html">Publications</a></li>
-        <li><a href="updates/index.html">Updates</a></li>
-        <li><a href="photography/index.html">Photography</a></li>
-      </ul>
-    </nav>
-    <!-- Right: CTAs -->
-    <div class="nav-cta">
-      <a class="btn secondary" href="assets/docs/Hardik_Patil_CV.pdf" download>Get CV</a>
-      <a class="btn primary" href="index.html#contact">Contact</a>
-    </div>
-    <!-- Mobile hamburger + slide-in menu -->
-    <div class="hamburger" id="menuToggle">
-      <input type="checkbox" id="menuCheckbox" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false" />
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
-        <nav aria-label="Mobile">
-          <ul>
-            <li><a href="projects/index.html">Projects</a></li>
-            <li><a href="teaching/index.html">Teaching</a></li>
-            <li><a href="publications/index.html">Publications</a></li>
-            <li><a href="updates/index.html">Updates</a></li>
-            <li><a href="photography/index.html">Photography</a></li>
-            <li class="divider"></li>
-            <li><a class="btn secondary full" href="assets/docs/Hardik_Patil_CV.pdf" download>Get CV</a></li>
-            <li><a class="btn primary full" href="index.html#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-      <label class="menu-overlay" id="menuOverlay" for="menuCheckbox" aria-hidden="true"></label>
-    </div>
-  </div>
-</header>`,
-    'assets/partials/footer.html': `<footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <span class="monogram" role="img" aria-label="HP logo"></span>
-      <div class="social">
-        <a href="https://www.linkedin.com/in/hardikypatil" aria-label="LinkedIn"><span class="icon linkedin" aria-hidden="true"></span></a>
-        <a href="https://github.com/hardikyp" aria-label="GitHub"><span class="icon github" aria-hidden="true"></span></a>
-        <a href="https://www.instagram.com/_hardikpatil_" aria-label="Instagram"><span class="icon instagram" aria-hidden="true"></span></a>
-        <a href="https://www.facebook.com/hardik.patil.520" aria-label="Facebook"><span class="icon facebook" aria-hidden="true"></span></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h3>Contact</h3>
-      <p>Email: <a href="mailto:hardikyp@umich.edu">hardikyp[at]umich.edu</a></p>
-      <p>Phone: <a href="tel:+17348821248">+1 (734)-882-1248</a></p>
-    </div>
-    <div class="footer-col">
-      <h3>Location</h3>
-      <p>1250 G. G. Brown Laboratories,<br/>2350 Hayward St,<br/>Ann Arbor, MI 48109</p>
-    </div>
-    <div class="footer-col">
-      <h3>Profiles</h3>
-      <div class="footer-links">
-        <a href="https://www.researchgate.net/profile/Hardik-Patil">Research Gate</a>
-        <a href="https://scholar.google.com/citations?user=QxSZzs8AAAAJ&hl=en">Google Scholar</a>
-        <a href="https://orcid.org/0009-0006-9191-3738">ORCiD</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h3>Site</h3>
-      <div class="footer-links">
-        <a href="projects/index.html">Projects</a>
-        <a href="teaching/index.html">Teaching</a>
-        <a href="publications/index.html">Publications</a>
-        <a href="updates/index.html">Updates</a>
-      </div>
-    </div>
-  </div>
-  <div class="copyright">&copy; <span id="year"></span> Hardik Patil. All Rights Reserved.</div>
-</footer>`,
-    'assets/partials/back-to-top.html': `<button class="back-to-top" type="button" aria-label="Back to top">
-  <span class="back-to-top__icon" aria-hidden="true"></span>
-</button>`
-  };
-
-  function replaceWithFallback(el, url) {
-    if (isFile && FALLBACKS[url]) {
-      el.outerHTML = FALLBACKS[url];
-      return true;
-    }
-    return false;
-  }
-
-  function includePartialsSync() {
-    var nodes = document.querySelectorAll('[data-include]');
-    for (var i = 0; i < nodes.length; i++) {
-      var el = nodes[i];
-      var url = el.getAttribute('data-include');
-      if (!url) continue;
-      try {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, false); // sync
-        xhr.send(null);
-        if (xhr.status >= 200 && xhr.status < 300) {
-          // Replace placeholder with fetched markup
-          el.outerHTML = xhr.responseText;
-        } else if (!replaceWithFallback(el, url)) {
-          console.warn('Include failed for', url, xhr.status);
-        }
-      } catch (e) {
-        if (!replaceWithFallback(el, url)) {
-          console.warn('Include error for', url, e);
-        } else {
-          // already replaced
-        }
-      }
-    }
-  }
-
   function setActiveLinks() {
     try {
       var path = location.pathname || '/';
@@ -206,8 +81,5 @@
     } catch (_) {}
   }
 
-  // Perform includes immediately (blocking) so subsequent scripts can bind to injected DOM
-  includePartialsSync();
-  // Then set active indicators
   setActiveLinks();
 })();

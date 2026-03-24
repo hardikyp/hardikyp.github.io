@@ -1,0 +1,69 @@
+name: Sync Shared Partials
+
+on:
+  pull_request:
+    paths:
+      - "*.html"
+      - "projects/*.html"
+      - "publications/*.html"
+      - "updates/*.html"
+      - "teaching/*.html"
+      - "photography/*.html"
+      - "design-system/*.html"
+      - "assets/partials/**"
+      - "scripts/inline_partials.py"
+  push:
+    branches:
+      - main
+    paths:
+      - "assets/partials/**"
+      - "scripts/inline_partials.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-sync:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify synced partials
+        run: python scripts/inline_partials.py --check
+
+  sync-on-main:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sync partials into HTML
+        run: python scripts/inline_partials.py
+
+      - name: Commit synced HTML
+        run: |
+          if git diff --quiet -- '*.html' 'projects/*.html' 'publications/*.html' 'updates/*.html' 'teaching/*.html' 'photography/*.html' 'design-system/*.html'; then
+            echo "No synced HTML changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add *.html projects/*.html publications/*.html updates/*.html teaching/*.html photography/*.html design-system/*.html
+          git commit -m "chore: sync shared partials"
+          git push

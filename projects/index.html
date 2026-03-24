@@ -48,7 +48,54 @@
   </head>
   <body class="page-pubs">
     <a class="skip-link" href="#main">Skip to content</a>
-    <div data-include="/assets/partials/header.html"></div>
+    <!-- partial-sync:header:start -->
+    <header id="site-header" class="site-header" role="banner">
+      <div class="nav-inner">
+        <!-- Left: Logo -->
+        <a class="logo" href="index.html" aria-label="Home">
+          <span class="icon monogram" aria-hidden="true"></span>
+        </a>
+
+        <!-- Center: Nav links (desktop/tablet) -->
+        <nav class="primary-nav" aria-label="Primary">
+          <ul>
+            <li><a href="projects/index.html">Projects</a></li>
+            <li><a href="publications/index.html">Publications</a></li>
+            <li><a href="teaching/index.html">Teaching</a></li>
+            <li><a href="updates/index.html">Updates</a></li>
+            <li><a href="photography/index.html">Photography</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right: CTAs -->
+        <div class="nav-cta">
+          <a class="btn primary" href="index.html#contact">Contact</a>
+        </div>
+
+        <!-- Mobile hamburger + slide-in menu -->
+        <div class="hamburger" id="menuToggle">
+          <input type="checkbox" id="menuCheckbox" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false" />
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+            <nav aria-label="Mobile">
+              <ul>
+                <li><a href="projects/index.html">Projects</a></li>
+                <li><a href="publications/index.html">Publications</a></li>
+                <li><a href="teaching/index.html">Teaching</a></li>
+                <li><a href="updates/index.html">Updates</a></li>
+                <li><a href="photography/index.html">Photography</a></li>
+                <li class="divider"></li>
+                <li><a class="btn primary full" href="index.html#contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <label class="menu-overlay" id="menuOverlay" for="menuCheckbox" aria-hidden="true"></label>
+        </div>
+      </div>
+    </header>
+    <!-- partial-sync:header:end -->
     <main id="main" tabindex="-1" class="pubs projects-page">
       <section class="updates-hero contained">
         <p class="eyebrow">Portfolio</p>
@@ -61,9 +108,49 @@
         <div id="projectsGrid" class="cards"></div>
       </section>
     </main>
-    <div data-include="/assets/partials/back-to-top.html"></div>
-    <div data-include="/assets/partials/footer.html"></div>
-    <script src="/assets/js/includes.js"></script>
+    <!-- partial-sync:back-to-top:start -->
+    <button class="back-to-top" type="button" aria-label="Back to top">
+      <span class="back-to-top__icon" aria-hidden="true"></span>
+    </button>
+    <!-- partial-sync:back-to-top:end -->
+    <!-- partial-sync:footer:start -->
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo-link" href="index.html" aria-label="Home">
+            <span class="monogram" role="img" aria-label="HP logo"></span>
+          </a>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/hardikypatil" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><span class="icon linkedin" aria-hidden="true"></span></a>
+            <a href="https://github.com/hardikyp" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><span class="icon github" aria-hidden="true"></span></a>
+            <a href="https://www.instagram.com/_hardikpatil_" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><span class="icon instagram" aria-hidden="true"></span></a>
+            <a href="https://www.facebook.com/hardik.patil.520" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><span class="icon facebook" aria-hidden="true"></span></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Profiles</h3>
+          <div class="footer-links">
+            <a href="https://scholar.google.com/citations?user=QxSZzs8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <a href="https://orcid.org/0009-0006-9191-3738" target="_blank" rel="noopener noreferrer">ORCiD</a>
+            <a href="https://www.researchgate.net/profile/Hardik-Patil" target="_blank" rel="noopener noreferrer">Research Gate</a>
+            <a href="https://www.webofscience.com/wos/author/record/OUJ-9207-2025" target="_blank" rel="noopener noreferrer">Web of Science</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Site</h3>
+          <div class="footer-links">
+            <a href="projects/index.html">Projects</a>
+            <a href="publications/index.html">Publications</a>
+            <a href="teaching/index.html">Teaching</a>
+            <a href="updates/index.html">Updates</a>
+            <a href="photography/index.html">Photography</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">&copy; <span id="year"></span> Hardik Patil. All Rights Reserved.</div>
+    </footer>
+    <!-- partial-sync:footer:end -->
+    <script src="/assets/js/includes.js" defer></script>
     <script src="/assets/js/projects.js" defer></script>
     <script src="/assets/js/main.js" defer></script>
   </body>

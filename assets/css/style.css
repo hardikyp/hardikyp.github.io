@@ -89,22 +89,31 @@ body:not(.page-photography) .btn.primary:focus-visible {
   --btn-color: var(--color-text);
   --btn-border: transparent;
   --btn-padding-x: 0;
-  align-items: baseline;
+  align-items: center;
 }
 .btn.tertiary::after {
-  content: '\01F86A';
-  font-family: 'Noto Sans Symbols 2', var(--font-body), system-ui, sans-serif;
-  display: inline-flex;
-  align-items: flex-end;
-  justify-content: center;
-  margin-left: 0px;
-  line-height: 1;
-  transform: translate3d(4px, 0px, 0) rotate(0deg);
+  content: '';
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 0.98em;
+  height: 0.9em;
+  margin-left: 0.18em;
+  background-color: currentColor;
+  -webkit-mask-image: url('../icons/tertiary-arrow.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-image: url('../icons/tertiary-arrow.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  vertical-align: middle;
+  transform: translateX(4px) rotate(0deg);
   transition: transform 160ms ease;
 }
 .btn.tertiary:hover::after,
 .btn.tertiary:focus-visible::after {
-  transform: translate3d(4px, 0px, 0) rotate(-45deg);
+  transform: translateX(6px) rotate(-45deg);
 }
 .btn.solid { --btn-bg: var(--color-primary); --btn-color: var(--color-on-primary); }
 .btn.solid:hover { background: var(--color-primary-strong); }
@@ -479,6 +488,24 @@ body.page-home main > section::before { background: transparent; }
   object-fit: cover;
   display: block;
   border-radius: inherit;
+}
+.update-card__logo picture,
+.project-card__media picture,
+.project-view .project-media__item picture,
+.update-gallery__item picture,
+.photo-slide picture,
+.photo-category__preview picture,
+.photo-story__media picture,
+.teaching-card__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.testimonial-card__profile picture {
+  display: block;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
 }
 .update-card__heading {
   flex: 1;
@@ -1341,6 +1368,7 @@ body.page-home main > section::before { background: transparent; }
 }
 /* About */
 .about { --content-inline-pad: var(--layout-inline-pad); display: grid; grid-template-columns: 1.1fr 1.3fr; gap: 40px; align-items: start; padding: 48px var(--content-inline-pad) 48px; }
+.about-img picture { display: block; }
 .about-img img { width: 100%; max-width: 640px; border-radius: 16px; border: 1px solid var(--color-border); object-fit: cover; }
 .about-content h2 { margin: 0 0 12px; }
 .about-content .section-rule { height: 1px; background: var(--color-border); border: 0; margin: 12px 0 16px; }

@@ -55,11 +55,16 @@
     }
     node.textContent = JSON.stringify(data);
   };
-
-  const buildSrcset = (src) => {
-    if (!src || !/\\.(jpe?g)$/i.test(src)) return '';
-    const withSize = (w) => src.replace(/\\.(jpe?g)$/i, `-${w}.$1`);
-    return [800, 1200, 1600].map(w => `${withSize(w)} ${w}w`).join(', ');
+  const escape = (value = '') => String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+  const renderImage = (src, alt, options = {}) => {
+    if (window.siteImages?.renderResponsiveImage) {
+      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
+    }
+    return `<img src="${escape(src)}" alt="${escape(alt)}" loading="${options.loading || 'lazy'}" />`;
   };
 
   const params = new URLSearchParams(location.search);
@@ -111,18 +116,15 @@
       if (Array.isArray(u.gallery) && u.gallery.length) {
         const galleryItems = u.gallery
           .map((g) => {
+            const sizes = '(min-width: 1024px) 720px, 92vw';
             if (!g) return '';
             if (typeof g === 'string') {
-              const srcset = buildSrcset(g);
-              const sizes = '(min-width: 1024px) 720px, 92vw';
-              return `<figure class="update-gallery__item" role="listitem"><img src="${g}" alt="" loading="lazy"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} /></figure>`;
+              return `<figure class="update-gallery__item" role="listitem">${renderImage(g, '', { loading: 'lazy', sizes, preferredWidth: 1200 })}</figure>`;
             }
             if (!g.src) return '';
             const caption = g.caption || '';
-            const srcset = buildSrcset(g.src);
-            const sizes = '(min-width: 1024px) 720px, 92vw';
             return `<figure class="update-gallery__item" role="listitem">
-              <img src="${g.src}" alt="${g.alt || ''}" loading="lazy"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
+              ${renderImage(g.src, g.alt || '', { loading: 'lazy', sizes, preferredWidth: 1200 })}
               ${caption ? `<figcaption class="update-gallery__caption">${caption}</figcaption>` : ''}
             </figure>`;
           })

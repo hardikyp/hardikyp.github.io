@@ -265,6 +265,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
   - Preserve the current type system.
   - Test on browsers that matter to the owner.
 
+#### Progress Log
+
+- 2026-03-24: Implemented `/scripts/build_fonts.py` and generated subsetted WOFF2 builds for `Manrope` and `Montserrat`. Updated `/assets/css/base.css` to ship WOFF2 in production, removed the dedicated `Noto Sans Symbols 2` webfont from runtime CSS, and replaced the remaining symbol usage with text/CSS arrows. Resulting font payload dropped from about `2.0 MB` of shipped TTFs to about `56 KB` of shipped WOFF2 for the active typefaces. Follow-up: run browser-level visual checks on the main pages and capture a Lighthouse comparison to validate no typography regressions.
+
 ### P0-A6: Standardize image optimization and responsive image generation
 
 - Priority: `P0`
@@ -308,6 +312,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
 - Notes / Risks:
   - Preserve the JSON asset-path conventions described in `AGENTS.md`.
   - Photography pages are visually sensitive; do not overcompress hero images.
+
+#### Progress Log
+
+- 2026-03-24: Implemented `/scripts/generate_responsive_images.py` and generated managed responsive derivatives plus WebP companions for projects, update galleries, photography assets, update thumbnails, and shared profile imagery. Added `/assets/js/site-images.js` as the shared image manifest/helper and updated the JS-driven cards/detail views to use consistent responsive image rendering with dimensions and `sizes`. Also resized oversized `rdifp.png` and `uofm.png` originals used as small update thumbnails, and removed the unused default teaching philosophy image fetch from `/teaching/index.html`. Follow-up: run a browser-level interaction check across home, projects, updates, teaching, and photography, then capture a local Lighthouse pass to confirm CLS and image-transfer improvements.
 
 ## P1 Tasks
 

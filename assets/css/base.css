@@ -1,22 +1,15 @@
 /* Design tokens */
 @font-face {
   font-family: 'Manrope';
-  src: url('../fonts/Manrope/Manrope-VariableFont_wght.ttf') format('truetype');
+  src: url('../fonts/Manrope/Manrope-VariableFont_wght.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('../fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+  src: url('../fonts/Montserrat/Montserrat-VariableFont_wght.woff2') format('woff2');
   font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Noto Sans Symbols 2';
-  src: url('../fonts/NotoSansSymbols2-Regular.ttf') format('truetype');
-  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -136,7 +129,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-weight: var(--weight-card-title);
   line-height: 1.25;
 }
-.symbol-text { font-family: 'Noto Sans Symbols 2', var(--font-body), system-ui, sans-serif; }
+.symbol-text { font-family: inherit; }
 .sr-only {
   position: absolute;
   width: 1px;

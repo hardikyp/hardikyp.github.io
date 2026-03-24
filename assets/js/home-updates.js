@@ -26,6 +26,12 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
+  const renderImage = (src, alt, options = {}) => {
+    if (window.siteImages?.renderResponsiveImage) {
+      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
+    }
+    return `<img src="${escapeHTML(src)}" alt="${escapeHTML(alt)}" loading="${options.loading || 'lazy'}" width="${options.width || ''}" height="${options.height || ''}" />`;
+  };
 
   const isISODate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s || '');
   const validTag = (t) => !t || ['Award','Publication','Milestone','Other'].includes(t);
@@ -69,9 +75,9 @@
         return `
           <article class="update-card">
             <a class="update-card__link" href="${u.url}">
-              <div class="update-card__header">
+                <div class="update-card__header">
                 <div class="update-card__logo">
-                  <img src="${u.image?.src || 'assets/img/updates/placeholder.svg'}" alt="${u.image?.alt || ''}" loading="lazy" />
+                  ${renderImage(u.image?.src || 'assets/img/updates/placeholder.svg', u.image?.alt || '', { loading: 'lazy', width: 64, height: 64, sizes: '64px', preferredWidth: 128 })}
                 </div>
                 <div class="update-card__heading">
                   <h3 class="update-card__title">${u.title}</h3>

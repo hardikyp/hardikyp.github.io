@@ -24,6 +24,12 @@
       .map((part) => part[0])
       .join('')
       .toUpperCase();
+  const renderImage = (src, alt, options = {}) => {
+    if (window.siteImages?.renderResponsiveImage) {
+      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
+    }
+    return `<img class="${options.className || ''}" src="${src}" alt="${alt}" loading="${options.loading || 'lazy'}" decoding="${options.decoding || 'async'}" />`;
+  };
 
   const renderCard = (item) => {
     const name = item.name ?? '';
@@ -31,7 +37,7 @@
     const affiliation = item.affiliation ?? '';
     const quote = item.quote ?? '';
     const photoMarkup = item.photo
-      ? `<img class="testimonial-card__photo" src="${item.photo}" alt="Portrait of ${name}" loading="lazy" decoding="async" />`
+      ? renderImage(item.photo, `Portrait of ${name}`, { className: 'testimonial-card__photo', loading: 'lazy', decoding: 'async', sizes: '64px', preferredWidth: 128 })
       : `<div class="testimonial-card__photo testimonial-card__photo--placeholder" aria-hidden="true">${getInitials(name)}</div>`;
 
     return `

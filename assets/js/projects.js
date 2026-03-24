@@ -9,6 +9,18 @@
     { type: 'Internship', url: 'projects/data/internships.json' },
     { type: 'Other', url: 'projects/data/others.json' }
   ];
+  const escapeHTML = (value = '') => String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+  const renderImage = (src, alt, options = {}) => {
+    if (window.siteImages?.renderResponsiveImage) {
+      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
+    }
+    return `<img src="${escapeHTML(src)}" alt="${escapeHTML(alt)}" loading="${options.loading || 'lazy'}" />`;
+  };
 
   const cardHTML = (p) => {
     const link = `projects/view.html?slug=${encodeURIComponent(p.slug)}`;
@@ -22,7 +34,7 @@
       : '';
     return `
       <a class="project-card" href="${link}" data-type="${p.type}">
-        ${p.card?.image ? `<div class="project-card__media"><img src="${p.card.image}" alt="${p.card.alt || ''}" loading="lazy"/></div>` : ''}
+        ${p.card?.image ? `<div class="project-card__media">${renderImage(p.card.image, p.card.alt || '', { loading: 'lazy', sizes: '(min-width: 1024px) 360px, (min-width: 768px) 45vw, 92vw', preferredWidth: 800 })}</div>` : ''}
         <div class="project-card__body">
           <h3 class="project-card__title">${p.title}</h3>
           ${meta}

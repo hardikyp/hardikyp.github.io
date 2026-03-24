@@ -50,7 +50,7 @@ These values already define the site look. Do not change them casually.
 - Fonts:
   - Body: `Manrope`
   - Headings: `Montserrat`
-  - Symbols: `Noto Sans Symbols 2`
+- Directional arrows and small glyphs use text/CSS treatment rather than a dedicated symbol font.
 - Core tokens live in `/assets/css/base.css`.
 - Primary colors:
   - `--color-primary`
@@ -297,14 +297,19 @@ Before inventing new markup or styles, check whether one of these already fits:
 
 ## Responsive Image Convention
 
-- Several scripts assume JPEG variants with width suffixes exist:
-  - `-800`
-  - `-1200`
-  - `-1600`
-- This is used in:
-  - update galleries
+- Shared responsive image metadata and rendering helpers now live in `/assets/js/site-images.js`.
+- Regenerate managed image assets with `/scripts/generate_responsive_images.py`.
+- The current pipeline generates width-suffixed raster variants where appropriate:
+  - content imagery: `-800`, `-1200`, `-1600`
+  - small square thumbnails: `-128`, `-256`, `-512`
+- The pipeline also generates `.webp` companions for managed raster assets.
+- This is currently used in:
+  - update cards and update galleries
+  - projects cards and project detail media
+  - teaching cards and teaching detail media
+  - home testimonials
   - photography hero and cards
-- If you add a JPEG intended for responsive rendering, generate the matching size variants or adjust the consuming code.
+- If you add a raster image intended for responsive rendering, rerun the generator or update the helper manifest deliberately.
 
 ## SEO And Metadata Contracts
 

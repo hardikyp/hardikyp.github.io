@@ -21,6 +21,12 @@
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+  const renderImage = (src, alt, options = {}) => {
+    if (window.siteImages?.renderResponsiveImage) {
+      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
+    }
+    return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="${options.loading || 'lazy'}" />`;
+  };
 
   const cardHTML = (item) => {
     const slug = item.slug || '';
@@ -39,7 +45,7 @@
       <a class="project-card teaching-card" href="${escapeHtml(href)}">
         <div class="project-card__media teaching-card__media${image ? ' has-image' : ''}">
           ${image
-            ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(alt)}" loading="lazy" />`
+            ? renderImage(image, alt, { loading: 'lazy', sizes: '(min-width: 1024px) 360px, (min-width: 768px) 45vw, 92vw', preferredWidth: 800 })
             : '<div class="teaching-card__placeholder">Course image placeholder</div>'}
         </div>
         <div class="project-card__body teaching-card__body">
@@ -149,12 +155,29 @@
     const imageSrc = (philosophy.image?.src || '').trim();
     if (imageSrc) {
       philosophyMediaEl.classList.add('has-image');
-      philosophyImageEl.src = imageSrc;
+      const helper = window.siteImages;
+      const meta = helper?.getDimensions?.(imageSrc);
+      philosophyImageEl.src = helper?.getPrimarySrc?.(imageSrc, { preferredWidth: 800 }) || imageSrc;
+      const srcset = helper?.buildSrcset?.(imageSrc) || '';
+      if (srcset) {
+        philosophyImageEl.srcset = srcset;
+        philosophyImageEl.sizes = '(min-width: 1024px) 32vw, 92vw';
+      } else {
+        philosophyImageEl.removeAttribute('srcset');
+        philosophyImageEl.removeAttribute('sizes');
+      }
+      if (meta) {
+        philosophyImageEl.width = meta.width;
+        philosophyImageEl.height = meta.height;
+      }
       philosophyImageEl.alt = philosophy.image?.alt || 'Teaching presentation photo';
       philosophyImageEl.hidden = false;
       philosophyPlaceholderEl.hidden = true;
     } else {
       philosophyMediaEl.classList.remove('has-image');
+      philosophyImageEl.removeAttribute('src');
+      philosophyImageEl.removeAttribute('srcset');
+      philosophyImageEl.removeAttribute('sizes');
       philosophyImageEl.hidden = true;
       philosophyPlaceholderEl.hidden = false;
     }

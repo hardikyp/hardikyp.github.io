@@ -105,11 +105,14 @@
       return defaultData;
     }
   };
-
-  const toPrimaryImage = (src, width = 1200) => {
-    if (!src || !/\.(jpe?g)$/i.test(src)) return src || '';
-    if (/-\d{3,4}\.(jpe?g)$/i.test(src)) return src;
-    return src.replace(/\.(jpe?g)$/i, `-${width}.$1`);
+  const renderImage = (src, alt, options = {}) => {
+    if (window.siteImages?.renderResponsiveImage) {
+      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
+    }
+    const loading = options.loading || 'lazy';
+    const decoding = options.decoding || 'async';
+    const fetchPriority = options.fetchPriority ? ` fetchpriority="${options.fetchPriority}"` : '';
+    return `<img src="${src || ''}" alt="${alt || ''}" loading="${loading}" decoding="${decoding}"${fetchPriority} />`;
   };
 
   const renderCarousel = (items) => {
@@ -117,13 +120,9 @@
     const markup = (items || []).map((item, i) => {
       const overlay = item.overlay;
       const speed = typeof item.speed === 'number' ? item.speed : 0.25;
-      const srcset = buildSrcset(item.src);
-      const src = toPrimaryImage(item.src);
-      const sizes = '100vw';
       const loading = i === 0 ? 'eager' : 'lazy';
-      const fetchPriority = i === 0 ? ' fetchpriority="high"' : '';
       return `<article class="photo-slide${i === 0 ? ' is-active' : ''}" data-speed="${speed}">
-        <img src="${src}" alt="${item.alt || ''}" loading="${loading}" decoding="async"${fetchPriority}${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
+        ${renderImage(item.src, item.alt || '', { loading, decoding: 'async', fetchPriority: i === 0 ? 'high' : '', sizes: '100vw', preferredWidth: 1600 })}
         ${overlay ? `<div class="photo-slide__overlay gradient-${overlay}"></div>` : ''}
       </article>`;
     }).join('');
@@ -132,19 +131,9 @@
     index = 0;
   };
 
-  const buildSrcset = (src) => {
-    if (!src || !/\\.(jpe?g)$/i.test(src)) return '';
-    const normalized = src.replace(/-\d{3,4}(?=\\.(jpe?g)$)/i, '');
-    const withSize = (w) => normalized.replace(/\\.(jpe?g)$/i, `-${w}.$1`);
-    return [800, 1200, 1600].map(w => `${withSize(w)} ${w}w`).join(', ');
-  };
-
   const categoryCard = (item) => {
     const accent = item.accent || 'warm';
     const galleryCount = (item.gallery || []).length;
-    const srcset = buildSrcset(item.cover);
-    const src = toPrimaryImage(item.cover);
-    const sizes = '(min-width: 1024px) 40vw, 90vw';
     return `<article class="photo-category gradient-${accent} reveal-on-scroll" id="${item.slug || ''}" aria-label="${item.title || 'Gallery'} collection">
       <div class="photo-category__content">
         <h3>${item.title || ''}</h3>
@@ -153,19 +142,16 @@
         <button class="btn tertiary light" type="button" data-gallery="${item.slug || ''}">View series</button>
       </div>
       <div class="photo-category__preview">
-        <img src="${src}" alt="${item.title || ''} cover" loading="lazy" decoding="async"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
+        ${renderImage(item.cover, `${item.title || ''} cover`, { loading: 'lazy', decoding: 'async', sizes: '(min-width: 1024px) 40vw, 90vw', preferredWidth: 1200 })}
       </div>
     </article>`;
   };
 
   const storyCard = (item) => {
     const meta = item.meta ? `<span class="muted">${[item.meta.location, item.meta.year].filter(Boolean).join(' · ')}</span>` : '';
-    const srcset = buildSrcset(item.cover);
-    const src = toPrimaryImage(item.cover);
-    const sizes = '(min-width: 1024px) 45vw, 90vw';
     return `<article class="photo-story reveal-on-scroll" id="${item.slug || ''}">
       <div class="photo-story__media">
-        <img src="${src}" alt="${item.title || ''} cover" loading="lazy" decoding="async"${srcset ? ` srcset="${srcset}" sizes="${sizes}"` : ''} />
+        ${renderImage(item.cover, `${item.title || ''} cover`, { loading: 'lazy', decoding: 'async', sizes: '(min-width: 1024px) 45vw, 90vw', preferredWidth: 1200 })}
       </div>
       <div class="photo-story__body">
         <h3>${item.title || ''}</h3>

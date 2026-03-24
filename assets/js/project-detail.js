@@ -70,6 +70,12 @@
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+  const renderImage = (src, alt, options = {}) => {
+    if (window.siteImages?.renderResponsiveImage) {
+      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
+    }
+    return `<img src="${escape(src)}" alt="${escape(alt)}" loading="${options.loading || 'lazy'}" />`;
+  };
 
   const setMedia = (images) => {
     if (!els.media) return;
@@ -82,13 +88,14 @@
     }
     els.media.classList.toggle('project-media--multi', items.length > 1);
     els.media.style.display = '';
+    const sizes = items.length > 1 ? '(min-width: 1024px) 42vw, 92vw' : '(min-width: 1024px) 720px, 92vw';
     els.media.innerHTML = items.map((img, index) => {
       const idx = index + 1;
       const captionText = img.caption || img.alt || `Project illustration ${idx}`;
       const caption = `${escape(captionText)}`;
       return `
       <figure class="project-media__item">
-        <img src="${escape(img.src)}" alt="${escape(img.alt || '')}" loading="lazy" />
+        ${renderImage(img.src, img.alt || '', { loading: index === 0 ? 'eager' : 'lazy', sizes, preferredWidth: 1200, fetchPriority: index === 0 ? 'high' : '' })}
         <figcaption><strong>Fig. ${idx}.</strong> ${caption}</figcaption>
       </figure>
     `; }).join('');

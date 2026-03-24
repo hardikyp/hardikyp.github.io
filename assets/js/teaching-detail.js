@@ -71,6 +71,12 @@
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+  const renderImage = (src, alt, options = {}) => {
+    if (window.siteImages?.renderResponsiveImage) {
+      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
+    }
+    return `<img src="${escape(src)}" alt="${escape(alt)}" loading="${options.loading || 'lazy'}" />`;
+  };
 
   if (!slug) {
     els.title.textContent = 'Course not found';
@@ -113,7 +119,11 @@
 
       if (image) {
         els.media.style.display = '';
-        els.media.innerHTML = `<img src="${escape(image)}" alt="${escape(imageAlt)}" loading="lazy" />`;
+        els.media.innerHTML = renderImage(image, imageAlt, {
+          loading: 'lazy',
+          sizes: '(min-width: 1024px) 720px, 92vw',
+          preferredWidth: 1200
+        });
       } else {
         els.media.style.display = 'none';
         els.media.innerHTML = '';

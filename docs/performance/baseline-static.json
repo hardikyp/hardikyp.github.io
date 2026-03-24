@@ -3,18 +3,18 @@
     {
       "name": "home",
       "path": "index.html",
-      "document_bytes": 19470,
+      "document_bytes": 19300,
       "local_request_count": 21,
-      "external_request_count": 3,
-      "total_request_count": 24,
-      "local_total_bytes": 2294405,
+      "external_request_count": 0,
+      "total_request_count": 21,
+      "local_total_bytes": 2298810,
       "category_bytes": {
         "audio": 6628,
-        "css": 74098,
+        "css": 75042,
         "data": 28698,
         "fonts": 2083452,
         "images": 62907,
-        "js": 18852,
+        "js": 22483,
         "other": 300
       },
       "category_paths": {
@@ -57,23 +57,19 @@
         "http://local.test/assets/data/expertise.json",
         "http://local.test/updates/data/updates.json"
       ],
-      "external_requests": [
-        "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js",
-        "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css",
-        "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-      ],
+      "external_requests": [],
       "missing_assets": []
     },
     {
       "name": "projects",
       "path": "projects/index.html",
-      "document_bytes": 8154,
+      "document_bytes": 8278,
       "local_request_count": 14,
       "external_request_count": 0,
       "total_request_count": 14,
-      "local_total_bytes": 2186889,
+      "local_total_bytes": 2187957,
       "category_bytes": {
-        "css": 74098,
+        "css": 75042,
         "fonts": 2083452,
         "images": 7267,
         "js": 13918
@@ -108,13 +104,13 @@
     {
       "name": "updates",
       "path": "updates/index.html",
-      "document_bytes": 8846,
+      "document_bytes": 8970,
       "local_request_count": 15,
       "external_request_count": 0,
       "total_request_count": 15,
-      "local_total_bytes": 2216155,
+      "local_total_bytes": 2217223,
       "category_bytes": {
-        "css": 74098,
+        "css": 75042,
         "data": 28076,
         "fonts": 2083452,
         "images": 7267,
@@ -155,13 +151,13 @@
     {
       "name": "photography",
       "path": "photography/index.html",
-      "document_bytes": 5161,
+      "document_bytes": 5285,
       "local_request_count": 15,
       "external_request_count": 0,
       "total_request_count": 15,
-      "local_total_bytes": 2191680,
+      "local_total_bytes": 2192748,
       "category_bytes": {
-        "css": 74098,
+        "css": 75042,
         "data": 612,
         "fonts": 2083452,
         "images": 7267,

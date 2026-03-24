@@ -182,7 +182,7 @@ Before inventing new markup or styles, check whether one of these already fits:
 - `/assets/data/testimonials.json`
   - Shape: `{ "enabled": boolean, "items": [{ "name": string, "title": string, "affiliation": string, "quote": string, "photo": string }] }`
   - Current state: feature can be fully hidden with `"enabled": false`
-- Home testimonials depend on CDN-loaded `jQuery` + `slick-carousel`.
+- Home testimonials use the native carousel logic in `/assets/js/home-testimonials.js`.
 
 ### Updates
 
@@ -337,10 +337,6 @@ Before inventing new markup or styles, check whether one of these already fits:
 ## Dependency Guidance
 
 - Keep dependencies minimal.
-- Current external UI dependencies are limited:
-  - `jQuery`
-  - `slick-carousel`
-- Those are only used for the home testimonials carousel.
 - Do not add new libraries unless the feature cannot be solved cleanly with the current static stack.
 
 ## Change Rules For Future Agents

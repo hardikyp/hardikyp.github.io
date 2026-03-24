@@ -228,6 +228,11 @@ Suggested implementation order is listed first. Individual tasks are intentional
 - Notes / Risks:
   - Avoid over-engineering. This site does not need a general-purpose carousel library.
 
+#### Progress Log
+
+- 2026-03-24: Replaced the Slick/jQuery testimonials carousel with a native implementation in `assets/js/home-testimonials.js` and removed the third-party CDN assets from `index.html`. The current version is intentionally lightweight and dependency-free; in future it should be replaced or refined with a more bespoke in-house carousel informed by strong UI component library patterns, without reintroducing third-party runtime carousel dependencies.
+- Follow-up: run a browser-level interaction check with testimonials enabled and capture a local Lighthouse pass to confirm control behavior, focus handling, and any layout/performance effects under real rendering conditions.
+
 ### P0-A5: Convert fonts to WOFF2 and subset them
 
 - Priority: `P0`

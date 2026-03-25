@@ -1,17 +1,20 @@
 # Updates: How to Add New Items
 
-This site renders Updates from a single JSON file. No per‑item HTML files are required.
+This site renders Updates from a single JSON file and generates per-item HTML at build time. No hand-authored per-item HTML files are required.
 
 ## Overview
 
 - Listing page: `updates/index.html`
-  - Loads `updates/data/updates.json` and renders all updates (newest first).
+  - Ships pre-rendered updates from `updates/data/updates.json`.
   - Script: `assets/js/updates.js` (includes lightweight schema validation).
-- Detail page: `updates/view.html`
-  - Renders a single update selected by `?slug=...` using the same JSON.
+- Detail pages: `updates/<slug>/index.html`
+  - Generated from `updates/data/updates.json` by `scripts/prerender_content.py`.
+- Fallback detail shell: `updates/view.html`
+  - Renders a single update selected by `?slug=...` using the same JSON when needed.
   - Script: `assets/js/update-detail.js`.
 - Home page preview
-  - Script: `assets/js/home-updates.js` shows the latest three updates on the home page.
+  - Ships the latest three pre-rendered updates on the home page.
+  - Script: `assets/js/home-updates.js` is now fallback-only if pre-rendered markup is absent.
 
 ## Where to add updates
 
@@ -30,7 +33,7 @@ Optional fields:
 - `image.alt` (string)
 - `detail` (HTML string, strongly recommended) — rich content for the detail page; the first paragraph is also used to build listing/home excerpts
 - `gallery[]` (array) — extra images for the detail page only, each item `{ "src": "...", "alt": "...", "caption": "optional" }`
-- `url` (string) — external or custom link; if omitted, the site links to `/updates/view.html?slug=<slug>`
+- `url` (string) — external or custom link; if omitted, the site links to `/updates/<slug>/`
 
 > Listing cards now derive their excerpt text from the `detail` field, so include at least one paragraph of copy there for each entry.
 
@@ -73,8 +76,8 @@ With a custom body:
 
 ## How links are generated
 
-- If `url` is omitted, links point to the dynamic page: `/updates/view.html?slug=<slug>`.
-- If `url` is present, it is used as‑is (handy for external articles or custom pages).
+- If `url` is omitted, shipped links point to `/updates/<slug>/`.
+- If `url` is present, it is used as-is (handy for external articles or custom pages).
 
 ## Quick add (optional helper)
 
@@ -103,7 +106,7 @@ Note: any client‑side secret can be discovered by a determined user. For stron
 - Keep `slug` unique and URL‑safe (letters, numbers, dashes).
 - Prefer adding `image.alt` for accessibility.
 - Sorting is by `date` descending; ensure dates are correct.
-- The home page automatically shows the latest three entries. Detail text and gallery are only rendered on the update view page.
+- The home page automatically shows the latest three entries. Detail text and gallery are rendered into the generated update page and remain available through the fallback view shell.
 
 ## Troubleshooting
 
@@ -115,4 +118,4 @@ Note: any client‑side secret can be discovered by a determined user. For stron
 
 ## Do I need `updates/items/`?
 
-No. The dynamic detail page (`updates/view.html`) replaces per‑item files. Only use `url` if you want to link to an external or custom page instead of the dynamic view.
+No hand-authored item files are needed. The build script generates `/updates/<slug>/index.html` from the JSON data. Only use `url` if you want to link to an external or custom page instead of the generated update page.

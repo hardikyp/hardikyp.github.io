@@ -123,6 +123,63 @@
     activateTab(allTab);
   };
 
+  const bindPublicationInteractions = () => {
+    const toggleItemState = (item, expand) => {
+      if (!item) return;
+      const body = item.querySelector('.pub-body');
+      const btn = item.querySelector('.pub-toggle');
+      if (!body || !btn) return;
+      const isOpen = item.classList.contains('open');
+      const shouldOpen = typeof expand === 'boolean' ? expand : !isOpen;
+      if (shouldOpen === isOpen) return;
+      item.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', String(shouldOpen));
+      if (shouldOpen) {
+        body.removeAttribute('hidden');
+        body.style.maxHeight = '0px';
+        body.style.opacity = '0';
+        requestAnimationFrame(() => {
+          body.style.maxHeight = body.scrollHeight + 'px';
+          body.style.opacity = '1';
+        });
+        const onEnd = (e) => {
+          if (e.propertyName === 'max-height') {
+            body.style.maxHeight = 'none';
+            body.removeEventListener('transitionend', onEnd);
+          }
+        };
+        body.addEventListener('transitionend', onEnd);
+      } else {
+        body.style.maxHeight = `${body.scrollHeight || 0}px`;
+        body.style.opacity = '1';
+        requestAnimationFrame(() => {
+          body.style.maxHeight = '0px';
+          body.style.opacity = '0';
+        });
+        const hideBody = () => {
+          body.setAttribute('hidden', '');
+          body.removeEventListener('transitionend', hideBody);
+        };
+        body.addEventListener('transitionend', hideBody);
+        setTimeout(() => {
+          if (!item.classList.contains('open')) body.setAttribute('hidden', '');
+        }, 280);
+      }
+    };
+
+    app.querySelectorAll('.pub-item').forEach((item) => {
+      if (item.dataset.pubBound === 'true') return;
+      item.addEventListener('click', (e) => {
+        const actionLink = e.target.closest('.pub-actions a');
+        if (actionLink) return;
+        const interactive = e.target.closest('a, button');
+        if (interactive && !interactive.classList.contains('pub-toggle')) return;
+        toggleItemState(item);
+      });
+      item.dataset.pubBound = 'true';
+    });
+  };
+
   const byDateDesc = (a, b) => {
     const da = a._sortDate || 0;
     const db = b._sortDate || 0;
@@ -212,58 +269,7 @@
       app.appendChild(y);
     });
 
-    const toggleItemState = (item, expand) => {
-      if (!item) return;
-      const body = item.querySelector('.pub-body');
-      const btn = item.querySelector('.pub-toggle');
-      if (!body || !btn) return;
-      const isOpen = item.classList.contains('open');
-      const shouldOpen = typeof expand === 'boolean' ? expand : !isOpen;
-      if (shouldOpen === isOpen) return;
-      item.classList.toggle('open', shouldOpen);
-      btn.setAttribute('aria-expanded', String(shouldOpen));
-      if (shouldOpen) {
-        body.removeAttribute('hidden');
-        body.style.maxHeight = '0px';
-        body.style.opacity = '0';
-        requestAnimationFrame(() => {
-          body.style.maxHeight = body.scrollHeight + 'px';
-          body.style.opacity = '1';
-        });
-        const onEnd = (e) => {
-          if (e.propertyName === 'max-height') {
-            body.style.maxHeight = 'none';
-            body.removeEventListener('transitionend', onEnd);
-          }
-        };
-        body.addEventListener('transitionend', onEnd);
-      } else {
-        body.style.maxHeight = (body.scrollHeight || 0) + 'px';
-        body.style.opacity = '1';
-        requestAnimationFrame(() => {
-          body.style.maxHeight = '0px';
-          body.style.opacity = '0';
-        });
-        const hideBody = () => {
-          body.setAttribute('hidden', '');
-          body.removeEventListener('transitionend', hideBody);
-        };
-        body.addEventListener('transitionend', hideBody);
-        setTimeout(() => {
-          if (!item.classList.contains('open')) body.setAttribute('hidden', '');
-        }, 280);
-      }
-    };
-
-    app.querySelectorAll('.pub-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        const actionLink = e.target.closest('.pub-actions a');
-        if (actionLink) return;
-        const interactive = e.target.closest('a, button');
-        if (interactive && !interactive.classList.contains('pub-toggle')) return;
-        toggleItemState(item);
-      });
-    });
+    bindPublicationInteractions();
 
     // Filters
     if (filterBar) buildFilterTabs(categories);
@@ -271,6 +277,13 @@
   };
 
   const load = async () => {
+    if (app.dataset.prerendered === 'true' || app.querySelector('.pub-item')) {
+      bindPublicationInteractions();
+      const categories = Array.from(app.querySelectorAll('.pub-item')).map((item) => item.dataset.cat || 'other');
+      if (filterBar) buildFilterTabs(categories);
+      else filterByCategory('all');
+      return;
+    }
     const sources = [
       { url: 'publications/data/journals.json', fallbackType: 'journal' },
       { url: 'publications/data/conferences.json', fallbackType: 'conference' },

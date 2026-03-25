@@ -136,6 +136,7 @@
   };
 
   const bindControls = () => {
+    if (carousel.dataset.testimonialsInitialized === 'true') return;
     btnPrev?.addEventListener('click', () => scrollToIndex(activeIndex - 1, 'smooth'));
     btnNext?.addEventListener('click', () => scrollToIndex(activeIndex + 1, 'smooth'));
 
@@ -158,6 +159,20 @@
         scrollToIndex(activeIndex, 'auto');
       }, 120);
     }, { passive: true });
+    carousel.dataset.testimonialsInitialized = 'true';
+  };
+
+  const finalizeCarousel = () => {
+    viewport = carousel.querySelector('.testimonials-carousel__viewport');
+    slides = Array.from(carousel.querySelectorAll('.testimonials-carousel__slide'));
+    statusEl = carousel.querySelector('[data-testimonials-status]');
+    if (!viewport || !slides.length) {
+      if (controls) controls.hidden = true;
+      return;
+    }
+    activeIndex = 0;
+    bindControls();
+    scrollToIndex(0, 'auto');
   };
 
   const initCarousel = (items) => {
@@ -173,16 +188,15 @@
       </div>
       <div class="sr-only" aria-live="polite" data-testimonials-status></div>
     `;
-
-    viewport = carousel.querySelector('.testimonials-carousel__viewport');
-    slides = Array.from(carousel.querySelectorAll('.testimonials-carousel__slide'));
-    statusEl = carousel.querySelector('[data-testimonials-status]');
-    activeIndex = 0;
-    bindControls();
-    scrollToIndex(0, 'auto');
+    finalizeCarousel();
   };
 
   const loadTestimonials = async () => {
+    if (section?.hidden || section?.getAttribute('aria-hidden') === 'true') return;
+    if (carousel.dataset.prerendered === 'true' && carousel.querySelector('.testimonials-carousel__viewport')) {
+      finalizeCarousel();
+      return;
+    }
     try {
       const data = await (window.loadJSON ? window.loadJSON(source) : (await fetch(source)).json());
       if (data && data.enabled === false) {

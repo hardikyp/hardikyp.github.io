@@ -133,7 +133,7 @@
 
       const description = item.card?.summary || htmlToSummary(bodyHtml) || 'Teaching details from Hardik Patil.';
       const pageTitle = `${title} — Teaching — Hardik Patil`;
-      const canonicalUrl = toAbsoluteUrl(`teaching/view.html?slug=${encodeURIComponent(item.slug)}`);
+      const canonicalUrl = toAbsoluteUrl(`teaching/${encodeURIComponent(item.slug)}/`);
       const ogImage = toAbsoluteUrl(image || 'assets/img/portrait-1200.jpg');
 
       document.title = pageTitle;

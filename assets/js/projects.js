@@ -2,6 +2,7 @@
   const grid = document.getElementById('projectsGrid');
   const typeBar = document.getElementById('projTypeFilters');
   if (!grid || !typeBar) return;
+  const hasPrerenderedCards = grid.dataset.prerendered === 'true' || !!grid.querySelector('.project-card');
 
   const sources = [
     { type: 'Research', url: 'projects/data/research.json' },
@@ -21,9 +22,10 @@
     }
     return `<img src="${escapeHTML(src)}" alt="${escapeHTML(alt)}" loading="${options.loading || 'lazy'}" />`;
   };
+  const projectRoute = (slug = '') => `projects/${encodeURIComponent(slug)}/`;
 
   const cardHTML = (p) => {
-    const link = `projects/view.html?slug=${encodeURIComponent(p.slug)}`;
+    const link = projectRoute(p.slug);
     const yearText = (p.years || '').trim();
     const typeLabel = p.type || '';
     const meta = (typeLabel || yearText)
@@ -54,6 +56,7 @@
   let tabsContainer;
   let underlineEl;
   let activeTab;
+  let resizeBound = false;
 
   const filterCards = (type) => {
     grid.querySelectorAll('.project-card').forEach(card => {
@@ -121,6 +124,30 @@
     });
   };
 
+  const bindResize = () => {
+    if (resizeBound) return;
+    let timer;
+    window.addEventListener('resize', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        moveUnderline(activeTab);
+      }, 120);
+    }, { passive: true });
+    resizeBound = true;
+  };
+
+  const initFromPrerendered = () => {
+    const types = Array.from(new Set(
+      Array.from(grid.querySelectorAll('.project-card[data-type]'))
+        .map((card) => (card.getAttribute('data-type') || '').trim())
+        .filter(Boolean)
+    ));
+    renderTypes(types);
+    filterCards('all');
+    bindTypeTabs();
+    bindResize();
+  };
+
   const load = async () => {
     try {
       const results = await Promise.all(sources.map(async s => {
@@ -137,14 +164,15 @@
       grid.innerHTML = items.map(cardHTML).join('');
       filterCards('all');
       bindTypeTabs();
-      let t;
-      window.addEventListener('resize', () => {
-        clearTimeout(t);
-        t = setTimeout(() => {
-          moveUnderline(activeTab);
-        }, 120);
-      }, { passive: true });
+      bindResize();
     } catch {}
   };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  const init = () => {
+    if (hasPrerenderedCards) {
+      initFromPrerendered();
+      return;
+    }
+    load();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

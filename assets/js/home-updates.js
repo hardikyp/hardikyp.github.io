@@ -1,6 +1,7 @@
 (() => {
   const container = document.querySelector('.updates-preview .update-list');
   if (!container) return;
+  if (container.dataset.prerendered === 'true' || container.querySelector('.update-card')) return;
 
   const sanitizeWhitespace = (str) => (str || '').replace(/\s+/g, ' ').trim();
   const detailToExcerpt = (html, limit = 220) => {
@@ -47,7 +48,7 @@
   };
   const normalize = (u) => ({
     ...u,
-    url: u.url || `updates/view.html?slug=${encodeURIComponent(u.slug)}`,
+    url: u.url || `updates/${encodeURIComponent(u.slug)}/`,
     excerpt: normalizeExcerpt(u)
   });
   const toDisplayDate = (iso) => {

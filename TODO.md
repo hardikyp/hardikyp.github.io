@@ -4,7 +4,7 @@ This file is the implementation backlog for improving the performance, maintaina
 
 It is written so that a future Codex agent can be pointed at this file and asked to implement items one by one without needing to rediscover the architecture from scratch.
 
-The repository is a static HTML + CSS + vanilla JS site. Most content-heavy sections are JSON-driven at runtime. Shared layout chrome is injected from partials. The site is expected to work on normal hosting and local `file:` previews.
+The repository is a static HTML + CSS + vanilla JS site. Content remains JSON-authored, but the main listings and detail pages are increasingly pre-rendered into shipped HTML. Shared layout chrome is synchronized from partials. The site is expected to work on normal hosting and local `file:` previews.
 
 Do not treat this file as permission to redesign the visual system or break the repo contracts in `AGENTS.md`.
 
@@ -363,6 +363,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
 - Notes / Risks:
   - This is high value but non-trivial.
   - If implementing incrementally, document which sections remain runtime-hydrated.
+
+#### Progress Log
+
+- 2026-03-24: Added `/scripts/prerender_content.py` to generate static HTML for the home data-driven sections, projects list, updates list, publications list, teaching list, and slug-based detail pages under `/projects/<slug>/`, `/updates/<slug>/`, and `/teaching/<slug>/`. Updated the runtime scripts so shipped HTML is the primary path and JSON fetch/render remains fallback-only for `file:` previews or recovery scenarios. Follow-up: run browser-level route checks on the generated slug pages and capture a Lighthouse comparison against the new pre-rendered output.
 
 ### P1-B2: Extract repeated JS helpers into shared utilities
 

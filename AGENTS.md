@@ -26,7 +26,8 @@ This repository is a static personal website. Future coding agents should treat 
   - file-protocol flagging
   - active-link state
   - JSON loading helpers for `file:` previews
-- Most content-heavy sections are hydrated from JSON files at runtime.
+- Most content-heavy sections are authored in JSON and pre-rendered into shipped HTML by `/scripts/prerender_content.py`.
+- Runtime page scripts should treat the shipped HTML as the primary path and only fetch/re-render as a fallback when pre-rendered markup is absent.
 - The site is expected to work both on normal hosting and in local `file:` previews. Do not casually break that.
 
 ## Source Of Truth For UI
@@ -190,6 +191,7 @@ Before inventing new markup or styles, check whether one of these already fits:
 - Listing script: `/assets/js/updates.js`
 - Detail script: `/assets/js/update-detail.js`
 - Home preview script: `/assets/js/home-updates.js`
+- Build-time renderer: `/scripts/prerender_content.py`
 - Required fields per update:
   - `slug`
   - `title`
@@ -204,6 +206,8 @@ Before inventing new markup or styles, check whether one of these already fits:
 - Important:
   - `detail` is inserted as raw HTML. Treat it as trusted author content only.
   - Excerpts are derived from the first paragraph of `detail` when available.
+  - Shipped update links should resolve to `/updates/<slug>/`.
+  - `updates/view.html` remains a JSON-driven fallback shell and should not be treated as the primary production route.
 
 ### Projects
 
@@ -214,6 +218,7 @@ Before inventing new markup or styles, check whether one of these already fits:
   - `/projects/data/others.json`
 - Listing script: `/assets/js/projects.js`
 - Detail script: `/assets/js/project-detail.js`
+- Build-time renderer: `/scripts/prerender_content.py`
 - Required fields per project:
   - `slug`
   - `title`
@@ -225,6 +230,8 @@ Before inventing new markup or styles, check whether one of these already fits:
   - `detail.body`
   - `detail.images[]`
 - Category membership is currently assigned in JS through the `sources` array. If you add another project category, update that array.
+- Shipped project links should resolve to `/projects/<slug>/`.
+- `projects/view.html` remains a JSON-driven fallback shell and should not be treated as the primary production route.
 
 ### Publications
 
@@ -233,6 +240,7 @@ Before inventing new markup or styles, check whether one of these already fits:
   - `/publications/data/conferences.json`
   - `/publications/data/talks.json`
 - Script: `/assets/js/publications.js`
+- Build-time renderer: `/scripts/prerender_content.py`
 - Expected top-level shape: `{ "publications": [...] }`
 - Required publication fields:
   - `id`
@@ -261,6 +269,7 @@ Before inventing new markup or styles, check whether one of these already fits:
 - Data file: `/teaching/data/teaching.json`
 - Listing script: `/assets/js/teaching.js`
 - Detail script: `/assets/js/teaching-detail.js`
+- Build-time renderer: `/scripts/prerender_content.py`
 - Top-level keys:
   - `hero`
   - `philosophy`
@@ -275,6 +284,8 @@ Before inventing new markup or styles, check whether one of these already fits:
   - `card.image`
   - `card.alt`
   - `detail.body`
+- Shipped teaching links should resolve to `/teaching/<slug>/`.
+- `teaching/view.html` remains a JSON-driven fallback shell and should not be treated as the primary production route.
 
 ### Photography
 
@@ -314,10 +325,14 @@ Before inventing new markup or styles, check whether one of these already fits:
 ## SEO And Metadata Contracts
 
 - Static list pages already ship with canonical, Open Graph, Twitter, and JSON-LD metadata.
-- Dynamic detail pages update metadata client-side in:
+- Fallback detail shells update metadata client-side in:
   - `/assets/js/update-detail.js`
   - `/assets/js/project-detail.js`
   - `/assets/js/teaching-detail.js`
+- Primary production detail pages are generated HTML under:
+  - `/updates/<slug>/index.html`
+  - `/projects/<slug>/index.html`
+  - `/teaching/<slug>/index.html`
 - When creating a new detail page type, preserve this pattern:
   - canonical URL
   - description
@@ -363,7 +378,7 @@ Before inventing new markup or styles, check whether one of these already fits:
 
 - Does the change reuse existing patterns from `/design-system/` and `/assets/css/style.css`?
 - If partial markup changed, did you also update `includes.js` fallbacks?
-- If a script hydrates a template, are all queried ids/classes still present?
+- If a script binds to a pre-rendered template, are all queried ids/classes still present?
 - If JSON changed, does it still match the current schema?
 - If a new reusable UI component was added, is it represented in `/design-system/index.html`?
 - If new routes or slugs were introduced, did you update sitemap generation?

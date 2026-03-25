@@ -189,19 +189,80 @@
         <div class="updates-preview__heading">
           <h2>Latest Updates</h2>
         </div>
-        <div class="update-list"></div>
+        <div class="update-list" data-prerendered="true">
+          <article class="update-card">
+            <a class="update-card__link" href="updates/ijss-publication/">
+              <div class="update-card__header">
+                <div class="update-card__logo">
+                  <picture><source type="image/webp" srcset="assets/img/updates/thumbnails/elsevier-128.webp 128w" sizes="64px" /><img src="assets/img/updates/thumbnails/elsevier-128.png" alt="Elsevier logo" loading="lazy" decoding="async" width="150" height="150" sizes="64px" srcset="assets/img/updates/thumbnails/elsevier-128.png 128w" /></picture>
+                </div>
+                <div class="update-card__heading">
+                  <h3 class="update-card__title">Research article in International Journal of Solids and Structures</h3>
+                  <div class="update-card__meta">
+                    <span class="update-tag">Publication</span>
+                    <time datetime="2026-02-19">Feb 19, 2026</time>
+                  </div>
+                </div>
+              </div>
+              <div class="update-card__body">
+                <p class="update-card__excerpt">I’m excited to share that my research paper, “Transforming static trusses into functional reconfigurable systems using quadrilateral linkage principles,” has been published in the International Journal of Solids and…</p>
+                <span class="btn tertiary">Read more</span>
+              </div>
+            </a>
+          </article>
+<article class="update-card">
+            <a class="update-card__link" href="updates/jam-publication/">
+              <div class="update-card__header">
+                <div class="update-card__logo">
+                  <picture><source type="image/webp" srcset="assets/img/updates/thumbnails/asme-digital-collection.webp" sizes="64px" /><img src="assets/img/updates/thumbnails/asme-digital-collection.png" alt="ASME Digital Collection logo" loading="lazy" decoding="async" width="72" height="72" sizes="64px" /></picture>
+                </div>
+                <div class="update-card__heading">
+                  <h3 class="update-card__title">Research article in ASME Journal of Applied Mechanics</h3>
+                  <div class="update-card__meta">
+                    <span class="update-tag">Publication</span>
+                    <time datetime="2026-02-02">Feb 2, 2026</time>
+                  </div>
+                </div>
+              </div>
+              <div class="update-card__body">
+                <p class="update-card__excerpt">I’m excited to share that my technical note, “Three-node torsional spring element formulation for the analysis of reconfigurable bar-linked structures,” has been accepted for publication in the ASME Journal of Applied…</p>
+                <span class="btn tertiary">Read more</span>
+              </div>
+            </a>
+          </article>
+<article class="update-card">
+            <a class="update-card__link" href="updates/hardik-gsi-cee211/">
+              <div class="update-card__header">
+                <div class="update-card__logo">
+                  <picture><source type="image/webp" srcset="assets/img/updates/thumbnails/uofm-128.webp 128w, assets/img/updates/thumbnails/uofm-256.webp 256w" sizes="64px" /><img src="assets/img/updates/thumbnails/uofm-128.png" alt="University of Michigan logo" loading="lazy" decoding="async" width="512" height="512" sizes="64px" srcset="assets/img/updates/thumbnails/uofm-128.png 128w, assets/img/updates/thumbnails/uofm-256.png 256w" /></picture>
+                </div>
+                <div class="update-card__heading">
+                  <h3 class="update-card__title">Graduate student instructor for CEE 211 - Statics and Dynamics</h3>
+                  <div class="update-card__meta">
+                    <span class="update-tag">Milestone</span>
+                    <time datetime="2026-01-07">Jan 7, 2026</time>
+                  </div>
+                </div>
+              </div>
+              <div class="update-card__body">
+                <p class="update-card__excerpt">In Winter 2026, I will serve as a Graduate Student Instructor for CEE 211: Statics and Dynamics in the Department of Civil &amp; Environmental Engineering at the University of Michigan. This appointment runs from January 7…</p>
+                <span class="btn tertiary">Read more</span>
+              </div>
+            </a>
+          </article>
+        </div>
         <div class="updates-preview__more">
           <a class="updates-preview__link" href="/updates/index.html">View all updates</a>
         </div>
       </section>
 
-      <section class="expertise" aria-labelledby="homeExpertiseHeading">
+      <section class="expertise" aria-labelledby="homeExpertiseHeading" hidden aria-hidden="true">
         <div class="expertise__intro">
           <h2 id="homeExpertiseHeading">Scientific expertise</h2>
           <p>A quick snapshot of my expertise beyond deployable and reconfigurable systems.</p>
         </div>
-        <div class="expertise__grid" aria-live="polite">
-          <p class="expertise__fallback">Loading focus areas...</p>
+        <div class="expertise__grid" aria-live="polite" data-prerendered="true">
+          <p class="expertise__fallback">Focus areas coming soon.</p>
         </div>
       </section>
 
@@ -241,24 +302,18 @@
         </div>
       </section>
 
-      <section class="testimonials" aria-labelledby="testimonialsHeading">
+      <section class="testimonials" aria-labelledby="testimonialsHeading" hidden aria-hidden="true">
         <div class="testimonials__intro">
           <h2 id="testimonialsHeading">What collaborators are saying</h2>
           <p>Short reflections from the people I've worked with</p>
         </div>
-        <div class="testimonials-carousel" data-testimonials-carousel>
-          <p class="testimonials__fallback">Loading testimonials...</p>
-        </div>
+        <div class="testimonials-carousel" data-testimonials-carousel data-prerendered="true"></div>
         <div class="testimonials-controls" role="group" aria-label="Testimonials navigation" hidden>
           <button class="testimonials-nav testimonials-nav--prev" type="button" aria-label="Previous testimonial" data-testimonials-nav="prev">
-            <span aria-hidden="true">
-              <span class="symbol-text">←</span>
-            </span>
+            <span aria-hidden="true"><span class="symbol-text">←</span></span>
           </button>
           <button class="testimonials-nav testimonials-nav--next" type="button" aria-label="Next testimonial" data-testimonials-nav="next">
-            <span aria-hidden="true">
-              <span class="symbol-text">→</span>
-            </span>
+            <span aria-hidden="true"><span class="symbol-text">→</span></span>
           </button>
         </div>
       </section>

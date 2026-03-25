@@ -27,10 +27,11 @@
     }
     return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="${options.loading || 'lazy'}" />`;
   };
+  const teachingRoute = (slug = '') => `teaching/${encodeURIComponent(slug)}/`;
 
   const cardHTML = (item) => {
     const slug = item.slug || '';
-    const href = `teaching/view.html?slug=${encodeURIComponent(slug)}`;
+    const href = teachingRoute(slug);
     const summary = item.card?.summary || '';
     const image = item.card?.image || '';
     const alt = item.card?.alt || '';
@@ -42,7 +43,7 @@
     const title = [courseNumber, courseTitle].filter(Boolean).join(' - ');
 
     return `
-      <a class="project-card teaching-card" href="${escapeHtml(href)}">
+      <a class="project-card teaching-card" href="${escapeHtml(href)}" data-university="${escapeHtml(university)}">
         <div class="project-card__media teaching-card__media${image ? ' has-image' : ''}">
           ${image
             ? renderImage(image, alt, { loading: 'lazy', sizes: '(min-width: 1024px) 360px, (min-width: 768px) 45vw, 92vw', preferredWidth: 800 })
@@ -68,8 +69,7 @@
     cardsEl.innerHTML = items.map(cardHTML).join('');
   };
 
-  const buildFilters = (items) => {
-    const universities = Array.from(new Set(items.map((item) => (item.university || '').trim()).filter(Boolean)));
+  const buildFilters = (universities, onFilter) => {
     filtersEl.innerHTML = '';
 
     const tabs = document.createElement('div');
@@ -118,11 +118,7 @@
     };
 
     const applyFilter = (value) => {
-      if (value === 'all') {
-        renderCards(items);
-        return;
-      }
-      renderCards(items.filter((item) => (item.university || '').trim() === value));
+      onFilter(value);
     };
 
     tabs.addEventListener('click', (event) => {
@@ -140,6 +136,30 @@
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => moveUnderline(activeTab), 120);
     }, { passive: true });
+  };
+
+  const initFromPrerendered = () => {
+    const cards = Array.from(cardsEl.querySelectorAll('.teaching-card'));
+    if (!cards.length) return;
+    const universities = Array.from(new Set(
+      cards
+        .map((card) => (card.getAttribute('data-university') || '').trim())
+        .filter(Boolean)
+    ));
+    buildFilters(universities, (value) => {
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const university = (card.getAttribute('data-university') || '').trim();
+        const show = value === 'all' || university === value;
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount += 1;
+      });
+      const empty = cardsEl.querySelector('.teaching-empty');
+      if (empty) empty.remove();
+      if (!visibleCount) {
+        cardsEl.insertAdjacentHTML('beforeend', '<p class="teaching-empty">No courses match this filter.</p>');
+      }
+    });
   };
 
   const render = (data) => {
@@ -195,10 +215,21 @@
     }
 
     const courses = experiences.filter((item) => item && item.slug);
-    buildFilters(courses);
+    const universities = Array.from(new Set(courses.map((item) => (item.university || '').trim()).filter(Boolean)));
+    buildFilters(universities, (value) => {
+      if (value === 'all') {
+        renderCards(courses);
+        return;
+      }
+      renderCards(courses.filter((item) => (item.university || '').trim() === value));
+    });
   };
 
   const load = async () => {
+    if (cardsEl.dataset.prerendered === 'true' || cardsEl.querySelector('.teaching-card')) {
+      initFromPrerendered();
+      return;
+    }
     try {
       const data = await (window.loadJSON ? window.loadJSON(DATA_URL) : (await fetch(DATA_URL)).json());
       render(data || {});

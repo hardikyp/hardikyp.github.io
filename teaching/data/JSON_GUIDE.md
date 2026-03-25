@@ -23,7 +23,7 @@ The `philosophy` object supports:
 
 Each item in `experiences` supports:
 
-- `slug`: unique id used by `/teaching/view.html?slug=...`
+- `slug`: unique id used to generate `/teaching/<slug>/`
 - `courseNumber`: short code (example: `CEE 211`)
 - `courseTitle`: full course title
 - `university`: institution name

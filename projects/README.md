@@ -1,12 +1,14 @@
 # Projects: Data-Driven Setup
 
-This folder powers the Projects section using JSON files per category and a small renderer.
+This folder powers the Projects section using JSON files per category plus a build-time renderer.
 
-- Listing: `projects/index.html` renders a card grid and a type filter.
-- Detail view: `projects/view.html?slug=<slug>` renders a single project from the JSONs.
+- Listing: `projects/index.html` ships pre-rendered project cards and a JS-enhanced type filter.
+- Detail pages: `projects/<slug>/index.html` are generated from the JSON data.
+- Fallback detail shell: `projects/view.html?slug=<slug>` can still render a single project from the JSONs when needed.
 - Scripts:
   - `assets/js/projects.js` (listing + type filter)
   - `assets/js/project-detail.js` (detail page)
+  - `scripts/prerender_content.py` (build-time HTML generation)
 
 ## Where to Add Projects
 
@@ -60,8 +62,9 @@ The filter chips will include the new type and the grid will render its cards.
 
 ## Linking & Detail Pages
 
-- Each card links to `/projects/view.html?slug=<slug>`.
-- The detail page searches all category JSONs for the `slug` and renders title, type, years, images, and body/summary content.
+- Shipped cards should link to `/projects/<slug>/`.
+- Generated detail pages are built from the JSON files by `scripts/prerender_content.py`.
+- The fallback detail shell still searches all category JSONs for the `slug` and renders title, type, years, images, and body/summary content when the generated route is unavailable.
 
 ## Styling Notes
 

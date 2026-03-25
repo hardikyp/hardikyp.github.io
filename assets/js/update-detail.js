@@ -141,7 +141,7 @@
         const summary = detailToSummary(detailHTML);
         const pageTitle = `${u.title || 'Update'} — Updates — Hardik Patil`;
         const desc = u.meta || summary || 'Updates and announcements from Hardik Patil.';
-        const canonicalUrl = toAbsoluteUrl(`updates/view.html?slug=${encodeURIComponent(u.slug)}`);
+        const canonicalUrl = toAbsoluteUrl(`updates/${encodeURIComponent(u.slug)}/`);
         const imageUrl = toAbsoluteUrl(u.image?.src || 'assets/img/portrait-1200.jpg');
         const imageAlt = u.image?.alt || u.title || 'Hardik Patil update';
         document.title = pageTitle;

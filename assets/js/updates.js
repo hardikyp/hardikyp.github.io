@@ -59,7 +59,7 @@
 
   const normalize = (u) => ({
     ...u,
-    url: u.url || `updates/view.html?slug=${encodeURIComponent(u.slug)}`,
+    url: u.url || `updates/${encodeURIComponent(u.slug)}/`,
     excerpt: normalizeExcerpt(u)
   });
 
@@ -128,6 +128,10 @@
   };
 
   const load = async () => {
+    if (feed.dataset.prerendered === 'true' || feed.querySelector('.update-card')) {
+      bindCardNavigation();
+      return;
+    }
     try {
       const j = await (window.loadJSON ? window.loadJSON('updates/data/updates.json') : (await fetch('updates/data/updates.json')).json());
       const items = (j.updates || [])

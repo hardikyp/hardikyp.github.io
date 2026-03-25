@@ -3,18 +3,18 @@
     {
       "name": "home",
       "path": "index.html",
-      "document_bytes": 19741,
-      "local_request_count": 21,
+      "document_bytes": 24124,
+      "local_request_count": 25,
       "external_request_count": 0,
-      "total_request_count": 21,
-      "local_total_bytes": 284509,
+      "total_request_count": 25,
+      "local_total_bytes": 322435,
       "category_bytes": {
         "audio": 6628,
-        "css": 75108,
+        "css": 75460,
         "data": 28698,
         "fonts": 57564,
-        "images": 62907,
-        "js": 33563,
+        "images": 95366,
+        "js": 34295,
         "other": 300
       },
       "category_paths": {
@@ -39,7 +39,11 @@
           "assets/icons/instagram.svg",
           "assets/icons/linkedin.svg",
           "assets/icons/monogram.svg",
-          "assets/img/portrait-640.jpg"
+          "assets/icons/tertiary-arrow.svg",
+          "assets/img/portrait-640.jpg",
+          "assets/img/updates/thumbnails/asme-digital-collection.png",
+          "assets/img/updates/thumbnails/elsevier-128.png",
+          "assets/img/updates/thumbnails/uofm-128.png"
         ],
         "js": [
           "assets/js/home-expertise.js",
@@ -63,16 +67,16 @@
     {
       "name": "projects",
       "path": "projects/index.html",
-      "document_bytes": 8338,
-      "local_request_count": 14,
-      "external_request_count": 0,
-      "total_request_count": 14,
-      "local_total_bytes": 173030,
+      "document_bytes": 25858,
+      "local_request_count": 27,
+      "external_request_count": 1,
+      "total_request_count": 28,
+      "local_total_bytes": 1024635,
       "category_bytes": {
-        "css": 75108,
+        "css": 75460,
         "fonts": 57564,
-        "images": 7267,
-        "js": 24753
+        "images": 840256,
+        "js": 25497
       },
       "category_paths": {
         "css": [
@@ -88,7 +92,20 @@
           "assets/icons/github.svg",
           "assets/icons/instagram.svg",
           "assets/icons/linkedin.svg",
-          "assets/icons/monogram.svg"
+          "assets/icons/monogram.svg",
+          "assets/icons/tertiary-arrow.svg",
+          "assets/img/projects/fire-zone-model-800.jpg",
+          "assets/img/projects/image-processing-800.jpg",
+          "assets/img/projects/radiometer-800.jpg",
+          "assets/img/projects/reconfigurable-truss-800.jpg",
+          "assets/img/projects/star-tracker-800.jpg",
+          "assets/img/projects/torsional-spring-800.jpg",
+          "assets/img/projects/traffic-network-opt-800.jpg",
+          "assets/img/projects/truss-nonlinear-analysis-800.jpg",
+          "assets/img/projects/wave-bridge-simulation-800.jpg",
+          "assets/img/projects/website-logo.jpg",
+          "assets/img/projects/wooden-bridge-800.jpg",
+          "assets/img/projects/wordle-deeprl-800.jpg"
         ],
         "js": [
           "assets/js/includes.js",
@@ -98,23 +115,25 @@
         ]
       },
       "runtime_requests": [],
-      "external_requests": [],
+      "external_requests": [
+        "https://placehold.net/8-800x600.png"
+      ],
       "missing_assets": []
     },
     {
       "name": "updates",
       "path": "updates/index.html",
-      "document_bytes": 9030,
-      "local_request_count": 15,
+      "document_bytes": 32334,
+      "local_request_count": 27,
       "external_request_count": 0,
-      "total_request_count": 15,
-      "local_total_bytes": 202116,
+      "total_request_count": 27,
+      "local_total_bytes": 355031,
       "category_bytes": {
-        "css": 75108,
+        "css": 75460,
         "data": 28076,
         "fonts": 57564,
-        "images": 7267,
-        "js": 25071
+        "images": 136407,
+        "js": 25190
       },
       "category_paths": {
         "css": [
@@ -133,7 +152,19 @@
           "assets/icons/github.svg",
           "assets/icons/instagram.svg",
           "assets/icons/linkedin.svg",
-          "assets/icons/monogram.svg"
+          "assets/icons/monogram.svg",
+          "assets/icons/tertiary-arrow.svg",
+          "assets/img/updates/thumbnails/asme-digital-collection.png",
+          "assets/img/updates/thumbnails/elsevier-128.png",
+          "assets/img/updates/thumbnails/emi-128.png",
+          "assets/img/updates/thumbnails/iitb-128.png",
+          "assets/img/updates/thumbnails/imece.png",
+          "assets/img/updates/thumbnails/kcmet-128.png",
+          "assets/img/updates/thumbnails/micde-128.png",
+          "assets/img/updates/thumbnails/nsf-128.jpg",
+          "assets/img/updates/thumbnails/rdifp-128.png",
+          "assets/img/updates/thumbnails/tt-128.png",
+          "assets/img/updates/thumbnails/uofm-128.png"
         ],
         "js": [
           "assets/js/includes.js",
@@ -152,15 +183,15 @@
       "name": "photography",
       "path": "photography/index.html",
       "document_bytes": 5345,
-      "local_request_count": 15,
+      "local_request_count": 16,
       "external_request_count": 0,
-      "total_request_count": 15,
-      "local_total_bytes": 176783,
+      "total_request_count": 16,
+      "local_total_bytes": 177399,
       "category_bytes": {
-        "css": 75108,
+        "css": 75460,
         "data": 612,
         "fonts": 57564,
-        "images": 7267,
+        "images": 7531,
         "js": 30887
       },
       "category_paths": {
@@ -180,7 +211,8 @@
           "assets/icons/github.svg",
           "assets/icons/instagram.svg",
           "assets/icons/linkedin.svg",
-          "assets/icons/monogram.svg"
+          "assets/icons/monogram.svg",
+          "assets/icons/tertiary-arrow.svg"
         ],
         "js": [
           "assets/js/includes.js",

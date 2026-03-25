@@ -152,7 +152,7 @@
       const bodySummary = htmlToSummary(p.detail?.body || '');
       const desc = p.summary || bodySummary || 'Project details from Hardik Patil.';
       const pageTitle = `${p.title || 'Project'} — Projects — Hardik Patil`;
-      const canonicalUrl = toAbsoluteUrl(`projects/view.html?slug=${encodeURIComponent(p.slug)}`);
+      const canonicalUrl = toAbsoluteUrl(`projects/${encodeURIComponent(p.slug)}/`);
       const imageSrc = p.detail?.images?.[0]?.src || p.card?.image || 'assets/img/portrait-1200.jpg';
       const imageAlt = p.detail?.images?.[0]?.alt || p.card?.alt || p.title || 'Hardik Patil project';
       const imageUrl = toAbsoluteUrl(imageSrc);

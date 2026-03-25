@@ -7,7 +7,6 @@ import datetime as dt
 import glob
 import json
 from pathlib import Path
-from urllib.parse import quote
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -55,7 +54,7 @@ def main() -> None:
             lastmod = item.get("date") or fallback
             add_url(
                 urls,
-                f"{SITE_URL}/updates/view.html?slug={quote(str(slug), safe='')}",
+                f"{SITE_URL}/updates/{slug}/",
                 str(lastmod),
             )
 
@@ -69,7 +68,7 @@ def main() -> None:
                 continue
             add_url(
                 urls,
-                f"{SITE_URL}/projects/view.html?slug={quote(str(slug), safe='')}",
+                f"{SITE_URL}/projects/{slug}/",
                 lastmod,
             )
 
@@ -83,7 +82,7 @@ def main() -> None:
                 continue
             add_url(
                 urls,
-                f"{SITE_URL}/teaching/view.html?slug={quote(str(slug), safe='')}",
+                f"{SITE_URL}/teaching/{slug}/",
                 lastmod,
             )
 
@@ -96,4 +95,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

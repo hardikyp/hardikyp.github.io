@@ -1896,9 +1896,13 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
 .updates-page .updates-hero .muted,
 .update-page .updates-hero .muted { margin-top: 0; margin-bottom: 8px; }
 .updates-page .updates-hero,
-.update-page .updates-hero,
-.projects-page .updates-hero { margin-bottom: 16px; }
-.pubs .updates-hero { margin-bottom: 16px; }
+.projects-page .updates-hero,
+.pubs .updates-hero,
+.teaching-page .teaching-hero {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.update-page .updates-hero { margin-bottom: 16px; }
 .updates-page .updates-hero :is(h1, h2),
 .update-page .updates-hero :is(h1, h2),
 .projects-page .updates-hero :is(h1, h2),

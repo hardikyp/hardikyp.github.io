@@ -3,11 +3,11 @@
     {
       "name": "home",
       "path": "index.html",
-      "document_bytes": 24365,
+      "document_bytes": 24110,
       "local_request_count": 26,
       "external_request_count": 0,
       "total_request_count": 26,
-      "local_total_bytes": 335469,
+      "local_total_bytes": 335214,
       "category_bytes": {
         "audio": 6628,
         "css": 75971,
@@ -68,11 +68,11 @@
     {
       "name": "projects",
       "path": "projects/index.html",
-      "document_bytes": 25917,
+      "document_bytes": 25697,
       "local_request_count": 28,
       "external_request_count": 1,
       "total_request_count": 29,
-      "local_total_bytes": 1035858,
+      "local_total_bytes": 1035638,
       "category_bytes": {
         "css": 75971,
         "fonts": 57564,
@@ -189,13 +189,13 @@
       "local_request_count": 17,
       "external_request_count": 0,
       "total_request_count": 17,
-      "local_total_bytes": 193406,
+      "local_total_bytes": 193383,
       "category_bytes": {
         "css": 75971,
         "data": 627,
         "fonts": 57564,
         "images": 7531,
-        "js": 46529
+        "js": 46506
       },
       "category_paths": {
         "css": [

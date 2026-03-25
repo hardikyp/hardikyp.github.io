@@ -530,6 +530,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
   - Not every hardcoded section should become JSON-driven.
   - Build-time rendering is preferred over runtime hydration for static editorial content.
 
+#### Progress Log
+
+- 2026-03-24: Moved the homepage hero, banner messages, about copy, pronunciation metadata, and contact content/config into `assets/data/home.json`. Extended `scripts/prerender_content.py` to render those sections back into `index.html` at build time so maintainability improves without adding any client-side fetch or hydration cost. Left the contact form structure and JS hooks in shipped HTML semantics instead of over-abstracting them into runtime data.
+
 ### P2-C2: Consolidate repeated metadata, route config, and page shell patterns
 
 - Priority: `P2`

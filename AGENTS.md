@@ -182,6 +182,19 @@ Before inventing new markup or styles, check whether one of these already fits:
 
 ### Home support data
 
+- `/assets/data/home.json`
+  - Purpose: build-time source of truth for reusable homepage editorial content that should not require runtime hydration.
+  - Render path: `/scripts/prerender_content.py` writes this data into `/index.html`.
+  - Current intended scope:
+    - hero heading lines
+    - hero rotating highlight words
+    - hero intro copy
+    - hero CTA labels/links
+    - hero banner messages
+    - about heading and paragraphs
+    - pronunciation metadata
+    - contact headings, intro, contact details, and form endpoint/button label
+  - Keep this file focused on authorable content/config. Do not move purely structural form markup or JS hooks here unless there is a clear maintenance benefit.
 - `/assets/data/expertise.json`
   - Shape: `{ "enabled": boolean, "items": [{ "title": string, "summary": string }] }`
   - Current state: feature can be fully hidden with `"enabled": false`

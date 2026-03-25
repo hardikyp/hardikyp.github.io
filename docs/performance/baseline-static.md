@@ -6,7 +6,7 @@ Static asset baseline only. Dynamic browser metrics such as LCP, TBT, and CLS ar
 
 | Page | Local Requests | External Requests | Total Requests | Local Bytes | CSS | JS | Images | Fonts | Data | Partials | Audio | Other |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| home | 26 | 0 | 26 | 323.6 KB | 74.2 KB | 41.7 KB | 93.1 KB | 56.2 KB | 28.0 KB | 0 B | 6.5 KB | 300 B |
+| home | 26 | 0 | 26 | 323.8 KB | 74.2 KB | 41.7 KB | 93.1 KB | 56.2 KB | 28.0 KB | 0 B | 6.5 KB | 300 B |
 | projects | 28 | 1 | 29 | 1007.8 KB | 74.2 KB | 31.5 KB | 820.6 KB | 56.2 KB | 0 B | 0 B | 0 B | 0 B |
 | updates | 28 | 0 | 28 | 355.1 KB | 74.2 KB | 32.5 KB | 133.2 KB | 56.2 KB | 27.4 KB | 0 B | 0 B | 0 B |
 | photography | 17 | 0 | 17 | 185.3 KB | 74.2 KB | 41.6 KB | 7.4 KB | 56.2 KB | 627 B | 0 B | 0 B | 0 B |
@@ -14,7 +14,7 @@ Static asset baseline only. Dynamic browser metrics such as LCP, TBT, and CLS ar
 ## Home
 
 - Source page: `index.html`
-- Local bytes: `323.6 KB`
+- Local bytes: `323.8 KB`
 - Local requests: `26`
 - External requests: `0`
 - Runtime requests discovered from loaded JS:

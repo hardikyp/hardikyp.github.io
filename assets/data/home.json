@@ -1,0 +1,75 @@
+{
+  "hero": {
+    "headingLines": [
+      "Designing structures",
+      "that"
+    ],
+    "highlightWords": [
+      "adapt.",
+      "deploy.",
+      "reconfigure."
+    ],
+    "intro": "I am Hardik, a structural engineering PhD candidate who works on analysis and design tools for deployable and reconfigurable systems.",
+    "primaryCta": {
+      "label": "View CV",
+      "href": "/assets/docs/Hardik_Patil_CV.pdf",
+      "download": true
+    },
+    "secondaryCta": {
+      "label": "Explore my work",
+      "href": "/projects/index.html"
+    },
+    "banner": {
+      "ariaLabel": "Site status",
+      "messages": [
+        "This site is in active development",
+        "Thank you for your patience :)",
+        "Feel free to browse around"
+      ]
+    }
+  },
+  "about": {
+    "heading": "About Me",
+    "portraitAlt": "Portrait of Hardik Patil",
+    "paragraphs": [
+      "I grew up in Nasik, Maharashtra, where my curiosity about how structures come to life started early through conversations with my civil engineer father. That interest led me to earn a Bachelor of Technology with Honors in civil engineering from the Indian Institute of Technology Bombay. I then moved to Ann Arbor, Michigan, where I completed my Master’s and am now pursuing a PhD in civil engineering and scientific computing at the University of Michigan.",
+      "My research focuses on making structures deployable and adaptable. I develop tools to simulate the kinematics and mechanics of reconfigurable, origami-inspired, thin-shelled, and bar-linked structures. I’ve published in the Journal of Fluids and Structures and presented at conferences such as ASCE EMI and ASME IMECE. Teaching as a Graduate Student Instructor for a course on adaptable and deployable structures has sharpened both my technical depth and my communication skills.",
+      "Outside the lab, I’m usually behind a camera shooting streets, landscapes, or the night sky. I’m into espresso, plants, and programming, especially scripting and automation. I stay active with running, workouts, badminton, hiking, and pickleball, and I like experimenting in the kitchen and occasionally jamming on the keyboard.",
+      "Oh and I am now looking for exciting full-time roles in the industry as a structural forensics/diagnostics engineer!"
+    ],
+    "pronunciation": {
+      "ipa": "/ˈhɑːrdɪk ˈpɑːtɪl/",
+      "name": "Hardik Patil",
+      "audioSrc": "/assets/audio/name-pronunciation.mp3"
+    },
+    "resumeCta": {
+      "label": "View CV",
+      "href": "/assets/docs/Hardik_Patil_CV.pdf",
+      "download": true
+    }
+  },
+  "contact": {
+    "heading": "Have a Question?",
+    "subheading": "Let us get in touch!",
+    "intro": "Drop an email or fill out the form to start a conversation about collaboration ideas or any questions you've got. I'll get back to you within 24 to 48 hours on weekdays. Looking forward to chatting!",
+    "details": [
+      {
+        "label": "Email",
+        "display": "hardikyp[at]umich.edu",
+        "href": "mailto:hardikyp@umich.edu"
+      },
+      {
+        "label": "Location",
+        "lines": [
+          "2350 Hayward St,",
+          "1250 G. G. Brown Laboratories,",
+          "Ann Arbor, Michigan - 48109"
+        ]
+      }
+    ],
+    "form": {
+      "action": "https://formspree.io/f/mpqqardn",
+      "submitLabel": "Send Message"
+    }
+  }
+}

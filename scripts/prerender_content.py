@@ -426,6 +426,189 @@ def render_testimonials_section(data: dict) -> str:
     """.strip()
 
 
+def render_home_banner(messages: list[str], aria_label: str) -> str:
+    if not messages:
+        messages = ["This site is in active development", "Thank you for your patience :)", "Feel free to browse around"]
+
+    def render_sequence() -> str:
+        parts: list[str] = []
+        for message in messages:
+            parts.append(
+                f"""
+              <div class="hero-banner__set">
+                <span class="hero-banner__text">{escape(message)}</span>
+              </div>
+            """.strip("\n")
+            )
+            parts.append(
+                """
+              <div class="hero-banner__set">
+                <span class="hero-banner__separator"></span>
+              </div>
+            """.strip("\n")
+            )
+        return '<div class="hero-banner__sequence">\n' + "\n".join(parts) + "\n            </div>"
+
+    return f"""
+        <div class="hero-banner" aria-label="{escape(aria_label)}">
+          <div class="hero-banner__track" aria-hidden="true">
+            {render_sequence()}
+            {render_sequence().replace('class="hero-banner__sequence"', 'class="hero-banner__sequence" aria-hidden="true"', 1)}
+          </div>
+        </div>
+    """.strip()
+
+
+def render_home_hero(data: dict) -> str:
+    hero = data.get("hero") or {}
+    heading_lines = hero.get("headingLines") or ["Designing structures", "that"]
+    prefix = "<br>".join(escape(line) for line in heading_lines)
+    words = [str(word).strip() for word in hero.get("highlightWords", []) if str(word).strip()] or ["adapt.", "deploy.", "reconfigure."]
+    mask_words = "\n".join(f'                <span class="hero-highlight__word">{escape(word)}</span>' for word in words)
+    mask_words = f"{mask_words}\n                <span class=\"hero-highlight__word\" aria-hidden=\"true\">{escape(words[0])}</span>"
+    primary = hero.get("primaryCta") or {}
+    secondary = hero.get("secondaryCta") or {}
+    primary_attrs = ' download' if primary.get("download") else ""
+    secondary_attrs = ' download' if secondary.get("download") else ""
+    banner = hero.get("banner") or {}
+    banner_markup = render_home_banner(banner.get("messages") or [], banner.get("ariaLabel") or "Site status")
+    return f"""
+      <section class="hero hero--home">
+        <div class="hero__content">
+          <h1>{prefix}
+            <span class="hero-highlight">
+              <span class="hero-highlight__mask">
+{mask_words}
+              </span>
+            </span>
+          </h1>
+          <p class="hero__intro">{escape(hero.get("intro") or "")}</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="{escape(primary.get("href") or '/assets/docs/Hardik_Patil_CV.pdf')}"{primary_attrs}>{escape(primary.get("label") or "View CV")}</a>
+            <a class="btn tertiary" href="{escape(secondary.get("href") or '/projects/index.html')}"{secondary_attrs}>{escape(secondary.get("label") or "Explore my work")}</a>
+          </div>
+        </div>
+        {banner_markup}
+      </section>
+    """.strip()
+
+
+def render_about_section(data: dict) -> str:
+    about = data.get("about") or {}
+    paragraphs = "\n".join(f"          <p>{escape(paragraph)}</p>" for paragraph in about.get("paragraphs", []) if paragraph)
+    pronunciation = about.get("pronunciation") or {}
+    resume_cta = about.get("resumeCta") or {}
+    resume_download = ' download' if resume_cta.get("download") else ""
+    portrait_alt = about.get("portraitAlt") or "Portrait of Hardik Patil"
+    return f"""
+      <section class="about">
+        <div class="about-img">
+          <picture>
+            <source type="image/webp"
+              srcset="/assets/img/portrait-320.webp 320w, /assets/img/portrait-480.webp 480w, /assets/img/portrait-640.webp 640w, /assets/img/portrait-800.webp 800w, /assets/img/portrait-960.webp 960w, /assets/img/portrait-1280.webp 1280w"
+              sizes="(max-width: 720px) 90vw, 640px" />
+            <img src="/assets/img/portrait-640.jpg" alt="{escape(portrait_alt)}" width="640" height="800" loading="lazy" decoding="async"
+              srcset="/assets/img/portrait-320.jpg 320w, /assets/img/portrait-480.jpg 480w, /assets/img/portrait-640.jpg 640w, /assets/img/portrait-800.jpg 800w, /assets/img/portrait-960.jpg 960w, /assets/img/portrait-1280.jpg 1280w"
+              sizes="(max-width: 720px) 90vw, 640px" />
+          </picture>
+        </div>
+        <div class="about-content">
+          <h2>{escape(about.get("heading") or "About Me")}</h2>
+          <hr class="section-rule" />
+{paragraphs}
+          <div class="about-actions">
+            <button id="playNamePronunciation" class="pronounce-card" type="button">
+              <span class="play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+              <span class="label">
+                <span class="ipa">{escape(pronunciation.get("ipa") or "/ˈhɑːrdɪk ˈpɑːtɪl/")}</span>
+                <span class="name">{escape(pronunciation.get("name") or "Hardik Patil")}</span>
+              </span>
+            </button>
+            <a class="btn secondary lg" href="{escape(resume_cta.get("href") or '/assets/docs/Hardik_Patil_CV.pdf')}"{resume_download}>{escape(resume_cta.get("label") or "View CV")}</a>
+          </div>
+          <audio id="namePronunciation" preload="none">
+            <source src="{escape(pronunciation.get('audioSrc') or '/assets/audio/name-pronunciation.mp3')}" type="audio/mpeg" />
+          </audio>
+        </div>
+      </section>
+    """.strip()
+
+
+def render_contact_detail(item: dict) -> str:
+    label = escape(item.get("label") or "")
+    href = item.get("href")
+    lines = item.get("lines") or []
+    if href:
+        return f"""
+                <li>
+                  <span>{label}</span>
+                  <a href="{escape(href)}">{escape(item.get("display") or href)}</a>
+                </li>
+        """.strip("\n")
+    if lines:
+        address_lines = "<br/>".join(escape(line) for line in lines if line)
+        return f"""
+                <li>
+                  <span>{label}</span>
+                  <address>{address_lines}</address>
+                </li>
+        """.strip("\n")
+    return ""
+
+
+def render_contact_section(data: dict) -> str:
+    contact = data.get("contact") or {}
+    details = "\n".join(filter(None, (render_contact_detail(item) for item in contact.get("details", []))))
+    form = contact.get("form") or {}
+    return f"""
+      <section class="home-contact" id="contact">
+        <h2>{escape(contact.get("heading") or "Have a Question?")}</h2>
+        <div class="home-contact__grid">
+          <div class="home-contact__details">
+            <h3>{escape(contact.get("subheading") or "Let us get in touch!")}</h3>
+            <div class="contact-stack">
+              <p>{escape(contact.get("intro") or "")}</p>
+              <ul class="contact-list">
+{details}
+              </ul>
+            </div>
+          </div>
+          <form id="homeContactForm" action="{escape(form.get('action') or 'https://formspree.io/f/mpqqardn')}" method="POST" class="contact-form">
+            <label class="field">
+              <input type="text" name="first_name" placeholder=" " required />
+              <span class="field__label">First Name *</span>
+              <span class="field__base" aria-hidden="true"></span>
+              <span class="field__underline" aria-hidden="true"></span>
+            </label>
+            <label class="field">
+              <input type="text" name="last_name" placeholder=" " />
+              <span class="field__label">Last Name</span>
+              <span class="field__base" aria-hidden="true"></span>
+              <span class="field__underline" aria-hidden="true"></span>
+            </label>
+            <label class="field full">
+              <input type="email" name="email" placeholder=" " required />
+              <span class="field__label">Email ID *</span>
+              <span class="field__base" aria-hidden="true"></span>
+              <span class="field__underline" aria-hidden="true"></span>
+            </label>
+            <label class="field field--textarea full">
+              <textarea name="message" rows="6" required></textarea>
+              <span class="field__label">Message *</span>
+              <span class="field__base" aria-hidden="true"></span>
+              <span class="field__underline" aria-hidden="true"></span>
+            </label>
+            <div class="actions">
+              <button class="btn primary" type="submit">{escape(form.get("submitLabel") or "Send Message")}</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    """.strip()
+
+
 def render_project_card(item: dict) -> str:
     year_text = escape((item.get("years") or "").strip())
     type_label = escape(item.get("type") or "")
@@ -587,6 +770,7 @@ def replace_once(text: str, pattern: str, replacement: str) -> str:
 def prerender_home() -> None:
     path = ROOT / "index.html"
     text = read_text(path)
+    home_data = load_json(ROOT / "assets/data/home.json")
     latest_updates = "\n".join(render_update_card(item, home=True) for item in sorted_updates()[:3])
     home_updates_section = f"""
       <section class="updates-preview">
@@ -601,7 +785,10 @@ def prerender_home() -> None:
         </div>
       </section>
     """.strip()
+    text = replace_once(text, r'<section class="hero hero--home">.*?</section>', render_home_hero(home_data))
     text = replace_once(text, r'<section class="updates-preview">.*?</section>', home_updates_section)
+    text = replace_once(text, r'<section class="about">.*?</section>', render_about_section(home_data))
+    text = replace_once(text, r'<section class="home-contact" id="contact">.*?</section>', render_contact_section(home_data))
     text = replace_once(text, r'<section class="expertise"[^>]*>.*?</section>', render_expertise_section(load_json(ROOT / "assets/data/expertise.json")))
     text = replace_once(text, r'<section class="testimonials"[^>]*>.*?</section>', render_testimonials_section(load_json(ROOT / "assets/data/testimonials.json")))
     write_text(path, text)

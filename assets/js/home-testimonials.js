@@ -15,6 +15,8 @@
   let statusEl;
   let activeIndex = 0;
   let scrollFrame = 0;
+  const { escapeHTML } = window.siteUtils.text;
+  const { renderImage } = window.siteUtils.image;
 
   const getInitials = (name = '') =>
     name
@@ -24,13 +26,6 @@
       .map((part) => part[0])
       .join('')
       .toUpperCase();
-  const renderImage = (src, alt, options = {}) => {
-    if (window.siteImages?.renderResponsiveImage) {
-      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
-    }
-    return `<img class="${options.className || ''}" src="${src}" alt="${alt}" loading="${options.loading || 'lazy'}" decoding="${options.decoding || 'async'}" />`;
-  };
-
   const renderCard = (item) => {
     const name = item.name ?? '';
     const title = item.title ?? '';
@@ -38,22 +33,22 @@
     const quote = item.quote ?? '';
     const photoMarkup = item.photo
       ? renderImage(item.photo, `Portrait of ${name}`, { className: 'testimonial-card__photo', loading: 'lazy', decoding: 'async', sizes: '64px', preferredWidth: 128 })
-      : `<div class="testimonial-card__photo testimonial-card__photo--placeholder" aria-hidden="true">${getInitials(name)}</div>`;
+      : `<div class="testimonial-card__photo testimonial-card__photo--placeholder" aria-hidden="true">${escapeHTML(getInitials(name))}</div>`;
 
     return `
       <article class="testimonial-card">
         <div class="testimonial-card__profile">
           ${photoMarkup}
           <div>
-            <p class="testimonial-card__name">${name}</p>
+            <p class="testimonial-card__name">${escapeHTML(name)}</p>
             <p class="testimonial-card__meta">
-              <span class="testimonial-card__title">${title}</span>
-              <span class="testimonial-card__affiliation">${affiliation}</span>
+              <span class="testimonial-card__title">${escapeHTML(title)}</span>
+              <span class="testimonial-card__affiliation">${escapeHTML(affiliation)}</span>
             </p>
           </div>
         </div>
         <blockquote>
-          <p>${quote}</p>
+          <p>${escapeHTML(quote)}</p>
         </blockquote>
       </article>
     `;

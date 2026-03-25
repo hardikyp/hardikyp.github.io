@@ -3,18 +3,18 @@
     {
       "name": "home",
       "path": "index.html",
-      "document_bytes": 24124,
-      "local_request_count": 25,
+      "document_bytes": 24183,
+      "local_request_count": 26,
       "external_request_count": 0,
-      "total_request_count": 25,
-      "local_total_bytes": 322435,
+      "total_request_count": 26,
+      "local_total_bytes": 328819,
       "category_bytes": {
         "audio": 6628,
         "css": 75460,
         "data": 28698,
         "fonts": 57564,
         "images": 95366,
-        "js": 34295,
+        "js": 40620,
         "other": 300
       },
       "category_paths": {
@@ -51,7 +51,8 @@
           "assets/js/home-updates.js",
           "assets/js/includes.js",
           "assets/js/main.js",
-          "assets/js/site-images.js"
+          "assets/js/site-images.js",
+          "assets/js/site-utils.js"
         ],
         "other": [
           "manifest.webmanifest"
@@ -67,16 +68,16 @@
     {
       "name": "projects",
       "path": "projects/index.html",
-      "document_bytes": 25858,
-      "local_request_count": 27,
+      "document_bytes": 25917,
+      "local_request_count": 28,
       "external_request_count": 1,
-      "total_request_count": 28,
-      "local_total_bytes": 1024635,
+      "total_request_count": 29,
+      "local_total_bytes": 1030027,
       "category_bytes": {
         "css": 75460,
         "fonts": 57564,
         "images": 840256,
-        "js": 25497
+        "js": 30830
       },
       "category_paths": {
         "css": [
@@ -111,7 +112,8 @@
           "assets/js/includes.js",
           "assets/js/main.js",
           "assets/js/projects.js",
-          "assets/js/site-images.js"
+          "assets/js/site-images.js",
+          "assets/js/site-utils.js"
         ]
       },
       "runtime_requests": [],
@@ -123,17 +125,17 @@
     {
       "name": "updates",
       "path": "updates/index.html",
-      "document_bytes": 32334,
-      "local_request_count": 27,
+      "document_bytes": 32393,
+      "local_request_count": 28,
       "external_request_count": 0,
-      "total_request_count": 27,
-      "local_total_bytes": 355031,
+      "total_request_count": 28,
+      "local_total_bytes": 361752,
       "category_bytes": {
         "css": 75460,
         "data": 28076,
         "fonts": 57564,
         "images": 136407,
-        "js": 25190
+        "js": 31852
       },
       "category_paths": {
         "css": [
@@ -170,6 +172,7 @@
           "assets/js/includes.js",
           "assets/js/main.js",
           "assets/js/site-images.js",
+          "assets/js/site-utils.js",
           "assets/js/updates.js"
         ]
       },

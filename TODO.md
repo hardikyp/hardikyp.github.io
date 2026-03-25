@@ -411,6 +411,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
   - Keep compatibility with `file:` support in mind.
   - Do not break existing DOM hook contracts.
 
+#### Progress Log
+
+- 2026-03-24: Added `/assets/js/site-utils.js` as a shared helper surface for text/excerpt formatting, metadata/head updates, image fallback rendering, taxonomy labels, and reusable filter-tab behavior. Refactored the home, listing, and fallback detail scripts to consume the shared helpers instead of carrying duplicate copies. Follow-up: continue migrating lower-priority scripts such as `update-generator.js` and any future route-specific helpers only if the consolidation clearly reduces maintenance cost.
+
 ### P1-B3: Lazy-initialize non-critical sections and below-the-fold JS
 
 - Priority: `P1`

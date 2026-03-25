@@ -1,6 +1,9 @@
 (() => {
   const params = new URLSearchParams(location.search);
   const slug = params.get('slug');
+  const { htmlToSummary } = window.siteUtils.text;
+  const { renderImage } = window.siteUtils.image;
+  const { toAbsoluteUrl, setMeta, setLink, setStructuredData } = window.siteUtils.head;
 
   const els = {
     title: document.getElementById('teachTitle'),
@@ -12,72 +15,6 @@
   };
 
   if (!els.title || !els.metaPill || !els.metaYear || !els.meta || !els.media || !els.body) return;
-
-  const BASE_URL = 'https://hardikpatil.com/';
-  const toAbsoluteUrl = (url = '') => {
-    if (!url) return BASE_URL;
-    try { return new URL(url, BASE_URL).toString(); } catch { return BASE_URL; }
-  };
-
-  const setMeta = (attr, key, value) => {
-    if (!value) return;
-    let node = document.querySelector(`meta[${attr}="${key}"]`);
-    if (!node) {
-      node = document.createElement('meta');
-      node.setAttribute(attr, key);
-      document.head.appendChild(node);
-    }
-    node.setAttribute('content', value);
-  };
-
-  const setLink = (rel, href) => {
-    if (!href) return;
-    let node = document.querySelector(`link[rel="${rel}"]`);
-    if (!node) {
-      node = document.createElement('link');
-      node.setAttribute('rel', rel);
-      document.head.appendChild(node);
-    }
-    node.setAttribute('href', href);
-  };
-
-  const setStructuredData = (data) => {
-    if (!data) return;
-    let node = document.getElementById('structuredData');
-    if (!node) {
-      node = document.createElement('script');
-      node.id = 'structuredData';
-      node.type = 'application/ld+json';
-      document.head.appendChild(node);
-    }
-    node.textContent = JSON.stringify(data);
-  };
-
-  const sanitizeWhitespace = (str) => (str || '').replace(/\s+/g, ' ').trim();
-  const htmlToSummary = (html, limit = 180) => {
-    if (!html) return '';
-    const tmp = document.createElement('div');
-    tmp.innerHTML = html;
-    const source = tmp.querySelector('p') || tmp;
-    const raw = sanitizeWhitespace(source.textContent || tmp.textContent || '');
-    if (!raw) return '';
-    if (raw.length <= limit) return raw;
-    const shortened = raw.slice(0, limit).replace(/\s+\S*$/, '');
-    return `${shortened}…`;
-  };
-
-  const escape = (value = '') => String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-  const renderImage = (src, alt, options = {}) => {
-    if (window.siteImages?.renderResponsiveImage) {
-      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
-    }
-    return `<img src="${escape(src)}" alt="${escape(alt)}" loading="${options.loading || 'lazy'}" />`;
-  };
-
   if (!slug) {
     els.title.textContent = 'Course not found';
     els.meta.style.display = 'none';

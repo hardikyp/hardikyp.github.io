@@ -3,15 +3,12 @@
   if (!app) return;
 
   const filterBar = document.getElementById('pubFilters');
-  let tabsContainer;
-  let underlineEl;
-  let activeTab;
-  let resizeTimer;
-  let resizeBound = false;
+  const { normalizeToken, titleizeToken } = window.siteUtils.taxonomy;
+  const { createFilterTabs } = window.siteUtils.tabs;
 
   const fmtAuthors = (arr) => arr.join(', ');
-  const normalizeCat = (val) => (val || 'other').toLowerCase();
-  const labelForCat = (val) => normalizeCat(val).replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+  const normalizeCat = (val) => normalizeToken(val, 'other');
+  const labelForCat = (val) => titleizeToken(val, 'other');
 
   const updateYearVisibility = () => {
     app.querySelectorAll('section').forEach(sec => {
@@ -30,97 +27,18 @@
     updateYearVisibility();
   };
 
-  const moveUnderline = (tab) => {
-    if (!underlineEl || !tab) return;
-    underlineEl.style.setProperty('--underline-offset', `${tab.offsetLeft}px`);
-    underlineEl.style.setProperty('--underline-width', `${tab.offsetWidth}px`);
-  };
-
-  const setActiveTab = (tab) => {
-    if (!tab) return;
-    if (activeTab && activeTab !== tab) {
-      activeTab.setAttribute('aria-selected', 'false');
-      activeTab.setAttribute('tabindex', '-1');
-    }
-    tab.setAttribute('aria-selected', 'true');
-    tab.setAttribute('tabindex', '0');
-    activeTab = tab;
-    requestAnimationFrame(() => moveUnderline(tab));
-  };
-
-  const activateTab = (tab) => {
-    if (!tab) return;
-    setActiveTab(tab);
-    filterByCategory(tab.getAttribute('data-filter') || 'all');
-  };
-
   const buildFilterTabs = (categories) => {
     if (!filterBar) return;
     const preferredOrder = ['journal', 'conference', 'talk'];
     const uniqueCats = Array.from(new Set(categories.map(normalizeCat)));
     const ordered = preferredOrder.filter(c => uniqueCats.includes(c));
     uniqueCats.forEach(c => { if (!ordered.includes(c)) ordered.push(c); });
-
-    filterBar.innerHTML = '';
-    tabsContainer = document.createElement('div');
-    tabsContainer.className = 'pub-filters__tabs';
-    tabsContainer.setAttribute('role', 'tablist');
-
-    const createTab = (label, value, selected = false) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'pub-filters__tab';
-      btn.textContent = label;
-      btn.setAttribute('role', 'tab');
-      btn.setAttribute('data-filter', value);
-      btn.setAttribute('aria-selected', selected ? 'true' : 'false');
-      btn.setAttribute('tabindex', selected ? '0' : '-1');
-      return btn;
-    };
-
-    const allTab = createTab('All', 'all', true);
-    tabsContainer.appendChild(allTab);
-    ordered.forEach(cat => tabsContainer.appendChild(createTab(labelForCat(cat), cat)));
-
-    underlineEl = document.createElement('span');
-    underlineEl.className = 'pub-filters__underline';
-    underlineEl.setAttribute('aria-hidden', 'true');
-    tabsContainer.appendChild(underlineEl);
-    filterBar.appendChild(tabsContainer);
-
-    tabsContainer.addEventListener('click', (e) => {
-      const tab = e.target.closest('.pub-filters__tab');
-      if (!tab || tab === activeTab) return;
-      activateTab(tab);
+    createFilterTabs({
+      root: filterBar,
+      values: ordered,
+      onChange: (value) => filterByCategory(value),
+      getLabel: (value) => labelForCat(value),
     });
-    tabsContainer.addEventListener('keydown', (e) => {
-      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
-      const tabs = Array.from(tabsContainer.querySelectorAll('.pub-filters__tab'));
-      const current = document.activeElement && document.activeElement.closest('.pub-filters__tab');
-      const idx = tabs.indexOf(current);
-      if (idx === -1) return;
-      let nextIdx = idx;
-      if (e.key === 'ArrowRight') nextIdx = (idx + 1) % tabs.length;
-      if (e.key === 'ArrowLeft') nextIdx = (idx - 1 + tabs.length) % tabs.length;
-      if (e.key === 'Home') nextIdx = 0;
-      if (e.key === 'End') nextIdx = tabs.length - 1;
-      const nextTab = tabs[nextIdx];
-      if (nextTab) {
-        e.preventDefault();
-        nextTab.focus();
-        if (nextTab !== activeTab) activateTab(nextTab);
-      }
-    });
-
-    if (!resizeBound) {
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => moveUnderline(activeTab), 120);
-      }, { passive: true });
-      resizeBound = true;
-    }
-
-    activateTab(allTab);
   };
 
   const bindPublicationInteractions = () => {

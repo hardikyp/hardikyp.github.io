@@ -4,13 +4,8 @@
   if (!section || !grid) return;
   if (grid.dataset.prerendered === 'true' || grid.querySelector('.expertise-card, .expertise__fallback')) return;
 
+  const { escapeHTML } = window.siteUtils.text;
   const sanitize = (value) => (value == null ? '' : String(value)).trim();
-  const escapeHTML = (str) => sanitize(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
 
   const renderCard = (item) => {
     const title = escapeHTML(sanitize(item.title) || 'Focus Area');

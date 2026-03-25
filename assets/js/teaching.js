@@ -14,19 +14,9 @@
   if (!titleEl || !subtitleEl || !philosophyTitleEl || !philosophyHeadlineEl || !philosophyPrinciplesEl || !philosophyOutcomeEl || !philosophyMediaEl || !philosophyImageEl || !philosophyPlaceholderEl || !cardsEl || !filtersEl) return;
 
   const DATA_URL = 'teaching/data/teaching.json';
-
-  const escapeHtml = (value) => String(value || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-  const renderImage = (src, alt, options = {}) => {
-    if (window.siteImages?.renderResponsiveImage) {
-      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
-    }
-    return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="${options.loading || 'lazy'}" />`;
-  };
+  const { escapeHTML: escapeHtml } = window.siteUtils.text;
+  const { renderImage } = window.siteUtils.image;
+  const { createFilterTabs } = window.siteUtils.tabs;
   const teachingRoute = (slug = '') => `teaching/${encodeURIComponent(slug)}/`;
 
   const cardHTML = (item) => {
@@ -69,74 +59,11 @@
     cardsEl.innerHTML = items.map(cardHTML).join('');
   };
 
-  const buildFilters = (universities, onFilter) => {
-    filtersEl.innerHTML = '';
-
-    const tabs = document.createElement('div');
-    tabs.className = 'pub-filters__tabs';
-    tabs.setAttribute('role', 'tablist');
-
-    const createTab = (label, value, selected = false) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'pub-filters__tab';
-      button.textContent = label;
-      button.setAttribute('role', 'tab');
-      button.setAttribute('data-filter', value);
-      button.setAttribute('aria-selected', selected ? 'true' : 'false');
-      button.setAttribute('tabindex', selected ? '0' : '-1');
-      return button;
-    };
-
-    const allTab = createTab('All', 'all', true);
-    tabs.appendChild(allTab);
-    universities.forEach((name) => tabs.appendChild(createTab(name, name)));
-
-    const underlineEl = document.createElement('span');
-    underlineEl.className = 'pub-filters__underline';
-    underlineEl.setAttribute('aria-hidden', 'true');
-    tabs.appendChild(underlineEl);
-    filtersEl.appendChild(tabs);
-
-    let activeTab = allTab;
-    const moveUnderline = (tab) => {
-      if (!tab) return;
-      underlineEl.style.setProperty('--underline-offset', `${tab.offsetLeft}px`);
-      underlineEl.style.setProperty('--underline-width', `${tab.offsetWidth}px`);
-    };
-
-    const setActiveTab = (tab) => {
-      if (!tab) return;
-      if (activeTab && activeTab !== tab) {
-        activeTab.setAttribute('aria-selected', 'false');
-        activeTab.setAttribute('tabindex', '-1');
-      }
-      tab.setAttribute('aria-selected', 'true');
-      tab.setAttribute('tabindex', '0');
-      activeTab = tab;
-      requestAnimationFrame(() => moveUnderline(tab));
-    };
-
-    const applyFilter = (value) => {
-      onFilter(value);
-    };
-
-    tabs.addEventListener('click', (event) => {
-      const tab = event.target.closest('.pub-filters__tab');
-      if (!tab || tab === activeTab) return;
-      setActiveTab(tab);
-      applyFilter(tab.getAttribute('data-filter') || 'all');
-    });
-
-    setActiveTab(allTab);
-    applyFilter('all');
-
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => moveUnderline(activeTab), 120);
-    }, { passive: true });
-  };
+  const buildFilters = (universities, onFilter) => createFilterTabs({
+    root: filtersEl,
+    values: universities,
+    onChange: (value) => onFilter(value),
+  });
 
   const initFromPrerendered = () => {
     const cards = Array.from(cardsEl.querySelectorAll('.teaching-card'));

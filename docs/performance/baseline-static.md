@@ -6,16 +6,16 @@ Static asset baseline only. Dynamic browser metrics such as LCP, TBT, and CLS ar
 
 | Page | Local Requests | External Requests | Total Requests | Local Bytes | CSS | JS | Images | Fonts | Data | Partials | Audio | Other |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| home | 25 | 0 | 25 | 314.9 KB | 73.7 KB | 33.5 KB | 93.1 KB | 56.2 KB | 28.0 KB | 0 B | 6.5 KB | 300 B |
-| projects | 27 | 1 | 28 | 1000.6 KB | 73.7 KB | 24.9 KB | 820.6 KB | 56.2 KB | 0 B | 0 B | 0 B | 0 B |
-| updates | 27 | 0 | 27 | 346.7 KB | 73.7 KB | 24.6 KB | 133.2 KB | 56.2 KB | 27.4 KB | 0 B | 0 B | 0 B |
+| home | 26 | 0 | 26 | 321.1 KB | 73.7 KB | 39.7 KB | 93.1 KB | 56.2 KB | 28.0 KB | 0 B | 6.5 KB | 300 B |
+| projects | 28 | 1 | 29 | 1005.9 KB | 73.7 KB | 30.1 KB | 820.6 KB | 56.2 KB | 0 B | 0 B | 0 B | 0 B |
+| updates | 28 | 0 | 28 | 353.3 KB | 73.7 KB | 31.1 KB | 133.2 KB | 56.2 KB | 27.4 KB | 0 B | 0 B | 0 B |
 | photography | 16 | 0 | 16 | 173.2 KB | 73.7 KB | 30.2 KB | 7.4 KB | 56.2 KB | 612 B | 0 B | 0 B | 0 B |
 
 ## Home
 
 - Source page: `index.html`
-- Local bytes: `314.9 KB`
-- Local requests: `25`
+- Local bytes: `321.1 KB`
+- Local requests: `26`
 - External requests: `0`
 - Runtime requests discovered from loaded JS:
   - `http://local.test/assets/data/expertise.json`
@@ -26,14 +26,14 @@ Static asset baseline only. Dynamic browser metrics such as LCP, TBT, and CLS ar
   - `data`: `28.0 KB`
   - `fonts`: `56.2 KB`
   - `images`: `93.1 KB`
-  - `js`: `33.5 KB`
+  - `js`: `39.7 KB`
   - `other`: `300 B`
 
 ## Projects
 
 - Source page: `projects/index.html`
-- Local bytes: `1000.6 KB`
-- Local requests: `27`
+- Local bytes: `1005.9 KB`
+- Local requests: `28`
 - External requests: `1`
 - External URLs:
   - `https://placehold.net/8-800x600.png`
@@ -41,13 +41,13 @@ Static asset baseline only. Dynamic browser metrics such as LCP, TBT, and CLS ar
   - `css`: `73.7 KB`
   - `fonts`: `56.2 KB`
   - `images`: `820.6 KB`
-  - `js`: `24.9 KB`
+  - `js`: `30.1 KB`
 
 ## Updates
 
 - Source page: `updates/index.html`
-- Local bytes: `346.7 KB`
-- Local requests: `27`
+- Local bytes: `353.3 KB`
+- Local requests: `28`
 - External requests: `0`
 - Runtime requests discovered from loaded JS:
   - `http://local.test/updates/data/updates.json`
@@ -56,7 +56,7 @@ Static asset baseline only. Dynamic browser metrics such as LCP, TBT, and CLS ar
   - `data`: `27.4 KB`
   - `fonts`: `56.2 KB`
   - `images`: `133.2 KB`
-  - `js`: `24.6 KB`
+  - `js`: `31.1 KB`
 
 ## Photography
 

@@ -26,6 +26,10 @@ This repository is a static personal website. Future coding agents should treat 
   - file-protocol flagging
   - active-link state
   - JSON loading helpers for `file:` previews
+- `/assets/js/site-utils.js` is the shared client-side helper surface for:
+  - text/excerpt formatting
+  - head/meta updates
+  - reusable filter-tab behavior
 - Most content-heavy sections are authored in JSON and pre-rendered into shipped HTML by `/scripts/prerender_content.py`.
 - Runtime page scripts should treat the shipped HTML as the primary path and only fetch/re-render as a fallback when pre-rendered markup is absent.
 - The site is expected to work both on normal hosting and in local `file:` previews. Do not casually break that.
@@ -391,6 +395,7 @@ Before inventing new markup or styles, check whether one of these already fits:
 - `/design-system/index.html`
 - `/design-system/README.md`
 - `/assets/js/includes.js`
+- `/assets/js/site-utils.js`
 - `/scripts/inline_partials.py`
 - `/assets/js/main.js`
 - `/projects/README.md`

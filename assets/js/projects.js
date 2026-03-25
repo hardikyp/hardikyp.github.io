@@ -3,6 +3,9 @@
   const typeBar = document.getElementById('projTypeFilters');
   if (!grid || !typeBar) return;
   const hasPrerenderedCards = grid.dataset.prerendered === 'true' || !!grid.querySelector('.project-card');
+  const { escapeHTML } = window.siteUtils.text;
+  const { renderImage } = window.siteUtils.image;
+  const { createFilterTabs } = window.siteUtils.tabs;
 
   const sources = [
     { type: 'Research', url: 'projects/data/research.json' },
@@ -10,18 +13,6 @@
     { type: 'Internship', url: 'projects/data/internships.json' },
     { type: 'Other', url: 'projects/data/others.json' }
   ];
-  const escapeHTML = (value = '') => String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-  const renderImage = (src, alt, options = {}) => {
-    if (window.siteImages?.renderResponsiveImage) {
-      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
-    }
-    return `<img src="${escapeHTML(src)}" alt="${escapeHTML(alt)}" loading="${options.loading || 'lazy'}" />`;
-  };
   const projectRoute = (slug = '') => `projects/${encodeURIComponent(slug)}/`;
 
   const cardHTML = (p) => {
@@ -53,11 +44,6 @@
     return Math.max(...matches.map(Number));
   };
 
-  let tabsContainer;
-  let underlineEl;
-  let activeTab;
-  let resizeBound = false;
-
   const filterCards = (type) => {
     grid.querySelectorAll('.project-card').forEach(card => {
       const ct = card.getAttribute('data-type');
@@ -65,75 +51,14 @@
     });
   };
 
-  const moveUnderline = (tab) => {
-    if (!underlineEl || !tab) return;
-    underlineEl.style.setProperty('--underline-offset', `${tab.offsetLeft}px`);
-    underlineEl.style.setProperty('--underline-width', `${tab.offsetWidth}px`);
-  };
-
-  const setActiveTab = (tab) => {
-    if (!tab) return;
-    if (activeTab && activeTab !== tab) {
-      activeTab.setAttribute('aria-selected','false');
-      activeTab.setAttribute('tabindex','-1');
-    }
-    tab.setAttribute('aria-selected','true');
-    tab.setAttribute('tabindex','0');
-    activeTab = tab;
-    requestAnimationFrame(() => moveUnderline(tab));
-  };
-
   const renderTypes = (types) => {
-    typeBar.innerHTML = '';
-    tabsContainer = document.createElement('div');
-    tabsContainer.className = 'pub-filters__tabs';
-    tabsContainer.setAttribute('role', 'tablist');
-
-    const createTab = (label, dataType, selected = false) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'pub-filters__tab';
-      button.textContent = label;
-      button.setAttribute('role', 'tab');
-      button.setAttribute('data-type', dataType);
-      button.setAttribute('aria-selected', selected ? 'true' : 'false');
-      button.setAttribute('tabindex', selected ? '0' : '-1');
-      if (selected) activeTab = button;
-      return button;
-    };
-
-    const allTab = createTab('All', 'all', true);
-    tabsContainer.appendChild(allTab);
-    types.forEach(type => tabsContainer.appendChild(createTab(type, type)));
-
-    underlineEl = document.createElement('span');
-    underlineEl.className = 'pub-filters__underline';
-    underlineEl.setAttribute('aria-hidden', 'true');
-    tabsContainer.appendChild(underlineEl);
-
-    typeBar.appendChild(tabsContainer);
-    setActiveTab(allTab);
-  };
-
-  const bindTypeTabs = () => {
-    typeBar.addEventListener('click', (e) => {
-      const tab = e.target.closest('.pub-filters__tab');
-      if (!tab || tab === activeTab) return;
-      setActiveTab(tab);
-      filterCards(tab.getAttribute('data-type'));
+    createFilterTabs({
+      root: typeBar,
+      values: types,
+      onChange: (value) => {
+        filterCards(value);
+      },
     });
-  };
-
-  const bindResize = () => {
-    if (resizeBound) return;
-    let timer;
-    window.addEventListener('resize', () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        moveUnderline(activeTab);
-      }, 120);
-    }, { passive: true });
-    resizeBound = true;
   };
 
   const initFromPrerendered = () => {
@@ -144,8 +69,6 @@
     ));
     renderTypes(types);
     filterCards('all');
-    bindTypeTabs();
-    bindResize();
   };
 
   const load = async () => {
@@ -163,8 +86,6 @@
       renderTypes(types);
       grid.innerHTML = items.map(cardHTML).join('');
       filterCards('all');
-      bindTypeTabs();
-      bindResize();
     } catch {}
   };
   const init = () => {

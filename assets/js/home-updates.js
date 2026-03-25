@@ -3,35 +3,13 @@
   if (!container) return;
   if (container.dataset.prerendered === 'true' || container.querySelector('.update-card')) return;
 
-  const sanitizeWhitespace = (str) => (str || '').replace(/\s+/g, ' ').trim();
-  const detailToExcerpt = (html, limit = 220) => {
-    if (!html) return '';
-    const tmp = document.createElement('div');
-    tmp.innerHTML = html;
-    const source = tmp.querySelector('p') || tmp;
-    const raw = sanitizeWhitespace(source.textContent || tmp.textContent || '');
-    if (!raw) return '';
-    if (raw.length <= limit) return raw;
-    const shortened = raw.slice(0, limit).replace(/\s+\S*$/, '');
-    return `${shortened}…`;
-  };
+  const { escapeHTML, sanitizeWhitespace, htmlToSummary, formatISODate } = window.siteUtils.text;
+  const { renderImage } = window.siteUtils.image;
   const normalizeExcerpt = (u) => {
     const htmlDetail = u.detail || u.body || '';
-    const derived = detailToExcerpt(htmlDetail);
+    const derived = htmlToSummary(htmlDetail, 220);
     if (derived) return derived;
     return sanitizeWhitespace(u.excerpt || '');
-  };
-  const escapeHTML = (str) =>
-    (str || '').replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  const renderImage = (src, alt, options = {}) => {
-    if (window.siteImages?.renderResponsiveImage) {
-      return window.siteImages.renderResponsiveImage({ src, alt, ...options });
-    }
-    return `<img src="${escapeHTML(src)}" alt="${escapeHTML(alt)}" loading="${options.loading || 'lazy'}" width="${options.width || ''}" height="${options.height || ''}" />`;
   };
 
   const isISODate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s || '');
@@ -51,16 +29,6 @@
     url: u.url || `updates/${encodeURIComponent(u.slug)}/`,
     excerpt: normalizeExcerpt(u)
   });
-  const toDisplayDate = (iso) => {
-    if (!isISODate(iso)) return '';
-    const parts = iso.split('-').map(Number);
-    if (parts.length !== 3 || parts.some(Number.isNaN)) return '';
-    const [y, m, d] = parts;
-    const local = new Date(y, m - 1, d);
-    return Number.isNaN(local.getTime())
-      ? ''
-      : local.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-  };
 
   const injectFromUpdates = async () => {
     try {
@@ -72,7 +40,7 @@
         .slice(0,3);
       if (!items.length) return;
       const card = (u) => {
-        const formatted = toDisplayDate(u.date);
+        const formatted = formatISODate(u.date);
         return `
           <article class="update-card">
             <a class="update-card__link" href="${u.url}">

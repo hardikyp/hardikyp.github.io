@@ -1,0 +1,65 @@
+# Example cache policy for hosts that support custom response headers.
+# Adjust syntax as needed for the target platform.
+
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/projects/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/publications/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/updates/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/teaching/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/photography/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/data/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/projects/data/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/publications/data/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/updates/data/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/teaching/data/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/photography/data/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/css/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/js/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/fonts/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/icons/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/img/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/photography/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/audio/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/docs/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400

@@ -105,7 +105,7 @@
 
   const fetchData = async () => {
     try {
-      const res = await fetch('/photography/data/photos.json', { cache: 'no-cache' });
+      const res = await fetch('/photography/data/photos.json');
       if (!res.ok) return defaultData;
       const json = await res.json();
       return { ...defaultData, ...json };

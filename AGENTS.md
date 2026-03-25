@@ -380,6 +380,13 @@ Before inventing new markup or styles, check whether one of these already fits:
 - Keep dependencies minimal.
 - Do not add new libraries unless the feature cannot be solved cleanly with the current static stack.
 
+## Hosting And Cache Guidance
+
+- `.nojekyll` should remain in place for GitHub Pages style publishing.
+- Do not add `cache: 'no-store'` or `cache: 'no-cache'` to static JSON fetches unless there is a concrete stale-content bug that cannot be handled another way.
+- Hosting and cache policy guidance lives in `/docs/hosting/README.md`.
+- `/docs/hosting/_headers.example` is an example policy for hosts that support custom response headers. It is documentation, not a guaranteed live config for the current deployment target.
+
 ## Change Rules For Future Agents
 
 - Prefer extending the current static HTML/CSS/JS approach instead of introducing a framework.

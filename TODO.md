@@ -593,6 +593,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
 - Notes / Risks:
   - Needs coordination with actual hosting platform.
 
+#### Progress Log
+
+- 2026-03-24: Removed the remaining cache-defeating JSON fetch option from `assets/js/photography.js`, added `.nojekyll` for safer GitHub Pages style publishing, and checked in deployment guidance under `docs/hosting/README.md` plus `docs/hosting/_headers.example`. The current documented policy uses bounded caching for mutable assets and JSON, with a clear path to move to long-lived immutable caching once versioned asset URLs are introduced.
+
 ## P3 Tasks
 
 ### P3-D1: Add stronger performance guardrails and developer automation

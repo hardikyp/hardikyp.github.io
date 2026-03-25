@@ -9,12 +9,16 @@
   const btnNext = hero.querySelector('[data-carousel-nav="next"]');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const interval = reduceMotion ? 12000 : 7000;
+  const { runWhenVisible, runWhenIdle } = window.siteUtils.lazy;
 
   let slides = [];
   let index = 0;
   let timerId;
   let rafId;
   let animId;
+  let heroControlsBound = false;
+  let hydrated = false;
+  let heroInView = false;
 
   // Parallax state (inertia)
   const state = {
@@ -27,9 +31,9 @@
 
   const defaultData = {
     carousel: [
-      { src: 'assets/photography/carousel/sunrise-on-rocky-mountain.jpg', alt: 'Landscape picture from the Lower Antelope Canyon titled Sunrise on the Rocky Mountain', speed: 0.3 },
-      { src: 'assets/photography/carousel/mumbai-sealink.jpg', alt: 'Long exposure photograph of Bandra-Worli Sealink, Mumbai at dawn', speed: 0.22 },
-      { src: 'assets/photography/carousel/midnight-sky.jpg', alt: 'Tawas Point lighthouse, Michigan under the backdrop of Milkyway and Perseides meteor shower', speed: 0.28 }
+      { src: 'assets/photography/carousel/sunrise-on-rocky-mountain-1200.jpg', alt: 'Landscape picture from the Lower Antelope Canyon titled Sunrise on the Rocky Mountain', speed: 0.3 },
+      { src: 'assets/photography/carousel/mumbai-sealink-1200.jpg', alt: 'Long exposure photograph of Bandra-Worli Sealink, Mumbai at dawn', speed: 0.22 },
+      { src: 'assets/photography/carousel/midnight-sky-1200.jpg', alt: 'Tawas Point lighthouse, Michigan under the backdrop of Milkyway and Perseides meteor shower', speed: 0.28 }
     ],
     categories: [
       {
@@ -51,10 +55,10 @@
         title: 'Edge of Horizons',
         description: 'Landscapes oscillating between moody dusk and crystalline dawn—a survey of terrain and atmosphere in flux.',
         accent: 'dusk',
-        cover: 'assets/photography/carousel/sunrise-on-rocky-mountain.jpg',
+        cover: 'assets/photography/carousel/sunrise-on-rocky-mountain-1200.jpg',
         gallery: [
           {
-            src: 'assets/photography/carousel/sunrise-on-rocky-mountain.jpg',
+            src: 'assets/photography/carousel/sunrise-on-rocky-mountain-1200.jpg',
             alt: 'Ridge line during monsoon clouds',
             caption: 'Monsoon Ridgeline — Sahyadris, 2023'
           }
@@ -65,10 +69,10 @@
         title: 'Midnight Transit',
         description: 'City veins after dark—neon reflections, kinetic blur, and the conversations between shadows.',
         accent: 'night',
-        cover: 'assets/photography/carousel/midnight-sky.jpg',
+        cover: 'assets/photography/carousel/midnight-sky-1200.jpg',
         gallery: [
           {
-            src: 'assets/photography/carousel/midnight-sky.jpg',
+            src: 'assets/photography/carousel/midnight-sky-1200.jpg',
             alt: 'Long exposure of city traffic at night',
             caption: 'Echoes of Transit — Ann Arbor, 2022'
           }
@@ -189,7 +193,7 @@
 
   const restartTimer = () => {
     if (timerId) clearInterval(timerId);
-    if (reduceMotion || slides.length <= 1) return;
+    if (reduceMotion || slides.length <= 1 || !heroInView) return;
     timerId = setInterval(() => setActive(index + 1), interval);
   };
 
@@ -282,6 +286,7 @@
   window.addEventListener('beforeunload', cleanup, { once: true });
 
   const initCarouselControls = () => {
+    if (heroControlsBound) return;
     if (btnPrev) {
       btnPrev.addEventListener('click', () => go(-1));
     }
@@ -291,17 +296,34 @@
     hero.addEventListener('pointermove', handlePointerMove);
     hero.addEventListener('pointerleave', handlePointerLeave);
     // disable scroll-based parallax; hero should move as one
+    heroControlsBound = true;
     restartTimer();
   };
 
   const hydrate = async () => {
+    if (hydrated) return;
+    hydrated = true;
     const data = await fetchData();
     renderCarousel(data.carousel);
     renderCategories(data.categories);
     renderStories(data.stories);
-    setTimeout(observeReveals, 20);
-    initCarouselControls();
+    runWhenIdle(() => observeReveals());
+    runWhenIdle(() => initCarouselControls());
   };
 
-  hydrate();
+  runWhenVisible(hero, () => {
+    heroInView = true;
+    hydrate();
+    restartTimer();
+  }, { rootMargin: '200px 0px', once: true });
+
+  runWhenVisible(hero, (entry) => {
+    heroInView = Boolean(entry?.isIntersecting);
+    if (!heroInView && timerId) {
+      clearInterval(timerId);
+      timerId = undefined;
+    } else {
+      restartTimer();
+    }
+  }, { rootMargin: '0px', threshold: 0.1, once: false });
 })();

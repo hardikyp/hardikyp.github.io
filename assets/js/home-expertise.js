@@ -5,6 +5,7 @@
   if (grid.dataset.prerendered === 'true' || grid.querySelector('.expertise-card, .expertise__fallback')) return;
 
   const { escapeHTML } = window.siteUtils.text;
+  const { runWhenVisible } = window.siteUtils.lazy;
   const sanitize = (value) => (value == null ? '' : String(value)).trim();
 
   const renderCard = (item) => {
@@ -53,9 +54,12 @@
     }
   };
 
+  const init = () => {
+    runWhenVisible(section, loadExpertise, { rootMargin: '160px 0px' });
+  };
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadExpertise);
+    document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
-    loadExpertise();
+    init();
   }
 })();

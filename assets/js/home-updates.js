@@ -2,9 +2,11 @@
   const container = document.querySelector('.updates-preview .update-list');
   if (!container) return;
   if (container.dataset.prerendered === 'true' || container.querySelector('.update-card')) return;
+  const section = container.closest('.updates-preview');
 
   const { escapeHTML, sanitizeWhitespace, htmlToSummary, formatISODate } = window.siteUtils.text;
   const { renderImage } = window.siteUtils.image;
+  const { runWhenVisible } = window.siteUtils.lazy;
   const normalizeExcerpt = (u) => {
     const htmlDetail = u.detail || u.body || '';
     const derived = htmlToSummary(htmlDetail, 220);
@@ -68,5 +70,8 @@
       // keep fallback if any
     }
   };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectFromUpdates); else injectFromUpdates();
+  const init = () => {
+    runWhenVisible(section || container, injectFromUpdates, { rootMargin: '160px 0px' });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();

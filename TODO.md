@@ -445,6 +445,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
 - Notes / Risks:
   - Do not create visible content pop-in worse than the current behavior.
 
+#### Progress Log
+
+- 2026-03-24: Added shared lazy helpers to `/assets/js/site-utils.js` and applied them to the home testimonials, home updates fallback, home expertise fallback, and photography page. Below-the-fold home enhancements now wait until their section approaches the viewport, while photography defers non-essential enhancement setup to visibility/idle time and pauses carousel autoplay when the hero is off-screen. Also corrected photography carousel data to use the checked-in width-suffixed images so browser verification runs cleanly.
+
 ### P1-B4: Reduce expensive paint and animation costs
 
 - Priority: `P1`

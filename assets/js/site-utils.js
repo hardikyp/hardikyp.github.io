@@ -222,6 +222,47 @@
     };
   };
 
+  const runWhenVisible = (element, callback, options = {}) => {
+    if (!element || typeof callback !== 'function') return () => {};
+    const {
+      root = null,
+      rootMargin = '200px 0px',
+      threshold = 0,
+      once = true,
+    } = options;
+
+    if (!('IntersectionObserver' in window)) {
+      callback();
+      return () => {};
+    }
+
+    let done = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (done) return;
+        if (once && !entry.isIntersecting) return;
+        callback(entry);
+        if (once && entry.isIntersecting) {
+          done = true;
+          observer.disconnect();
+        }
+      });
+    }, { root, rootMargin, threshold });
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  };
+
+  const runWhenIdle = (callback, timeout = 1200) => {
+    if (typeof callback !== 'function') return () => {};
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(callback, { timeout });
+      return () => window.cancelIdleCallback?.(id);
+    }
+    const id = window.setTimeout(callback, 0);
+    return () => window.clearTimeout(id);
+  };
+
   window.siteUtils = {
     ...window.siteUtils,
     text: {
@@ -242,6 +283,10 @@
     },
     tabs: {
       createFilterTabs,
+    },
+    lazy: {
+      runWhenVisible,
+      runWhenIdle,
     },
     taxonomy: {
       normalizeToken,

@@ -17,6 +17,7 @@
   let scrollFrame = 0;
   const { escapeHTML } = window.siteUtils.text;
   const { renderImage } = window.siteUtils.image;
+  const { runWhenVisible } = window.siteUtils.lazy;
 
   const getInitials = (name = '') =>
     name
@@ -212,5 +213,8 @@
     }
   };
 
-  loadTestimonials();
+  const init = () => {
+    runWhenVisible(section || carousel, loadTestimonials, { rootMargin: '200px 0px' });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();

@@ -30,6 +30,7 @@ This repository is a static personal website. Future coding agents should treat 
   - text/excerpt formatting
   - head/meta updates
   - reusable filter-tab behavior
+  - visibility/idle-based lazy initialization helpers
 - Most content-heavy sections are authored in JSON and pre-rendered into shipped HTML by `/scripts/prerender_content.py`.
 - Runtime page scripts should treat the shipped HTML as the primary path and only fetch/re-render as a fallback when pre-rendered markup is absent.
 - The site is expected to work both on normal hosting and in local `file:` previews. Do not casually break that.
@@ -298,6 +299,7 @@ Before inventing new markup or styles, check whether one of these already fits:
 - Current checked-in JSON only defines `carousel`.
 - The script contains default fallback content for `carousel`, `categories`, and `stories`.
 - The current page template only mounts the hero carousel UI. Do not assume category/story support is live in production unless you also add the required HTML containers.
+- Current checked-in photography carousel entries point at generated width-suffixed raster files (for example `-1200.jpg`) rather than unsuffixed originals.
 
 ## Asset Conventions
 

@@ -1,17 +1,17 @@
 {
   "carousel": [
     {
-      "src": "assets/photography/carousel/sunrise-on-rocky-mountain.jpg",
+      "src": "assets/photography/carousel/sunrise-on-rocky-mountain-1200.jpg",
       "alt": "Landscape picture from the Lower Antelope Canyon titled 'Sunrise on the Rocky Mountain'",
       "speed": 0.3
     },
     {
-      "src": "assets/photography/carousel/mumbai-sealink.jpg",
+      "src": "assets/photography/carousel/mumbai-sealink-1200.jpg",
       "alt": "Long exposure photograph of Bandra-Worli Sealink, Mumbai at dawn",
       "speed": 0.22
     },
     {
-      "src": "assets/photography/carousel/midnight-sky.jpg",
+      "src": "assets/photography/carousel/midnight-sky-1200.jpg",
       "alt": "Tawas Point lighthouse, Michigan under the backdrop of Milkyway and Perseides meteor shower",
       "speed": 0.28
     }

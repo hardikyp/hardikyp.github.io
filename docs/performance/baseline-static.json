@@ -7,14 +7,14 @@
       "local_request_count": 26,
       "external_request_count": 0,
       "total_request_count": 26,
-      "local_total_bytes": 328819,
+      "local_total_bytes": 330699,
       "category_bytes": {
         "audio": 6628,
         "css": 75460,
         "data": 28698,
         "fonts": 57564,
         "images": 95366,
-        "js": 40620,
+        "js": 42500,
         "other": 300
       },
       "category_paths": {
@@ -72,12 +72,12 @@
       "local_request_count": 28,
       "external_request_count": 1,
       "total_request_count": 29,
-      "local_total_bytes": 1030027,
+      "local_total_bytes": 1031270,
       "category_bytes": {
         "css": 75460,
         "fonts": 57564,
         "images": 840256,
-        "js": 30830
+        "js": 32073
       },
       "category_paths": {
         "css": [
@@ -129,13 +129,13 @@
       "local_request_count": 28,
       "external_request_count": 0,
       "total_request_count": 28,
-      "local_total_bytes": 361752,
+      "local_total_bytes": 362995,
       "category_bytes": {
         "css": 75460,
         "data": 28076,
         "fonts": 57564,
         "images": 136407,
-        "js": 31852
+        "js": 33095
       },
       "category_paths": {
         "css": [
@@ -185,17 +185,17 @@
     {
       "name": "photography",
       "path": "photography/index.html",
-      "document_bytes": 5345,
-      "local_request_count": 16,
+      "document_bytes": 5404,
+      "local_request_count": 17,
       "external_request_count": 0,
-      "total_request_count": 16,
-      "local_total_bytes": 177399,
+      "total_request_count": 17,
+      "local_total_bytes": 187456,
       "category_bytes": {
         "css": 75460,
-        "data": 612,
+        "data": 627,
         "fonts": 57564,
         "images": 7531,
-        "js": 30887
+        "js": 40870
       },
       "category_paths": {
         "css": [
@@ -221,7 +221,8 @@
           "assets/js/includes.js",
           "assets/js/main.js",
           "assets/js/photography.js",
-          "assets/js/site-images.js"
+          "assets/js/site-images.js",
+          "assets/js/site-utils.js"
         ]
       },
       "runtime_requests": [

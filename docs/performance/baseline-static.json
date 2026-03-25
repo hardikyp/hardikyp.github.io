@@ -7,14 +7,14 @@
       "local_request_count": 26,
       "external_request_count": 0,
       "total_request_count": 26,
-      "local_total_bytes": 331551,
+      "local_total_bytes": 335469,
       "category_bytes": {
         "audio": 6628,
         "css": 75971,
         "data": 28698,
         "fonts": 57564,
         "images": 95366,
-        "js": 42659,
+        "js": 46577,
         "other": 300
       },
       "category_paths": {
@@ -72,12 +72,12 @@
       "local_request_count": 28,
       "external_request_count": 1,
       "total_request_count": 29,
-      "local_total_bytes": 1031940,
+      "local_total_bytes": 1035858,
       "category_bytes": {
         "css": 75971,
         "fonts": 57564,
         "images": 840256,
-        "js": 32232
+        "js": 36150
       },
       "category_paths": {
         "css": [
@@ -125,17 +125,17 @@
     {
       "name": "updates",
       "path": "updates/index.html",
-      "document_bytes": 32393,
+      "document_bytes": 32188,
       "local_request_count": 28,
       "external_request_count": 0,
       "total_request_count": 28,
-      "local_total_bytes": 363665,
+      "local_total_bytes": 367378,
       "category_bytes": {
         "css": 75971,
         "data": 28076,
         "fonts": 57564,
         "images": 136407,
-        "js": 33254
+        "js": 37172
       },
       "category_paths": {
         "css": [
@@ -185,17 +185,17 @@
     {
       "name": "photography",
       "path": "photography/index.html",
-      "document_bytes": 5404,
+      "document_bytes": 5184,
       "local_request_count": 17,
       "external_request_count": 0,
       "total_request_count": 17,
-      "local_total_bytes": 189708,
+      "local_total_bytes": 193406,
       "category_bytes": {
         "css": 75971,
         "data": 627,
         "fonts": 57564,
         "images": 7531,
-        "js": 42611
+        "js": 46529
       },
       "category_paths": {
         "css": [

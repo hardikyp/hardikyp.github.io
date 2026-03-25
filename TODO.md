@@ -564,6 +564,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
 - Notes / Risks:
   - Preserve the current SEO pattern expectations from `AGENTS.md`.
 
+#### Progress Log
+
+- 2026-03-24: Centralized shipped-page head generation in `scripts/prerender_content.py` so home, section indexes, fallback detail shells, and generated slug detail pages all render canonical/OG/Twitter/JSON-LD from shared helpers/config instead of hand-maintained HTML blocks. Also centralized fallback detail metadata mutation in `assets/js/site-utils.js` and refactored `assets/js/update-detail.js`, `assets/js/project-detail.js`, and `assets/js/teaching-detail.js` to use the shared helper and breadcrumb/site-reference builders.
+
 ### P2-C3: Improve static hosting assumptions for caching and compression
 
 - Priority: `P2`

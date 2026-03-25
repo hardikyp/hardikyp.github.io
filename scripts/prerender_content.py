@@ -11,6 +11,23 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SITE_URL = "https://hardikpatil.com"
 IMAGE_MANIFEST_PATH = ROOT / "assets/js/site-images.js"
+SITE_NAME = "Hardik Patil"
+DEFAULT_SHARE_IMAGE_URL = f"{SITE_URL}/assets/img/portrait-1200.jpg"
+DEFAULT_SHARE_IMAGE_ALT = "Portrait of Hardik Patil"
+STYLE_PRELOADS = (
+    '<link rel="preload" href="/assets/css/base.css" as="style" />\n'
+    '    <link rel="preload" href="/assets/css/style.css" as="style" />'
+)
+STYLE_LINKS = (
+    '<link rel="stylesheet" href="/assets/css/base.css" />\n'
+    '    <link rel="stylesheet" href="/assets/css/style.css" />'
+)
+HOME_SECURITY_METAS = (
+    ('http-equiv', 'X-Content-Type-Options', 'nosniff'),
+    ('http-equiv', 'X-Frame-Options', 'DENY'),
+    ('http-equiv', 'Referrer-Policy', 'strict-origin-when-cross-origin'),
+    ('http-equiv', 'Content-Security-Policy', "default-src 'self' file: data:; script-src 'self' file: 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' file: data: 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: file:; font-src 'self' data: file:; connect-src 'self' file: data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"),
+)
 
 
 @dataclass(frozen=True)
@@ -63,6 +80,106 @@ def load_shell_parts(template_path: Path) -> ShellParts:
         back_to_top=extract_sync_block(text, "back-to-top"),
         footer=extract_sync_block(text, "footer"),
     )
+
+
+def site_reference() -> dict:
+    return {
+        "@type": "WebSite",
+        "name": SITE_NAME,
+        "url": f"{SITE_URL}/",
+    }
+
+
+def breadcrumb_list(section_name: str, section_path: str, current_name: str | None = None, current_item: str | None = None) -> dict:
+    items = [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE_URL}/"},
+        {"@type": "ListItem", "position": 2, "name": section_name, "item": f"{SITE_URL}/{section_path}"},
+    ]
+    if current_name and current_item:
+        items.append({"@type": "ListItem", "position": 3, "name": current_name, "item": current_item})
+    return {
+        "@type": "BreadcrumbList",
+        "itemListElement": items,
+    }
+
+
+def collection_page_schema(name: str, description: str, canonical_url: str) -> dict:
+    return {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": name,
+        "description": description,
+        "url": canonical_url,
+        "isPartOf": site_reference(),
+        "breadcrumb": breadcrumb_list(name, canonical_url.replace(f"{SITE_URL}/", "")),
+    }
+
+
+def render_json_ld_block(data: dict) -> str:
+    payload = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    return f'<script type="application/ld+json">{payload}</script>'
+
+
+def render_standard_head(spec: dict) -> str:
+    title = spec["title"]
+    description = spec["description"]
+    canonical_url = spec["canonical_url"]
+    og_type = spec.get("og_type", "website")
+    image_url = spec.get("image_url", DEFAULT_SHARE_IMAGE_URL)
+    image_alt = spec.get("image_alt", DEFAULT_SHARE_IMAGE_ALT)
+    social_title = spec.get("social_title", title)
+    social_description = spec.get("social_description", description)
+    robots = spec.get("robots", "index,follow")
+    lines = [
+        "  <head>",
+        '    <meta charset="utf-8" />',
+        '    <meta name="viewport" content="width=device-width, initial-scale=1" />',
+        f'    <base href="{escape(spec.get("base_href", "./"))}" />',
+        f"    <title>{escape(title)}</title>",
+        f'    <meta name="description" content="{escape(description)}" />',
+        f'    <meta name="author" content="{SITE_NAME}" />',
+        f'    <meta name="robots" content="{escape(robots)}" />',
+        f'    <link rel="canonical" href="{escape(canonical_url)}" />',
+    ]
+    if spec.get("theme_color"):
+        lines.append(f'    <meta name="theme-color" content="{escape(spec["theme_color"])}" />')
+    for attr, key, value in spec.get("security_metas", []):
+        lines.append(f'    <meta {attr}="{escape(key)}" content="{escape(value)}" />')
+    lines.extend([
+        f'    <meta property="og:type" content="{escape(og_type)}" />',
+        f'    <meta property="og:title" content="{escape(social_title)}" />',
+        f'    <meta property="og:description" content="{escape(social_description)}" />',
+        f'    <meta property="og:url" content="{escape(canonical_url)}" />',
+        f'    <meta property="og:image" content="{escape(image_url)}" />',
+        f'    <meta property="og:image:alt" content="{escape(image_alt)}" />',
+        f'    <meta property="og:site_name" content="{SITE_NAME}" />',
+        '    <meta property="og:locale" content="en_US" />',
+        '    <meta name="twitter:card" content="summary_large_image" />',
+        f'    <meta name="twitter:title" content="{escape(social_title)}" />',
+        f'    <meta name="twitter:description" content="{escape(social_description)}" />',
+        f'    <meta name="twitter:image" content="{escape(image_url)}" />',
+        f'    <meta name="twitter:image:alt" content="{escape(image_alt)}" />',
+    ])
+    for schema in spec.get("schemas", []):
+        lines.append(f"    {render_json_ld_block(schema)}")
+    if spec.get("manifest_href"):
+        lines.append(f'    <link rel="manifest" href="{escape(spec["manifest_href"])}" />')
+    if spec.get("icon_href"):
+        lines.append(f'    <link rel="icon" href="{escape(spec["icon_href"])}" type="image/svg+xml" />')
+    if spec.get("include_style_preloads", True):
+        lines.append(f"    {STYLE_PRELOADS}")
+    if spec.get("include_styles", True):
+        lines.append(f"    {STYLE_LINKS}")
+    lines.append("  </head>")
+    return "\n".join(lines)
+
+
+def replace_head(path: Path, head_html: str) -> None:
+    text = read_text(path)
+    updated, count = re.subn(r"<head>[\s\S]*?</head>", head_html, text, count=1)
+    if count != 1:
+        raise RuntimeError(f"Expected one <head> block in {path}")
+    write_text(path, updated)
 
 
 def parse_image_manifest() -> dict[str, dict]:
@@ -609,6 +726,135 @@ def render_contact_section(data: dict) -> str:
     """.strip()
 
 
+def static_page_head_specs() -> dict[Path, dict]:
+    home_description = "Hardik Patil is a structural engineering PhD candidate researching deployable and reconfigurable structures and origami-inspired systems. Explore projects, publications, updates, and photography."
+    home_social_description = "Deployable and reconfigurable structures, origami-inspired systems, and structural engineering research by Hardik Patil."
+    home_schemas = [
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": SITE_NAME,
+            "url": f"{SITE_URL}/",
+            "image": DEFAULT_SHARE_IMAGE_URL,
+            "jobTitle": "Structural Engineering PhD Candidate",
+            "affiliation": {
+                "@type": "CollegeOrUniversity",
+                "name": "University of Michigan",
+            },
+            "sameAs": [
+                "https://www.linkedin.com/in/hardikypatil",
+                "https://github.com/hardikyp",
+                "https://scholar.google.com/citations?user=QxSZzs8AAAAJ&hl=en",
+            ],
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": SITE_NAME,
+            "url": f"{SITE_URL}/",
+        },
+    ]
+    return {
+        ROOT / "index.html": {
+            "base_href": "./",
+            "title": "Hardik Patil | Structural Engineering PhD Candidate",
+            "description": home_description,
+            "social_description": home_social_description,
+            "canonical_url": f"{SITE_URL}/",
+            "og_type": "website",
+            "image_url": DEFAULT_SHARE_IMAGE_URL,
+            "image_alt": DEFAULT_SHARE_IMAGE_ALT,
+            "theme_color": "#0f172a",
+            "security_metas": HOME_SECURITY_METAS,
+            "schemas": home_schemas,
+            "manifest_href": "manifest.webmanifest",
+            "icon_href": "/assets/icons/monogram.svg",
+        },
+        ROOT / "projects/index.html": {
+            "base_href": "../",
+            "title": "Projects | Hardik Patil",
+            "description": "Research, coursework, and internship projects in deployable structures, computational mechanics, and structural engineering.",
+            "canonical_url": f"{SITE_URL}/projects/",
+            "og_type": "website",
+            "image_url": DEFAULT_SHARE_IMAGE_URL,
+            "image_alt": DEFAULT_SHARE_IMAGE_ALT,
+            "schemas": [collection_page_schema("Projects", "Research, coursework, and internship projects in deployable structures, computational mechanics, and structural engineering.", f"{SITE_URL}/projects/")],
+        },
+        ROOT / "updates/index.html": {
+            "base_href": "../",
+            "title": "Updates | Hardik Patil",
+            "description": "News, awards, publications, and milestones from Hardik Patil's structural engineering research and professional work.",
+            "canonical_url": f"{SITE_URL}/updates/",
+            "og_type": "website",
+            "image_url": DEFAULT_SHARE_IMAGE_URL,
+            "image_alt": DEFAULT_SHARE_IMAGE_ALT,
+            "schemas": [collection_page_schema("Updates", "News, awards, publications, and milestones from Hardik Patil's structural engineering research and professional work.", f"{SITE_URL}/updates/")],
+        },
+        ROOT / "publications/index.html": {
+            "base_href": "../",
+            "title": "Publications | Hardik Patil",
+            "description": "Peer-reviewed journal papers, conference papers, and talks by Hardik Patil in structural engineering and deployable structures.",
+            "canonical_url": f"{SITE_URL}/publications/",
+            "og_type": "website",
+            "image_url": DEFAULT_SHARE_IMAGE_URL,
+            "image_alt": DEFAULT_SHARE_IMAGE_ALT,
+            "schemas": [collection_page_schema("Publications", "Peer-reviewed journal papers, conference papers, and talks by Hardik Patil in structural engineering and deployable structures.", f"{SITE_URL}/publications/")],
+        },
+        ROOT / "teaching/index.html": {
+            "base_href": "../",
+            "title": "Teaching | Hardik Patil",
+            "description": "Teaching experience, instructional philosophy, and course contributions by Hardik Patil.",
+            "canonical_url": f"{SITE_URL}/teaching/",
+            "og_type": "website",
+            "image_url": DEFAULT_SHARE_IMAGE_URL,
+            "image_alt": DEFAULT_SHARE_IMAGE_ALT,
+            "schemas": [collection_page_schema("Teaching", "Teaching experience, instructional philosophy, and course contributions by Hardik Patil.", f"{SITE_URL}/teaching/")],
+        },
+        ROOT / "photography/index.html": {
+            "base_href": "../",
+            "title": "Photography | Hardik Patil",
+            "description": "Photography by Hardik Patil featuring portraits, nightscapes, and travel stories.",
+            "canonical_url": f"{SITE_URL}/photography/",
+            "og_type": "website",
+            "image_url": f"{SITE_URL}/assets/photography/carousel/mumbai-sealink-1200.jpg",
+            "image_alt": "Mumbai Sea Link at night",
+            "schemas": [collection_page_schema("Photography", "Photography by Hardik Patil featuring portraits, nightscapes, and travel stories.", f"{SITE_URL}/photography/")],
+        },
+        ROOT / "updates/view.html": {
+            "base_href": "../",
+            "title": "Update | Hardik Patil",
+            "description": "Updates, awards, and milestones from Hardik Patil's structural engineering work.",
+            "canonical_url": f"{SITE_URL}/updates/view.html",
+            "og_type": "article",
+            "image_url": DEFAULT_SHARE_IMAGE_URL,
+            "image_alt": DEFAULT_SHARE_IMAGE_ALT,
+        },
+        ROOT / "projects/view.html": {
+            "base_href": "../",
+            "title": "Project | Hardik Patil",
+            "description": "Project details from Hardik Patil's structural engineering research and coursework.",
+            "canonical_url": f"{SITE_URL}/projects/view.html",
+            "og_type": "article",
+            "image_url": DEFAULT_SHARE_IMAGE_URL,
+            "image_alt": DEFAULT_SHARE_IMAGE_ALT,
+        },
+        ROOT / "teaching/view.html": {
+            "base_href": "../",
+            "title": "Teaching | Hardik Patil",
+            "description": "Teaching details from Hardik Patil's instructional experience.",
+            "canonical_url": f"{SITE_URL}/teaching/view.html",
+            "og_type": "article",
+            "image_url": DEFAULT_SHARE_IMAGE_URL,
+            "image_alt": DEFAULT_SHARE_IMAGE_ALT,
+        },
+    }
+
+
+def sync_static_heads() -> None:
+    for path, spec in static_page_head_specs().items():
+        replace_head(path, render_standard_head(spec))
+
+
 def render_project_card(item: dict) -> str:
     year_text = escape((item.get("years") or "").strip())
     type_label = escape(item.get("type") or "")
@@ -932,7 +1178,8 @@ def detail_structured_data(kind: str, item: dict, canonical_url: str, descriptio
             "dateModified": item.get("date") or None,
             "author": {"@type": "Person", "name": "Hardik Patil"},
             "image": image_url,
-            "isPartOf": {"@type": "WebSite", "name": "Hardik Patil", "url": f"{SITE_URL}/"},
+            "isPartOf": site_reference(),
+            "breadcrumb": breadcrumb_list("Updates", "updates/", item.get("title") or "Update", canonical_url),
             "mainEntityOfPage": canonical_url,
         }
     if kind == "project":
@@ -944,7 +1191,8 @@ def detail_structured_data(kind: str, item: dict, canonical_url: str, descriptio
             "author": {"@type": "Person", "name": "Hardik Patil"},
             "dateCreated": item.get("years") or None,
             "image": image_url,
-            "isPartOf": {"@type": "WebSite", "name": "Hardik Patil", "url": f"{SITE_URL}/"},
+            "isPartOf": site_reference(),
+            "breadcrumb": breadcrumb_list("Projects", "projects/", item.get("title") or "Project", canonical_url),
             "mainEntityOfPage": canonical_url,
         }
     return {
@@ -953,7 +1201,8 @@ def detail_structured_data(kind: str, item: dict, canonical_url: str, descriptio
         "name": f"{item.get('courseNumber') or ''}: {item.get('courseTitle') or 'Course'}".replace(": ", ": ").strip(": "),
         "description": description,
         "provider": {"@type": "CollegeOrUniversity", "name": item.get("university") or "University of Michigan"},
-        "isPartOf": {"@type": "WebSite", "name": "Hardik Patil", "url": f"{SITE_URL}/"},
+        "isPartOf": site_reference(),
+        "breadcrumb": breadcrumb_list("Teaching", "teaching/", f"{item.get('courseNumber') or ''}: {item.get('courseTitle') or 'Course'}".replace(": ", ": ").strip(": "), canonical_url),
         "mainEntityOfPage": canonical_url,
     }
 
@@ -1096,39 +1345,21 @@ def render_detail_page(kind: str, item: dict, shell: ShellParts) -> str:
 
     canonical_url = f"{SITE_URL}/{canonical_path}"
     image_url = f"{SITE_URL}/{image_path}"
-    structured_data = json.dumps(detail_structured_data(kind, item, canonical_url, description, image_url), separators=(",", ":"))
     heading = "Update" if kind == "update" else "Projects" if kind == "project" else "Teaching"
     page_title = f"{title} — {heading} — Hardik Patil"
+    head_html = render_standard_head({
+        "base_href": "../../",
+        "title": page_title,
+        "description": description,
+        "canonical_url": canonical_url,
+        "og_type": "article",
+        "image_url": image_url,
+        "image_alt": image_alt,
+        "schemas": [detail_structured_data(kind, item, canonical_url, description, image_url)],
+    })
     return f"""<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <base href="../../" />
-    <title>{escape(page_title)}</title>
-    <meta name="description" content="{escape(description)}" />
-    <meta name="author" content="Hardik Patil" />
-    <meta name="robots" content="index,follow" />
-    <link rel="canonical" href="{escape(canonical_url)}" />
-    <link rel="preload" href="/assets/css/base.css" as="style" />
-    <link rel="preload" href="/assets/css/style.css" as="style" />
-    <link rel="stylesheet" href="/assets/css/base.css" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="{escape(page_title)}" />
-    <meta property="og:description" content="{escape(description)}" />
-    <meta property="og:url" content="{escape(canonical_url)}" />
-    <meta property="og:image" content="{escape(image_url)}" />
-    <meta property="og:image:alt" content="{escape(image_alt)}" />
-    <meta property="og:site_name" content="Hardik Patil" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{escape(page_title)}" />
-    <meta name="twitter:description" content="{escape(description)}" />
-    <meta name="twitter:image" content="{escape(image_url)}" />
-    <meta name="twitter:image:alt" content="{escape(image_alt)}" />
-    <script type="application/ld+json">{structured_data}</script>
-  </head>
+{head_html}
   <body class="{body_class}">
     <a class="skip-link" href="#main">Skip to content</a>
     {shell.header}
@@ -1179,6 +1410,7 @@ def main() -> int:
     prerender_publications_index(publications)
     prerender_teaching_index(teaching)
     prerender_detail_pages()
+    sync_static_heads()
     return 0
 
 

@@ -3,7 +3,7 @@
   const slug = params.get('slug');
   const { htmlToSummary } = window.siteUtils.text;
   const { renderImage } = window.siteUtils.image;
-  const { toAbsoluteUrl, setMeta, setLink, setStructuredData } = window.siteUtils.head;
+  const { toAbsoluteUrl, applyDetailPageMetadata, applyUnavailableDetailMetadata, breadcrumbList, siteReference } = window.siteUtils.head;
 
   const els = {
     title: document.getElementById('teachTitle'),
@@ -20,8 +20,7 @@
     els.meta.style.display = 'none';
     els.media.style.display = 'none';
     els.body.innerHTML = '<p class="muted">No course matches this link.</p>';
-    setMeta('name', 'robots', 'noindex,follow');
-    setLink('canonical', toAbsoluteUrl('teaching/'));
+    applyUnavailableDetailMetadata('teaching');
     return;
   }
 
@@ -35,8 +34,7 @@
         els.meta.style.display = 'none';
         els.media.style.display = 'none';
         els.body.innerHTML = '<p class="muted">No course matches this link.</p>';
-        setMeta('name', 'robots', 'noindex,follow');
-        setLink('canonical', toAbsoluteUrl('teaching/'));
+        applyUnavailableDetailMetadata('teaching');
         return;
       }
 
@@ -69,23 +67,16 @@
       els.body.innerHTML = bodyHtml;
 
       const description = item.card?.summary || htmlToSummary(bodyHtml) || 'Teaching details from Hardik Patil.';
-      const pageTitle = `${title} — Teaching — Hardik Patil`;
       const canonicalUrl = toAbsoluteUrl(`teaching/${encodeURIComponent(item.slug)}/`);
       const ogImage = toAbsoluteUrl(image || 'assets/img/portrait-1200.jpg');
-
-      document.title = pageTitle;
-      setMeta('name', 'description', description);
-      setMeta('property', 'og:title', pageTitle);
-      setMeta('property', 'og:description', description);
-      setMeta('property', 'og:url', canonicalUrl);
-      setMeta('property', 'og:image', ogImage);
-      setMeta('property', 'og:image:alt', imageAlt);
-      setMeta('name', 'twitter:title', pageTitle);
-      setMeta('name', 'twitter:description', description);
-      setMeta('name', 'twitter:image', ogImage);
-      setMeta('name', 'twitter:image:alt', imageAlt);
-      setLink('canonical', canonicalUrl);
-      setStructuredData({
+      applyDetailPageMetadata({
+        sectionKey: 'teaching',
+        itemTitle: title || 'Course',
+        description,
+        canonicalUrl,
+        imageUrl: ogImage,
+        imageAlt,
+        structuredData: {
         "@context": "https://schema.org",
         "@type": "Course",
         "name": title || 'Course',
@@ -94,20 +85,10 @@
           "@type": "CollegeOrUniversity",
           "name": university || 'University of Michigan'
         },
-        "isPartOf": {
-          "@type": "WebSite",
-          "name": "Hardik Patil",
-          "url": "https://hardikpatil.com/"
-        },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hardikpatil.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Teaching", "item": "https://hardikpatil.com/teaching/" },
-            { "@type": "ListItem", "position": 3, "name": title || 'Course', "item": canonicalUrl }
-          ]
-        },
+        "isPartOf": siteReference(),
+        "breadcrumb": breadcrumbList('teaching', title || 'Course', canonicalUrl),
         "mainEntityOfPage": canonicalUrl
+        },
       });
     } catch {
       els.title.textContent = 'Course unavailable';

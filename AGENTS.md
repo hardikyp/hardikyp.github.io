@@ -344,10 +344,12 @@ Before inventing new markup or styles, check whether one of these already fits:
 ## SEO And Metadata Contracts
 
 - Static list pages already ship with canonical, Open Graph, Twitter, and JSON-LD metadata.
+- Shared head generation for shipped static/fallback HTML pages lives in `/scripts/prerender_content.py`.
 - Fallback detail shells update metadata client-side in:
   - `/assets/js/update-detail.js`
   - `/assets/js/project-detail.js`
   - `/assets/js/teaching-detail.js`
+- Shared runtime metadata helpers for those fallback shells live in `/assets/js/site-utils.js` under `siteUtils.head`.
 - Primary production detail pages are generated HTML under:
   - `/updates/<slug>/index.html`
   - `/projects/<slug>/index.html`

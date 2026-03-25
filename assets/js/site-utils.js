@@ -1,5 +1,28 @@
 (() => {
   const BASE_URL = 'https://hardikpatil.com/';
+  const SITE_NAME = 'Hardik Patil';
+  const DEFAULT_SOCIAL_IMAGE = `${BASE_URL}assets/img/portrait-1200.jpg`;
+  const DEFAULT_SOCIAL_IMAGE_ALT = 'Portrait of Hardik Patil';
+  const DETAIL_ROUTE_META = {
+    updates: {
+      label: 'Updates',
+      path: 'updates/',
+      itemLabel: 'Update',
+      fallbackDescription: 'Updates and announcements from Hardik Patil.',
+    },
+    projects: {
+      label: 'Projects',
+      path: 'projects/',
+      itemLabel: 'Project',
+      fallbackDescription: 'Project details from Hardik Patil.',
+    },
+    teaching: {
+      label: 'Teaching',
+      path: 'teaching/',
+      itemLabel: 'Course',
+      fallbackDescription: 'Teaching details from Hardik Patil.',
+    },
+  };
 
   const escapeHTML = (value = '') => String(value)
     .replace(/&/g, '&amp;')
@@ -72,6 +95,87 @@
       document.head.appendChild(node);
     }
     node.textContent = JSON.stringify(data);
+  };
+
+  const siteReference = () => ({
+    "@type": "WebSite",
+    "name": SITE_NAME,
+    "url": BASE_URL,
+  });
+
+  const breadcrumbList = (sectionKey, itemName, itemUrl) => {
+    const section = DETAIL_ROUTE_META[sectionKey];
+    if (!section || !itemName || !itemUrl) return null;
+    return {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+        { "@type": "ListItem", "position": 2, "name": section.label, "item": toAbsoluteUrl(section.path) },
+        { "@type": "ListItem", "position": 3, "name": itemName, "item": itemUrl },
+      ],
+    };
+  };
+
+  const applyPageMetadata = ({
+    pageTitle,
+    description,
+    canonicalUrl,
+    imageUrl = DEFAULT_SOCIAL_IMAGE,
+    imageAlt = DEFAULT_SOCIAL_IMAGE_ALT,
+    ogType = 'website',
+    robots = 'index,follow',
+    structuredData,
+  }) => {
+    if (pageTitle) document.title = pageTitle;
+    if (description) setMeta('name', 'description', description);
+    if (robots) setMeta('name', 'robots', robots);
+    if (canonicalUrl) setLink('canonical', canonicalUrl);
+
+    setMeta('property', 'og:type', ogType);
+    if (pageTitle) setMeta('property', 'og:title', pageTitle);
+    if (description) setMeta('property', 'og:description', description);
+    if (canonicalUrl) setMeta('property', 'og:url', canonicalUrl);
+    if (imageUrl) setMeta('property', 'og:image', imageUrl);
+    if (imageAlt) setMeta('property', 'og:image:alt', imageAlt);
+    setMeta('property', 'og:site_name', SITE_NAME);
+    setMeta('property', 'og:locale', 'en_US');
+
+    setMeta('name', 'twitter:card', 'summary_large_image');
+    if (pageTitle) setMeta('name', 'twitter:title', pageTitle);
+    if (description) setMeta('name', 'twitter:description', description);
+    if (imageUrl) setMeta('name', 'twitter:image', imageUrl);
+    if (imageAlt) setMeta('name', 'twitter:image:alt', imageAlt);
+
+    if (structuredData) setStructuredData(structuredData);
+  };
+
+  const applyDetailPageMetadata = ({
+    sectionKey,
+    itemTitle,
+    description,
+    canonicalUrl,
+    imageUrl,
+    imageAlt,
+    structuredData,
+  }) => {
+    const section = DETAIL_ROUTE_META[sectionKey];
+    if (!section) return;
+    applyPageMetadata({
+      pageTitle: `${itemTitle || section.itemLabel} — ${section.label} — ${SITE_NAME}`,
+      description: description || section.fallbackDescription,
+      canonicalUrl: canonicalUrl || toAbsoluteUrl(section.path),
+      imageUrl: imageUrl || DEFAULT_SOCIAL_IMAGE,
+      imageAlt: imageAlt || itemTitle || DEFAULT_SOCIAL_IMAGE_ALT,
+      ogType: 'article',
+      structuredData,
+    });
+  };
+
+  const applyUnavailableDetailMetadata = (sectionKey) => {
+    const section = DETAIL_ROUTE_META[sectionKey];
+    if (!section) return;
+    setMeta('name', 'robots', 'noindex,follow');
+    setLink('canonical', toAbsoluteUrl(section.path));
   };
 
   const renderImage = (src, alt, options = {}) => {
@@ -280,6 +384,17 @@
       setMeta,
       setLink,
       setStructuredData,
+      applyPageMetadata,
+      applyDetailPageMetadata,
+      applyUnavailableDetailMetadata,
+      breadcrumbList,
+      siteReference,
+      detailRoutes: DETAIL_ROUTE_META,
+      defaults: {
+        siteName: SITE_NAME,
+        socialImage: DEFAULT_SOCIAL_IMAGE,
+        socialImageAlt: DEFAULT_SOCIAL_IMAGE_ALT,
+      },
     },
     tabs: {
       createFilterTabs,

@@ -1,13 +1,12 @@
 (() => {
   const { htmlToSummary } = window.siteUtils.text;
   const { renderImage } = window.siteUtils.image;
-  const { toAbsoluteUrl, setMeta, setLink, setStructuredData } = window.siteUtils.head;
+  const { toAbsoluteUrl, applyDetailPageMetadata, applyUnavailableDetailMetadata, breadcrumbList, siteReference } = window.siteUtils.head;
 
   const params = new URLSearchParams(location.search);
   const slug = params.get('slug');
   if (!slug) {
-    setMeta('name', 'robots', 'noindex,follow');
-    setLink('canonical', toAbsoluteUrl('projects/'));
+    applyUnavailableDetailMetadata('projects');
     return;
   }
 
@@ -63,8 +62,7 @@
     if (els.meta) els.meta.style.display = 'none';
     setMedia();
     els.content.innerHTML = '<p class="muted">No project matches this link.</p>';
-    setMeta('name', 'robots', 'noindex,follow');
-    setLink('canonical', toAbsoluteUrl('projects/'));
+    applyUnavailableDetailMetadata('projects');
   };
 
   const render = (p) => {
@@ -94,28 +92,22 @@
     try {
       const bodySummary = htmlToSummary(p.detail?.body || '');
       const desc = p.summary || bodySummary || 'Project details from Hardik Patil.';
-      const pageTitle = `${p.title || 'Project'} — Projects — Hardik Patil`;
+      const itemTitle = p.title || 'Project';
       const canonicalUrl = toAbsoluteUrl(`projects/${encodeURIComponent(p.slug)}/`);
       const imageSrc = p.detail?.images?.[0]?.src || p.card?.image || 'assets/img/portrait-1200.jpg';
-      const imageAlt = p.detail?.images?.[0]?.alt || p.card?.alt || p.title || 'Hardik Patil project';
+      const imageAlt = p.detail?.images?.[0]?.alt || p.card?.alt || itemTitle || 'Hardik Patil project';
       const imageUrl = toAbsoluteUrl(imageSrc);
-      document.title = pageTitle;
-      setMeta('name', 'description', desc);
-      setMeta('property', 'og:title', pageTitle);
-      setMeta('property', 'og:description', desc);
-      setMeta('property', 'og:url', canonicalUrl);
-      setMeta('property', 'og:image', imageUrl);
-      setMeta('property', 'og:image:alt', imageAlt);
-      setMeta('property', 'og:type', 'article');
-      setMeta('name', 'twitter:title', pageTitle);
-      setMeta('name', 'twitter:description', desc);
-      setMeta('name', 'twitter:image', imageUrl);
-      setMeta('name', 'twitter:image:alt', imageAlt);
-      setLink('canonical', canonicalUrl);
-      setStructuredData({
+      applyDetailPageMetadata({
+        sectionKey: 'projects',
+        itemTitle,
+        description: desc,
+        canonicalUrl,
+        imageUrl,
+        imageAlt,
+        structuredData: {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
-        "name": p.title || 'Project',
+        "name": itemTitle,
         "description": desc,
         "author": {
           "@type": "Person",
@@ -123,20 +115,10 @@
         },
         "dateCreated": p.years || undefined,
         "image": imageUrl,
-        "isPartOf": {
-          "@type": "WebSite",
-          "name": "Hardik Patil",
-          "url": "https://hardikpatil.com/"
-        },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hardikpatil.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://hardikpatil.com/projects/" },
-            { "@type": "ListItem", "position": 3, "name": p.title || 'Project', "item": canonicalUrl }
-          ]
-        },
+        "isPartOf": siteReference(),
+        "breadcrumb": breadcrumbList('projects', itemTitle, canonicalUrl),
         "mainEntityOfPage": canonicalUrl
+        },
       });
     } catch {}
   };

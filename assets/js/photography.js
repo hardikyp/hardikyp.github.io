@@ -10,13 +10,17 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const interval = reduceMotion ? 12000 : 7000;
   const { runWhenVisible, runWhenIdle } = window.siteUtils.lazy;
+  const shouldUsePointerMotion = () =>
+    !reduceMotion &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+    window.innerWidth >= 960;
 
   let slides = [];
   let index = 0;
   let timerId;
-  let rafId;
   let animId;
   let heroControlsBound = false;
+  let pointerMotionBound = false;
   let hydrated = false;
   let heroInView = false;
 
@@ -182,8 +186,14 @@
     slides[index].style.setProperty('--translate-x', '0px');
     slides[index].style.setProperty('--translate-y', '0px');
     slides[index].style.setProperty('--scroll-y', '0px');
+    slides[index].style.setProperty('--rotate-x', '0deg');
+    slides[index].style.setProperty('--rotate-y', '0deg');
     index = (nextIndex + slides.length) % slides.length;
     slides[index].classList.add('is-active');
+    slides[index].style.setProperty('--translate-x', '0px');
+    slides[index].style.setProperty('--translate-y', '0px');
+    slides[index].style.setProperty('--rotate-x', '0deg');
+    slides[index].style.setProperty('--rotate-y', '0deg');
   };
 
   const go = (delta) => {
@@ -207,11 +217,11 @@
     const cy = ny - 0.5;
 
     // Translate scales with speed for depth
-    const translateX = cx * 140 * speed;
-    const translateY = cy * 80 * speed;
+    const translateX = cx * 72 * speed;
+    const translateY = cy * 42 * speed;
 
-    // Subtle tilt (Dogstudio-like feel, but restrained)
-    const maxTilt = 10; // degrees
+    // Subtle tilt with a lower motion budget on pointer-capable desktops.
+    const maxTilt = 4.5; // degrees
     const rotateY = cx * maxTilt;      // left/right tilt
     const rotateX = -cy * maxTilt * 0.8; // up/down tilt, slightly reduced
 
@@ -224,7 +234,7 @@
   const stepParallax = () => {
     if (!state.active) return;
     // Inertial interpolation
-    const ease = 0.750;
+    const ease = 0.36;
     state.currentX += (state.targetX - state.currentX) * ease;
     state.currentY += (state.targetY - state.currentY) * ease;
     applyParallax(state.currentX, state.currentY);
@@ -232,7 +242,7 @@
   };
 
   const handlePointerMove = (event) => {
-    if (reduceMotion || !slides.length) return;
+    if (!shouldUsePointerMotion() || !slides.length) return;
     state.targetX = event.clientX / window.innerWidth;
     state.targetY = event.clientY / window.innerHeight;
     if (!state.active) {
@@ -243,7 +253,7 @@
   };
 
   const handlePointerLeave = () => {
-    if (reduceMotion || !slides.length) return;
+    if (!slides.length) return;
     state.targetX = 0.5;
     state.targetY = 0.5;
     // Let inertia bring it back to center, then stop
@@ -257,6 +267,22 @@
       slide.style.setProperty('--rotate-x', '0deg');
       slide.style.setProperty('--rotate-y', '0deg');
     }, 180);
+  };
+
+  const resetActiveSlideMotion = () => {
+    const slide = slides[index];
+    if (!slide) return;
+    state.targetX = 0.5;
+    state.targetY = 0.5;
+    state.currentX = 0.5;
+    state.currentY = 0.5;
+    state.active = false;
+    if (animId) cancelAnimationFrame(animId);
+    animId = undefined;
+    slide.style.setProperty('--translate-x', '0px');
+    slide.style.setProperty('--translate-y', '0px');
+    slide.style.setProperty('--rotate-x', '0deg');
+    slide.style.setProperty('--rotate-y', '0deg');
   };
 
   const observeReveals = () => {
@@ -279,11 +305,27 @@
   const cleanup = () => {
     hero.removeEventListener('pointermove', handlePointerMove);
     hero.removeEventListener('pointerleave', handlePointerLeave);
+    window.removeEventListener('resize', syncPointerMotion);
     if (timerId) clearInterval(timerId);
-    if (rafId) cancelAnimationFrame(rafId);
     if (animId) cancelAnimationFrame(animId);
   };
   window.addEventListener('beforeunload', cleanup, { once: true });
+
+  function syncPointerMotion() {
+    const shouldBind = shouldUsePointerMotion() && slides.length > 0;
+    if (shouldBind && !pointerMotionBound) {
+      hero.addEventListener('pointermove', handlePointerMove);
+      hero.addEventListener('pointerleave', handlePointerLeave);
+      pointerMotionBound = true;
+      return;
+    }
+    if (!shouldBind && pointerMotionBound) {
+      hero.removeEventListener('pointermove', handlePointerMove);
+      hero.removeEventListener('pointerleave', handlePointerLeave);
+      pointerMotionBound = false;
+      resetActiveSlideMotion();
+    }
+  }
 
   const initCarouselControls = () => {
     if (heroControlsBound) return;
@@ -293,9 +335,8 @@
     if (btnNext) {
       btnNext.addEventListener('click', () => go(1));
     }
-    hero.addEventListener('pointermove', handlePointerMove);
-    hero.addEventListener('pointerleave', handlePointerLeave);
-    // disable scroll-based parallax; hero should move as one
+    syncPointerMotion();
+    window.addEventListener('resize', syncPointerMotion, { passive: true });
     heroControlsBound = true;
     restartTimer();
   };

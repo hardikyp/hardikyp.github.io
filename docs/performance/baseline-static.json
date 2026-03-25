@@ -7,14 +7,14 @@
       "local_request_count": 26,
       "external_request_count": 0,
       "total_request_count": 26,
-      "local_total_bytes": 330699,
+      "local_total_bytes": 331369,
       "category_bytes": {
         "audio": 6628,
-        "css": 75460,
+        "css": 75971,
         "data": 28698,
         "fonts": 57564,
         "images": 95366,
-        "js": 42500,
+        "js": 42659,
         "other": 300
       },
       "category_paths": {
@@ -72,12 +72,12 @@
       "local_request_count": 28,
       "external_request_count": 1,
       "total_request_count": 29,
-      "local_total_bytes": 1031270,
+      "local_total_bytes": 1031940,
       "category_bytes": {
-        "css": 75460,
+        "css": 75971,
         "fonts": 57564,
         "images": 840256,
-        "js": 32073
+        "js": 32232
       },
       "category_paths": {
         "css": [
@@ -129,13 +129,13 @@
       "local_request_count": 28,
       "external_request_count": 0,
       "total_request_count": 28,
-      "local_total_bytes": 362995,
+      "local_total_bytes": 363665,
       "category_bytes": {
-        "css": 75460,
+        "css": 75971,
         "data": 28076,
         "fonts": 57564,
         "images": 136407,
-        "js": 33095
+        "js": 33254
       },
       "category_paths": {
         "css": [
@@ -189,13 +189,13 @@
       "local_request_count": 17,
       "external_request_count": 0,
       "total_request_count": 17,
-      "local_total_bytes": 187456,
+      "local_total_bytes": 189708,
       "category_bytes": {
-        "css": 75460,
+        "css": 75971,
         "data": 627,
         "fonts": 57564,
         "images": 7531,
-        "js": 40870
+        "js": 42611
       },
       "category_paths": {
         "css": [

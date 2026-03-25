@@ -15,8 +15,6 @@
     if (!header) return;
     header.classList.toggle('scrolled', y > 10);
   };
-  window.addEventListener('scroll', updateHeaderState, { passive: true });
-  updateHeaderState();
 
   const syncMenuState = () => {
     if (!menuCheckbox) return;
@@ -140,9 +138,19 @@
     if (window.scrollY > threshold) backToTop.classList.add('is-visible');
     else backToTop.classList.remove('is-visible');
   };
+  let scrollFrame = 0;
+  const syncScrollUi = () => {
+    scrollFrame = 0;
+    updateHeaderState();
+    toggleBackToTop();
+  };
+  const scheduleScrollUi = () => {
+    if (scrollFrame) return;
+    scrollFrame = window.requestAnimationFrame(syncScrollUi);
+  };
+  window.addEventListener('scroll', scheduleScrollUi, { passive: true });
+  syncScrollUi();
   backToTop?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-  window.addEventListener('scroll', toggleBackToTop, { passive: true });
-  toggleBackToTop();
 })();

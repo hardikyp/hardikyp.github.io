@@ -489,6 +489,10 @@ Suggested implementation order is listed first. Individual tasks are intentional
   - The site’s visual character should remain intact.
   - Photography page can keep higher production value, but only where measured cost is acceptable.
 
+#### Progress Log
+
+- 2026-03-24: Reduced compositor-heavy effects in `assets/css/style.css` by trimming sticky-header blur/shadow, slowing or disabling marquee and hero word animations on lower-cost scenarios, removing reveal blur, and softening photography slide/caption/orb effects. Updated `assets/js/photography.js` so pointer-driven parallax only binds on wide fine-pointer devices and runs with a lower motion budget, and updated `assets/js/main.js` so header/back-to-top scroll state is synchronized through a single `requestAnimationFrame` pass.
+
 ## P2 Tasks
 
 ### P2-C1: Modularize hardcoded homepage editorial sections where it is useful

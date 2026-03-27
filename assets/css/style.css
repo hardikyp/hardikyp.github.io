@@ -1859,6 +1859,9 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
 .pub-item { display: grid; gap: 6px; padding: 16px 0; border-radius: 0; border: none; background: transparent; border-top: 1px solid var(--color-border); cursor: pointer; }
 .pub-list .pub-item:first-child { border-top: none; }
 .pub-meta { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.pub-head > div { min-width: 0; }
+.pub-meta .tag { flex: 0 0 auto; }
+.pub-meta .muted { min-width: 0; }
 .pub-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .pub-actions .btn { padding: 8px 24px; border-radius: var(--radius-md); }
 .pub-actions .btn.primary + .btn.secondary { margin-left: 12px; }
@@ -1880,6 +1883,21 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
 .pub-abstract b { color: var(--color-text); }
 .pub-keys { color: var(--color-muted); }
 @media (max-width: 900px) { .pub-abstract { column-count: 1; height: auto; overflow: visible; } }
+@media (max-width: 640px) {
+  .pub-meta {
+    display: block;
+  }
+
+  .pub-meta .tag {
+    display: inline-flex;
+    margin-right: 8px;
+    vertical-align: baseline;
+  }
+
+  .pub-meta .muted {
+    display: inline;
+  }
+}
 
 /* Updates page tweaks */
 .page-updates,

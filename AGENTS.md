@@ -101,6 +101,9 @@ Before inventing new markup or styles, check whether one of these already fits:
   - `.pub-filters__tabs`
   - `.pub-filters__tab`
   - `.pub-filters__underline`
+- Publication accordion meta line:
+  - `.pub-meta` should keep the type tag inline with the venue/title text on the first line at narrow widths.
+  - If the venue/title text wraps, continuation lines should start at the left edge of the meta line instead of hanging to the right of the tag.
 - Detail page shell:
   - `.hero.hero--update`
   - `.update-detail`

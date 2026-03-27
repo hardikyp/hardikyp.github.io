@@ -1305,38 +1305,42 @@ body.page-home main > section::before { background: transparent; }
 .hero-highlight__mask {
   display: inline-flex;
   flex-direction: column;
-  animation: heroHighlightCycle 12s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation: heroHighlightCycle 12s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
 }
 .hero-highlight__word {
   display: block;
   line-height: 1.15;
   background-image: linear-gradient(
-    to right,
-    var(--color-primary-strong) 18%,
-    var(--color-accent) 30%,
-    var(--color-accent) 60%,
-    var(--color-primary-strong) 78%
+    135deg,
+    var(--color-primary-strong),
+    var(--color-primary),
+    var(--color-accent),
+    var(--color-accent-muted),
+    var(--color-primary)
   );
-  background-size: 500% auto;
-  animation: heroHighlightShine 4.5s ease-in-out infinite alternate;
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: heroHighlightAurora 8s ease-in-out infinite alternate;
 }
-@keyframes heroHighlightShine {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+@keyframes heroHighlightAurora {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 100%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
 }
 @keyframes heroHighlightCycle {
   0% { transform: translateY(0%); }
   26% { transform: translateY(0%); }
-  30% { transform: translateY(-106%); }
+  30% { transform: translateY(-110%); }
   33.333% { transform: translateY(-100%); }
   59.333% { transform: translateY(-100%); }
-  63.333% { transform: translateY(-206%); }
+  63.333% { transform: translateY(-210%); }
   66.666% { transform: translateY(-200%); }
   92% { transform: translateY(-200%); }
-  96% { transform: translateY(-306%); }
+  96% { transform: translateY(-310%); }
   100% { transform: translateY(-300%); }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1371,10 +1375,6 @@ body.page-home main > section::before { background: transparent; }
   .hero--home {
     --content-inline-pad: 20px;
     --hero-block-pad: 58px;
-  }
-  .hero-highlight__mask,
-  .hero-highlight__word {
-    animation: none;
   }
 }
 

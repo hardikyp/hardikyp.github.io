@@ -66,6 +66,12 @@ These values already define the site look. Do not change them casually.
 - Radii:
   - Buttons: `--radius-md` = `10px`
   - Cards: `--radius-lg` = `16px`
+- Card padding:
+  - Use `--card-content-pad-edge` as the side padding source of truth.
+  - If text sits near the top edge of a card, top padding must be `side padding - (1em - (descent + cap height))`.
+  - If text sits near the bottom edge of a card, bottom padding must be `side padding - descent`.
+  - If a bottom tertiary button keeps its own bottom padding, subtract that button bottom padding from the card bottom padding so the visual outer spacing still matches the sides.
+  - Shared card-padding tokens and metric ratios live in `/assets/css/base.css`.
 - Layout:
   - `--content-max-width: 1200px`
   - `--section-inline-pad: clamp(16px, 4vw, 48px)`

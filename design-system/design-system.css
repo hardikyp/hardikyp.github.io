@@ -6,8 +6,12 @@
 .page-design-system {
   --primary-color: var(--color-primary);
   --primary-color-strong: var(--color-primary-strong);
-  --button-radius: 10px;
-  --card-radius: 16px;
+  --button-radius: var(--radius-md);
+  --card-radius: var(--radius-lg);
+  --ds-card-pad-top: var(--card-content-pad-top);
+  --ds-card-pad-edge: var(--card-content-pad-edge);
+  --ds-card-pad-bottom: var(--card-content-pad-bottom);
+  --ds-card-pad-bottom-with-tertiary: var(--card-content-pad-bottom-with-tertiary);
 }
 
 .ds-locked-message {
@@ -334,9 +338,24 @@
   margin: 0;
 }
 
-/* Design system rule: all card UI samples use 16px radius */
+/* Design system rule: card padding follows the shared font-metric trim formula */
 .page-design-system .ds-card-row > :is(.project-card, .teaching-card, .update-card, .testimonial-card, .expertise-card) {
   border-radius: var(--card-radius);
+}
+
+.page-design-system .ds-card-row .project-card__body,
+.page-design-system .ds-card-row .teaching-card__body {
+  padding: var(--ds-card-pad-top) var(--ds-card-pad-edge) var(--ds-card-pad-bottom);
+}
+
+.page-design-system .ds-card-row .update-card,
+.page-design-system .ds-card-row .testimonial-card,
+.page-design-system .ds-card-row .expertise-card {
+  padding: var(--ds-card-pad-top) var(--ds-card-pad-edge) var(--ds-card-pad-bottom);
+}
+
+.page-design-system .ds-card-row .project-card__body {
+  padding-bottom: var(--ds-card-pad-bottom-with-tertiary);
 }
 
 .page-design-system .ds-card-row .project-card__media,

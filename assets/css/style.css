@@ -437,11 +437,13 @@ body.page-home main > section::before { background: transparent; }
   width: 100%;
 }
 .update-card {
-  --update-card-pad: 16px;
+  --update-card-pad-top: var(--card-content-pad-top);
+  --update-card-pad-x: var(--card-content-pad-edge);
+  --update-card-pad-bottom: var(--card-content-pad-bottom);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: var(--update-card-pad);
+  padding: var(--update-card-pad-top) var(--update-card-pad-x) var(--update-card-pad-bottom);
   border-radius: var(--radius-lg);
   background: var(--color-bg);
   box-shadow: var(--shadow-card-tight);
@@ -457,8 +459,8 @@ body.page-home main > section::before { background: transparent; }
   text-decoration: none;
   cursor: pointer;
   border-radius: inherit;
-  padding: var(--update-card-pad);
-  margin: calc(var(--update-card-pad) * -1);
+  padding: var(--update-card-pad-top) var(--update-card-pad-x) var(--update-card-pad-bottom);
+  margin: calc(var(--update-card-pad-top) * -1) calc(var(--update-card-pad-x) * -1) calc(var(--update-card-pad-bottom) * -1);
 }
 .update-card__link:focus-visible {
   outline: 2px solid var(--color-primary);
@@ -546,7 +548,6 @@ body.page-home main > section::before { background: transparent; }
   align-self: flex-start;
   padding-bottom: 0;
 }
-.updates-feed .update-card { --update-card-pad: 16px; }
 .updates-preview__more {
   margin-top: 32px;
   text-align: center;
@@ -593,7 +594,7 @@ body.page-home main > section::before { background: transparent; }
 .expertise-card {
   background: var(--color-bg);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: var(--card-content-pad-top) var(--card-content-pad-edge) var(--card-content-pad-bottom);
   box-shadow: var(--shadow-card-tight);
   display: flex;
   flex-direction: column;
@@ -705,7 +706,7 @@ body.page-home main > section::before { background: transparent; }
 .testimonial-card {
   background: var(--color-bg);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: var(--card-content-pad-top) var(--card-content-pad-edge) var(--card-content-pad-bottom);
   box-shadow: var(--shadow-card-tight);
   display: flex;
   flex-direction: column;
@@ -802,7 +803,6 @@ body.page-home main > section::before { background: transparent; }
 }
 
 @media (max-width: 968px) {
-  .update-card { --update-card-pad: 14px; }
   .update-card__header { gap: 14px; }
 }
 
@@ -835,15 +835,9 @@ body.page-home main > section::before { background: transparent; }
 }
 
 @media (max-width: 640px) {
-  .update-card { --update-card-pad: 12px; gap: 10px; }
+  .update-card { gap: 10px; }
   .update-card__header { gap: 12px; }
   .update-card__meta { font-size: 0.78rem; gap: 6px; }
-  .expertise-card {
-    padding: 24px;
-  }
-  .testimonial-card {
-    padding: 24px;
-  }
 }
 
 .update-detail {
@@ -1543,7 +1537,7 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
 .highlights h2 { margin-bottom: 12px; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
 .cards.single { grid-template-columns: 1fr; }
-.card { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 16px; background: #fff; box-shadow: var(--shadow-card-tight-subtle); }
+.card { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--card-content-pad-top) var(--card-content-pad-edge) var(--card-content-pad-bottom); background: #fff; box-shadow: var(--shadow-card-tight-subtle); }
 .card h3 { margin: 0 0 8px; }
 .card p { margin: 0 0 10px; color: var(--color-muted); }
 .card-link { color: var(--color-primary-strong); font-weight: 600; }
@@ -1597,7 +1591,7 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: clamp(16px, 2vw, 22px);
+  padding: var(--card-content-pad-top) var(--card-content-pad-edge) var(--card-content-pad-bottom-with-tertiary);
   flex: 1 1 auto;
   min-height: 0;
 }
@@ -2132,6 +2126,7 @@ body:not(.page-photography) .pronounce-card .play:active svg { transform: transl
 
 .teaching-card__body {
   gap: 8px;
+  padding: var(--card-content-pad-top) var(--card-content-pad-edge) var(--card-content-pad-bottom);
 }
 
 .teaching-card__title {

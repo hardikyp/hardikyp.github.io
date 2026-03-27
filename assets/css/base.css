@@ -39,6 +39,14 @@
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
+  --card-content-pad-edge: calc(var(--radius-lg) * 1.25);
+  --card-text-cap-ratio: 0.72;
+  --card-text-descent-ratio: 0.22;
+  --card-top-text-size: var(--type-card-title);
+  --card-bottom-text-size: var(--type-p);
+  --card-content-pad-top: calc(var(--card-content-pad-edge) - (var(--card-top-text-size) * (1 - (var(--card-text-cap-ratio) + var(--card-text-descent-ratio)))));
+  --card-content-pad-bottom: calc(var(--card-content-pad-edge) - (var(--card-bottom-text-size) * var(--card-text-descent-ratio)));
+  --card-content-pad-bottom-with-tertiary: calc(var(--card-content-pad-bottom) - var(--space-2));
   /* Card shadows: tighter + softer, with NE light source (shadow cast to SW). */
   --shadow-card-tight: -6px 8px 18px rgba(15, 23, 42, 0.10), -2px 3px 8px rgba(15, 23, 42, 0.06);
   --shadow-card-tight-hover: -8px 12px 24px rgba(15, 23, 42, 0.12), -3px 5px 10px rgba(15, 23, 42, 0.07);

@@ -97,7 +97,7 @@ body:not(.page-photography) .btn.primary:focus-visible {
   flex: 0 0 auto;
   width: 0.89em;
   height: 0.8em;
-  margin-left: 0.18em;
+  margin-left: 0.1em;
   background-color: currentColor;
   -webkit-mask-image: url('../icons/tertiary-arrow.svg');
   -webkit-mask-repeat: no-repeat;
@@ -108,12 +108,12 @@ body:not(.page-photography) .btn.primary:focus-visible {
   mask-position: center;
   mask-size: contain;
   vertical-align: middle;
-  transform: translateX(4px) rotate(0deg);
+  transform: translateX(3px) rotate(0deg);
   transition: transform 160ms ease;
 }
 .btn.tertiary:hover::after,
 .btn.tertiary:focus-visible::after {
-  transform: translateX(6px) rotate(-45deg);
+  transform: translateX(3px) rotate(-45deg);
 }
 .btn.solid { --btn-bg: var(--color-primary); --btn-color: var(--color-on-primary); }
 .btn.solid:hover { background: var(--color-primary-strong); }

@@ -22,6 +22,15 @@
     "webp": true,
     "width": 2106
   },
+  "assets/img/projects/origami-hulls.jpg": {
+    "extension": ".jpg",
+    "height": 900,
+    "variants": [
+      800
+    ],
+    "webp": true,
+    "width": 1200
+  },
   "assets/img/projects/radiometer.jpg": {
     "extension": ".jpg",
     "height": 1975,

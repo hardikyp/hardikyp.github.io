@@ -176,7 +176,7 @@ def render_standard_head(spec: dict) -> str:
 
 def replace_head(path: Path, head_html: str) -> None:
     text = read_text(path)
-    updated, count = re.subn(r"<head>[\s\S]*?</head>", head_html, text, count=1)
+    updated, count = re.subn(r"^[ \t]*<head>[\s\S]*?</head>", head_html, text, count=1, flags=re.MULTILINE)
     if count != 1:
         raise RuntimeError(f"Expected one <head> block in {path}")
     write_text(path, updated)
@@ -543,39 +543,6 @@ def render_testimonials_section(data: dict) -> str:
     """.strip()
 
 
-def render_home_banner(messages: list[str], aria_label: str) -> str:
-    if not messages:
-        messages = ["This site is in active development", "Thank you for your patience :)", "Feel free to browse around"]
-
-    def render_sequence() -> str:
-        parts: list[str] = []
-        for message in messages:
-            parts.append(
-                f"""
-              <div class="hero-banner__set">
-                <span class="hero-banner__text">{escape(message)}</span>
-              </div>
-            """.strip("\n")
-            )
-            parts.append(
-                """
-              <div class="hero-banner__set">
-                <span class="hero-banner__separator"></span>
-              </div>
-            """.strip("\n")
-            )
-        return '<div class="hero-banner__sequence">\n' + "\n".join(parts) + "\n            </div>"
-
-    return f"""
-        <div class="hero-banner" aria-label="{escape(aria_label)}">
-          <div class="hero-banner__track" aria-hidden="true">
-            {render_sequence()}
-            {render_sequence().replace('class="hero-banner__sequence"', 'class="hero-banner__sequence" aria-hidden="true"', 1)}
-          </div>
-        </div>
-    """.strip()
-
-
 def render_home_hero(data: dict) -> str:
     hero = data.get("hero") or {}
     heading_lines = hero.get("headingLines") or ["Designing structures", "that"]
@@ -587,8 +554,6 @@ def render_home_hero(data: dict) -> str:
     secondary = hero.get("secondaryCta") or {}
     primary_attrs = ' download' if primary.get("download") else ""
     secondary_attrs = ' download' if secondary.get("download") else ""
-    banner = hero.get("banner") or {}
-    banner_markup = render_home_banner(banner.get("messages") or [], banner.get("ariaLabel") or "Site status")
     return f"""
       <section class="hero hero--home">
         <div class="hero__content">
@@ -605,7 +570,6 @@ def render_home_hero(data: dict) -> str:
             <a class="btn tertiary" href="{escape(secondary.get("href") or '/projects/index.html')}"{secondary_attrs}>{escape(secondary.get("label") or "Explore my work")}</a>
           </div>
         </div>
-        {banner_markup}
       </section>
     """.strip()
 

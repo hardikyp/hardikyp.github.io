@@ -176,39 +176,6 @@ main > * { --content-inline-pad: 0px; }
 .hero { --content-inline-pad: var(--layout-inline-pad); padding: 64px var(--content-inline-pad) 24px; }
 .hero h1 { line-height: 1.15; margin: 24px 0 8px; font-weight: 700; }
 .hero p { color: var(--color-muted); margin: 0 0 16px; }
-.hero-banner {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 100vw;
-  margin: 0;
-  padding: var(--space-2) clamp(24px, 6vw, 80px);
-  background: var(--color-accent-muted);
-  color: var(--color-primary);
-  overflow: hidden;
-}
-.hero-banner__track {
-  --hero-banner-speed: 28s;
-  display: flex;
-  width: max-content;
-  animation: hero-banner-scroll var(--hero-banner-speed) linear infinite;
-}
-.hero-banner__sequence {
-  display: flex;
-  flex: none;
-  min-width: max(100%, max-content);
-}
-.hero-banner__set { display: flex; align-items: center; gap: var(--space-4); padding: 0 var(--space-5); flex: none; }
-.hero-banner__text { white-space: nowrap; letter-spacing: 0.02em; }
-.hero-banner__separator { width: 8px; height: 8px; border-radius: 999px; background: rgba(38,55,77,0.25); flex: none; }
-@keyframes hero-banner-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-@media (prefers-reduced-motion: reduce), (max-width: 640px) {
-  .hero-banner__track { animation: none; }
-}
 
 /* Section backgrounds */
 main > section {
@@ -1276,13 +1243,11 @@ body.page-home main > section::before { background: transparent; }
 .hero--home {
   --content-inline-pad: clamp(16px, 8vw, 86px);
   --hero-block-pad: clamp(76px, 9.5vw, 128px);
-  --hero-banner-offset: 56px;
   display: flex;
   align-items: center;
-  padding: var(--hero-block-pad) var(--content-inline-pad) calc(var(--hero-block-pad) + var(--hero-banner-offset));
+  padding: var(--hero-block-pad) var(--content-inline-pad);
   background-color: transparent;
   min-height: clamp(380px, 56vh, 580px);
-  position: relative;
 }
 .hero--home .hero__content {
   flex: 0 1 100%;
@@ -1305,7 +1270,7 @@ body.page-home main > section::before { background: transparent; }
 .hero-highlight__mask {
   display: inline-flex;
   flex-direction: column;
-  animation: heroHighlightCycle 12s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  animation: heroHighlightCycle 10s cubic-bezier(0.25, 1.4, 0.64, 1) infinite;
 }
 .hero-highlight__word {
   display: block;

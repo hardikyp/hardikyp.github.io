@@ -3,10 +3,16 @@ from __future__ import annotations
 
 import json
 import re
-import shutil
-import subprocess
 from dataclasses import dataclass
 from pathlib import Path
+
+try:
+    from PIL import Image, ImageOps, features
+except ImportError as exc:
+    raise SystemExit(
+        "Pillow is required to generate responsive images. Install it with "
+        "`python3 -m pip install pillow` and rerun."
+    ) from exc
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -198,12 +204,12 @@ class SourceConfig:
     widths: list[int]
 
 
-def ensure_tools() -> tuple[str, str]:
-    sips = shutil.which("sips")
-    cwebp = shutil.which("cwebp")
-    if not sips or not cwebp:
-        raise SystemExit("Both sips and cwebp must be installed to generate responsive images.")
-    return sips, cwebp
+def resampling_filter() -> int:
+    return getattr(Image, "Resampling", Image).LANCZOS
+
+
+def webp_supported() -> bool:
+    return bool(features.check("webp"))
 
 
 def is_source_image(path: Path) -> bool:
@@ -227,25 +233,10 @@ def collect_sources() -> list[SourceConfig]:
     return [SourceConfig(path=path, widths=widths) for path, widths in sorted(seen.items())]
 
 
-def run(command: list[str]) -> None:
-    subprocess.run(command, check=True, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-
 def get_dimensions(path: Path) -> tuple[int, int]:
-    result = subprocess.run(
-        ["sips", "-g", "pixelWidth", "-g", "pixelHeight", str(path)],
-        check=True,
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-    )
-    width = 0
-    height = 0
-    for line in result.stdout.splitlines():
-        if "pixelWidth:" in line:
-            width = int(line.split(":")[-1].strip())
-        if "pixelHeight:" in line:
-            height = int(line.split(":")[-1].strip())
+    with Image.open(path) as image:
+        normalized = ImageOps.exif_transpose(image)
+        width, height = normalized.size
     if not width or not height:
         raise RuntimeError(f"Could not determine dimensions for {path}")
     return width, height
@@ -260,21 +251,54 @@ def webp_path(path: Path) -> Path:
     return path.with_suffix(".webp")
 
 
-def build_resized_variant(path: Path, width: int, sips_bin: str) -> Path:
+def resize_dimensions(width: int, height: int, target_width: int) -> tuple[int, int]:
+    target_height = max(1, round(height * (target_width / width)))
+    return target_width, target_height
+
+
+def save_image(image: Image.Image, target: Path, source_suffix: str) -> None:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    suffix = target.suffix.lower()
+    if suffix in {".jpg", ".jpeg"}:
+        output = image.convert("RGB")
+        output.save(target, format="JPEG", quality=88, optimize=True, progressive=True)
+        return
+    if suffix == ".png":
+        output = image
+        if output.mode == "P":
+            output = output.convert("RGBA")
+        output.save(target, format="PNG", optimize=True)
+        return
+    if suffix == ".webp":
+        output = image
+        if output.mode == "P":
+            output = output.convert("RGBA")
+        output.save(target, format="WEBP", quality=82, method=6)
+        return
+    raise RuntimeError(f"Unsupported output format for {target} from {source_suffix}")
+
+
+def build_resized_variant(path: Path, width: int) -> Path:
     target = variant_path(path, width)
     if target.exists():
         return target
-    command = [sips_bin, "--resampleWidth", str(width), str(path), "--out", str(target)]
-    run(command)
+    with Image.open(path) as image:
+        normalized = ImageOps.exif_transpose(image)
+        resized = normalized.resize(
+            resize_dimensions(*normalized.size, width),
+            resample=resampling_filter(),
+        )
+        save_image(resized, target, path.suffix.lower())
     return target
 
 
-def build_webp(path: Path, cwebp_bin: str) -> Path:
+def build_webp(path: Path) -> Path:
     target = webp_path(path)
     if target.exists():
         return target
-    command = [cwebp_bin, "-quiet", "-q", "82", str(path), "-o", str(target)]
-    run(command)
+    with Image.open(path) as image:
+        normalized = ImageOps.exif_transpose(image)
+        save_image(normalized, target, path.suffix.lower())
     return target
 
 
@@ -293,14 +317,20 @@ def optimize_original_thumbnail(path: Path) -> None:
     if width <= 512:
         return
     temp_path = path.with_name(f"{path.stem}.tmp{path.suffix}")
-    run(["sips", "--resampleWidth", "512", str(path), "--out", str(temp_path)])
+    with Image.open(path) as image:
+        normalized = ImageOps.exif_transpose(image)
+        resized = normalized.resize(
+            resize_dimensions(*normalized.size, 512),
+            resample=resampling_filter(),
+        )
+        save_image(resized, temp_path, path.suffix.lower())
     temp_path.replace(path)
 
 
 def main() -> int:
-    sips_bin, cwebp_bin = ensure_tools()
     sources = collect_sources()
     manifest: dict[str, dict[str, object]] = {}
+    allow_webp = webp_supported()
 
     for source in sources:
         optimize_original_thumbnail(source.path)
@@ -311,10 +341,13 @@ def main() -> int:
         for target_width in sorted(set(source.widths)):
             if target_width >= width:
                 continue
-            build_webp(build_resized_variant(source.path, target_width, sips_bin), cwebp_bin)
+            variant = build_resized_variant(source.path, target_width)
+            if allow_webp:
+                build_webp(variant)
             available_variants.append(target_width)
 
-        build_webp(source.path, cwebp_bin)
+        if allow_webp:
+            build_webp(source.path)
 
         relative = source.path.relative_to(ROOT).as_posix()
         manifest[relative] = {
@@ -322,11 +355,13 @@ def main() -> int:
             "height": height,
             "extension": source.path.suffix.lower(),
             "variants": available_variants,
-            "webp": True,
+            "webp": allow_webp,
         }
 
     write_site_images(manifest)
     print(f"Updated {SITE_IMAGES_JS.relative_to(ROOT)} with {len(manifest)} managed images.")
+    if not allow_webp:
+        print("WebP support was not available in Pillow. Raster variants were generated without WebP companions.")
     return 0
 
 

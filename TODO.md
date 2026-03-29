@@ -316,6 +316,7 @@ Suggested implementation order is listed first. Individual tasks are intentional
 #### Progress Log
 
 - 2026-03-24: Implemented `/scripts/generate_responsive_images.py` and generated managed responsive derivatives plus WebP companions for projects, update galleries, photography assets, update thumbnails, and shared profile imagery. Added `/assets/js/site-images.js` as the shared image manifest/helper and updated the JS-driven cards/detail views to use consistent responsive image rendering with dimensions and `sizes`. Also resized oversized `rdifp.png` and `uofm.png` originals used as small update thumbnails, and removed the unused default teaching philosophy image fetch from `/teaching/index.html`. Follow-up: run a browser-level interaction check across home, projects, updates, teaching, and photography, then capture a local Lighthouse pass to confirm CLS and image-transfer improvements.
+- 2026-03-27: Reworked `scripts/generate_responsive_images.py` to use Pillow instead of the macOS-only `sips`/`cwebp` toolchain, so the responsive-image pipeline now runs consistently on local macOS setups and Linux GitHub Actions runners. Added `.github/workflows/build-generated-site.yml` so pushes to `main` that touch managed image sources or generator inputs regenerate responsive image variants and refresh `assets/js/site-images.js` automatically.
 
 ## P1 Tasks
 
@@ -367,6 +368,7 @@ Suggested implementation order is listed first. Individual tasks are intentional
 #### Progress Log
 
 - 2026-03-24: Added `/scripts/prerender_content.py` to generate static HTML for the home data-driven sections, projects list, updates list, publications list, teaching list, and slug-based detail pages under `/projects/<slug>/`, `/updates/<slug>/`, and `/teaching/<slug>/`. Updated the runtime scripts so shipped HTML is the primary path and JSON fetch/render remains fallback-only for `file:` previews or recovery scenarios. Follow-up: run browser-level route checks on the generated slug pages and capture a Lighthouse comparison against the new pre-rendered output.
+- 2026-03-27: Added `.github/workflows/build-generated-site.yml` so pushes to `main` that touch content data, template inputs, or prerender pipeline scripts automatically rerun `scripts/prerender_content.py` after syncing partials and responsive-image manifests. This keeps shipped HTML aligned with JSON-authored content without depending on every manual content edit to remember the prerender step.
 
 ### P1-B2: Extract repeated JS helpers into shared utilities
 

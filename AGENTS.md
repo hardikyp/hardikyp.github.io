@@ -33,6 +33,7 @@ This repository is a static personal website. Future coding agents should treat 
   - visibility/idle-based lazy initialization helpers
 - Most content-heavy sections are authored in JSON and pre-rendered into shipped HTML by `/scripts/prerender_content.py`.
 - Runtime page scripts should treat the shipped HTML as the primary path and only fetch/re-render as a fallback when pre-rendered markup is absent.
+- Pushes to `main` that touch content data, managed image sources, partials, relevant HTML templates, or the generator scripts will auto-run the generated-site workflow to resync partial markup, regenerate responsive images, and rewrite shipped pre-rendered HTML.
 - The site is expected to work both on normal hosting and in local `file:` previews. Do not casually break that.
 
 ## Source Of Truth For UI
@@ -180,6 +181,7 @@ Before inventing new markup or styles, check whether one of these already fits:
   - `/assets/partials/back-to-top.html`
 - After changing header/footer/back-to-top markup, run:
   - `python scripts/inline_partials.py`
+- PRs still verify partial drift with `.github/workflows/sync-shared-partials.yml`; `main` branch auto-sync now happens through `.github/workflows/build-generated-site.yml`.
 - HTML pages store synced partial markup inside managed `partial-sync` comment blocks.
 - If you add a new top-level section, also review:
   - nav links in header/footer partials
@@ -338,6 +340,7 @@ Before inventing new markup or styles, check whether one of these already fits:
 
 - Shared responsive image metadata and rendering helpers now live in `/assets/js/site-images.js`.
 - Regenerate managed image assets with `/scripts/generate_responsive_images.py`.
+- `scripts/generate_responsive_images.py` is intentionally Pillow-based so it can run on macOS locally and Linux in GitHub Actions without relying on `sips`.
 - The current pipeline generates width-suffixed raster variants where appropriate:
   - content imagery: `-800`, `-1200`, `-1600`
   - small square thumbnails: `-128`, `-256`, `-512`
@@ -349,6 +352,7 @@ Before inventing new markup or styles, check whether one of these already fits:
   - home testimonials
   - photography hero and cards
 - If you add a raster image intended for responsive rendering, rerun the generator or update the helper manifest deliberately.
+- Pushes to `main` that touch managed image sources or the generator script will auto-run the image pipeline and commit regenerated variants plus the updated manifest.
 
 ## SEO And Metadata Contracts
 

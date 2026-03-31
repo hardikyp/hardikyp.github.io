@@ -1184,7 +1184,10 @@ def render_update_body(item: dict) -> str:
             elif entry.get("src"):
                 image_markup = render_image(entry["src"], entry.get("alt", ""), sizes="(min-width: 1024px) 720px, 92vw", preferred_width=1200)
                 caption = entry.get("caption", "")
-                items.append(f'<figure class="update-gallery__item" role="listitem">{image_markup}{"<figcaption class=\"update-gallery__caption\">" + escape(caption) + "</figcaption>" if caption else ""}</figure>')
+                caption_markup = ""
+                if caption:
+                    caption_markup = f'<figcaption class="update-gallery__caption">{escape(caption)}</figcaption>'
+                items.append(f'<figure class="update-gallery__item" role="listitem">{image_markup}{caption_markup}</figure>')
         if items:
             gallery_markup = f'<div class="update-gallery" role="list">{"".join(items)}</div>'
     return f"{gallery_markup}{body_html}"

@@ -1275,6 +1275,7 @@ body.page-home main > section::before { background: transparent; }
 .hero-highlight__word {
   display: block;
   line-height: 1.15;
+  color: var(--color-primary);
   background-image: linear-gradient(
     135deg,
     var(--color-primary-strong),
@@ -1284,10 +1285,15 @@ body.page-home main > section::before { background: transparent; }
     var(--color-primary)
   );
   background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: heroHighlightAurora 8s ease-in-out infinite alternate;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-highlight__word {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: heroHighlightAurora 8s ease-in-out infinite alternate;
+  }
 }
 @keyframes heroHighlightAurora {
   0% { background-position: 0% 50%; }

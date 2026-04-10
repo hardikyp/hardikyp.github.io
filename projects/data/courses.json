@@ -36,7 +36,7 @@
     "title": "Origami-inspired foldable bridge with rigid thick panels",
     "years": "2020",
     "summary": "Modeling thick zipper-coupled Miura origami tubes in Fusion 360.",
-    "card": { "image": "https://placehold.net/8-800x600.png", "alt": "Foldable bridge origami model rendering" },
+    "card": { "image": "assets/img/projects/origami-bridge.jpg", "alt": "Foldable bridge origami model rendering" },
     "detail": { "body": "<p>Utilized Fusion360 to model the kinematics of zipper-coupled Miura origami tubes, incorporating rigid thick panels to develop a flat-packable, deployable bridge.</p>" }
   },
   {
